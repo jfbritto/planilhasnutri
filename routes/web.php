@@ -27,6 +27,13 @@ Route::get('/', function () {
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
 
+// Unidades
+Route::get('/unidades', [App\Http\Controllers\UnitController::class, 'index']);
+Route::get('/unidade/listar', [App\Http\Controllers\UnitController::class, 'list']);
+Route::post('/unidade/cadastrar', [App\Http\Controllers\UnitController::class, 'store']);
+Route::put('/unidade/editar', [App\Http\Controllers\UnitController::class, 'update']);
+Route::delete('/unidade/deletar', [App\Http\Controllers\UnitController::class, 'destroy']);
+
 
 Route::middleware('guest')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])
