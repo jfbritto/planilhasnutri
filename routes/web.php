@@ -34,6 +34,13 @@ Route::post('/unidade/cadastrar', [App\Http\Controllers\UnitController::class, '
 Route::put('/unidade/editar', [App\Http\Controllers\UnitController::class, 'update']);
 Route::delete('/unidade/deletar', [App\Http\Controllers\UnitController::class, 'destroy']);
 
+// Tipos de planilhas
+Route::get('/estrutura-planilhas', [App\Http\Controllers\WorksheetStructureController::class, 'index']);
+Route::get('/estrutura-planilha/listar', [App\Http\Controllers\WorksheetStructureController::class, 'list']);
+Route::post('/estrutura-planilha/cadastrar', [App\Http\Controllers\WorksheetStructureController::class, 'store']);
+Route::put('/estrutura-planilha/editar', [App\Http\Controllers\WorksheetStructureController::class, 'update']);
+Route::delete('/estrutura-planilha/deletar', [App\Http\Controllers\WorksheetStructureController::class, 'destroy']);
+
 
 Route::middleware('guest')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])

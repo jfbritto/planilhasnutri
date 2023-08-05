@@ -335,6 +335,11 @@ return [
             'icon' => 'fas fa-fw fa-users',
         ],
         [
+            'text' => 'Tipos de Planilhas',
+            'url'  => 'estrutura-planilhas',
+            'icon' => 'fas fa-fw fa-file',
+        ],
+        [
             'text' => 'Planilhas',
             'url'  => 'planilhas',
             'icon' => 'fas fa-fw fa-file',
