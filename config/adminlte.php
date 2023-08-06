@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'PlanilhasNUTRI',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -86,7 +86,7 @@ return [
     'auth_logo' => [
         'enabled' => false,
         'img' => [
-            'path' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+            'path' => 'img/logo.png',
             'alt' => 'Auth Logo',
             'class' => '',
             'width' => 50,
@@ -109,7 +109,7 @@ return [
     'preloader' => [
         'enabled' => true,
         'img' => [
-            'path' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+            'path' => 'img/logo.png',
             'alt' => 'AdminLTE Preloader Image',
             'effect' => 'animation__shake',
             'width' => 60,
@@ -328,16 +328,19 @@ return [
             'text' => 'Unidades',
             'url'  => 'unidades',
             'icon' => 'fas fa-fw fa-building',
+            'can'  => 'admin',
         ],
         [
             'text' => 'Usuários',
             'url'  => 'usuarios',
             'icon' => 'fas fa-fw fa-users',
+            'can'  => 'admin',
         ],
         [
             'text' => 'Tipos de Planilhas',
             'url'  => 'estrutura-planilhas',
             'icon' => 'fas fa-fw fa-file',
+            'can'  => 'admin',
         ],
         [
             'text' => 'Planilhas',
@@ -461,7 +464,7 @@ return [
             ],
         ],
         'Select2' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',

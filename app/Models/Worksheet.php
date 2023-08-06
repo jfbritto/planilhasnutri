@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class WorksheetStructure extends Model
+class Worksheet extends Model
 {
     use HasFactory;
 
@@ -13,7 +13,7 @@ class WorksheetStructure extends Model
         'id',
         'id_user',
         'id_unit',
-        'name',
+        'id_worksheet_structure',
         'description',
         'status'
     ];

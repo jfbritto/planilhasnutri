@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWorksheetStructuresTable extends Migration
+class CreateWorksheetsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateWorksheetStructuresTable extends Migration
      */
     public function up()
     {
-        Schema::create('worksheet_structures', function (Blueprint $table) {
+        Schema::create('worksheets', function (Blueprint $table) {
             $table->id();
             $table->integer('id_user');
-            $table->integer('id_unit')->nullable();
-            $table->string('name');
+            $table->integer('id_unit');
+            $table->integer('id_worksheet_structure');
             $table->string('description', 100)->nullable();
             $table->string('status', 5)->default('A');
             $table->timestamps();
@@ -31,6 +31,6 @@ class CreateWorksheetStructuresTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('worksheet_structures');
+        Schema::dropIfExists('worksheets');
     }
 }
