@@ -82,11 +82,26 @@ class WorksheetService
         $response = [];
 
         try{
-            $return = DB::select( DB::raw("select wt.name as name, un.name as unit_name, us.name as user_name, ws.* from worksheets ws
-                                            join worksheet_structures wt on ws.id_worksheet_structure = wt.id
-                                            join units un on ws.id_unit = un.id
-                                            join users us on ws.id_user = us.id
-                                            where ws.status = 'A' order by ws.id_worksheet_structure"));
+
+            $condition = "";
+            if(auth()->user()->is_nutri) {
+                $condition = "AND ws.id_user = ".auth()->user()->id;
+            }
+
+            $return = DB::select( DB::raw("SELECT
+                                                wt.name AS name,
+                                                un.name AS unit_name,
+                                                us.name AS user_name,
+                                                ws.*
+                                            FROM
+                                                worksheets ws
+                                                JOIN worksheet_structures wt ON ws.id_worksheet_structure = wt.id
+                                                JOIN units un ON ws.id_unit = un.id
+                                                JOIN users us ON ws.id_user = us.id
+                                            WHERE
+                                                ws.status = 'A' {$condition}
+                                            ORDER BY
+                                                ws.id_worksheet_structure"));
 
             $response = ['status' => 'success', 'data' => $return];
         }catch(Exception $e){
