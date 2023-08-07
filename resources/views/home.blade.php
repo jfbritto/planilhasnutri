@@ -1,6 +1,10 @@
 @extends('adminlte::page')
 
-@section('title', 'AdminLTE')
+@section('meta_tags')
+    <link rel="icon" href="/img/building.png" type="image/png">
+@stop
+
+@section('title', 'PlanilhasNUTRI')
 
 @section('content_header')
     <h1 class="m-0 text-dark">Dashboard</h1>

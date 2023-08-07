@@ -337,7 +337,7 @@ return [
             'can'  => 'admin',
         ],
         [
-            'text' => 'Tipos de Planilhas',
+            'text' => 'Estrutura das Planilhas',
             'url'  => 'estrutura-planilhas',
             'icon' => 'fas fa-fw fa-file',
             'can'  => 'admin',
