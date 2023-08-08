@@ -1,9 +1,10 @@
 $(document).ready(function () {
 
-    loadWorksheetStructure();
+    loadParameters();
+    loadParameterTypes();
 
-    // LISTAR ESTRUTURA DE PLANILHAS
-    function loadWorksheetStructure()
+    // LISTAR PARAMETROS
+    function loadParameters()
     {
         Swal.queue([
             {
@@ -12,7 +13,7 @@ $(document).ready(function () {
                 allowEscapeKey: false,
                 onOpen: () => {
                     Swal.showLoading();
-                    $.get(window.location.origin + "/estrutura-planilha/listar", {
+                    $.get(window.location.origin + "/parametro/listar", {
 
                     })
                         .then(function (data) {
@@ -28,9 +29,10 @@ $(document).ready(function () {
                                         $("#list").append(`
                                             <tr>
                                                 <td class="align-middle">${item.name}</td>
+                                                <td class="align-middle">${item.unit_name}</td>
                                                 <td class="align-middle" style="text-align: right">
-                                                    <a title="Editar" data-id="${item.id}" data-name="${item.name}" data-city="${item.city}" data-neighborhood="${item.neighborhood}" data-reference="${item.reference}" data-description="${item.description}" href="#" class="btn btn-warning edit-WorksheetStructure"><i style="color: white" class="fas fa-edit"></i></a>
-                                                    <a title="Deletar" data-id="${item.id}" href="#" class="btn btn-danger delete-WorksheetStructure"><i class="fas fa-trash-alt"></i></a>
+                                                    <a title="Editar" data-id="${item.id}" href="#" class="btn btn-warning edit-Parameter"><i style="color: white" class="fas fa-edit"></i></a>
+                                                    <a title="Deletar" data-id="${item.id}" href="#" class="btn btn-danger delete-Parameter"><i class="fas fa-trash-alt"></i></a>
                                                 </td>
                                             </tr>
                                         `);
@@ -40,7 +42,7 @@ $(document).ready(function () {
 
                                     $("#list").append(`
                                         <tr>
-                                            <td class="align-middle text-center" colspan="2">Nenhuma estrutura de planilha cadastrada</td>
+                                            <td class="align-middle text-center" colspan="4">Nenhum parâmetro cadastrado</td>
                                         </tr>
                                     `);
                                 }
@@ -55,9 +57,8 @@ $(document).ready(function () {
         ]);
     }
 
-
-    // CADASTRAR ESTRUTURA DE PLANILHA
-    $("#formStoreWorksheetStructure").submit(function (e) {
+    // CADASTRAR PARAMETRO
+    $("#formStoreParameter").submit(function (e) {
         e.preventDefault();
 
         Swal.queue([
@@ -68,20 +69,20 @@ $(document).ready(function () {
                 onOpen: () => {
                     Swal.showLoading();
 
-                    $.post(window.location.origin + "/estrutura-planilha/cadastrar", {
+                    $.post(window.location.origin + "/parametro/cadastrar", {
                         name: $("#name").val(),
-                        description: $("#description").val(),
+                        id_parameter_type: $("#id_parameter_type option:selected").val(),
                     })
                         .then(function (data) {
                             if (data.status == "success") {
 
-                                $("#formStoreWorksheetStructure").each(function () {
+                                $("#formStoreParameter").each(function () {
                                     this.reset();
                                 });
 
-                                $("#modalStoreWorksheetStructure").modal("hide");
+                                $("#modalStoreParameter").modal("hide");
 
-                                showSuccess("Cadastro efetuado!", null, loadWorksheetStructure)
+                                showSuccess("Cadastro efetuado!", null, loadParameters)
                             } else if (data.status == "error") {
                                 showError(data.message)
                             }
@@ -95,23 +96,21 @@ $(document).ready(function () {
     });
 
 
-    // EDITAR ESTRUTURA DE PLANILHA
-    $("#list").on("click", ".edit-WorksheetStructure", function(){
+    // EDITAR PARAMETRO
+    $("#list").on("click", ".edit-Parameter", function(){
 
         let id = $(this).data('id');
         let name = $(this).data('name');
-        let city = $(this).data('city');
-        let neighborhood = $(this).data('neighborhood');
-        let description = $(this).data('description');
+        // let id_parameter_type = $("#id_parameter_type option:selected").val();
 
         $("#id_edit").val(id);
         $("#name_edit").val(name);
-        $("#description_edit").val(description);
+        // $("#id_parameter_type").val(id_parameter_type);
 
-        $("#modalEditWorksheetStructure").modal("show");
+        $("#modalEditParameter").modal("show");
     });
 
-    $("#formEditWorksheetStructure").submit(function (e) {
+    $("#formEditParameter").submit(function (e) {
         e.preventDefault();
 
         Swal.queue([
@@ -122,24 +121,23 @@ $(document).ready(function () {
                 onOpen: () => {
                     Swal.showLoading();
                     $.ajax({
-                        url: window.location.origin + "/estrutura-planilha/editar",
+                        url: window.location.origin + "/parametro/editar",
                         type: 'PUT',
                         data:{
                             id: $("#id_edit").val(),
                             name: $("#name_edit").val(),
-                            description: $("#description_edit").val(),
                         }
                     })
                         .then(function (data) {
                             if (data.status == "success") {
 
-                                $("#formEditWorksheetStructure").each(function () {
+                                $("#formEditParameter").each(function () {
                                     this.reset();
                                 });
 
-                                $("#modalEditWorksheetStructure").modal("hide");
+                                $("#modalEditParameter").modal("hide");
 
-                                showSuccess("Edição efetuada!", null, loadWorksheetStructure)
+                                showSuccess("Edição efetuada!", null, loadParameters)
                             } else if (data.status == "error") {
                                 showError(data.message)
                             }
@@ -151,8 +149,8 @@ $(document).ready(function () {
     });
 
 
-    // "DELETAR" ESTRUTURA DE PLANILHA
-    $("#list").on("click", ".delete-WorksheetStructure", function(){
+    // "DELETAR" PARAMETRO
+    $("#list").on("click", ".delete-Parameter", function(){
 
         let id = $(this).data('id');
 
@@ -176,14 +174,14 @@ $(document).ready(function () {
                             onOpen: () => {
                                 Swal.showLoading();
                                 $.ajax({
-                                    url: window.location.origin + "/estrutura-planilha/deletar",
+                                    url: window.location.origin + "/parametro/deletar",
                                     type: 'DELETE',
                                     data: {id}
                                 })
                                     .then(function (data) {
                                         if (data.status == "success") {
 
-                                            showSuccess("Deletado com sucesso!", null, loadWorksheetStructure)
+                                            showSuccess("Deletado com sucesso!", null, loadParameters)
                                         } else if (data.status == "error") {
                                             showError(data.message)
                                         }
@@ -197,6 +195,38 @@ $(document).ready(function () {
             })
 
     });
+
+
+    // LISTAR TIPOS DE PARAMETROS
+    function loadParameterTypes()
+    {
+
+        $.get(window.location.origin + "/tipo-parametro/listar", {
+
+        })
+            .then(function (data) {
+                if (data.status == "success") {
+
+                    Swal.close();
+                    $("#id_parameter_type").html(``);
+
+                    if(data.data.length > 0){
+                        $("#id_parameter_type").append(`<option>-- Selecione --</option>`);
+                        data.data.forEach(item => {
+                            $("#id_parameter_type").append(`<option value="${item.id}">${item.name}</option>`);
+                        });
+                    } else {
+                        $("#id_parameter_type").append(`<option>Nenhum tipo de parâmetro encontrado</option>`);
+                    }
+
+                } else if (data.status == "error") {
+                    showError(data.message)
+                }
+            })
+            .catch();
+
+    }
+
 
 
 });

@@ -19,7 +19,7 @@ class CreateUnitsTable extends Migration
             $table->string('city', 45)->nullable();
             $table->string('neighborhood', 45)->nullable();
             $table->string('description', 45)->nullable();
-            $table->string('status', 5)->default('A');
+            $table->string('status', 1)->default('A');
             $table->timestamps();
         });
     }

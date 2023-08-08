@@ -15,6 +15,6 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(UserSeeder::class);
         $this->call(UnitSeeder::class);
-        $this->call(WorksheetStructureSeeder::class);
+        $this->call(ParameterTypeSeeder::class);
     }
 }

@@ -3,32 +3,38 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Services\WorksheetService;
+use App\Services\UserService;
+use Illuminate\Support\Facades\Hash;
 
-class WorksheetController extends Controller
+class UserController extends Controller
 {
-    private $worksheetService;
+    private $userService;
 
-    public function __construct(WorksheetService $worksheetService)
+    public function __construct(UserService $userService)
     {
-        $this->worksheetService = $worksheetService;
+        $this->userService = $userService;
     }
 
     public function index()
     {
-        return view('worksheet.home');
+        return view('user.home');
+    }
+
+    public function show($id)
+    {
+        return view('user.show', ['id' => $id]);
     }
 
     public function store(Request $request)
     {
         $data = [
-            'id_user' => auth()->user()->id,
-            'id_unit' => auth()->user()->id_unit,
-            'id_worksheet_structure' => trim($request->id_worksheet_structure),
-            'description' => trim($request->description)
+            'id_unit' => auth()->user()->id_unit ?: $request->id_unit,
+            'name' => trim($request->name),
+            'email' => $request->email,
+            'password' => Hash::make($request->email)
         ];
 
-        $response = $this->worksheetService->store($data);
+        $response = $this->userService->store($data);
 
         if($response['status'] == 'success')
             return response()->json(['status'=>'success'], 201);
@@ -38,13 +44,13 @@ class WorksheetController extends Controller
 
     public function update(Request $request)
     {
-
         $data = [
             'id' => trim($request->id),
-            'description' => trim($request->description)
+            'name' => trim($request->name),
+            'email' => trim($request->email)
         ];
 
-        $response = $this->worksheetService->update($data);
+        $response = $this->userService->update($data);
 
         if($response['status'] == 'success')
             return response()->json(['status'=>'success'], 200);
@@ -59,7 +65,24 @@ class WorksheetController extends Controller
             'status' => 'D'
         ];
 
-        $response = $this->worksheetService->destroy($data);
+        $response = $this->userService->destroy($data);
+
+        if($response['status'] == 'success')
+            return response()->json(['status'=>'success'], 200);
+
+        return response()->json(['status'=>'error', 'message'=>$response['data']], 400);
+    }
+
+    public function changeStatus(Request $request)
+    {
+        $status = $request->status;
+
+        $data = [
+            'id' => trim($request->id),
+            'status' => $status
+        ];
+
+        $response = $this->userService->changeStatus($data);
 
         if($response['status'] == 'success')
             return response()->json(['status'=>'success'], 200);
@@ -69,11 +92,12 @@ class WorksheetController extends Controller
 
     public function list()
     {
-        $response = $this->worksheetService->list();
+        $response = $this->userService->list();
 
         if($response['status'] == 'success')
             return response()->json(['status'=>'success', 'data'=>$response['data']], 200);
 
         return response()->json(['status'=>'error', 'message'=>$response['data']], 400);
     }
+
 }

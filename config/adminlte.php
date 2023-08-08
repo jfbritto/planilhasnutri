@@ -334,18 +334,16 @@ return [
             'text' => 'Usuários',
             'url'  => 'usuarios',
             'icon' => 'fas fa-fw fa-users',
-            'can'  => 'admin',
         ],
         [
-            'text' => 'Estrutura das Planilhas',
-            'url'  => 'estrutura-planilhas',
-            'icon' => 'fas fa-fw fa-file',
-            'can'  => 'admin',
+            'text' => 'Tipos de parâmetros',
+            'url'  => 'tipo-parametros',
+            'icon' => 'fas fa-fw fa-cog'
         ],
         [
-            'text' => 'Planilhas',
-            'url'  => 'planilhas',
-            'icon' => 'fas fa-fw fa-file',
+            'text' => 'Parâmetros',
+            'url'  => 'parametros',
+            'icon' => 'fas fa-fw fa-cog',
         ],
         // [
         //     'text' => 'change_password',

@@ -100,8 +100,8 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="name_edit">Nome</label>
-                                <input type="hidden" required name="id_edit" id="id_edit" class="form-control" placeholder="Informe o nome da quadra">
-                                <input type="text" required name="name_edit" id="name_edit" class="form-control" placeholder="Informe o nome da quadra">
+                                <input type="hidden" required name="id_edit" id="id_edit" class="form-control" placeholder="Informe o nome da unidade">
+                                <input type="text" required name="name_edit" id="name_edit" class="form-control" placeholder="Informe o nome da unidade">
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -119,7 +119,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="description_edit">Descrição</label>
-                                <input type="text" required name="description_edit" id="description_edit" class="form-control" placeholder="Descreva sobre a quadra">
+                                <input type="text" required name="description_edit" id="description_edit" class="form-control" placeholder="Descreva sobre a unidade">
                             </div>
                         </div>
                     </div>

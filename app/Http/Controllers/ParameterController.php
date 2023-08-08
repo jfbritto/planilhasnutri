@@ -3,31 +3,31 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Services\WorksheetStructureService;
+use App\Services\ParameterService;
 
-class WorksheetStructureController extends Controller
+class ParameterController extends Controller
 {
-    private $worksheetStructureService;
+    private $parameterService;
 
-    public function __construct(WorksheetStructureService $worksheetStructureService)
+    public function __construct(ParameterService $parameterService)
     {
-        $this->worksheetStructureService = $worksheetStructureService;
+        $this->parameterService = $parameterService;
     }
 
     public function index()
     {
-        return view('worksheet_structure.home');
+        return view('parameter.home');
     }
 
     public function store(Request $request)
     {
         $data = [
-            'id_user' => auth()->user()->id,
             'name' => trim($request->name),
-            'description' => trim($request->description)
+            'id_unit' => auth()->user()->id_unit,
+            'id_parameter_type' => $request->id_parameter_type
         ];
 
-        $response = $this->worksheetStructureService->store($data);
+        $response = $this->parameterService->store($data);
 
         if($response['status'] == 'success')
             return response()->json(['status'=>'success'], 201);
@@ -37,13 +37,13 @@ class WorksheetStructureController extends Controller
 
     public function update(Request $request)
     {
+
         $data = [
             'id' => trim($request->id),
-            'name' => trim($request->name),
-            'description' => trim($request->description)
+            'name' => trim($request->name)
         ];
 
-        $response = $this->worksheetStructureService->update($data);
+        $response = $this->parameterService->update($data);
 
         if($response['status'] == 'success')
             return response()->json(['status'=>'success'], 200);
@@ -58,7 +58,7 @@ class WorksheetStructureController extends Controller
             'status' => 'D'
         ];
 
-        $response = $this->worksheetStructureService->destroy($data);
+        $response = $this->parameterService->destroy($data);
 
         if($response['status'] == 'success')
             return response()->json(['status'=>'success'], 200);
@@ -68,7 +68,7 @@ class WorksheetStructureController extends Controller
 
     public function list()
     {
-        $response = $this->worksheetStructureService->list();
+        $response = $this->parameterService->list();
 
         if($response['status'] == 'success')
             return response()->json(['status'=>'success', 'data'=>$response['data']], 200);

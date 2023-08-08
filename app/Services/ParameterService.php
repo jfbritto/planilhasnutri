@@ -2,11 +2,11 @@
 
 namespace App\Services;
 
-use App\Models\Worksheet;
+use App\Models\Parameter;
 use Exception;
 use Illuminate\Support\Facades\DB as DB;
 
-class WorksheetService
+class ParameterService
 {
     public function store(array $data)
     {
@@ -15,7 +15,7 @@ class WorksheetService
         try{
             DB::beginTransaction();
 
-            $result = Worksheet::create($data);
+            $result = Parameter::create($data);
 
             DB::commit();
 
@@ -37,13 +37,13 @@ class WorksheetService
 
             DB::beginTransaction();
 
-            $worksheets = DB::table('worksheets')
+            $parameters = DB::table('parameters')
                         ->where('id', $data['id'])
-                        ->update(['description' => $data['description']]);
+                        ->update(['name' => $data['name']]);
 
             DB::commit();
 
-            $response = ['status' => 'success', 'data' => $worksheets];
+            $response = ['status' => 'success', 'data' => $parameters];
 
         }catch(Exception $e){
             DB::rollBack();
@@ -61,13 +61,13 @@ class WorksheetService
 
             DB::beginTransaction();
 
-            $worksheets = DB::table('worksheets')
+            $parameters = DB::table('parameters')
                         ->where('id', $data['id'])
                         ->update(['status' => $data['status']]);
 
             DB::commit();
 
-            $response = ['status' => 'success', 'data' => $worksheets];
+            $response = ['status' => 'success', 'data' => $parameters];
 
         }catch(Exception $e){
             DB::rollBack();
@@ -83,25 +83,16 @@ class WorksheetService
 
         try{
 
-            $condition = "";
-            if(auth()->user()->is_nutri) {
-                $condition = "AND ws.id_user = ".auth()->user()->id;
-            }
-
             $return = DB::select( DB::raw("SELECT
-                                                wt.name AS name,
-                                                un.name AS unit_name,
-                                                us.name AS user_name,
-                                                ws.*
+                                                ifnull(un.name, 'Todas') as unit_name,
+                                                pm.*
                                             FROM
-                                                worksheets ws
-                                                JOIN worksheet_structures wt ON ws.id_worksheet_structure = wt.id
-                                                JOIN units un ON ws.id_unit = un.id
-                                                JOIN users us ON ws.id_user = us.id
+                                                parameters pm
+                                                LEFT JOIN units un ON pm.id_unit = un.id
                                             WHERE
-                                                ws.status = 'A' {$condition}
+                                                pm.status = 'A'
                                             ORDER BY
-                                                ws.id_worksheet_structure"));
+                                                pm.name"));
 
             $response = ['status' => 'success', 'data' => $return];
         }catch(Exception $e){

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWorksheetStructuresTable extends Migration
+class CreateParameterTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateWorksheetStructuresTable extends Migration
      */
     public function up()
     {
-        Schema::create('worksheet_structures', function (Blueprint $table) {
+        Schema::create('parameter_types', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_user');
             $table->integer('id_unit')->nullable();
             $table->string('name');
-            $table->string('description', 100)->nullable();
-            $table->string('status', 5)->default('A');
+            $table->string('status', 1)->default('A');
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ class CreateWorksheetStructuresTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('worksheet_structures');
+        Schema::dropIfExists('parameter_types');
     }
 }

@@ -1,10 +1,10 @@
 $(document).ready(function () {
 
-    loadWorksheet();
-    loadWorksheetStructure();
+    loadUsers();
+    loadUnits();
 
-    // LISTAR PLANILHAS
-    function loadWorksheet()
+    // LISTAR USUÁRIOS
+    function loadUsers()
     {
         Swal.queue([
             {
@@ -13,7 +13,7 @@ $(document).ready(function () {
                 allowEscapeKey: false,
                 onOpen: () => {
                     Swal.showLoading();
-                    $.get(window.location.origin + "/planilha/listar", {
+                    $.get(window.location.origin + "/usuario/listar", {
 
                     })
                         .then(function (data) {
@@ -29,11 +29,11 @@ $(document).ready(function () {
                                         $("#list").append(`
                                             <tr>
                                                 <td class="align-middle">${item.name}</td>
-                                                <td class="align-middle">${item.unit_name}</td>
-                                                <td class="align-middle">${item.user_name}</td>
+                                                <td class="align-middle">${item.email}</td>
+                                                <td class="align-middle">${item.unidade}</td>
                                                 <td class="align-middle" style="text-align: right">
-                                                    <a title="Editar" data-id="${item.id}" data-description="${item.description}" href="#" class="btn btn-warning edit-Worksheet"><i style="color: white" class="fas fa-edit"></i></a>
-                                                    <a title="Deletar" data-id="${item.id}" href="#" class="btn btn-danger delete-Worksheet"><i class="fas fa-trash-alt"></i></a>
+                                                    <a title="Editar" data-id="${item.id}" data-name="${item.name}" data-email="${item.email}" href="#" class="btn btn-warning edit-user"><i style="color: white" class="fas fa-edit"></i></a>
+                                                    <a title="Deletar" data-id="${item.id}" href="#" class="btn btn-danger delete-user"><i class="fas fa-trash-alt"></i></a>
                                                 </td>
                                             </tr>
                                         `);
@@ -43,7 +43,7 @@ $(document).ready(function () {
 
                                     $("#list").append(`
                                         <tr>
-                                            <td class="align-middle text-center" colspan="4">Nenhuma planilha cadastrada</td>
+                                            <td class="align-middle text-center" colspan="2">Nenhum usuário cadastrado</td>
                                         </tr>
                                     `);
                                 }
@@ -59,8 +59,8 @@ $(document).ready(function () {
     }
 
 
-    // CADASTRAR PLANILHA
-    $("#formStoreWorksheet").submit(function (e) {
+    // CADASTRAR USUÁRIO
+    $("#formStoreUser").submit(function (e) {
         e.preventDefault();
 
         Swal.queue([
@@ -71,20 +71,21 @@ $(document).ready(function () {
                 onOpen: () => {
                     Swal.showLoading();
 
-                    $.post(window.location.origin + "/planilha/cadastrar", {
-                        id_worksheet_structure: $("#id_worksheet_structure option:selected").val(),
-                        description: $("#description").val(),
+                    $.post(window.location.origin + "/usuario/cadastrar", {
+                        name: $("#name").val(),
+                        email: $("#email").val(),
+                        id_unit: $("#id_unit option:selected").val(),
                     })
                         .then(function (data) {
                             if (data.status == "success") {
 
-                                $("#formStoreWorksheet").each(function () {
+                                $("#formStoreUser").each(function () {
                                     this.reset();
                                 });
 
-                                $("#modalStoreWorksheet").modal("hide");
+                                $("#modalStoreUser").modal("hide");
 
-                                showSuccess("Cadastro efetuado!", null, loadWorksheet)
+                                showSuccess("Cadastro efetuado!", null, loadUsers)
                             } else if (data.status == "error") {
                                 showError(data.message)
                             }
@@ -98,21 +99,21 @@ $(document).ready(function () {
     });
 
 
-    // EDITAR PLANILHA
-    $("#list").on("click", ".edit-Worksheet", function(){
+    // EDITAR USUÁRIO
+    $("#list").on("click", ".edit-user", function(){
 
         let id = $(this).data('id');
-        // let id_worksheet_structure = $("#id_worksheet_structure option:selected").val();
-        let description = $(this).data('description');
+        let name = $(this).data('name');
+        let email = $(this).data('email');
 
         $("#id_edit").val(id);
-        // $("#id_worksheet_structure_edit").val(id_worksheet_structure);
-        $("#description_edit").val(description);
+        $("#name_edit").val(name);
+        $("#email_edit").val(email);
 
-        $("#modalEditWorksheet").modal("show");
+        $("#modalEditUser").modal("show");
     });
 
-    $("#formEditWorksheet").submit(function (e) {
+    $("#formEditUser").submit(function (e) {
         e.preventDefault();
 
         Swal.queue([
@@ -123,23 +124,24 @@ $(document).ready(function () {
                 onOpen: () => {
                     Swal.showLoading();
                     $.ajax({
-                        url: window.location.origin + "/planilha/editar",
+                        url: window.location.origin + "/usuario/editar",
                         type: 'PUT',
                         data:{
                             id: $("#id_edit").val(),
-                            description: $("#description_edit").val(),
+                            name: $("#name_edit").val(),
+                            email: $("#email_edit").val()
                         }
                     })
                         .then(function (data) {
                             if (data.status == "success") {
 
-                                $("#formEditWorksheet").each(function () {
+                                $("#formEditUser").each(function () {
                                     this.reset();
                                 });
 
-                                $("#modalEditWorksheet").modal("hide");
+                                $("#modalEditUser").modal("hide");
 
-                                showSuccess("Edição efetuada!", null, loadWorksheet)
+                                showSuccess("Edição efetuada!", null, loadUsers)
                             } else if (data.status == "error") {
                                 showError(data.message)
                             }
@@ -151,8 +153,8 @@ $(document).ready(function () {
     });
 
 
-    // "DELETAR" PLANILHA
-    $("#list").on("click", ".delete-Worksheet", function(){
+    // "DELETAR" USUÁRIO
+    $("#list").on("click", ".delete-user", function(){
 
         let id = $(this).data('id');
 
@@ -176,14 +178,14 @@ $(document).ready(function () {
                             onOpen: () => {
                                 Swal.showLoading();
                                 $.ajax({
-                                    url: window.location.origin + "/planilha/deletar",
+                                    url: window.location.origin + "/usuario/deletar",
                                     type: 'DELETE',
                                     data: {id}
                                 })
                                     .then(function (data) {
                                         if (data.status == "success") {
 
-                                            showSuccess("Deletado com sucesso!", null, loadWorksheet)
+                                            showSuccess("Deletado com sucesso!", null, loadUsers)
                                         } else if (data.status == "error") {
                                             showError(data.message)
                                         }
@@ -198,27 +200,26 @@ $(document).ready(function () {
 
     });
 
-
-    // LISTAR ESTRUTURA DE PLANILHAS
-    function loadWorksheetStructure()
+    // LISTAR UNIDADES
+    function loadUnits()
     {
 
-        $.get(window.location.origin + "/estrutura-planilha/listar", {
+        $.get(window.location.origin + "/unidade/listar", {
 
         })
             .then(function (data) {
                 if (data.status == "success") {
 
                     Swal.close();
-                    $("#id_worksheet_structure").html(``);
+                    $("#id_unit").html(``);
 
                     if(data.data.length > 0){
-                        $("#id_worksheet_structure").append(`<option>-- Selecione --</option>`);
+                        $("#id_unit").append(`<option>-- Selecione --</option>`);
                         data.data.forEach(item => {
-                            $("#id_worksheet_structure").append(`<option value="${item.id}">${item.name}</option>`);
+                            $("#id_unit").append(`<option value="${item.id}">${item.name}</option>`);
                         });
                     } else {
-                        $("#id_worksheet_structure").append(`<option>Nenhuma estrutura de planilha encontrada</option>`);
+                        $("#id_unit").append(`<option>Nenhuma unidade encontrada</option>`);
                     }
 
                 } else if (data.status == "error") {
@@ -228,7 +229,6 @@ $(document).ready(function () {
             .catch();
 
     }
-
 
 
 });

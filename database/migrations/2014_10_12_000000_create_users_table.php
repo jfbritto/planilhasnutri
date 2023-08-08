@@ -20,8 +20,9 @@ class CreateUsersTable extends Migration
             $table->boolean('is_nutri')->default(true);
             $table->string('name');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('status', 1)->default('A');
+            $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

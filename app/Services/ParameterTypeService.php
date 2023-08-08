@@ -2,11 +2,11 @@
 
 namespace App\Services;
 
-use App\Models\WorksheetStructure;
+use App\Models\ParameterType;
 use Exception;
 use Illuminate\Support\Facades\DB as DB;
 
-class WorksheetStructureService
+class ParameterTypeService
 {
     public function store(array $data)
     {
@@ -15,7 +15,7 @@ class WorksheetStructureService
         try{
             DB::beginTransaction();
 
-            $result = WorksheetStructure::create($data);
+            $result = ParameterType::create($data);
 
             DB::commit();
 
@@ -37,14 +37,13 @@ class WorksheetStructureService
 
             DB::beginTransaction();
 
-            $worksheetStructures = DB::table('worksheet_structures')
+            $parameterType = DB::table('parameter_types')
                         ->where('id', $data['id'])
-                        ->update(['name' => $data['name'],
-                                'description' => $data['description']]);
+                        ->update(['name' => $data['name']]);
 
             DB::commit();
 
-            $response = ['status' => 'success', 'data' => $worksheetStructures];
+            $response = ['status' => 'success', 'data' => $parameterType];
 
         }catch(Exception $e){
             DB::rollBack();
@@ -62,13 +61,13 @@ class WorksheetStructureService
 
             DB::beginTransaction();
 
-            $worksheetStructures = DB::table('worksheet_structures')
+            $parameterType = DB::table('parameter_types')
                         ->where('id', $data['id'])
                         ->update(['status' => $data['status']]);
 
             DB::commit();
 
-            $response = ['status' => 'success', 'data' => $worksheetStructures];
+            $response = ['status' => 'success', 'data' => $parameterType];
 
         }catch(Exception $e){
             DB::rollBack();
@@ -83,7 +82,7 @@ class WorksheetStructureService
         $response = [];
 
         try{
-            $return = DB::select( DB::raw("select * from worksheet_structures where status = 'A' order by name"));
+            $return = DB::select( DB::raw("select ifnull(un.name, 'Todas') as unidade, pt.* from parameter_types pt left join units un on un.id=pt.id_unit where pt.status = 'A' order by pt.name"));
 
             $response = ['status' => 'success', 'data' => $return];
         }catch(Exception $e){
