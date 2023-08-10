@@ -18,6 +18,7 @@ Route::group(['middleware' => ['auth']], function () {
     // Parametros
     Route::get('/parametros', [App\Http\Controllers\ParameterController::class, 'index']);
     Route::get('/parametro/listar', [App\Http\Controllers\ParameterController::class, 'list']);
+    Route::get('/parametro/encontrar', [App\Http\Controllers\ParameterController::class, 'find']);
     Route::post('/parametro/cadastrar', [App\Http\Controllers\ParameterController::class, 'store']);
     Route::put('/parametro/editar', [App\Http\Controllers\ParameterController::class, 'update']);
     Route::delete('/parametro/deletar', [App\Http\Controllers\ParameterController::class, 'destroy']);

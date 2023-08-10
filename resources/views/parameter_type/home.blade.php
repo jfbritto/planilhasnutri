@@ -4,10 +4,10 @@
     <link rel="icon" href="/img/building.png" type="image/png">
 @stop
 
-@section('title', 'Tipos de Parâmetros')
+@section('title', 'Parâmetros')
 
 @section('content_header')
-    <h1><i class="fas fa-cog"></i> &nbsp;Tipos de Parâmetros</h1>
+    <h1><i class="fas fa-cog"></i> &nbsp;Parâmetros</h1>
 @stop
 
 @section('content')
@@ -71,7 +71,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Editar tipos de parâmetros</h5>
+                <h5 class="modal-title">Editar parâmetros</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
@@ -84,7 +84,7 @@
                             <div class="form-group">
                                 <label for="name_edit">Nome</label>
                                 <input type="hidden" required name="id_edit" id="id_edit" class="form-control">
-                                <input type="text" required name="name_edit" id="name_edit" class="form-control" placeholder="Informe o nome do tipos de parâmetros">
+                                <input type="text" required name="name_edit" id="name_edit" class="form-control" placeholder="Informe o nome do parâmetros">
                             </div>
                         </div>
                     </div>
@@ -98,8 +98,117 @@
         </div>
     </div>
 
+    <div class="modal fade" tabindex="-1" role="dialog" id="modalCreateParameters">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Itens de: <strong><span id="title-parametro"></span></strong></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="card">
+                        <div class="card-header border-0">
+                            <h3 class="card-title"> </h3>
+                            <div class="card-tools">
+                                <a href="#" class="btn btn-tool btn-sm" data-toggle="modal" data-target="#modalStoreParameter">
+                                <i class="fas fa-plus"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="card-body p-0">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-valign-middle table-hover table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>Item</th>
+                                            <th>Unidade</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="list2"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="modalStoreParameter">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Novo item de: <strong><span id="title-novo-iten"></span></strong></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <form id="formStoreParameter">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="name_parameter">Nome</label>
+                                <input type="hidden" required name="id_parameter_type" id="id_parameter_type">
+                                <input type="text" required name="name_parameter" id="name_parameter" class="form-control" placeholder="Nome do novo item">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" form="formStoreParameter">Salvar</button>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="modalEditParameter">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Editar Planilha</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <form id="formEditParameter">
+                    <div class="row">
+                        {{-- <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="id_parameter_type">Planilha</label>
+                                <select type="text" required name="id_parameter_type" id="id_parameter_type" class="form-control"></select> --}}
+                                <input type="hidden" required name="id_edit" id="id_edit" class="form-control" placeholder="Informe o nome da planilha">
+                            {{-- </div>
+                        </div> --}}
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="name_edit">Nome</label>
+                                <input type="text" required name="name_edit" id="name_edit" class="form-control" placeholder="Nome do parâmetro">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" form="formEditParameter">Salvar</button>
+            </div>
+            </div>
+        </div>
+    </div>
+
 @stop
 
 @section('js')
     <script src="/js/parameter_type/home.js"></script>
+    {{-- <script src="/js/parameter/home.js"></script> --}}
 @stop

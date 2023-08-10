@@ -336,15 +336,15 @@ return [
             'icon' => 'fas fa-fw fa-users',
         ],
         [
-            'text' => 'Tipos de parâmetros',
+            'text' => 'Parâmetros',
             'url'  => 'tipo-parametros',
             'icon' => 'fas fa-fw fa-cog'
         ],
-        [
-            'text' => 'Parâmetros',
-            'url'  => 'parametros',
-            'icon' => 'fas fa-fw fa-cog',
-        ],
+        // [
+        //     'text' => 'Parâmetros',
+        //     'url'  => 'parametros',
+        //     'icon' => 'fas fa-fw fa-cog',
+        // ],
         // [
         //     'text' => 'change_password',
         //     'url'  => 'admin/settings',

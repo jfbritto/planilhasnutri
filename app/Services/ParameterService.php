@@ -101,4 +101,28 @@ class ParameterService
 
         return $response;
     }
+
+    public function find($id)
+    {
+        $response = [];
+
+        try{
+            $return = DB::select( DB::raw("SELECT
+                                                ifnull(un.name, 'Todas') as unit_name,
+                                                pm.*
+                                            FROM
+                                                parameters pm
+                                                LEFT JOIN units un ON pm.id_unit = un.id
+                                            WHERE
+                                                pm.status = 'A' AND id_parameter_type = {$id}
+                                            ORDER BY
+                                                pm.name"));
+
+            $response = ['status' => 'success', 'data' => $return];
+        }catch(Exception $e){
+            $response = ['status' => 'error', 'data' => $e->getMessage()];
+        }
+
+        return $response;
+    }
 }
