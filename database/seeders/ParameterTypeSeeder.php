@@ -18,19 +18,25 @@ class ParameterTypeSeeder extends Seeder
             [
                 'id' => 1,
                 'id_unit' => null,
-                'name' => 'Área',
+                'name' => 'Áreas',
                 'status' => 'A'
             ],
             [
                 'id' => 2,
                 'id_unit' => null,
-                'name' => 'Filtro',
+                'name' => 'Filtros',
                 'status' => 'A'
             ],
             [
                 'id' => 3,
                 'id_unit' => null,
-                'name' => 'Responsável',
+                'name' => 'Responsáveis',
+                'status' => 'A'
+            ],
+            [
+                'id' => 4,
+                'id_unit' => null,
+                'name' => 'Equipamentos',
                 'status' => 'A'
             ]
 

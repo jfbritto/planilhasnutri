@@ -2,11 +2,11 @@
 
 namespace App\Services;
 
-use App\Models\PlanilhaTrocaElementoFiltrante;
+use App\Models\PlanilhaHigienizacaoFiltrosAparelhosClimatizacao;
 use Exception;
 use Illuminate\Support\Facades\DB as DB;
 
-class PlanilhaTrocaElementoFiltranteService
+class PlanilhaHigienizacaoFiltrosAparelhosClimatizacaoService
 {
     public function store(array $data)
     {
@@ -15,7 +15,7 @@ class PlanilhaTrocaElementoFiltranteService
         try{
             DB::beginTransaction();
 
-            $result = PlanilhaTrocaElementoFiltrante::create($data);
+            $result = PlanilhaHigienizacaoFiltrosAparelhosClimatizacao::create($data);
 
             DB::commit();
 
@@ -37,14 +37,14 @@ class PlanilhaTrocaElementoFiltranteService
 
             DB::beginTransaction();
 
-            $planilha = DB::table('planilha_troca_elemento_filtrantes')
+            $planilha = DB::table('planilha_higienizacao_filtros_aparelhos_climatizacaos')
                         ->where('id', $data['id'])
                         ->update([
                             'id_parameter_area' => $data['id_parameter_area'],
-                            'id_parameter_filtro' => $data['id_parameter_filtro'],
+                            'id_parameter_equipamento' => $data['id_parameter_equipamento'],
                             'id_parameter_responsavel' => $data['id_parameter_responsavel'],
-                            'data_troca' => $data['data_troca'],
-                            'data_proxima_troca' => $data['data_proxima_troca'],
+                            'data_higienizacao' => $data['data_higienizacao'],
+                            'data_proxima_higienizacao' => $data['data_proxima_higienizacao'],
                         ]);
 
             DB::commit();
@@ -67,7 +67,7 @@ class PlanilhaTrocaElementoFiltranteService
 
             DB::beginTransaction();
 
-            $planilha = DB::table('planilha_troca_elemento_filtrantes')
+            $planilha = DB::table('planilha_higienizacao_filtros_aparelhos_climatizacaos')
                         ->where('id', $data['id'])
                         ->update(['status' => $data['status']]);
 
@@ -98,20 +98,20 @@ class PlanilhaTrocaElementoFiltranteService
                                                 us.name as usuario,
                                                 ifnull(un.name, 'Controle') as unidade,
                                                 p_ar.name as area,
-                                                p_fi.name as filtro,
+                                                p_eq.name as equipamento,
                                                 p_re.name as responsavel,
-                                                ptef.*
+                                                phfac.*
                                             FROM
-                                                planilha_troca_elemento_filtrantes ptef
-                                                JOIN parameters p_ar ON ptef.id_parameter_area = p_ar.id
-                                                JOIN parameters p_fi ON ptef.id_parameter_filtro = p_fi.id
-                                                JOIN parameters p_re ON ptef.id_parameter_responsavel = p_re.id
-                                                JOIN users us ON ptef.id_user = us.id {$condition}
+                                                planilha_higienizacao_filtros_aparelhos_climatizacaos phfac
+                                                JOIN parameters p_ar ON phfac.id_parameter_area = p_ar.id
+                                                JOIN parameters p_eq ON phfac.id_parameter_equipamento = p_eq.id
+                                                JOIN parameters p_re ON phfac.id_parameter_responsavel = p_re.id
+                                                JOIN users us ON phfac.id_user = us.id {$condition}
                                                 LEFT JOIN units un ON us.id_unit = un.id
                                             WHERE
-                                                ptef.status = 'A'
+                                                phfac.status = 'A'
                                             ORDER BY
-                                                ptef.data_troca DESC"));
+                                                phfac.data_higienizacao DESC"));
 
             $response = ['status' => 'success', 'data' => $return];
         }catch(Exception $e){
@@ -126,7 +126,7 @@ class PlanilhaTrocaElementoFiltranteService
         $response = [];
 
         try{
-            $return = DB::select( DB::raw("SELECT * FROM planilha_troca_elemento_filtrantes ptef WHERE ptef.status = 'A' AND id = {$id}"));
+            $return = DB::select( DB::raw("SELECT * FROM planilha_higienizacao_filtros_aparelhos_climatizacaos phfac WHERE phfac.status = 'A' AND id = {$id}"));
 
             $response = ['status' => 'success', 'data' => $return];
         }catch(Exception $e){

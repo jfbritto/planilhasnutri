@@ -1,12 +1,12 @@
 $(document).ready(function () {
 
-    loadtroca_elemento_filtrante();
+    loadhigienizacao_filtro_aparelho_climatizacao();
     loadGlobalParameters(1, 'id_parameter_area');
-    loadGlobalParameters(2, 'id_parameter_filtro');
+    loadGlobalParameters(4, 'id_parameter_equipamento');
     loadGlobalParameters(3, 'id_parameter_responsavel');
 
     // LISTAGEM
-    function loadtroca_elemento_filtrante()
+    function loadhigienizacao_filtro_aparelho_climatizacao()
     {
         Swal.queue([
             {
@@ -15,7 +15,7 @@ $(document).ready(function () {
                 allowEscapeKey: false,
                 onOpen: () => {
                     Swal.showLoading();
-                    $.get(window.location.origin + "/planilha/troca-elemento-filtrante/listar", {
+                    $.get(window.location.origin + "/planilha/higienizacao-filtro-aparelho-climatizacao/listar", {
 
                     })
                     .then(function (data) {
@@ -31,13 +31,13 @@ $(document).ready(function () {
                                     $("#list").append(`
                                         <tr>
                                             <td class="align-middle">${item.area}</td>
-                                            <td class="align-middle">${item.filtro}</td>
-                                            <td class="align-middle">${dateFormat(item.data_troca)}</td>
-                                            <td class="align-middle">${dateFormat(item.data_proxima_troca)}</td>
+                                            <td class="align-middle">${item.equipamento}</td>
+                                            <td class="align-middle">${dateFormat(item.data_higienizacao)}</td>
+                                            <td class="align-middle">${dateFormat(item.data_proxima_higienizacao)}</td>
                                             <td class="align-middle">${item.responsavel}</td>
                                             <td class="align-middle" style="text-align: right">
-                                                <a title="Editar" data-id="${item.id}" data-usuario="${item.usuario}" data-unidade="${item.unidade}" data-id_parameter_area="${item.id_parameter_area}" data-id_parameter_filtro="${item.id_parameter_filtro}" data-id_parameter_responsavel="${item.id_parameter_responsavel}" data-data_troca="${item.data_troca}" data-data_proxima_troca="${item.data_proxima_troca}" href="#" class="btn btn-warning edit-troca_elemento_filtrante"><i style="color: white" class="fas fa-edit"></i></a>
-                                                <a title="Deletar" data-id="${item.id}" href="#" class="btn btn-danger delete-troca_elemento_filtrante"><i class="fas fa-trash-alt"></i></a>
+                                                <a title="Editar" data-id="${item.id}" data-usuario="${item.usuario}" data-unidade="${item.unidade}" data-id_parameter_area="${item.id_parameter_area}" data-id_parameter_equipamento="${item.id_parameter_equipamento}" data-id_parameter_responsavel="${item.id_parameter_responsavel}" data-data_higienizacao="${item.data_higienizacao}" data-data_proxima_higienizacao="${item.data_proxima_higienizacao}" href="#" class="btn btn-warning edit-higienizacao_filtro_aparelho_climatizacao"><i style="color: white" class="fas fa-edit"></i></a>
+                                                <a title="Deletar" data-id="${item.id}" href="#" class="btn btn-danger delete-higienizacao_filtro_aparelho_climatizacao"><i class="fas fa-trash-alt"></i></a>
                                             </td>
                                         </tr>
                                     `);
@@ -67,7 +67,7 @@ $(document).ready(function () {
     }
 
     // CADASTRO
-    $("#formStoretroca_elemento_filtrante").submit(function (e) {
+    $("#formStorehigienizacao_filtro_aparelho_climatizacao").submit(function (e) {
         e.preventDefault();
 
         Swal.queue([
@@ -78,23 +78,23 @@ $(document).ready(function () {
                 onOpen: () => {
                     Swal.showLoading();
 
-                    $.post(window.location.origin + "/planilha/troca-elemento-filtrante/cadastrar", {
+                    $.post(window.location.origin + "/planilha/higienizacao-filtro-aparelho-climatizacao/cadastrar", {
                         id_parameter_area: $("#id_parameter_area option:selected").val(),
-                        id_parameter_filtro: $("#id_parameter_filtro option:selected").val(),
+                        id_parameter_equipamento: $("#id_parameter_equipamento option:selected").val(),
                         id_parameter_responsavel: $("#id_parameter_responsavel option:selected").val(),
-                        data_troca: $("#data_troca").val(),
-                        data_proxima_troca: $("#data_proxima_troca").val(),
+                        data_higienizacao: $("#data_higienizacao").val(),
+                        data_proxima_higienizacao: $("#data_proxima_higienizacao").val(),
                     })
                     .then(function (data) {
                         if (data.status == "success") {
 
-                            $("#formStoretroca_elemento_filtrante").each(function () {
+                            $("#formStorehigienizacao_filtro_aparelho_climatizacao").each(function () {
                                 this.reset();
                             });
 
-                            $("#modalStoretroca_elemento_filtrante").modal("hide");
+                            $("#modalStorehigienizacao_filtro_aparelho_climatizacao").modal("hide");
 
-                            showSuccess("Cadastro efetuado!", null, loadtroca_elemento_filtrante)
+                            showSuccess("Cadastro efetuado!", null, loadhigienizacao_filtro_aparelho_climatizacao)
                         } else if (data.status == "error") {
                             showError(data.message)
                         }
@@ -113,31 +113,31 @@ $(document).ready(function () {
 
 
     // EDIÇÃO
-    $("#list").on("click", ".edit-troca_elemento_filtrante", function(){
+    $("#list").on("click", ".edit-higienizacao_filtro_aparelho_climatizacao", function(){
 
         let id = $(this).data('id');
         let usuario = $(this).data('usuario');
         let unidade = $(this).data('unidade');
         let id_parameter_area = $(this).data('id_parameter_area');
-        let id_parameter_filtro = $(this).data('id_parameter_filtro');
+        let id_parameter_equipamento = $(this).data('id_parameter_equipamento');
         let id_parameter_responsavel = $(this).data('id_parameter_responsavel');
-        let data_troca = $(this).data('data_troca');
-        let data_proxima_troca = $(this).data('data_proxima_troca');
+        let data_higienizacao = $(this).data('data_higienizacao');
+        let data_proxima_higienizacao = $(this).data('data_proxima_higienizacao');
 
         loadGlobalParameters(1, 'id_parameter_area_edit', id_parameter_area);
-        loadGlobalParameters(2, 'id_parameter_filtro_edit', id_parameter_filtro);
+        loadGlobalParameters(4, 'id_parameter_equipamento_edit', id_parameter_equipamento);
         loadGlobalParameters(3, 'id_parameter_responsavel_edit', id_parameter_responsavel);
 
         $("#id_edit").val(id);
         $("#usuario").val(usuario);
         $("#unidade").val(unidade);
-        $("#data_troca_edit").val(data_troca);
-        $("#data_proxima_troca_edit").val(data_proxima_troca);
+        $("#data_higienizacao_edit").val(data_higienizacao);
+        $("#data_proxima_higienizacao_edit").val(data_proxima_higienizacao);
 
-        $("#modalEdittroca_elemento_filtrante").modal("show");
+        $("#modalEdithigienizacao_filtro_aparelho_climatizacao").modal("show");
     });
 
-    $("#formEdittroca_elemento_filtrante").submit(function (e) {
+    $("#formEdithigienizacao_filtro_aparelho_climatizacao").submit(function (e) {
         e.preventDefault();
 
         Swal.queue([
@@ -148,27 +148,27 @@ $(document).ready(function () {
                 onOpen: () => {
                     Swal.showLoading();
                     $.ajax({
-                        url: window.location.origin + "/planilha/troca-elemento-filtrante/editar",
+                        url: window.location.origin + "/planilha/higienizacao-filtro-aparelho-climatizacao/editar",
                         type: 'PUT',
                         data:{
                             id: $("#id_edit").val(),
                             id_parameter_area: $("#id_parameter_area_edit option:selected").val(),
-                            id_parameter_filtro: $("#id_parameter_filtro_edit option:selected").val(),
+                            id_parameter_equipamento: $("#id_parameter_equipamento_edit option:selected").val(),
                             id_parameter_responsavel: $("#id_parameter_responsavel_edit option:selected").val(),
-                            data_troca: $("#data_troca_edit").val(),
-                            data_proxima_troca: $("#data_proxima_troca_edit").val(),
+                            data_higienizacao: $("#data_higienizacao_edit").val(),
+                            data_proxima_higienizacao: $("#data_proxima_higienizacao_edit").val(),
                         }
                     })
                         .then(function (data) {
                             if (data.status == "success") {
 
-                                $("#formEdittroca_elemento_filtrante").each(function () {
+                                $("#formEdithigienizacao_filtro_aparelho_climatizacao").each(function () {
                                     this.reset();
                                 });
 
-                                $("#modalEdittroca_elemento_filtrante").modal("hide");
+                                $("#modalEdithigienizacao_filtro_aparelho_climatizacao").modal("hide");
 
-                                showSuccess("Edição efetuada!", null, loadtroca_elemento_filtrante)
+                                showSuccess("Edição efetuada!", null, loadhigienizacao_filtro_aparelho_climatizacao)
                             } else if (data.status == "error") {
                                 showError(data.message)
                             }
@@ -185,7 +185,7 @@ $(document).ready(function () {
 
 
     // "DELETAR"
-    $("#list").on("click", ".delete-troca_elemento_filtrante", function(){
+    $("#list").on("click", ".delete-higienizacao_filtro_aparelho_climatizacao", function(){
 
         let id = $(this).data('id');
 
@@ -209,14 +209,14 @@ $(document).ready(function () {
                             onOpen: () => {
                                 Swal.showLoading();
                                 $.ajax({
-                                    url: window.location.origin + "/planilha/troca-elemento-filtrante/deletar",
+                                    url: window.location.origin + "/planilha/higienizacao-filtro-aparelho-climatizacao/deletar",
                                     type: 'DELETE',
                                     data: {id}
                                 })
                                     .then(function (data) {
                                         if (data.status == "success") {
 
-                                            showSuccess("Deletado com sucesso!", null, loadtroca_elemento_filtrante)
+                                            showSuccess("Deletado com sucesso!", null, loadhigienizacao_filtro_aparelho_climatizacao)
                                         } else if (data.status == "error") {
                                             showError(data.message)
                                         }

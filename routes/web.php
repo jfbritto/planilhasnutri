@@ -26,6 +26,14 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('/planilha/troca-elemento-filtrante/editar', [App\Http\Controllers\Planilhas\PlanilhaTrocaElementoFiltranteController::class, 'update']);
     Route::delete('/planilha/troca-elemento-filtrante/deletar', [App\Http\Controllers\Planilhas\PlanilhaTrocaElementoFiltranteController::class, 'destroy']);
 
+    // Planilha higienizacao-filtro-aparelho-climatizacao
+    Route::get('/planilha/higienizacao-filtro-aparelho-climatizacao', [App\Http\Controllers\Planilhas\PlanilhaHigienizacaoFiltrosAparelhosClimatizacaoController::class, 'index']);
+    Route::get('/planilha/higienizacao-filtro-aparelho-climatizacao/listar', [App\Http\Controllers\Planilhas\PlanilhaHigienizacaoFiltrosAparelhosClimatizacaoController::class, 'list']);
+    Route::get('/planilha/higienizacao-filtro-aparelho-climatizacao/encontrar', [App\Http\Controllers\Planilhas\PlanilhaHigienizacaoFiltrosAparelhosClimatizacaoController::class, 'find']);
+    Route::post('/planilha/higienizacao-filtro-aparelho-climatizacao/cadastrar', [App\Http\Controllers\Planilhas\PlanilhaHigienizacaoFiltrosAparelhosClimatizacaoController::class, 'store']);
+    Route::put('/planilha/higienizacao-filtro-aparelho-climatizacao/editar', [App\Http\Controllers\Planilhas\PlanilhaHigienizacaoFiltrosAparelhosClimatizacaoController::class, 'update']);
+    Route::delete('/planilha/higienizacao-filtro-aparelho-climatizacao/deletar', [App\Http\Controllers\Planilhas\PlanilhaHigienizacaoFiltrosAparelhosClimatizacaoController::class, 'destroy']);
+
     // Parametros
     Route::get('/parametros', [App\Http\Controllers\ParameterController::class, 'index']);
     Route::get('/parametro/listar', [App\Http\Controllers\ParameterController::class, 'list']);

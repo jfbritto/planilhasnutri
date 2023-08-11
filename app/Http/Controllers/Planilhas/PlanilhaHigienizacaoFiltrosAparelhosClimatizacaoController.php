@@ -4,20 +4,20 @@ namespace App\Http\Controllers\Planilhas;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Services\PlanilhaTrocaElementoFiltranteService;
+use App\Services\PlanilhaHigienizacaoFiltrosAparelhosClimatizacaoService;
 
-class PlanilhaTrocaElementoFiltranteController extends Controller
+class PlanilhaHigienizacaoFiltrosAparelhosClimatizacaoController extends Controller
 {
-    private $planilhaTrocaElementoFiltranteService;
+    private $planilhaHigienizacaoFiltrosAparelhosClimatizacaoService;
 
-    public function __construct(PlanilhaTrocaElementoFiltranteService $planilhaTrocaElementoFiltranteService)
+    public function __construct(PlanilhaHigienizacaoFiltrosAparelhosClimatizacaoService $planilhaHigienizacaoFiltrosAparelhosClimatizacaoService)
     {
-        $this->planilhaTrocaElementoFiltranteService = $planilhaTrocaElementoFiltranteService;
+        $this->planilhaHigienizacaoFiltrosAparelhosClimatizacaoService = $planilhaHigienizacaoFiltrosAparelhosClimatizacaoService;
     }
 
     public function index()
     {
-        return view('planilha.troca_elemento_filtrante');
+        return view('planilha.higienizacao_filtros_aparelhos_climatizacaos');
     }
 
     public function store(Request $request)
@@ -25,13 +25,13 @@ class PlanilhaTrocaElementoFiltranteController extends Controller
         $data = [
             'id_user' => auth()->user()->id,
             'id_parameter_area' => $request->id_parameter_area,
-            'id_parameter_filtro' => $request->id_parameter_filtro,
+            'id_parameter_equipamento' => $request->id_parameter_equipamento,
             'id_parameter_responsavel' => $request->id_parameter_responsavel,
-            'data_troca' => $request->data_troca,
-            'data_proxima_troca' => $request->data_proxima_troca
+            'data_higienizacao' => $request->data_higienizacao,
+            'data_proxima_higienizacao' => $request->data_proxima_higienizacao
         ];
 
-        $response = $this->planilhaTrocaElementoFiltranteService->store($data);
+        $response = $this->planilhaHigienizacaoFiltrosAparelhosClimatizacaoService->store($data);
 
         if($response['status'] == 'success')
             return response()->json(['status'=>'success'], 201);
@@ -41,16 +41,17 @@ class PlanilhaTrocaElementoFiltranteController extends Controller
 
     public function update(Request $request)
     {
+
         $data = [
             'id' => $request->id,
             'id_parameter_area' => $request->id_parameter_area,
-            'id_parameter_filtro' => $request->id_parameter_filtro,
+            'id_parameter_equipamento' => $request->id_parameter_equipamento,
             'id_parameter_responsavel' => $request->id_parameter_responsavel,
-            'data_troca' => $request->data_troca,
-            'data_proxima_troca' => $request->data_proxima_troca
+            'data_higienizacao' => $request->data_higienizacao,
+            'data_proxima_higienizacao' => $request->data_proxima_higienizacao
         ];
 
-        $response = $this->planilhaTrocaElementoFiltranteService->update($data);
+        $response = $this->planilhaHigienizacaoFiltrosAparelhosClimatizacaoService->update($data);
 
         if($response['status'] == 'success')
             return response()->json(['status'=>'success'], 200);
@@ -65,7 +66,7 @@ class PlanilhaTrocaElementoFiltranteController extends Controller
             'status' => 'D'
         ];
 
-        $response = $this->planilhaTrocaElementoFiltranteService->destroy($data);
+        $response = $this->planilhaHigienizacaoFiltrosAparelhosClimatizacaoService->destroy($data);
 
         if($response['status'] == 'success')
             return response()->json(['status'=>'success'], 200);
@@ -75,7 +76,7 @@ class PlanilhaTrocaElementoFiltranteController extends Controller
 
     public function list()
     {
-        $response = $this->planilhaTrocaElementoFiltranteService->list();
+        $response = $this->planilhaHigienizacaoFiltrosAparelhosClimatizacaoService->list();
 
         if($response['status'] == 'success')
             return response()->json(['status'=>'success', 'data'=>$response['data']], 200);
@@ -86,7 +87,7 @@ class PlanilhaTrocaElementoFiltranteController extends Controller
     public function find()
     {
         $id = $_GET['id_parameter_type'];
-        $response = $this->planilhaTrocaElementoFiltranteService->find($id);
+        $response = $this->planilhaHigienizacaoFiltrosAparelhosClimatizacaoService->find($id);
 
         if($response['status'] == 'success')
             return response()->json(['status'=>'success', 'data'=>$response['data']], 200);
