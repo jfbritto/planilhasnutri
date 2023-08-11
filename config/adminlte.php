@@ -107,7 +107,7 @@ return [
     */
 
     'preloader' => [
-        'enabled' => true,
+        'enabled' => false,
         'img' => [
             'path' => 'img/logo.png',
             'alt' => 'AdminLTE Preloader Image',
@@ -339,6 +339,11 @@ return [
             'text' => 'Parâmetros',
             'url'  => 'tipo-parametros',
             'icon' => 'fas fa-fw fa-cog'
+        ],
+        [
+            'text' => 'Planilhas',
+            'url'  => 'planilhas',
+            'icon' => 'fas fa-fw fa-file'
         ],
         // [
         //     'text' => 'Parâmetros',

@@ -58,6 +58,21 @@ class UserController extends Controller
         return response()->json(['status'=>'error', 'message'=>$response['data']], 400);
     }
 
+    public function updatePassword(Request $request)
+    {
+        $data = [
+            'id' => auth()->user()->id,
+            'password' => Hash::make(trim($request->password))
+        ];
+
+        $response = $this->userService->updatePassword($data);
+
+        if($response['status'] == 'success')
+            return response()->json(['status'=>'success'], 200);
+
+        return response()->json(['status'=>'error', 'message'=>$response['data']], 400);
+    }
+
     public function destroy(Request $request)
     {
         $data = [

@@ -16,13 +16,21 @@ class ParameterTypeSeeder extends Seeder
     {
         DB::table('parameter_types')->insert([
             [
+                'id' => 1,
                 'id_unit' => null,
-                'name' => 'Cozinha',
+                'name' => 'Área',
                 'status' => 'A'
             ],
             [
+                'id' => 2,
                 'id_unit' => null,
-                'name' => 'Refeitório',
+                'name' => 'Filtro',
+                'status' => 'A'
+            ],
+            [
+                'id' => 3,
+                'id_unit' => null,
+                'name' => 'Responsável',
                 'status' => 'A'
             ]
 

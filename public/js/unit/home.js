@@ -49,7 +49,11 @@ $(document).ready(function () {
                                 showError(data.message)
                             }
                         })
-                        .catch();
+                        .catch(function (data) {
+                            if (data.responseJSON.status == "error") {
+                                showError(data.responseJSON.message)
+                            }
+                        });
                 },
             },
         ]);
@@ -88,7 +92,11 @@ $(document).ready(function () {
                                 showError(data.message)
                             }
                         })
-                        .catch();
+                        .catch(function (data) {
+                            if (data.responseJSON.status == "error") {
+                                showError(data.responseJSON.message)
+                            }
+                        });
 
                 },
             },
@@ -150,7 +158,11 @@ $(document).ready(function () {
                                 showError(data.message)
                             }
                         })
-                        .catch();
+                        .catch(function (data) {
+                            if (data.responseJSON.status == "error") {
+                                showError(data.responseJSON.message)
+                            }
+                        });
                 },
             },
         ]);
@@ -194,7 +206,11 @@ $(document).ready(function () {
                                             showError(data.message)
                                         }
                                     })
-                                    .catch();
+                                    .catch(function (data) {
+                                        if (data.responseJSON.status == "error") {
+                                            showError(data.responseJSON.message)
+                                        }
+                                    });
                             },
                         },
                     ]);

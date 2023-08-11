@@ -2,11 +2,11 @@
 
 namespace App\Services;
 
-use App\Models\Parameter;
+use App\Models\PlanilhaTrocaElementoFiltrante;
 use Exception;
 use Illuminate\Support\Facades\DB as DB;
 
-class ParameterService
+class PlanilhaTrocaElementoFiltranteService
 {
     public function store(array $data)
     {
@@ -15,7 +15,7 @@ class ParameterService
         try{
             DB::beginTransaction();
 
-            $result = Parameter::create($data);
+            $result = PlanilhaTrocaElementoFiltrante::create($data);
 
             DB::commit();
 
@@ -35,17 +35,15 @@ class ParameterService
 
         try{
 
-            self::validaPermissao($data['id']);
-
             DB::beginTransaction();
 
-            $parameters = DB::table('parameters')
+            $planilha = DB::table('planilha_troca_elemento_filtrantes')
                         ->where('id', $data['id'])
                         ->update(['name' => $data['name']]);
 
             DB::commit();
 
-            $response = ['status' => 'success', 'data' => $parameters];
+            $response = ['status' => 'success', 'data' => $planilha];
 
         }catch(Exception $e){
             DB::rollBack();
@@ -61,17 +59,15 @@ class ParameterService
 
         try{
 
-            self::validaPermissao($data['id']);
-
             DB::beginTransaction();
 
-            $parameters = DB::table('parameters')
+            $planilha = DB::table('planilha_troca_elemento_filtrantes')
                         ->where('id', $data['id'])
                         ->update(['status' => $data['status']]);
 
             DB::commit();
 
-            $response = ['status' => 'success', 'data' => $parameters];
+            $response = ['status' => 'success', 'data' => $planilha];
 
         }catch(Exception $e){
             DB::rollBack();
@@ -89,19 +85,27 @@ class ParameterService
 
             $condition = "";
             if (auth()->user()->id_unit) {
-                $condition = " and (pm.id_unit = ".auth()->user()->id_unit." or pm.id_unit is null)";
+                $condition = " and us.id_unit = ".auth()->user()->id_unit;
             }
 
             $return = DB::select( DB::raw("SELECT
-                                                ifnull(un.name, 'Todas') as unit_name,
-                                                pm.*
+                                                us.name as usuario,
+                                                ifnull(un.name, 'Controle') as unidade,
+                                                p_ar.name as area,
+                                                p_fi.name as filtro,
+                                                p_re.name as responsavel,
+                                                ptef.*
                                             FROM
-                                                parameters pm
-                                                LEFT JOIN units un ON pm.id_unit = un.id
+                                                planilha_troca_elemento_filtrantes ptef
+                                                JOIN parameters p_ar ON ptef.id_parameter_area = p_ar.id
+                                                JOIN parameters p_fi ON ptef.id_parameter_filtro = p_fi.id
+                                                JOIN parameters p_re ON ptef.id_parameter_responsavel = p_re.id
+                                                JOIN users us ON ptef.id_user = us.id {$condition}
+                                                LEFT JOIN units un ON us.id_unit = un.id
                                             WHERE
-                                                pm.status = 'A' {$condition}
+                                                ptef.status = 'A'
                                             ORDER BY
-                                                pm.name"));
+                                                ptef.data_troca DESC"));
 
             $response = ['status' => 'success', 'data' => $return];
         }catch(Exception $e){
@@ -116,22 +120,7 @@ class ParameterService
         $response = [];
 
         try{
-
-            $condition = "";
-            if (auth()->user()->id_unit) {
-                $condition = " and (pm.id_unit = ".auth()->user()->id_unit." or pm.id_unit is null)";
-            }
-
-            $return = DB::select( DB::raw("SELECT
-                                                ifnull(un.name, 'Todas') as unit_name,
-                                                pm.*
-                                            FROM
-                                                parameters pm
-                                                LEFT JOIN units un ON pm.id_unit = un.id
-                                            WHERE
-                                                pm.status = 'A' AND id_parameter_type = {$id} {$condition}
-                                            ORDER BY
-                                                pm.name"));
+            $return = DB::select( DB::raw("SELECT * FROM planilha_troca_elemento_filtrantes ptef WHERE ptef.status = 'A' AND id = {$id}"));
 
             $response = ['status' => 'success', 'data' => $return];
         }catch(Exception $e){
@@ -139,21 +128,5 @@ class ParameterService
         }
 
         return $response;
-    }
-
-    /**
-     * valida se usuário pode executar a ação
-     * @param int $id
-     */
-    private function validaPermissao(int $id)
-    {
-        $result = Parameter::find($id);
-        if (
-            $result
-            && empty($result->id_unit)
-            && !empty(auth()->user()->id_unit)
-        ) {
-            throw new Exception('Você não tem permissão para executar esta ação!');
-        }
     }
 }

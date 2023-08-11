@@ -14,12 +14,14 @@
 
     <div class="card">
         <div class="card-header border-0">
-            <h3 class="card-title"> </h3>
-            <div class="card-tools">
-                <a href="#" class="btn btn-tool btn-sm" data-toggle="modal" data-target="#modalStoreParameterType">
-                <i class="fas fa-plus"></i>
-                </a>
-            </div>
+            @if(!auth()->user()->id_unit)
+                <h3 class="card-title"> </h3>
+                <div class="card-tools">
+                    <a href="#" class="btn btn-tool btn-sm" data-toggle="modal" data-target="#modalStoreParameterType" title="Cadastrar Novo Parâmetro">
+                    <i class="fas fa-plus"></i>
+                    </a>
+                </div>
+            @endif
         </div>
         <div class="card-body p-0">
             <div class="table-responsive">
@@ -113,7 +115,7 @@
                         <div class="card-header border-0">
                             <h3 class="card-title"> </h3>
                             <div class="card-tools">
-                                <a href="#" class="btn btn-tool btn-sm" data-toggle="modal" data-target="#modalStoreParameter">
+                                <a href="#" class="btn btn-tool btn-sm" data-toggle="modal" data-target="#modalStoreParameter" title="Cadastrar Novo Item">
                                 <i class="fas fa-plus"></i>
                                 </a>
                             </div>
@@ -173,7 +175,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Editar Planilha</h5>
+                <h5 class="modal-title">Editar Item: <strong><span id="title-edit-item"></span></strong></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
@@ -182,17 +184,11 @@
 
                 <form id="formEditParameter">
                     <div class="row">
-                        {{-- <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="id_parameter_type">Planilha</label>
-                                <select type="text" required name="id_parameter_type" id="id_parameter_type" class="form-control"></select> --}}
-                                <input type="hidden" required name="id_edit" id="id_edit" class="form-control" placeholder="Informe o nome da planilha">
-                            {{-- </div>
-                        </div> --}}
+                        <input type="hidden" required name="id_parameter_edit" id="id_parameter_edit">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label for="name_edit">Nome</label>
-                                <input type="text" required name="name_edit" id="name_edit" class="form-control" placeholder="Nome do parâmetro">
+                                <label for="name_parameter_edit">Nome</label>
+                                <input type="text" required name="name_parameter_edit" id="name_parameter_edit" class="form-control" placeholder="Nome do parâmetro">
                             </div>
                         </div>
                     </div>

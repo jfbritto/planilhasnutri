@@ -30,7 +30,7 @@ $(document).ready(function () {
                                                 <td class="align-middle">${item.name}</td>
                                                 <td class="align-middle">${item.unidade}</td>
                                                 <td class="align-middle" style="text-align: right">
-                                                    <a title="Cadastrar Parâmetros" data-id="${item.id}" data-name="${item.name}" href="#" class="btn btn-info create-Parameter"><i style="color: white" class="fas fa-plus"></i></a>
+                                                    <a title="Listar Itens" data-id="${item.id}" data-name="${item.name}" href="#" class="btn btn-info create-Parameter"><i style="color: white" class="fas fa-list"></i></a>
                                                     <a title="Editar" data-id="${item.id}" data-name="${item.name}" href="#" class="btn btn-warning edit-ParameterType"><i style="color: white" class="fas fa-edit"></i></a>
                                                     <a title="Deletar" data-id="${item.id}" href="#" class="btn btn-danger delete-ParameterType"><i class="fas fa-trash-alt"></i></a>
                                                 </td>
@@ -51,7 +51,11 @@ $(document).ready(function () {
                                 showError(data.message)
                             }
                         })
-                        .catch();
+                        .catch(function (data) {
+                            if (data.responseJSON.status == "error") {
+                                showError(data.responseJSON.message)
+                            }
+                        });
                 },
             },
         ]);
@@ -88,7 +92,11 @@ $(document).ready(function () {
                                 showError(data.message)
                             }
                         })
-                        .catch();
+                        .catch(function (data) {
+                            if (data.responseJSON.status == "error") {
+                                showError(data.responseJSON.message)
+                            }
+                        });
 
                 },
             },
@@ -127,21 +135,25 @@ $(document).ready(function () {
                             name: $("#name_edit").val()
                         }
                     })
-                        .then(function (data) {
-                            if (data.status == "success") {
+                    .then(function (data) {
+                        if (data.status == "success") {
 
-                                $("#formEditParameterType").each(function () {
-                                    this.reset();
-                                });
+                            $("#formEditParameterType").each(function () {
+                                this.reset();
+                            });
 
-                                $("#modalEditParameterType").modal("hide");
+                            $("#modalEditParameterType").modal("hide");
 
-                                showSuccess("Edição efetuada!", null, loadParameterTypes)
-                            } else if (data.status == "error") {
-                                showError(data.message)
-                            }
-                        })
-                        .catch();
+                            showSuccess("Edição efetuada!", null, loadParameterTypes)
+                        } else if (data.status == "error") {
+                            showError(data.message)
+                        }
+                    })
+                    .catch(function (data) {
+                        if (data.responseJSON.status == "error") {
+                            showError(data.responseJSON.message)
+                        }
+                    });
                 },
             },
         ]);
@@ -177,15 +189,19 @@ $(document).ready(function () {
                                     type: 'DELETE',
                                     data: {id}
                                 })
-                                    .then(function (data) {
-                                        if (data.status == "success") {
-
-                                            showSuccess("Deletado com sucesso!", null, loadParameterTypes)
-                                        } else if (data.status == "error") {
-                                            showError(data.message)
-                                        }
-                                    })
-                                    .catch();
+                                .then(function (data) {
+                                    console.log(data)
+                                    if (data.status == "success") {
+                                        showSuccess("Deletado com sucesso!", null, loadParameterTypes)
+                                    } else if (data.status == "error") {
+                                        showError(data.message)
+                                    }
+                                })
+                                .catch(function (data) {
+                                    if (data.responseJSON.status == "error") {
+                                        showError(data.responseJSON.message)
+                                    }
+                                });
                             },
                         },
                     ]);
@@ -233,7 +249,7 @@ $(document).ready(function () {
                                 <td class="align-middle">${item.name}</td>
                                 <td class="align-middle">${item.unit_name}</td>
                                 <td class="align-middle" style="text-align: right">
-                                    <a title="Editar" data-id="${item.id}" href="#" class="btn btn-warning edit-Parameter"><i style="color: white" class="fas fa-edit"></i></a>
+                                    <a title="Editar" data-id="${item.id}" data-name="${item.name}" href="#" class="btn btn-warning edit-ParameterItem"><i style="color: white" class="fas fa-edit"></i></a>
                                     <a title="Deletar" data-id="${item.id}" href="#" class="btn btn-danger delete-Parameter"><i class="fas fa-trash-alt"></i></a>
                                 </td>
                             </tr>
@@ -253,7 +269,11 @@ $(document).ready(function () {
                 showError(data.message)
             }
         })
-        .catch();
+        .catch(function (data) {
+                            if (data.responseJSON.status == "error") {
+                                showError(data.responseJSON.message)
+                            }
+                        });
     }
 
     // CADASTRAR PARAMETRO
@@ -286,7 +306,11 @@ $(document).ready(function () {
                                 showError(data.message)
                             }
                         })
-                        .catch();
+                        .catch(function (data) {
+                            if (data.responseJSON.status == "error") {
+                                showError(data.responseJSON.message)
+                            }
+                        });
 
                 },
             },
@@ -296,15 +320,15 @@ $(document).ready(function () {
 
 
     // EDITAR PARAMETRO
-    $("#list2").on("click", ".edit-Parameter", function(){
+    $("#list2").on("click", ".edit-ParameterItem", function(){
 
         let id = $(this).data('id');
         let name = $(this).data('name');
-        // let id_parameter_type = $("#id_parameter_type option:selected").val();
 
-        $("#id_edit").val(id);
-        $("#name_edit").val(name);
-        // $("#id_parameter_type").val(id_parameter_type);
+        $("#id_parameter_edit").val(id);
+        $("#name_parameter_edit").val(name);
+
+        $("#title-edit-item").html(name);
 
         $("#modalEditParameter").modal("show");
     });
@@ -323,8 +347,8 @@ $(document).ready(function () {
                         url: window.location.origin + "/parametro/editar",
                         type: 'PUT',
                         data:{
-                            id: $("#id_edit").val(),
-                            name: $("#name_edit").val(),
+                            id: $("#id_parameter_edit").val(),
+                            name: $("#name_parameter_edit").val(),
                         }
                     })
                         .then(function (data) {
@@ -336,12 +360,16 @@ $(document).ready(function () {
 
                                 $("#modalEditParameter").modal("hide");
 
-                                showSuccess("Edição efetuada!", null, loadParameters)
+                                showSuccess("Edição efetuada!", null, loadParameters, $("#id_parameter_type").val())
                             } else if (data.status == "error") {
                                 showError(data.message)
                             }
                         })
-                        .catch();
+                        .catch(function (data) {
+                            if (data.responseJSON.status == "error") {
+                                showError(data.responseJSON.message)
+                            }
+                        });
                 },
             },
         ]);
@@ -385,7 +413,11 @@ $(document).ready(function () {
                                             showError(data.message)
                                         }
                                     })
-                                    .catch();
+                                    .catch(function (data) {
+                            if (data.responseJSON.status == "error") {
+                                showError(data.responseJSON.message)
+                            }
+                        });
                             },
                         },
                     ]);

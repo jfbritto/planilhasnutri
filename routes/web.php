@@ -15,6 +15,17 @@ Route::group(['middleware' => ['auth']], function () {
     // Dashboard
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+    // Planilhas
+    Route::get('/planilhas', [App\Http\Controllers\PlanilhasController::class, 'index']);
+
+    // Planilha troca-elemento-filtrante
+    Route::get('/planilha/troca-elemento-filtrante', [App\Http\Controllers\Planilhas\PlanilhaTrocaElementoFiltranteController::class, 'index']);
+    Route::get('/planilha/troca-elemento-filtrante/listar', [App\Http\Controllers\Planilhas\PlanilhaTrocaElementoFiltranteController::class, 'list']);
+    Route::get('/planilha/troca-elemento-filtrante/encontrar', [App\Http\Controllers\Planilhas\PlanilhaTrocaElementoFiltranteController::class, 'find']);
+    Route::post('/planilha/troca-elemento-filtrante/cadastrar', [App\Http\Controllers\Planilhas\PlanilhaTrocaElementoFiltranteController::class, 'store']);
+    Route::put('/planilha/troca-elemento-filtrante/editar', [App\Http\Controllers\Planilhas\PlanilhaTrocaElementoFiltranteController::class, 'update']);
+    Route::delete('/planilha/troca-elemento-filtrante/deletar', [App\Http\Controllers\Planilhas\PlanilhaTrocaElementoFiltranteController::class, 'destroy']);
+
     // Parametros
     Route::get('/parametros', [App\Http\Controllers\ParameterController::class, 'index']);
     Route::get('/parametro/listar', [App\Http\Controllers\ParameterController::class, 'list']);
@@ -35,6 +46,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/usuario/listar', [App\Http\Controllers\UserController::class, 'list']);
     Route::post('/usuario/cadastrar', [App\Http\Controllers\UserController::class, 'store']);
     Route::put('/usuario/editar', [App\Http\Controllers\UserController::class, 'update']);
+    Route::put('/usuario/editar-senha', [App\Http\Controllers\UserController::class, 'updatePassword']);
     Route::delete('/usuario/deletar', [App\Http\Controllers\UserController::class, 'destroy']);
 
     Route::group(['middleware' => ['admin']], function () {
