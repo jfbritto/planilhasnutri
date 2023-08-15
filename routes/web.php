@@ -34,6 +34,14 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('/planilha/higienizacao-filtro-aparelho-climatizacao/editar', [App\Http\Controllers\Planilhas\PlanilhaHigienizacaoFiltrosAparelhosClimatizacaoController::class, 'update']);
     Route::delete('/planilha/higienizacao-filtro-aparelho-climatizacao/deletar', [App\Http\Controllers\Planilhas\PlanilhaHigienizacaoFiltrosAparelhosClimatizacaoController::class, 'destroy']);
 
+    // Planilha saturacao-oleo-gordura
+    Route::get('/planilha/saturacao-oleo-gordura', [App\Http\Controllers\Planilhas\PlanilhaSaturacaoOleoGorduraController::class, 'index']);
+    Route::get('/planilha/saturacao-oleo-gordura/listar', [App\Http\Controllers\Planilhas\PlanilhaSaturacaoOleoGorduraController::class, 'list']);
+    Route::get('/planilha/saturacao-oleo-gordura/encontrar', [App\Http\Controllers\Planilhas\PlanilhaSaturacaoOleoGorduraController::class, 'find']);
+    Route::post('/planilha/saturacao-oleo-gordura/cadastrar', [App\Http\Controllers\Planilhas\PlanilhaSaturacaoOleoGorduraController::class, 'store']);
+    Route::put('/planilha/saturacao-oleo-gordura/editar', [App\Http\Controllers\Planilhas\PlanilhaSaturacaoOleoGorduraController::class, 'update']);
+    Route::delete('/planilha/saturacao-oleo-gordura/deletar', [App\Http\Controllers\Planilhas\PlanilhaSaturacaoOleoGorduraController::class, 'destroy']);
+
     // Parametros
     Route::get('/parametros', [App\Http\Controllers\ParameterController::class, 'index']);
     Route::get('/parametro/listar', [App\Http\Controllers\ParameterController::class, 'list']);
