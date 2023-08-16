@@ -125,6 +125,21 @@ class ParameterSeeder extends Seeder
                 'id_unit' => null,
                 'status' => 'A'
             ],
+            // caixas de gordura
+            [
+                'id' => 16,
+                'id_parameter_type' => 6,
+                'name' => 'Caixa do restaurante',
+                'id_unit' => null,
+                'status' => 'A'
+            ],
+            [
+                'id' => 17,
+                'id_parameter_type' => 6,
+                'name' => 'Caixa do sky',
+                'id_unit' => null,
+                'status' => 'A'
+            ],
 
         ]);
     }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePlanilhaTrocaElementoFiltrantesTable extends Migration
+class CreatePlanilhaLimpezaCaixaGordurasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreatePlanilhaTrocaElementoFiltrantesTable extends Migration
      */
     public function up()
     {
-        Schema::create('planilha_troca_elemento_filtrantes', function (Blueprint $table) {
+        Schema::create('planilha_limpeza_caixa_gorduras', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_parameter_area');
-            $table->integer('id_parameter_filtro');
+            $table->integer('id_parameter_caixa_gordura');
+            $table->integer('id_parameter_local');
             $table->integer('id_parameter_responsavel');
-            $table->date('data_troca');
-            $table->date('data_proxima_troca');
+            $table->date('data_limpeza');
+            $table->date('data_proxima_limpeza');
             $table->integer('id_user');
             $table->string('status', 1)->default('A');
             $table->timestamps();
@@ -33,6 +33,6 @@ class CreatePlanilhaTrocaElementoFiltrantesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('planilha_troca_elemento_filtrantes');
+        Schema::dropIfExists('planilha_limpeza_caixa_gorduras');
     }
 }

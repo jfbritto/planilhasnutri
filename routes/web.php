@@ -42,6 +42,14 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('/planilha/saturacao-oleo-gordura/editar', [App\Http\Controllers\Planilhas\PlanilhaSaturacaoOleoGorduraController::class, 'update']);
     Route::delete('/planilha/saturacao-oleo-gordura/deletar', [App\Http\Controllers\Planilhas\PlanilhaSaturacaoOleoGorduraController::class, 'destroy']);
 
+    // Planilha limpeza-caixa-gorduras
+    Route::get('/planilha/limpeza-caixa-gordura', [App\Http\Controllers\Planilhas\PlanilhaLimpezaCaixaGorduraController::class, 'index']);
+    Route::get('/planilha/limpeza-caixa-gordura/listar', [App\Http\Controllers\Planilhas\PlanilhaLimpezaCaixaGorduraController::class, 'list']);
+    Route::get('/planilha/limpeza-caixa-gordura/encontrar', [App\Http\Controllers\Planilhas\PlanilhaLimpezaCaixaGorduraController::class, 'find']);
+    Route::post('/planilha/limpeza-caixa-gordura/cadastrar', [App\Http\Controllers\Planilhas\PlanilhaLimpezaCaixaGorduraController::class, 'store']);
+    Route::put('/planilha/limpeza-caixa-gordura/editar', [App\Http\Controllers\Planilhas\PlanilhaLimpezaCaixaGorduraController::class, 'update']);
+    Route::delete('/planilha/limpeza-caixa-gordura/deletar', [App\Http\Controllers\Planilhas\PlanilhaLimpezaCaixaGorduraController::class, 'destroy']);
+
     // Parametros
     Route::get('/parametros', [App\Http\Controllers\ParameterController::class, 'index']);
     Route::get('/parametro/listar', [App\Http\Controllers\ParameterController::class, 'list']);

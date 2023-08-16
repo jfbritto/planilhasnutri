@@ -15,12 +15,12 @@ class CreatePlanilhaHigienizacaoFiltrosAparelhosClimatizacaosTable extends Migra
     {
         Schema::create('planilha_higienizacao_filtros_aparelhos_climatizacaos', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_user');
             $table->integer('id_parameter_area');
             $table->integer('id_parameter_equipamento');
             $table->integer('id_parameter_responsavel');
             $table->date('data_higienizacao');
             $table->date('data_proxima_higienizacao');
+            $table->integer('id_user');
             $table->string('status', 1)->default('A');
             $table->timestamps();
         });
