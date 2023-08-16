@@ -4,10 +4,10 @@
     <link rel="icon" href="/img/building.png" type="image/png">
 @stop
 
-@section('title', 'Higienização dos FIltros e Aparelhos de Climatização')
+@section('title', 'Higienização dos Filtros e Aparelhos de Climatização')
 
 @section('content_header')
-    <h1><i class="fas fa-file"></i> &nbsp;Higienização dos FIltros e Aparelhos de Climatização</h1>
+    <h1><i class="fas fa-file"></i> &nbsp;Higienização dos Filtros e Aparelhos de Climatização</h1>
 @stop
 
 @section('content')
@@ -46,7 +46,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Cadastrar: Higienização dos FIltros e Aparelhos de Climatização</h5>
+                <h5 class="modal-title">Cadastrar: Higienização dos Filtros e Aparelhos de Climatização</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
@@ -100,7 +100,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Editar: Higienização dos FIltros e Aparelhos de Climatização</h5>
+                <h5 class="modal-title">Editar: Higienização dos Filtros e Aparelhos de Climatização</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>

@@ -13,7 +13,7 @@ class Unit extends Model
         'id',
         'name',
         'city',
-        'neighborhood',
+        'sigla',
         'description',
         'status'
     ];

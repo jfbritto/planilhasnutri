@@ -24,7 +24,7 @@ class UnitController extends Controller
         $data = [
             'name' => trim($request->name),
             'city' => trim($request->city),
-            'neighborhood' => trim($request->neighborhood),
+            'sigla' => trim($request->sigla),
             'description' => trim($request->description)
         ];
 
@@ -42,7 +42,7 @@ class UnitController extends Controller
             'id' => trim($request->id),
             'name' => trim($request->name),
             'city' => trim($request->city),
-            'neighborhood' => trim($request->neighborhood),
+            'sigla' => trim($request->sigla),
             'description' => trim($request->description)
         ];
 

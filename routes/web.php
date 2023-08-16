@@ -50,6 +50,14 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('/planilha/limpeza-caixa-gordura/editar', [App\Http\Controllers\Planilhas\PlanilhaLimpezaCaixaGorduraController::class, 'update']);
     Route::delete('/planilha/limpeza-caixa-gordura/deletar', [App\Http\Controllers\Planilhas\PlanilhaLimpezaCaixaGorduraController::class, 'destroy']);
 
+    // Planilha registro-congelamento
+    Route::get('/planilha/registro-congelamento', [App\Http\Controllers\Planilhas\PlanilhaRegistroCongelamentoController::class, 'index']);
+    Route::get('/planilha/registro-congelamento/listar', [App\Http\Controllers\Planilhas\PlanilhaRegistroCongelamentoController::class, 'list']);
+    Route::get('/planilha/registro-congelamento/encontrar', [App\Http\Controllers\Planilhas\PlanilhaRegistroCongelamentoController::class, 'find']);
+    Route::post('/planilha/registro-congelamento/cadastrar', [App\Http\Controllers\Planilhas\PlanilhaRegistroCongelamentoController::class, 'store']);
+    Route::put('/planilha/registro-congelamento/editar', [App\Http\Controllers\Planilhas\PlanilhaRegistroCongelamentoController::class, 'update']);
+    Route::delete('/planilha/registro-congelamento/deletar', [App\Http\Controllers\Planilhas\PlanilhaRegistroCongelamentoController::class, 'destroy']);
+
     // Parametros
     Route::get('/parametros', [App\Http\Controllers\ParameterController::class, 'index']);
     Route::get('/parametro/listar', [App\Http\Controllers\ParameterController::class, 'list']);

@@ -4,10 +4,10 @@
     <link rel="icon" href="/img/building.png" type="image/png">
 @stop
 
-@section('title', 'Controle de Saturacao de Óleos e Gorduras')
+@section('title', 'Controle de Saturação de Óleos e Gorduras')
 
 @section('content_header')
-    <h1><i class="fas fa-file"></i> &nbsp;Controle de Saturacao de Óleos e Gorduras</h1>
+    <h1><i class="fas fa-file"></i> &nbsp;Controle de Saturação de Óleos e Gorduras</h1>
 @stop
 
 @section('content')
@@ -46,7 +46,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Cadastrar: Controle de Saturacao de Óleos e Gorduras</h5>
+                <h5 class="modal-title">Cadastrar: Controle de Saturação de Óleos e Gorduras</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
@@ -142,7 +142,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Editar: Controle de Saturacao de Óleos e Gorduras</h5>
+                <h5 class="modal-title">Editar: Controle de Saturação de Óleos e Gorduras</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>

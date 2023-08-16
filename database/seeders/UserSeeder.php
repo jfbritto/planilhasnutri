@@ -26,7 +26,7 @@ class UserSeeder extends Seeder
             ],
             [
                 'name' =>  'Brunelli Sperandio Busteke',
-                'id_unit' =>  1,
+                'id_unit' =>  8,
                 'is_admin' =>  false,
                 'is_nutri' =>  true,
                 'email' => 'brunellisbusteke@gmail.com',

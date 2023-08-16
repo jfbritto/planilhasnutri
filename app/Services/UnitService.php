@@ -41,7 +41,7 @@ class UnitService
                         ->where('id', $data['id'])
                         ->update(['name' => $data['name'],
                                 'city' => $data['city'],
-                                'neighborhood' => $data['neighborhood'],
+                                'sigla' => $data['sigla'],
                                 'description' => $data['description']]);
 
             DB::commit();
@@ -85,7 +85,7 @@ class UnitService
         $response = [];
 
         try{
-            $return = DB::select( DB::raw("select * from units where status = 'A' order by name"));
+            $return = DB::select( DB::raw("select * from units where status = 'A' order by id"));
 
             $response = ['status' => 'success', 'data' => $return];
         }catch(Exception $e){

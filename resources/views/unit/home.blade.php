@@ -26,6 +26,7 @@
                 <table class="table table-striped table-valign-middle table-hover table-sm">
                     <thead>
                         <tr>
+                            <th></th>
                             <th>Nome</th>
                             <th></th>
                         </tr>
@@ -63,8 +64,14 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="neighborhood">Bairro</label>
-                                <input type="text" required name="neighborhood" id="neighborhood" class="form-control" placeholder="Informe o bairro">
+                                <label for="sigla">Rede</label>
+                                <select required name="sigla" id="sigla" class="form-control">
+                                    <option value="">-- Selecione --</option>
+                                    <option value="royal">Royal Tulip</option>
+                                    <option value="golden">Golden Tulip</option>
+                                    <option value="tulip">Tulip Inn</option>
+                                    <option value="soft">Soft Inn</option>
+                                </select>
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -112,8 +119,14 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="neighborhood_edit">Bairro</label>
-                                <input type="text" required name="neighborhood_edit" id="neighborhood_edit" class="form-control" placeholder="Informe o bairro">
+                                <label for="sigla_edit">Rede</label>
+                                <select required name="sigla_edit" id="sigla_edit" class="form-control">
+                                    <option value="">-- Selecione --</option>
+                                    <option value="royal">Royal Tulip</option>
+                                    <option value="golden">Golden Tulip</option>
+                                    <option value="tulip">Tulip Inn</option>
+                                    <option value="soft">Soft Inn</option>
+                                </select>
                             </div>
                         </div>
                         <div class="col-md-12">

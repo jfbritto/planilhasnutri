@@ -27,9 +27,10 @@ $(document).ready(function () {
 
                                         $("#list").append(`
                                             <tr>
+                                                <td width="150px" class="align-middle"><img style="padding: 5px" width="120" src="/img/logos/${item.sigla}.png"></td>
                                                 <td class="align-middle">${item.name}</td>
                                                 <td class="align-middle" style="text-align: right">
-                                                    <a title="Editar" data-id="${item.id}" data-name="${item.name}" data-city="${item.city}" data-neighborhood="${item.neighborhood}" data-reference="${item.reference}" data-description="${item.description}" href="#" class="btn btn-warning edit-unit"><i style="color: white" class="fas fa-edit"></i></a>
+                                                    <a title="Editar" data-id="${item.id}" data-name="${item.name}" data-city="${item.city}" data-sigla="${item.sigla}" data-reference="${item.reference}" data-description="${item.description}" href="#" class="btn btn-warning edit-unit"><i style="color: white" class="fas fa-edit"></i></a>
                                                     <a title="Deletar" data-id="${item.id}" href="#" class="btn btn-danger delete-unit"><i class="fas fa-trash-alt"></i></a>
                                                 </td>
                                             </tr>
@@ -75,7 +76,7 @@ $(document).ready(function () {
                     $.post(window.location.origin + "/unidade/cadastrar", {
                         name: $("#name").val(),
                         city: $("#city").val(),
-                        neighborhood: $("#neighborhood").val(),
+                        sigla: $("#sigla option:selected").val(),
                         description: $("#description").val(),
                     })
                         .then(function (data) {
@@ -111,13 +112,13 @@ $(document).ready(function () {
         let id = $(this).data('id');
         let name = $(this).data('name');
         let city = $(this).data('city');
-        let neighborhood = $(this).data('neighborhood');
+        let sigla = $(this).data('sigla');
         let description = $(this).data('description');
 
         $("#id_edit").val(id);
         $("#name_edit").val(name);
         $("#city_edit").val(city);
-        $("#neighborhood_edit").val(neighborhood);
+        $("#sigla_edit").val(sigla);
         $("#description_edit").val(description);
 
         $("#modalEditUnit").modal("show");
@@ -140,7 +141,7 @@ $(document).ready(function () {
                             id: $("#id_edit").val(),
                             name: $("#name_edit").val(),
                             city: $("#city_edit").val(),
-                            neighborhood: $("#neighborhood_edit").val(),
+                            sigla: $("#sigla_edit option:selected").val(),
                             description: $("#description_edit").val(),
                         }
                     })
