@@ -58,6 +58,14 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('/planilha/registro-congelamento/editar', [App\Http\Controllers\Planilhas\PlanilhaRegistroCongelamentoController::class, 'update']);
     Route::delete('/planilha/registro-congelamento/deletar', [App\Http\Controllers\Planilhas\PlanilhaRegistroCongelamentoController::class, 'destroy']);
 
+    // Planilha verificacao-procedimento-higienizacao-hortifruti
+    Route::get('/planilha/verificacao-procedimento-higienizacao-hortifruti', [App\Http\Controllers\Planilhas\PlanilhaVerificacaoProcedimentoHigienizacaoHortifrutiController::class, 'index']);
+    Route::get('/planilha/verificacao-procedimento-higienizacao-hortifruti/listar', [App\Http\Controllers\Planilhas\PlanilhaVerificacaoProcedimentoHigienizacaoHortifrutiController::class, 'list']);
+    Route::get('/planilha/verificacao-procedimento-higienizacao-hortifruti/encontrar', [App\Http\Controllers\Planilhas\PlanilhaVerificacaoProcedimentoHigienizacaoHortifrutiController::class, 'find']);
+    Route::post('/planilha/verificacao-procedimento-higienizacao-hortifruti/cadastrar', [App\Http\Controllers\Planilhas\PlanilhaVerificacaoProcedimentoHigienizacaoHortifrutiController::class, 'store']);
+    Route::put('/planilha/verificacao-procedimento-higienizacao-hortifruti/editar', [App\Http\Controllers\Planilhas\PlanilhaVerificacaoProcedimentoHigienizacaoHortifrutiController::class, 'update']);
+    Route::delete('/planilha/verificacao-procedimento-higienizacao-hortifruti/deletar', [App\Http\Controllers\Planilhas\PlanilhaVerificacaoProcedimentoHigienizacaoHortifrutiController::class, 'destroy']);
+
     // Parametros
     Route::get('/parametros', [App\Http\Controllers\ParameterController::class, 'index']);
     Route::get('/parametro/listar', [App\Http\Controllers\ParameterController::class, 'list']);

@@ -1,0 +1,183 @@
+@extends('adminlte::page')
+
+@section('meta_tags')
+    <link rel="icon" href="/img/building.png" type="image/png">
+@stop
+
+@section('title', 'Controle de Verificação do Procedimento de Higienização de Hortifrutis')
+
+@section('content_header')
+    <h1><i class="fas fa-file"></i> &nbsp;Controle de Verificação do Procedimento de Higienização de Hortifrutis</h1>
+@stop
+
+@section('content')
+
+    <div class="card">
+        <div class="card-header border-0">
+            @if(auth()->user()->id_unit)
+                <h3 class="card-title"> </h3>
+                <div class="card-tools">
+                    <a href="#" class="btn btn-tool btn-sm" data-toggle="modal" data-target="#modalStoreverificacao_procedimento_higienizacao_hortifruti">
+                    <i class="fas fa-plus"></i>
+                    </a>
+                </div>
+            @endif
+        </div>
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-striped table-valign-middle table-hover table-sm">
+                    <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th>Alimento</th>
+                            <th>Hora inicio</th>
+                            <th>Hora fim</th>
+                            <th>Concentração</th>
+                            <th>Responsável</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="list"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="modalStoreverificacao_procedimento_higienizacao_hortifruti">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Cadastrar: Controle de Verificação do Procedimento de Higienização de Hortifrutis</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <form id="formStoreverificacao_procedimento_higienizacao_hortifruti">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="data">Data</label>
+                                <input type="date" required name="data" id="data" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="id_parameter_alimento">Alimento</label>
+                                <select type="text" required name="id_parameter_alimento" id="id_parameter_alimento" class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="hora_imersao_inicio">Hora Inicio Imersão</label>
+                                <input type="time" required name="hora_imersao_inicio" id="hora_imersao_inicio" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="hora_imersao_fim">Hora Final Imersão</label>
+                                <input type="time" required name="hora_imersao_fim" id="hora_imersao_fim" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="concentracao_solucao_clorada">Concentração Solução Clorada</label>
+                                <input type="text" required name="concentracao_solucao_clorada" id="concentracao_solucao_clorada" class="form-control" placeholder="(ppm)">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="acao_corretiva">Ação Corretiva</label>
+                                <input type="text" required name="acao_corretiva" id="acao_corretiva" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="id_parameter_responsavel">Responsável</label>
+                                <select type="text" required name="id_parameter_responsavel" id="id_parameter_responsavel" class="form-control"></select>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" form="formStoreverificacao_procedimento_higienizacao_hortifruti">Salvar</button>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="modalEditverificacao_procedimento_higienizacao_hortifruti">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Editar: Controle de Verificação do Procedimento de Higienização de Hortifrutis</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <form id="formEditverificacao_procedimento_higienizacao_hortifruti">
+                    <input type="hidden" required name="id_edit" id="id_edit">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="data_edit">Data</label>
+                                <input type="date" required name="data_edit" id="data_edit" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="id_parameter_alimento_edit">Alimento</label>
+                                <select type="text" required name="id_parameter_alimento_edit" id="id_parameter_alimento_edit" class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="hora_imersao_inicio_edit">Hora Inicio Imersão</label>
+                                <input type="time" required name="hora_imersao_inicio_edit" id="hora_imersao_inicio_edit" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="hora_imersao_fim_edit">Hora Final Imersão</label>
+                                <input type="time" required name="hora_imersao_fim_edit" id="hora_imersao_fim_edit" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="concentracao_solucao_clorada_edit">Concentração Solução Clorada</label>
+                                <input type="text" required name="concentracao_solucao_clorada_edit" id="concentracao_solucao_clorada_edit" class="form-control" placeholder="(ppm)">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="acao_corretiva_edit">Ação Corretiva</label>
+                                <input type="text" required name="acao_corretiva_edit" id="acao_corretiva_edit" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="id_parameter_responsavel_edit">Responsável</label>
+                                <select type="text" required name="id_parameter_responsavel_edit" id="id_parameter_responsavel_edit" class="form-control"></select>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" form="formEditverificacao_procedimento_higienizacao_hortifruti">Salvar</button>
+            </div>
+            </div>
+        </div>
+    </div>
+
+@stop
+
+@section('js')
+    <script src="/js/planilha/verificacao_procedimento_higienizacao_hortifruti.js"></script>
+@stop

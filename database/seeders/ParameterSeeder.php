@@ -140,6 +140,21 @@ class ParameterSeeder extends Seeder
                 'id_unit' => null,
                 'status' => 'A'
             ],
+            // alimentos
+            [
+                'id' => 18,
+                'id_parameter_type' => 9,
+                'name' => 'Banana',
+                'id_unit' => null,
+                'status' => 'A'
+            ],
+            [
+                'id' => 19,
+                'id_parameter_type' => 9,
+                'name' => 'Maçã',
+                'id_unit' => null,
+                'status' => 'A'
+            ],
 
         ]);
     }

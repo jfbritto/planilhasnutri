@@ -62,6 +62,12 @@ class ParameterTypeSeeder extends Seeder
                 'id_unit' => null,
                 'name' => 'Produtos',
                 'status' => 'A'
+            ],
+            [
+                'id' => 9,
+                'id_unit' => null,
+                'name' => 'Alimentos',
+                'status' => 'A'
             ]
 
         ]);
