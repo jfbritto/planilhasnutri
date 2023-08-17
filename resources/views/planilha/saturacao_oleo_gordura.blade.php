@@ -4,10 +4,10 @@
     <link rel="icon" href="/img/building.png" type="image/png">
 @stop
 
-@section('title', 'Controle de Saturação de Óleos e Gorduras')
+@section('title', 'Registro Congelamento')
 
 @section('content_header')
-    <h1><i class="fas fa-file"></i> &nbsp;Controle de Saturação de Óleos e Gorduras</h1>
+    <h1><i class="fas fa-file"></i> &nbsp;Registro Congelamento</h1>
 @stop
 
 @section('content')
@@ -17,7 +17,7 @@
             @if(auth()->user()->id_unit)
                 <h3 class="card-title"> </h3>
                 <div class="card-tools">
-                    <a href="#" class="btn btn-tool btn-sm" data-toggle="modal" data-target="#modalStoresaturacao_oleo_gordura">
+                    <a href="#" class="btn btn-tool btn-sm" data-toggle="modal" data-target="#modalStoreplanilha_registro_congelamento">
                     <i class="fas fa-plus"></i>
                     </a>
                 </div>
@@ -28,11 +28,12 @@
                 <table class="table table-striped table-valign-middle table-hover table-sm">
                     <thead>
                         <tr>
-                            <th>Data</th>
-                            <th>Área/Equipamento</th>
-                            <th>Hora 1ª aferição</th>
-                            <th>Temperatura 1ª aferição</th>
-                            <th>Situação da Gordura</th>
+                            <th>Data Congelamento</th>
+                            <th>Produto</th>
+                            <th>Quantidade</th>
+                            <th>Data Recebimento</th>
+                            <th>Data Fabricação</th>
+                            <th>Alérgeno</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -42,89 +43,53 @@
         </div>
     </div>
 
-    <div class="modal fade" tabindex="-1" role="dialog" id="modalStoresaturacao_oleo_gordura">
+    <div class="modal fade" tabindex="-1" role="dialog" id="modalStoreplanilha_registro_congelamento">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Cadastrar: Controle de Saturação de Óleos e Gorduras</h5>
+                <h5 class="modal-title">Cadastrar: Registro Congelamento</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
 
-                <form id="formStoresaturacao_oleo_gordura">
+                <form id="formStoreplanilha_registro_congelamento">
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="data">Data</label>
-                                <input type="date" required name="data" id="data" class="form-control">
+                                <label for="data_congelamento">Data Congelamento</label>
+                                <input type="date" required name="data_congelamento" id="data_congelamento" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="id_parameter_area">Área</label>
-                                <select type="text" required name="id_parameter_area" id="id_parameter_area" class="form-control"></select>
+                                <label for="id_parameter_produto">Produto</label>
+                                <select required name="id_parameter_produto" id="id_parameter_produto" class="form-control"></select>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="id_parameter_equipamento">Equipamento</label>
-                                <select type="text" required name="id_parameter_equipamento" id="id_parameter_equipamento" class="form-control"></select>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label for="hora_primeira_afericao">Hora 1ª Aferição</label>
-                                <input type="time" required name="hora_primeira_afericao" id="hora_primeira_afericao" class="form-control">
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label for="temperatura_primeira_afericao">Temperatura 1ª Aferição</label>
-                                <input type="text" required name="temperatura_primeira_afericao" id="temperatura_primeira_afericao" class="form-control" placeholder="Informe a temperatura">
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label for="hora_segunda_afericao">Hora 2ª Aferição</label>
-                                <input type="time" required name="hora_segunda_afericao" id="hora_segunda_afericao" class="form-control">
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label for="temperatura_segunda_afericao">Temperatura 2ª Aferição</label>
-                                <input type="text" required name="temperatura_segunda_afericao" id="temperatura_segunda_afericao" class="form-control" placeholder="Informe a temperatura">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="acao_corretiva">Ação Corretiva</label>
-                                <input type="text" required name="acao_corretiva" id="acao_corretiva" class="form-control" placeholder="Informe qual será a ação">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="id_parameter_responsavel_acao">Responsável pela ação</label>
-                                <select type="text" required name="id_parameter_responsavel_acao" id="id_parameter_responsavel_acao" class="form-control"></select>
+                                <label for="quantidade">Quantidade</label>
+                                <input type="text" required name="quantidade" id="quantidade" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="leitura_fita">Leitura Da Fita De Saturação</label>
-                                <input type="text" required name="leitura_fita" id="leitura_fita" class="form-control" placeholder="Informe qual foi a temperatura">
+                                <label for="data_recebimento">Data Recebimento</label>
+                                <input type="date" name="data_recebimento" id="data_recebimento" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="id_parameter_situacao_gordura">Situação da Gordura</label>
-                                <select type="text" required name="id_parameter_situacao_gordura" id="id_parameter_situacao_gordura" class="form-control"></select>
+                                <label for="data_fabricacao">Data Fabricação</label>
+                                <input type="date" name="data_fabricacao" id="data_fabricacao" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="id_parameter_responsavel">Responsável</label>
-                                <select type="text" required name="id_parameter_responsavel" id="id_parameter_responsavel" class="form-control"></select>
+                                <label for="alergeno">Alérgeno</label>
+                                <input type="text" required name="alergeno" id="alergeno" class="form-control">
                             </div>
                         </div>
                     </div>
@@ -132,108 +97,60 @@
 
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary" form="formStoresaturacao_oleo_gordura">Salvar</button>
+                <button type="submit" class="btn btn-primary" form="formStoreplanilha_registro_congelamento">Salvar</button>
             </div>
             </div>
         </div>
     </div>
 
-    <div class="modal fade" tabindex="-1" role="dialog" id="modalEditsaturacao_oleo_gordura">
+    <div class="modal fade" tabindex="-1" role="dialog" id="modalEditplanilha_registro_congelamento">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Editar: Controle de Saturação de Óleos e Gorduras</h5>
+                <h5 class="modal-title">Editar: Registro Congelamento</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
 
-                <form id="formEditsaturacao_oleo_gordura">
+                <form id="formEditplanilha_registro_congelamento">
                     <input type="hidden" required name="id_edit" id="id_edit">
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="data_edit">Data</label>
-                                <input type="date" required name="data_edit" id="data_edit" class="form-control">
+                                <label for="data_congelamento_edit">Data Congelamento</label>
+                                <input type="date" required name="data_congelamento_edit" id="data_congelamento_edit" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="id_parameter_area_edit">Área</label>
-                                <select type="text" required name="id_parameter_area_edit" id="id_parameter_area_edit" class="form-control"></select>
+                                <label for="id_parameter_produto_edit">Produto</label>
+                                <select required name="id_parameter_produto_edit" id="id_parameter_produto_edit" class="form-control"></select>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="id_parameter_equipamento_edit">Equipamento</label>
-                                <select type="text" required name="id_parameter_equipamento_edit" id="id_parameter_equipamento_edit" class="form-control"></select>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label for="hora_primeira_afericao_edit">Hora 1ª Afericao</label>
-                                <input type="time" required name="hora_primeira_afericao_edit" id="hora_primeira_afericao_edit" class="form-control">
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label for="temperatura_primeira_afericao_edit">Temperatura 1ª Afericao</label>
-                                <input type="text" required name="temperatura_primeira_afericao_edit" id="temperatura_primeira_afericao_edit" class="form-control" placeholder="Informe a temperatura">
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label for="hora_segunda_afericao_edit">Hora 2ª Afericao</label>
-                                <input type="time" required name="hora_segunda_afericao_edit" id="hora_segunda_afericao_edit" class="form-control">
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label for="temperatura_segunda_afericao_edit">Temperatura 2ª Afericao</label>
-                                <input type="text" required name="temperatura_segunda_afericao_edit" id="temperatura_segunda_afericao_edit" class="form-control" placeholder="Informe a temperatura">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="acao_corretiva_edit">Ação Corretiva</label>
-                                <input type="text" required name="acao_corretiva_edit" id="acao_corretiva_edit" class="form-control" placeholder="Informe qual será a ação">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="id_parameter_responsavel_acao_edit">Responsável pela ação</label>
-                                <select type="text" required name="id_parameter_responsavel_acao_edit" id="id_parameter_responsavel_acao_edit" class="form-control"></select>
+                                <label for="quantidade_edit">Quantidade</label>
+                                <input type="text" required name="quantidade_edit" id="quantidade_edit" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="leitura_fita_edit">Leitura Da Fita De Saturação</label>
-                                <input type="text" required name="leitura_fita_edit" id="leitura_fita_edit" class="form-control" placeholder="Informe qual foi a temperatura">
+                                <label for="data_recebimento_edit">Data Recebimento</label>
+                                <input type="date" name="data_recebimento_edit" id="data_recebimento_edit" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="id_parameter_situacao_gordura_edit">Situação da Gordura</label>
-                                <select type="text" required name="id_parameter_situacao_gordura_edit" id="id_parameter_situacao_gordura_edit" class="form-control"></select>
+                                <label for="data_fabricacao_edit">Data Fabricação</label>
+                                <input type="date" name="data_fabricacao_edit" id="data_fabricacao_edit" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="id_parameter_responsavel_edit">Responsável</label>
-                                <select type="text" required name="id_parameter_responsavel_edit" id="id_parameter_responsavel_edit" class="form-control"></select>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="usuario">Nutricionista</label>
-                                <input type="text" name="usuario" id="usuario" class="form-control" readonly>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="unidade">Unidade</label>
-                                <input type="text" name="unidade" id="unidade" class="form-control" readonly>
+                                <label for="alergeno_edit">Alérgeno</label>
+                                <input type="text" required name="alergeno_edit" id="alergeno_edit" class="form-control">
                             </div>
                         </div>
                     </div>
@@ -241,7 +158,7 @@
 
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary" form="formEditsaturacao_oleo_gordura">Salvar</button>
+                <button type="submit" class="btn btn-primary" form="formEditplanilha_registro_congelamento">Salvar</button>
             </div>
             </div>
         </div>
@@ -250,5 +167,5 @@
 @stop
 
 @section('js')
-    <script src="/js/planilha/saturacao_oleo_gordura.js"></script>
+    <script src="/js/planilha/planilha_registro_congelamento.js"></script>
 @stop

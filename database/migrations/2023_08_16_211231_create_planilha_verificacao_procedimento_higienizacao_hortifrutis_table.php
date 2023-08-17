@@ -17,8 +17,8 @@ class CreatePlanilhaVerificacaoProcedimentoHigienizacaoHortifrutisTable extends 
             $table->id();
             $table->date('data');
             $table->integer('id_parameter_alimento');
-            $table->string('hora_imersao_inicio', 5);;
-            $table->string('hora_imersao_fim', 5);;
+            $table->string('hora_imersao_inicio', 5);
+            $table->string('hora_imersao_fim', 5);
             $table->string('concentracao_solucao_clorada')->nullable();
             $table->string('acao_corretiva')->nullable();
             $table->integer('id_parameter_responsavel');

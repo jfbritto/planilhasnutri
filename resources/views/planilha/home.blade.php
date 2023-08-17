@@ -78,6 +78,16 @@
                     {{-- <p class="card-text"><small class="text-muted">Atualizados 3 minutos atrás</small></p> --}}
                     </div>
                 </div>
+                <div class="card">
+                    <a href="/planilha/manutencao-calibracao-equipamento">
+                        <img class="card-img-top" src="https://images.ctfassets.net/lzny33ho1g45/how-to-filter-in-google-sheets-p-img/8e53bc4d79f743320d780744cb60e7a6/file.png?w=1520&fm=jpg&q=30&fit=thumb&h=760" alt="Imagem de capa do card">
+                    </a>
+                    <div class="card-body">
+                    <h5 class="card-title">Relatório de Manutenção e calibrações dos equipamentos</h5>
+                    {{-- <p class="card-text">Este é um card maior com suporte a texto embaixo, que funciona como uma introdução a um conteúdo adicional. Este card tem o conteúdo ainda maior que o primeiro, para mostrar a altura igual, em ação.</p> --}}
+                    {{-- <p class="card-text"><small class="text-muted">Atualizados 3 minutos atrás</small></p> --}}
+                    </div>
+                </div>
             </div>
 
         </div>
