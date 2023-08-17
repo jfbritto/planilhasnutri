@@ -74,6 +74,14 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('/planilha/manutencao-calibracao-equipamento/editar', [App\Http\Controllers\Planilhas\PlanilhaManutencaoCalibracaoEquipamentoController::class, 'update']);
     Route::delete('/planilha/manutencao-calibracao-equipamento/deletar', [App\Http\Controllers\Planilhas\PlanilhaManutencaoCalibracaoEquipamentoController::class, 'destroy']);
 
+    // Planilha registro-limpeza
+    Route::get('/planilha/registro-limpeza', [App\Http\Controllers\Planilhas\PlanilhaRegistroLimpezaController::class, 'index']);
+    Route::get('/planilha/registro-limpeza/listar', [App\Http\Controllers\Planilhas\PlanilhaRegistroLimpezaController::class, 'list']);
+    Route::get('/planilha/registro-limpeza/encontrar', [App\Http\Controllers\Planilhas\PlanilhaRegistroLimpezaController::class, 'find']);
+    Route::post('/planilha/registro-limpeza/cadastrar', [App\Http\Controllers\Planilhas\PlanilhaRegistroLimpezaController::class, 'store']);
+    Route::put('/planilha/registro-limpeza/editar', [App\Http\Controllers\Planilhas\PlanilhaRegistroLimpezaController::class, 'update']);
+    Route::delete('/planilha/registro-limpeza/deletar', [App\Http\Controllers\Planilhas\PlanilhaRegistroLimpezaController::class, 'destroy']);
+
     // Parametros
     Route::get('/parametros', [App\Http\Controllers\ParameterController::class, 'index']);
     Route::get('/parametro/listar', [App\Http\Controllers\ParameterController::class, 'list']);
