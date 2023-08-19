@@ -82,6 +82,14 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('/planilha/registro-limpeza/editar', [App\Http\Controllers\Planilhas\PlanilhaRegistroLimpezaController::class, 'update']);
     Route::delete('/planilha/registro-limpeza/deletar', [App\Http\Controllers\Planilhas\PlanilhaRegistroLimpezaController::class, 'destroy']);
 
+    // Planilha recebimento-materia-prima
+    Route::get('/planilha/recebimento-materia-prima', [App\Http\Controllers\Planilhas\PlanilhaRecebimentoMateriaPrimaController::class, 'index']);
+    Route::get('/planilha/recebimento-materia-prima/listar', [App\Http\Controllers\Planilhas\PlanilhaRecebimentoMateriaPrimaController::class, 'list']);
+    Route::get('/planilha/recebimento-materia-prima/encontrar', [App\Http\Controllers\Planilhas\PlanilhaRecebimentoMateriaPrimaController::class, 'find']);
+    Route::post('/planilha/recebimento-materia-prima/cadastrar', [App\Http\Controllers\Planilhas\PlanilhaRecebimentoMateriaPrimaController::class, 'store']);
+    Route::put('/planilha/recebimento-materia-prima/editar', [App\Http\Controllers\Planilhas\PlanilhaRecebimentoMateriaPrimaController::class, 'update']);
+    Route::delete('/planilha/recebimento-materia-prima/deletar', [App\Http\Controllers\Planilhas\PlanilhaRecebimentoMateriaPrimaController::class, 'destroy']);
+
     // Parametros
     Route::get('/parametros', [App\Http\Controllers\ParameterController::class, 'index']);
     Route::get('/parametro/listar', [App\Http\Controllers\ParameterController::class, 'list']);
