@@ -114,6 +114,14 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('/planilha/registro-nao-conformidade-detectada-auto-avaliacao/editar', [App\Http\Controllers\Planilhas\PlanilhaRegistroNaoConformidadeDetectadaAutoAvaliacaoController::class, 'update']);
     Route::delete('/planilha/registro-nao-conformidade-detectada-auto-avaliacao/deletar', [App\Http\Controllers\Planilhas\PlanilhaRegistroNaoConformidadeDetectadaAutoAvaliacaoController::class, 'destroy']);
 
+    // Planilha temperatura_alimento_banho_maria
+    Route::get('/planilha/temperatura-alimento-banho-maria', [App\Http\Controllers\Planilhas\PlanilhaTemperaturaAlimentoBanhoMariaController::class, 'index']);
+    Route::get('/planilha/temperatura-alimento-banho-maria/listar', [App\Http\Controllers\Planilhas\PlanilhaTemperaturaAlimentoBanhoMariaController::class, 'list']);
+    Route::get('/planilha/temperatura-alimento-banho-maria/encontrar', [App\Http\Controllers\Planilhas\PlanilhaTemperaturaAlimentoBanhoMariaController::class, 'find']);
+    Route::post('/planilha/temperatura-alimento-banho-maria/cadastrar', [App\Http\Controllers\Planilhas\PlanilhaTemperaturaAlimentoBanhoMariaController::class, 'store']);
+    Route::put('/planilha/temperatura-alimento-banho-maria/editar', [App\Http\Controllers\Planilhas\PlanilhaTemperaturaAlimentoBanhoMariaController::class, 'update']);
+    Route::delete('/planilha/temperatura-alimento-banho-maria/deletar', [App\Http\Controllers\Planilhas\PlanilhaTemperaturaAlimentoBanhoMariaController::class, 'destroy']);
+
     // Parametros
     Route::get('/parametros', [App\Http\Controllers\ParameterController::class, 'index']);
     Route::get('/parametro/listar', [App\Http\Controllers\ParameterController::class, 'list']);

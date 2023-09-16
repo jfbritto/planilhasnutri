@@ -150,8 +150,6 @@ function loadGlobalParameters(id, element, idSelected = null)
 // LISTAR/CADASTRAR PARAMETRO
 $("#editarSenha").on("click", function(){
 
-    console.log('asdasd');
-
     Swal.fire({
         title: 'Defina sua nova senha',
         input: 'password',
@@ -186,3 +184,57 @@ $("#editarSenha").on("click", function(){
       })
 
 });
+
+
+
+
+
+/**
+ * CADASTROS DIVERSOS
+ */
+
+function cadastrarPlanilha(
+    rota = '',
+    funcao,
+    objParams
+) {
+    console.log(rota)
+    console.log(objParams)
+    let nome_referencia = rota.replace(/-/g, "_");
+    console.log(nome_referencia)
+    console.log(funcao)
+
+    Swal.queue([
+        {
+            title: "Carregando...",
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            onOpen: () => {
+                Swal.showLoading();
+
+                $.post(window.location.origin + `/planilha/${rota}/cadastrar`, objParams)
+                .then(function (data) {
+                    if (data.status == "success") {
+
+                        $(`#formStore${nome_referencia}`).each(function () {
+                            this.reset();
+                        });
+
+                        $(`#modalStore${nome_referencia}`).modal("hide");
+
+                        showSuccess("Cadastro efetuado!", null, funcao)
+                    } else if (data.status == "error") {
+                        showError(data.message)
+                    }
+                })
+                .catch(function (data) {
+                    if (data.responseJSON.status == "error") {
+                        showError(data.responseJSON.message)
+                    }
+                });
+
+            },
+        },
+    ]);
+
+}
