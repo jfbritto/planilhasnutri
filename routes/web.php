@@ -106,6 +106,14 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('/planilha/reaquecimento-alimento/editar', [App\Http\Controllers\Planilhas\PlanilhaReaquecimentoAlimentoController::class, 'update']);
     Route::delete('/planilha/reaquecimento-alimento/deletar', [App\Http\Controllers\Planilhas\PlanilhaReaquecimentoAlimentoController::class, 'destroy']);
 
+    // Planilha registro-nao-conformidade-detectada-auto-avaliacao
+    Route::get('/planilha/registro-nao-conformidade-detectada-auto-avaliacao', [App\Http\Controllers\Planilhas\PlanilhaRegistroNaoConformidadeDetectadaAutoAvaliacaoController::class, 'index']);
+    Route::get('/planilha/registro-nao-conformidade-detectada-auto-avaliacao/listar', [App\Http\Controllers\Planilhas\PlanilhaRegistroNaoConformidadeDetectadaAutoAvaliacaoController::class, 'list']);
+    Route::get('/planilha/registro-nao-conformidade-detectada-auto-avaliacao/encontrar', [App\Http\Controllers\Planilhas\PlanilhaRegistroNaoConformidadeDetectadaAutoAvaliacaoController::class, 'find']);
+    Route::post('/planilha/registro-nao-conformidade-detectada-auto-avaliacao/cadastrar', [App\Http\Controllers\Planilhas\PlanilhaRegistroNaoConformidadeDetectadaAutoAvaliacaoController::class, 'store']);
+    Route::put('/planilha/registro-nao-conformidade-detectada-auto-avaliacao/editar', [App\Http\Controllers\Planilhas\PlanilhaRegistroNaoConformidadeDetectadaAutoAvaliacaoController::class, 'update']);
+    Route::delete('/planilha/registro-nao-conformidade-detectada-auto-avaliacao/deletar', [App\Http\Controllers\Planilhas\PlanilhaRegistroNaoConformidadeDetectadaAutoAvaliacaoController::class, 'destroy']);
+
     // Parametros
     Route::get('/parametros', [App\Http\Controllers\ParameterController::class, 'index']);
     Route::get('/parametro/listar', [App\Http\Controllers\ParameterController::class, 'list']);
