@@ -90,6 +90,22 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('/planilha/recebimento-materia-prima/editar', [App\Http\Controllers\Planilhas\PlanilhaRecebimentoMateriaPrimaController::class, 'update']);
     Route::delete('/planilha/recebimento-materia-prima/deletar', [App\Http\Controllers\Planilhas\PlanilhaRecebimentoMateriaPrimaController::class, 'destroy']);
 
+    // Planilha resfriamento-rapido-alimento
+    Route::get('/planilha/resfriamento-rapido-alimento', [App\Http\Controllers\Planilhas\PlanilhaResfriamentoRapidoAlimentoController::class, 'index']);
+    Route::get('/planilha/resfriamento-rapido-alimento/listar', [App\Http\Controllers\Planilhas\PlanilhaResfriamentoRapidoAlimentoController::class, 'list']);
+    Route::get('/planilha/resfriamento-rapido-alimento/encontrar', [App\Http\Controllers\Planilhas\PlanilhaResfriamentoRapidoAlimentoController::class, 'find']);
+    Route::post('/planilha/resfriamento-rapido-alimento/cadastrar', [App\Http\Controllers\Planilhas\PlanilhaResfriamentoRapidoAlimentoController::class, 'store']);
+    Route::put('/planilha/resfriamento-rapido-alimento/editar', [App\Http\Controllers\Planilhas\PlanilhaResfriamentoRapidoAlimentoController::class, 'update']);
+    Route::delete('/planilha/resfriamento-rapido-alimento/deletar', [App\Http\Controllers\Planilhas\PlanilhaResfriamentoRapidoAlimentoController::class, 'destroy']);
+
+    // Planilha reaquecimento-alimento
+    Route::get('/planilha/reaquecimento-alimento', [App\Http\Controllers\Planilhas\PlanilhaReaquecimentoAlimentoController::class, 'index']);
+    Route::get('/planilha/reaquecimento-alimento/listar', [App\Http\Controllers\Planilhas\PlanilhaReaquecimentoAlimentoController::class, 'list']);
+    Route::get('/planilha/reaquecimento-alimento/encontrar', [App\Http\Controllers\Planilhas\PlanilhaReaquecimentoAlimentoController::class, 'find']);
+    Route::post('/planilha/reaquecimento-alimento/cadastrar', [App\Http\Controllers\Planilhas\PlanilhaReaquecimentoAlimentoController::class, 'store']);
+    Route::put('/planilha/reaquecimento-alimento/editar', [App\Http\Controllers\Planilhas\PlanilhaReaquecimentoAlimentoController::class, 'update']);
+    Route::delete('/planilha/reaquecimento-alimento/deletar', [App\Http\Controllers\Planilhas\PlanilhaReaquecimentoAlimentoController::class, 'destroy']);
+
     // Parametros
     Route::get('/parametros', [App\Http\Controllers\ParameterController::class, 'index']);
     Route::get('/parametro/listar', [App\Http\Controllers\ParameterController::class, 'list']);
