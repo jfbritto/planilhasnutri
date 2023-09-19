@@ -29,7 +29,7 @@ $(document).ready(function () {
                                     $("#list").append(`
                                         <tr>
                                             <td class="align-middle">${dateFormat(item.data)}</td>
-                                            <td class="align-middle">${item.periodo=='almoco'?'Almoço':'Jantar'}</td>
+                                            <td class="align-middle">${periodo(item.periodo)}</td>
                                             <td class="align-middle">${item.produto}</td>
                                             <td class="align-middle">${item.primeira_hora}</td>
                                             <td class="align-middle">${item.primeira_tremperatura}</td>

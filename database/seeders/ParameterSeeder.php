@@ -155,6 +155,36 @@ class ParameterSeeder extends Seeder
                 'id_unit' => null,
                 'status' => 'A'
             ],
+            // evento
+            [
+                'id' => 20,
+                'id_parameter_type' => 11,
+                'name' => 'Rock in Rio',
+                'id_unit' => null,
+                'status' => 'A'
+            ],
+            [
+                'id' => 21,
+                'id_parameter_type' => 11,
+                'name' => 'Vital',
+                'id_unit' => null,
+                'status' => 'A'
+            ],
+            // produtos
+            [
+                'id' => 22,
+                'id_parameter_type' => 8,
+                'name' => 'Macarronada',
+                'id_unit' => null,
+                'status' => 'A'
+            ],
+            [
+                'id' => 23,
+                'id_parameter_type' => 8,
+                'name' => 'feijão',
+                'id_unit' => null,
+                'status' => 'A'
+            ],
 
         ]);
     }

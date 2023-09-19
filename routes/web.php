@@ -122,6 +122,14 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('/planilha/temperatura-alimento-banho-maria/editar', [App\Http\Controllers\Planilhas\PlanilhaTemperaturaAlimentoBanhoMariaController::class, 'update']);
     Route::delete('/planilha/temperatura-alimento-banho-maria/deletar', [App\Http\Controllers\Planilhas\PlanilhaTemperaturaAlimentoBanhoMariaController::class, 'destroy']);
 
+    // Planilha temperatura_alimento_distribuicao
+    Route::get('/planilha/temperatura-alimento-distribuicao', [App\Http\Controllers\Planilhas\PlanilhaTemperaturaAlimentoDistribuicaoController::class, 'index']);
+    Route::get('/planilha/temperatura-alimento-distribuicao/listar', [App\Http\Controllers\Planilhas\PlanilhaTemperaturaAlimentoDistribuicaoController::class, 'list']);
+    Route::get('/planilha/temperatura-alimento-distribuicao/encontrar', [App\Http\Controllers\Planilhas\PlanilhaTemperaturaAlimentoDistribuicaoController::class, 'find']);
+    Route::post('/planilha/temperatura-alimento-distribuicao/cadastrar', [App\Http\Controllers\Planilhas\PlanilhaTemperaturaAlimentoDistribuicaoController::class, 'store']);
+    Route::put('/planilha/temperatura-alimento-distribuicao/editar', [App\Http\Controllers\Planilhas\PlanilhaTemperaturaAlimentoDistribuicaoController::class, 'update']);
+    Route::delete('/planilha/temperatura-alimento-distribuicao/deletar', [App\Http\Controllers\Planilhas\PlanilhaTemperaturaAlimentoDistribuicaoController::class, 'destroy']);
+
     // Parametros
     Route::get('/parametros', [App\Http\Controllers\ParameterController::class, 'index']);
     Route::get('/parametro/listar', [App\Http\Controllers\ParameterController::class, 'list']);

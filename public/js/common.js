@@ -30,6 +30,15 @@ function monthDescription(val)
     }
 }
 
+// retorna o nome do mes pelo seu numero referente enviado
+function periodo(val)
+{
+    const periodo = {'desjejum':'Desjejum','almoco':'Almoço','jantar':'Jantar','ceia':'Ceia'};
+
+    return `${periodo[val]}`
+
+}
+
 // mascara de telefone
 var SPMaskBehavior = function (val) {
     return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
