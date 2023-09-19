@@ -130,6 +130,14 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('/planilha/temperatura-alimento-distribuicao/editar', [App\Http\Controllers\Planilhas\PlanilhaTemperaturaAlimentoDistribuicaoController::class, 'update']);
     Route::delete('/planilha/temperatura-alimento-distribuicao/deletar', [App\Http\Controllers\Planilhas\PlanilhaTemperaturaAlimentoDistribuicaoController::class, 'destroy']);
 
+    // Planilha grupo_amostra_prato
+    Route::get('/planilha/grupo-amostra-prato', [App\Http\Controllers\Planilhas\PlanilhaGrupoAmostraPratoController::class, 'index']);
+    Route::get('/planilha/grupo-amostra-prato/listar', [App\Http\Controllers\Planilhas\PlanilhaGrupoAmostraPratoController::class, 'list']);
+    Route::get('/planilha/grupo-amostra-prato/encontrar', [App\Http\Controllers\Planilhas\PlanilhaGrupoAmostraPratoController::class, 'find']);
+    Route::post('/planilha/grupo-amostra-prato/cadastrar', [App\Http\Controllers\Planilhas\PlanilhaGrupoAmostraPratoController::class, 'store']);
+    Route::put('/planilha/grupo-amostra-prato/editar', [App\Http\Controllers\Planilhas\PlanilhaGrupoAmostraPratoController::class, 'update']);
+    Route::delete('/planilha/grupo-amostra-prato/deletar', [App\Http\Controllers\Planilhas\PlanilhaGrupoAmostraPratoController::class, 'destroy']);
+
     // Parametros
     Route::get('/parametros', [App\Http\Controllers\ParameterController::class, 'index']);
     Route::get('/parametro/listar', [App\Http\Controllers\ParameterController::class, 'list']);
