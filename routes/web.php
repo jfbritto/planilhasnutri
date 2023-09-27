@@ -138,6 +138,14 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('/planilha/grupo-amostra-prato/editar', [App\Http\Controllers\Planilhas\PlanilhaGrupoAmostraPratoController::class, 'update']);
     Route::delete('/planilha/grupo-amostra-prato/deletar', [App\Http\Controllers\Planilhas\PlanilhaGrupoAmostraPratoController::class, 'destroy']);
 
+    // Planilha avaliacao_manejo_residuo
+    Route::get('/planilha/avaliacao-manejo-residuo', [App\Http\Controllers\Planilhas\PlanilhaAvaliacaoManejoResiduoController::class, 'index']);
+    Route::get('/planilha/avaliacao-manejo-residuo/listar', [App\Http\Controllers\Planilhas\PlanilhaAvaliacaoManejoResiduoController::class, 'list']);
+    Route::get('/planilha/avaliacao-manejo-residuo/encontrar', [App\Http\Controllers\Planilhas\PlanilhaAvaliacaoManejoResiduoController::class, 'find']);
+    Route::post('/planilha/avaliacao-manejo-residuo/cadastrar', [App\Http\Controllers\Planilhas\PlanilhaAvaliacaoManejoResiduoController::class, 'store']);
+    Route::put('/planilha/avaliacao-manejo-residuo/editar', [App\Http\Controllers\Planilhas\PlanilhaAvaliacaoManejoResiduoController::class, 'update']);
+    Route::delete('/planilha/avaliacao-manejo-residuo/deletar', [App\Http\Controllers\Planilhas\PlanilhaAvaliacaoManejoResiduoController::class, 'destroy']);
+
     // Parametros
     Route::get('/parametros', [App\Http\Controllers\ParameterController::class, 'index']);
     Route::get('/parametro/listar', [App\Http\Controllers\ParameterController::class, 'list']);

@@ -100,6 +100,12 @@ function dateFormat(date)
     }
 }
 
+// Retorna sim ou não
+function simNao(param)
+{
+    return param==1?'Sim':'Não';
+}
+
 // automatização de funções do sweet alert 2
 function showError(text = "Ocorreu um erro!")
 {
