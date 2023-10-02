@@ -185,6 +185,56 @@ class ParameterSeeder extends Seeder
                 'id_unit' => null,
                 'status' => 'A'
             ],
+            // pragas
+            [
+                'id' => 24,
+                'id_parameter_type' => 12,
+                'name' => 'Barata',
+                'id_unit' => null,
+                'status' => 'A'
+            ],
+            [
+                'id' => 25,
+                'id_parameter_type' => 12,
+                'name' => 'Mosca',
+                'id_unit' => null,
+                'status' => 'A'
+            ],
+            [
+                'id' => 26,
+                'id_parameter_type' => 12,
+                'name' => 'Formiga',
+                'id_unit' => null,
+                'status' => 'A'
+            ],
+            [
+                'id' => 27,
+                'id_parameter_type' => 12,
+                'name' => 'Aranha',
+                'id_unit' => null,
+                'status' => 'A'
+            ],
+            [
+                'id' => 28,
+                'id_parameter_type' => 12,
+                'name' => 'Roedores',
+                'id_unit' => null,
+                'status' => 'A'
+            ],
+            [
+                'id' => 29,
+                'id_parameter_type' => 12,
+                'name' => 'Carunchos',
+                'id_unit' => null,
+                'status' => 'A'
+            ],
+            [
+                'id' => 30,
+                'id_parameter_type' => 12,
+                'name' => 'Outros',
+                'id_unit' => null,
+                'status' => 'A'
+            ],
 
         ]);
     }

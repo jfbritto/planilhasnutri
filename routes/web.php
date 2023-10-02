@@ -146,6 +146,22 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('/planilha/avaliacao-manejo-residuo/editar', [App\Http\Controllers\Planilhas\PlanilhaAvaliacaoManejoResiduoController::class, 'update']);
     Route::delete('/planilha/avaliacao-manejo-residuo/deletar', [App\Http\Controllers\Planilhas\PlanilhaAvaliacaoManejoResiduoController::class, 'destroy']);
 
+    // Planilha ocorrencia_praga
+    Route::get('/planilha/ocorrencia-praga', [App\Http\Controllers\Planilhas\PlanilhaOcorrenciaPragaController::class, 'index']);
+    Route::get('/planilha/ocorrencia-praga/listar', [App\Http\Controllers\Planilhas\PlanilhaOcorrenciaPragaController::class, 'list']);
+    Route::get('/planilha/ocorrencia-praga/encontrar', [App\Http\Controllers\Planilhas\PlanilhaOcorrenciaPragaController::class, 'find']);
+    Route::post('/planilha/ocorrencia-praga/cadastrar', [App\Http\Controllers\Planilhas\PlanilhaOcorrenciaPragaController::class, 'store']);
+    Route::put('/planilha/ocorrencia-praga/editar', [App\Http\Controllers\Planilhas\PlanilhaOcorrenciaPragaController::class, 'update']);
+    Route::delete('/planilha/ocorrencia-praga/deletar', [App\Http\Controllers\Planilhas\PlanilhaOcorrenciaPragaController::class, 'destroy']);
+
+    // Planilha temperatura_equipamento_area_climatizada
+    Route::get('/planilha/temperatura-equipamento-area-climatizada', [App\Http\Controllers\Planilhas\PlanilhaTemperaturaEquipamentoAreaClimatizadaController::class, 'index']);
+    Route::get('/planilha/temperatura-equipamento-area-climatizada/listar', [App\Http\Controllers\Planilhas\PlanilhaTemperaturaEquipamentoAreaClimatizadaController::class, 'list']);
+    Route::get('/planilha/temperatura-equipamento-area-climatizada/encontrar', [App\Http\Controllers\Planilhas\PlanilhaTemperaturaEquipamentoAreaClimatizadaController::class, 'find']);
+    Route::post('/planilha/temperatura-equipamento-area-climatizada/cadastrar', [App\Http\Controllers\Planilhas\PlanilhaTemperaturaEquipamentoAreaClimatizadaController::class, 'store']);
+    Route::put('/planilha/temperatura-equipamento-area-climatizada/editar', [App\Http\Controllers\Planilhas\PlanilhaTemperaturaEquipamentoAreaClimatizadaController::class, 'update']);
+    Route::delete('/planilha/temperatura-equipamento-area-climatizada/deletar', [App\Http\Controllers\Planilhas\PlanilhaTemperaturaEquipamentoAreaClimatizadaController::class, 'destroy']);
+
     // Parametros
     Route::get('/parametros', [App\Http\Controllers\ParameterController::class, 'index']);
     Route::get('/parametro/listar', [App\Http\Controllers\ParameterController::class, 'list']);
