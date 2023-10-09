@@ -21,7 +21,7 @@ class PlanilhaSaturacaoOleoGordura extends Model
         'acao_corretiva',
         'id_parameter_responsavel_acao',
         'leitura_fita',
-        'id_parameter_situacao_gordura',
+        'situacao_gordura',
         'id_parameter_responsavel',
         'id_user',
         'status'

@@ -5,7 +5,6 @@ $(document).ready(function () {
     loadGlobalParameters(4, 'id_parameter_equipamento');
     loadGlobalParameters(3, 'id_parameter_responsavel');
     loadGlobalParameters(3, 'id_parameter_responsavel_acao');
-    loadGlobalParameters(5, 'id_parameter_situacao_gordura');
 
     // LISTAGEM
     function loadsaturacao_oleo_gordura()
@@ -36,7 +35,7 @@ $(document).ready(function () {
                                             <td class="align-middle">${item.area}/${item.equipamento}</td>
                                             <td class="align-middle">${item.hora_primeira_afericao}</td>
                                             <td class="align-middle">${item.temperatura_primeira_afericao}</td>
-                                            <td class="align-middle">${item.id_parameter_situacao_gordura}</td>
+                                            <td class="align-middle">${item.situacao_gordura}</td>
                                             <td class="align-middle" style="text-align: right">
                                                 <a title="Editar"
                                                 data-id="${item.id}"
@@ -52,7 +51,7 @@ $(document).ready(function () {
                                                 data-acao_corretiva="${item.acao_corretiva}"
                                                 data-id_parameter_responsavel_acao="${item.id_parameter_responsavel_acao}"
                                                 data-leitura_fita="${item.leitura_fita}"
-                                                data-id_parameter_situacao_gordura="${item.id_parameter_situacao_gordura}"
+                                                data-situacao_gordura="${item.situacao_gordura}"
                                                 data-id_parameter_responsavel="${item.id_parameter_responsavel}"
                                                 href="#" class="btn btn-warning edit-saturacao_oleo_gordura"><i style="color: white" class="fas fa-edit"></i></a>
 
@@ -108,7 +107,7 @@ $(document).ready(function () {
                         acao_corretiva: $("#acao_corretiva").val(),
                         id_parameter_responsavel_acao: $("#id_parameter_responsavel_acao option:selected").val(),
                         leitura_fita: $("#leitura_fita").val(),
-                        id_parameter_situacao_gordura: $("#id_parameter_situacao_gordura option:selected").val(),
+                        situacao_gordura: $("#situacao_gordura option:selected").val(),
                         id_parameter_responsavel: $("#id_parameter_responsavel option:selected").val(),
                     })
                     .then(function (data) {
@@ -155,14 +154,13 @@ $(document).ready(function () {
         let acao_corretiva = $(this).data('acao_corretiva');
         let id_parameter_responsavel_acao = $(this).data('id_parameter_responsavel_acao');
         let leitura_fita = $(this).data('leitura_fita');
-        let id_parameter_situacao_gordura = $(this).data('id_parameter_situacao_gordura');
+        let situacao_gordura = $(this).data('situacao_gordura');
         let id_parameter_responsavel = $(this).data('id_parameter_responsavel');
 
         loadGlobalParameters(1, 'id_parameter_area_edit', id_parameter_area);
         loadGlobalParameters(4, 'id_parameter_equipamento_edit', id_parameter_equipamento);
         loadGlobalParameters(3, 'id_parameter_responsavel_edit', id_parameter_responsavel);
         loadGlobalParameters(3, 'id_parameter_responsavel_acao_edit', id_parameter_responsavel_acao);
-        loadGlobalParameters(5, 'id_parameter_situacao_gordura_edit', id_parameter_situacao_gordura);
 
         $("#id_edit").val(id);
         $("#usuario").val(usuario);
@@ -174,6 +172,7 @@ $(document).ready(function () {
         $("#temperatura_segunda_afericao_edit").val(temperatura_segunda_afericao);
         $("#acao_corretiva_edit").val(acao_corretiva);
         $("#leitura_fita_edit").val(leitura_fita);
+        $("#situacao_gordura_edit").val(situacao_gordura);
 
         $("#modalEditsaturacao_oleo_gordura").modal("show");
     });
@@ -203,7 +202,7 @@ $(document).ready(function () {
                             acao_corretiva: $("#acao_corretiva_edit").val(),
                             id_parameter_responsavel_acao: $("#id_parameter_responsavel_acao_edit option:selected").val(),
                             leitura_fita: $("#leitura_fita_edit").val(),
-                            id_parameter_situacao_gordura: $("#id_parameter_situacao_gordura_edit option:selected").val(),
+                            situacao_gordura: $("#situacao_gordura_edit option:selected").val(),
                             id_parameter_responsavel: $("#id_parameter_responsavel_edit option:selected").val(),
                         }
                     })

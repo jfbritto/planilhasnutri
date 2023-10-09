@@ -25,7 +25,7 @@ class CreatePlanilhaSaturacaoOleoGordurasTable extends Migration
             $table->string('acao_corretiva', 300);
             $table->integer('id_parameter_responsavel_acao');
             $table->string('leitura_fita', 10);
-            $table->integer('id_parameter_situacao_gordura');
+            $table->string('situacao_gordura', 10);
             $table->integer('id_parameter_responsavel');
             $table->integer('id_user');
             $table->string('status', 1)->default('A');

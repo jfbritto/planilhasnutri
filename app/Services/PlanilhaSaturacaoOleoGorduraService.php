@@ -50,7 +50,7 @@ class PlanilhaSaturacaoOleoGorduraService
                             'acao_corretiva' => $data['acao_corretiva'],
                             'id_parameter_responsavel_acao' => $data['id_parameter_responsavel_acao'],
                             'leitura_fita' => $data['leitura_fita'],
-                            'id_parameter_situacao_gordura' => $data['id_parameter_situacao_gordura'],
+                            'situacao_gordura' => $data['situacao_gordura'],
                             'id_parameter_responsavel' => $data['id_parameter_responsavel'],
                         ]);
 

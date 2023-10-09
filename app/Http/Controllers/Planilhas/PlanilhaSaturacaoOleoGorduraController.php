@@ -34,7 +34,7 @@ class PlanilhaSaturacaoOleoGorduraController extends Controller
             'acao_corretiva' => $request->acao_corretiva,
             'id_parameter_responsavel_acao' => $request->id_parameter_responsavel_acao,
             'leitura_fita' => $request->leitura_fita,
-            'id_parameter_situacao_gordura' => $request->id_parameter_situacao_gordura,
+            'situacao_gordura' => $request->situacao_gordura,
             'id_parameter_responsavel' => $request->id_parameter_responsavel
         ];
 
@@ -61,7 +61,7 @@ class PlanilhaSaturacaoOleoGorduraController extends Controller
             'acao_corretiva' => $request->acao_corretiva,
             'id_parameter_responsavel_acao' => $request->id_parameter_responsavel_acao,
             'leitura_fita' => $request->leitura_fita,
-            'id_parameter_situacao_gordura' => $request->id_parameter_situacao_gordura,
+            'situacao_gordura' => $request->situacao_gordura,
             'id_parameter_responsavel' => $request->id_parameter_responsavel
         ];
 
