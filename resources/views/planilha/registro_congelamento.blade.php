@@ -17,7 +17,7 @@
             @if(auth()->user()->id_unit)
                 <h3 class="card-title"> </h3>
                 <div class="card-tools">
-                    <a href="#" class="btn btn-tool btn-sm" data-toggle="modal" data-target="#modalStoreplanilha_registro_congelamento">
+                    <a href="#" class="btn btn-tool btn-sm" data-toggle="modal" data-target="#modalStoreregistro_congelamento">
                     <i class="fas fa-plus"></i>
                     </a>
                 </div>
@@ -43,7 +43,7 @@
         </div>
     </div>
 
-    <div class="modal fade" tabindex="-1" role="dialog" id="modalStoreplanilha_registro_congelamento">
+    <div class="modal fade" tabindex="-1" role="dialog" id="modalStoreregistro_congelamento">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
             <div class="modal-header">
@@ -54,7 +54,7 @@
             </div>
             <div class="modal-body">
 
-                <form id="formStoreplanilha_registro_congelamento">
+                <form id="formStoreregistro_congelamento">
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
@@ -97,13 +97,13 @@
 
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary" form="formStoreplanilha_registro_congelamento">Salvar</button>
+                <button type="submit" class="btn btn-primary" form="formStoreregistro_congelamento">Salvar</button>
             </div>
             </div>
         </div>
     </div>
 
-    <div class="modal fade" tabindex="-1" role="dialog" id="modalEditplanilha_registro_congelamento">
+    <div class="modal fade" tabindex="-1" role="dialog" id="modalEditregistro_congelamento">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
             <div class="modal-header">
@@ -114,7 +114,7 @@
             </div>
             <div class="modal-body">
 
-                <form id="formEditplanilha_registro_congelamento">
+                <form id="formEditregistro_congelamento">
                     <input type="hidden" required name="id_edit" id="id_edit">
                     <div class="row">
                         <div class="col-md-4">
@@ -170,7 +170,7 @@
 
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary" form="formEditplanilha_registro_congelamento">Salvar</button>
+                <button type="submit" class="btn btn-primary" form="formEditregistro_congelamento">Salvar</button>
             </div>
             </div>
         </div>
@@ -179,5 +179,5 @@
 @stop
 
 @section('js')
-    <script src="/js/planilha/planilha_registro_congelamento.js"></script>
+    <script src="/js/planilha/registro_congelamento.js"></script>
 @stop

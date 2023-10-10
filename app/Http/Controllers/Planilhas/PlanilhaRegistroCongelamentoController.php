@@ -17,7 +17,7 @@ class PlanilhaRegistroCongelamentoController extends Controller
 
     public function index()
     {
-        return view('planilha.planilha_registro_congelamento');
+        return view('planilha.registro_congelamento');
     }
 
     public function store(Request $request)

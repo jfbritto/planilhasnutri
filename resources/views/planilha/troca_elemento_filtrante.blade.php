@@ -13,6 +13,27 @@
 @section('content')
 
     <div class="card">
+        <div class="card-body border-0">
+            <form id="formFiltrotroca_elemento_filtrante">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="mes_troca">Mês da troca</label>
+                            <input type="month" value="{{now()->format('Y-m')}}" required name="mes_troca" id="mes_troca" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="mes_proxima_troca">Mês da próxima troca</label>
+                            <input type="month" required name="mes_proxima_troca" id="mes_proxima_troca" class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="card">
         <div class="card-header border-0">
             @if(auth()->user()->id_unit)
                 <h3 class="card-title"> </h3>
@@ -23,7 +44,7 @@
                 </div>
             @endif
         </div>
-        <div class="card-body p-0">
+        <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-striped table-valign-middle table-hover table-sm">
                     <thead>

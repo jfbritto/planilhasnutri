@@ -127,6 +127,18 @@
                                 <input type="text" required name="cardapio_edit" id="cardapio_edit" class="form-control">
                             </div>
                         </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="usuario">Nutricionista</label>
+                                <input type="text" name="usuario" id="usuario" class="form-control" readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="unidade">Unidade</label>
+                                <input type="text" name="unidade" id="unidade" class="form-control" readonly>
+                            </div>
+                        </div>
                     </div>
                 </form>
 

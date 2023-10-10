@@ -1,11 +1,11 @@
 $(document).ready(function () {
 
-    loadplanilha_registro_limpeza();
+    loadregistro_limpeza();
     loadGlobalParameters(7, 'id_parameter_local');
     loadGlobalParameters(3, 'id_parameter_responsavel');
 
     // LISTAGEM
-    function loadplanilha_registro_limpeza()
+    function loadregistro_limpeza()
     {
         Swal.queue([
             {
@@ -47,8 +47,8 @@ $(document).ready(function () {
                                                 data-superficie_limpa="${item.superficie_limpa}"
                                                 data-frequencia="${item.frequencia}"
                                                 data-conforme_naoconforme="${item.conforme_naoconforme}"
-                                                data-comentarios="${item.comentarios}" href="#" class="btn btn-warning edit-planilha_registro_limpeza"><i style="color: white" class="fas fa-edit"></i></a>
-                                                <a title="Deletar" data-id="${item.id}" href="#" class="btn btn-danger delete-planilha_registro_limpeza"><i class="fas fa-trash-alt"></i></a>
+                                                data-comentarios="${item.comentarios}" href="#" class="btn btn-warning edit-registro_limpeza"><i style="color: white" class="fas fa-edit"></i></a>
+                                                <a title="Deletar" data-id="${item.id}" href="#" class="btn btn-danger delete-registro_limpeza"><i class="fas fa-trash-alt"></i></a>
                                             </td>
                                         </tr>
                                     `);
@@ -78,7 +78,7 @@ $(document).ready(function () {
     }
 
     // CADASTRO
-    $("#formStoreplanilha_registro_limpeza").submit(function (e) {
+    $("#formStoreregistro_limpeza").submit(function (e) {
         e.preventDefault();
 
         Swal.queue([
@@ -101,13 +101,13 @@ $(document).ready(function () {
                     .then(function (data) {
                         if (data.status == "success") {
 
-                            $("#formStoreplanilha_registro_limpeza").each(function () {
+                            $("#formStoreregistro_limpeza").each(function () {
                                 this.reset();
                             });
 
-                            $("#modalStoreplanilha_registro_limpeza").modal("hide");
+                            $("#modalStoreregistro_limpeza").modal("hide");
 
-                            showSuccess("Cadastro efetuado!", null, loadplanilha_registro_limpeza)
+                            showSuccess("Cadastro efetuado!", null, loadregistro_limpeza)
                         } else if (data.status == "error") {
                             showError(data.message)
                         }
@@ -126,7 +126,7 @@ $(document).ready(function () {
 
 
     // EDIÇÃO
-    $("#list").on("click", ".edit-planilha_registro_limpeza", function(){
+    $("#list").on("click", ".edit-registro_limpeza", function(){
 
         let id = $(this).data('id');
         let usuario = $(this).data('usuario');
@@ -151,10 +151,10 @@ $(document).ready(function () {
         $("#conforme_naoconforme_edit").val(conforme_naoconforme);
         $("#comentarios_edit").val(comentarios);
 
-        $("#modalEditplanilha_registro_limpeza").modal("show");
+        $("#modalEditregistro_limpeza").modal("show");
     });
 
-    $("#formEditplanilha_registro_limpeza").submit(function (e) {
+    $("#formEditregistro_limpeza").submit(function (e) {
         e.preventDefault();
 
         Swal.queue([
@@ -181,13 +181,13 @@ $(document).ready(function () {
                         .then(function (data) {
                             if (data.status == "success") {
 
-                                $("#formEditplanilha_registro_limpeza").each(function () {
+                                $("#formEditregistro_limpeza").each(function () {
                                     this.reset();
                                 });
 
-                                $("#modalEditplanilha_registro_limpeza").modal("hide");
+                                $("#modalEditregistro_limpeza").modal("hide");
 
-                                showSuccess("Edição efetuada!", null, loadplanilha_registro_limpeza)
+                                showSuccess("Edição efetuada!", null, loadregistro_limpeza)
                             } else if (data.status == "error") {
                                 showError(data.message)
                             }
@@ -204,7 +204,7 @@ $(document).ready(function () {
 
 
     // "DELETAR"
-    $("#list").on("click", ".delete-planilha_registro_limpeza", function(){
+    $("#list").on("click", ".delete-registro_limpeza", function(){
 
         let id = $(this).data('id');
 
@@ -235,7 +235,7 @@ $(document).ready(function () {
                                     .then(function (data) {
                                         if (data.status == "success") {
 
-                                            showSuccess("Deletado com sucesso!", null, loadplanilha_registro_limpeza)
+                                            showSuccess("Deletado com sucesso!", null, loadregistro_limpeza)
                                         } else if (data.status == "error") {
                                             showError(data.message)
                                         }

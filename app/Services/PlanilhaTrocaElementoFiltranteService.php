@@ -83,7 +83,7 @@ class PlanilhaTrocaElementoFiltranteService
         return $response;
     }
 
-    public function list()
+    public function list($filter_array)
     {
         $response = [];
 
@@ -92,6 +92,18 @@ class PlanilhaTrocaElementoFiltranteService
             $condition = "";
             if (auth()->user()->id_unit) {
                 $condition = " and us.id_unit = ".auth()->user()->id_unit;
+            }
+
+            $filter = "";
+            if (!empty($filter_array['mes_troca'])) {
+                $data_ini = date('Y-m-01', strtotime($filter_array['mes_troca']));
+                $data_fim = date('Y-m-t', strtotime($filter_array['mes_troca']));
+                $filter .= " and ptef.data_troca between '{$data_ini}' and '{$data_fim}'";
+            }
+            if (!empty($filter_array['mes_proxima_troca'])) {
+                $data_ini = date('Y-m-01', strtotime($filter_array['mes_proxima_troca']));
+                $data_fim = date('Y-m-t', strtotime($filter_array['mes_proxima_troca']));
+                $filter .= " and ptef.data_proxima_troca between '{$data_ini}' and '{$data_fim}'";
             }
 
             $return = DB::select( DB::raw("SELECT
@@ -109,7 +121,7 @@ class PlanilhaTrocaElementoFiltranteService
                                                 JOIN users us ON ptef.id_user = us.id {$condition}
                                                 LEFT JOIN units un ON us.id_unit = un.id
                                             WHERE
-                                                ptef.status = 'A'
+                                                ptef.status = 'A' {$filter}
                                             ORDER BY
                                                 ptef.data_troca DESC"));
 

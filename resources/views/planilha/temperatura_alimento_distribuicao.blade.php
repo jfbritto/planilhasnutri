@@ -336,6 +336,18 @@
                                 <select type="text" required name="id_parameter_responsavel_edit" id="id_parameter_responsavel_edit" class="form-control"></select>
                             </div>
                         </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="usuario">Nutricionista</label>
+                                <input type="text" name="usuario" id="usuario" class="form-control" readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="unidade">Unidade</label>
+                                <input type="text" name="unidade" id="unidade" class="form-control" readonly>
+                            </div>
+                        </div>
                     </div>
                 </form>
 

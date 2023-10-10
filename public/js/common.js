@@ -150,6 +150,7 @@ function loadGlobalParameters(id, element, idSelected = null)
                     }
 
                     $(`#${element}`).append(`<option ${selected} value="${item.id}">${item.name}</option>`);
+                    // $(`#${element}`).select2();
                 });
             } else {
                 $(`#${element}`).append(`<option>Nenhum item encontrado</option>`);
@@ -252,4 +253,15 @@ function cadastrarPlanilha(
         },
     ]);
 
+}
+
+
+function dataTable(table) {
+    setTimeout(() => {
+        $(`#${table}`).DataTable( {
+            language: {
+                url: 'http://cdn.datatables.net/plug-ins/1.13.4/i18n/pt-BR.json'
+            }
+        } );
+    }, 100);
 }

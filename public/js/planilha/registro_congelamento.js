@@ -1,10 +1,10 @@
 $(document).ready(function () {
 
-    loadplanilha_registro_congelamento();
+    loadregistro_congelamento();
     loadGlobalParameters(8, 'id_parameter_produto');
 
     // LISTAGEM
-    function loadplanilha_registro_congelamento()
+    function loadregistro_congelamento()
     {
         Swal.queue([
             {
@@ -44,8 +44,8 @@ $(document).ready(function () {
                                                 data-quantidade="${item.quantidade}"
                                                 data-data_recebimento="${item.data_recebimento}"
                                                 data-data_fabricacao="${item.data_fabricacao}"
-                                                data-alergeno="${item.alergeno}" href="#" class="btn btn-warning edit-planilha_registro_congelamento"><i style="color: white" class="fas fa-edit"></i></a>
-                                                <a title="Deletar" data-id="${item.id}" href="#" class="btn btn-danger delete-planilha_registro_congelamento"><i class="fas fa-trash-alt"></i></a>
+                                                data-alergeno="${item.alergeno}" href="#" class="btn btn-warning edit-registro_congelamento"><i style="color: white" class="fas fa-edit"></i></a>
+                                                <a title="Deletar" data-id="${item.id}" href="#" class="btn btn-danger delete-registro_congelamento"><i class="fas fa-trash-alt"></i></a>
                                             </td>
                                         </tr>
                                     `);
@@ -75,7 +75,7 @@ $(document).ready(function () {
     }
 
     // CADASTRO
-    $("#formStoreplanilha_registro_congelamento").submit(function (e) {
+    $("#formStoreregistro_congelamento").submit(function (e) {
         e.preventDefault();
 
         Swal.queue([
@@ -97,13 +97,13 @@ $(document).ready(function () {
                     .then(function (data) {
                         if (data.status == "success") {
 
-                            $("#formStoreplanilha_registro_congelamento").each(function () {
+                            $("#formStoreregistro_congelamento").each(function () {
                                 this.reset();
                             });
 
-                            $("#modalStoreplanilha_registro_congelamento").modal("hide");
+                            $("#modalStoreregistro_congelamento").modal("hide");
 
-                            showSuccess("Cadastro efetuado!", null, loadplanilha_registro_congelamento)
+                            showSuccess("Cadastro efetuado!", null, loadregistro_congelamento)
                         } else if (data.status == "error") {
                             showError(data.message)
                         }
@@ -122,7 +122,7 @@ $(document).ready(function () {
 
 
     // EDIÇÃO
-    $("#list").on("click", ".edit-planilha_registro_congelamento", function(){
+    $("#list").on("click", ".edit-registro_congelamento", function(){
 
         let id = $(this).data('id');
         let usuario = $(this).data('usuario');
@@ -145,10 +145,10 @@ $(document).ready(function () {
         $("#data_fabricacao_edit").val(data_fabricacao);
         $("#alergeno_edit").val(alergeno);
 
-        $("#modalEditplanilha_registro_congelamento").modal("show");
+        $("#modalEditregistro_congelamento").modal("show");
     });
 
-    $("#formEditplanilha_registro_congelamento").submit(function (e) {
+    $("#formEditregistro_congelamento").submit(function (e) {
         e.preventDefault();
 
         Swal.queue([
@@ -174,13 +174,13 @@ $(document).ready(function () {
                         .then(function (data) {
                             if (data.status == "success") {
 
-                                $("#formEditplanilha_registro_congelamento").each(function () {
+                                $("#formEditregistro_congelamento").each(function () {
                                     this.reset();
                                 });
 
-                                $("#modalEditplanilha_registro_congelamento").modal("hide");
+                                $("#modalEditregistro_congelamento").modal("hide");
 
-                                showSuccess("Edição efetuada!", null, loadplanilha_registro_congelamento)
+                                showSuccess("Edição efetuada!", null, loadregistro_congelamento)
                             } else if (data.status == "error") {
                                 showError(data.message)
                             }
@@ -197,7 +197,7 @@ $(document).ready(function () {
 
 
     // "DELETAR"
-    $("#list").on("click", ".delete-planilha_registro_congelamento", function(){
+    $("#list").on("click", ".delete-registro_congelamento", function(){
 
         let id = $(this).data('id');
 
@@ -228,7 +228,7 @@ $(document).ready(function () {
                                     .then(function (data) {
                                         if (data.status == "success") {
 
-                                            showSuccess("Deletado com sucesso!", null, loadplanilha_registro_congelamento)
+                                            showSuccess("Deletado com sucesso!", null, loadregistro_congelamento)
                                         } else if (data.status == "error") {
                                             showError(data.message)
                                         }

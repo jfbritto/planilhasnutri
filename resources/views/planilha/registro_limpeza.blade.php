@@ -17,7 +17,7 @@
             @if(auth()->user()->id_unit)
                 <h3 class="card-title"> </h3>
                 <div class="card-tools">
-                    <a href="#" class="btn btn-tool btn-sm" data-toggle="modal" data-target="#modalStoreplanilha_registro_limpeza">
+                    <a href="#" class="btn btn-tool btn-sm" data-toggle="modal" data-target="#modalStoreregistro_limpeza">
                     <i class="fas fa-plus"></i>
                     </a>
                 </div>
@@ -44,7 +44,7 @@
         </div>
     </div>
 
-    <div class="modal fade" tabindex="-1" role="dialog" id="modalStoreplanilha_registro_limpeza">
+    <div class="modal fade" tabindex="-1" role="dialog" id="modalStoreregistro_limpeza">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
             <div class="modal-header">
@@ -55,7 +55,7 @@
             </div>
             <div class="modal-body">
 
-                <form id="formStoreplanilha_registro_limpeza">
+                <form id="formStoreregistro_limpeza">
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
@@ -108,13 +108,13 @@
 
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary" form="formStoreplanilha_registro_limpeza">Salvar</button>
+                <button type="submit" class="btn btn-primary" form="formStoreregistro_limpeza">Salvar</button>
             </div>
             </div>
         </div>
     </div>
 
-    <div class="modal fade" tabindex="-1" role="dialog" id="modalEditplanilha_registro_limpeza">
+    <div class="modal fade" tabindex="-1" role="dialog" id="modalEditregistro_limpeza">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
             <div class="modal-header">
@@ -125,7 +125,7 @@
             </div>
             <div class="modal-body">
 
-                <form id="formEditplanilha_registro_limpeza">
+                <form id="formEditregistro_limpeza">
                     <input type="hidden" required name="id_edit" id="id_edit">
                     <div class="row">
                         <div class="col-md-4">
@@ -174,12 +174,24 @@
                                 <input type="text" required name="comentarios_edit" id="comentarios_edit" class="form-control">
                             </div>
                         </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="usuario">Nutricionista</label>
+                                <input type="text" name="usuario" id="usuario" class="form-control" readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="unidade">Unidade</label>
+                                <input type="text" name="unidade" id="unidade" class="form-control" readonly>
+                            </div>
+                        </div>
                     </div>
                 </form>
 
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary" form="formEditplanilha_registro_limpeza">Salvar</button>
+                <button type="submit" class="btn btn-primary" form="formEditregistro_limpeza">Salvar</button>
             </div>
             </div>
         </div>
@@ -188,5 +200,5 @@
 @stop
 
 @section('js')
-    <script src="/js/planilha/planilha_registro_limpeza.js"></script>
+    <script src="/js/planilha/registro_limpeza.js"></script>
 @stop

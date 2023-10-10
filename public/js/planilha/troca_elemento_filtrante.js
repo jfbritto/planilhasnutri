@@ -16,7 +16,8 @@ $(document).ready(function () {
                 onOpen: () => {
                     Swal.showLoading();
                     $.get(window.location.origin + "/planilha/troca-elemento-filtrante/listar", {
-
+                        mes_troca : $("#mes_troca").val(),
+                        mes_proxima_troca : $("#mes_proxima_troca").val(),
                     })
                     .then(function (data) {
                         if (data.status == "success") {
@@ -233,6 +234,13 @@ $(document).ready(function () {
                 }
             })
 
+    });
+
+    $("#formFiltrotroca_elemento_filtrante").change(function (e) {
+        e.preventDefault();
+
+        loadtroca_elemento_filtrante()
+        // console.log($("#mes").val())
     });
 
 });

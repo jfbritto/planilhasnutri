@@ -17,7 +17,7 @@ class PlanilhaRegistroLimpezaController extends Controller
 
     public function index()
     {
-        return view('planilha.planilha_registro_limpeza');
+        return view('planilha.registro_limpeza');
     }
 
     public function store(Request $request)
