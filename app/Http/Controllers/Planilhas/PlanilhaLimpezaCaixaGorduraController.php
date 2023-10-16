@@ -25,7 +25,7 @@ class PlanilhaLimpezaCaixaGorduraController extends Controller
         $data = [
             'id_user' => auth()->user()->id,
             'id_parameter_caixa_gordura' => $request->id_parameter_caixa_gordura,
-            'id_parameter_local' => $request->id_parameter_local,
+            'id_parameter_area' => $request->id_parameter_area,
             'id_parameter_responsavel' => $request->id_parameter_responsavel,
             'data_limpeza' => $request->data_limpeza,
             'data_proxima_limpeza' => $request->data_proxima_limpeza
@@ -44,7 +44,7 @@ class PlanilhaLimpezaCaixaGorduraController extends Controller
         $data = [
             'id' => $request->id,
             'id_parameter_caixa_gordura' => $request->id_parameter_caixa_gordura,
-            'id_parameter_local' => $request->id_parameter_local,
+            'id_parameter_area' => $request->id_parameter_area,
             'id_parameter_responsavel' => $request->id_parameter_responsavel,
             'data_limpeza' => $request->data_limpeza,
             'data_proxima_limpeza' => $request->data_proxima_limpeza

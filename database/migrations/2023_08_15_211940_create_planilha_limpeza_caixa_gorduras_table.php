@@ -16,7 +16,7 @@ class CreatePlanilhaLimpezaCaixaGordurasTable extends Migration
         Schema::create('planilha_limpeza_caixa_gorduras', function (Blueprint $table) {
             $table->id();
             $table->integer('id_parameter_caixa_gordura');
-            $table->integer('id_parameter_local');
+            $table->integer('id_parameter_area');
             $table->integer('id_parameter_responsavel');
             $table->date('data_limpeza');
             $table->date('data_proxima_limpeza');

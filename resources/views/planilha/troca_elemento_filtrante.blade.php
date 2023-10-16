@@ -4,10 +4,10 @@
     <link rel="icon" href="/img/building.png" type="image/png">
 @stop
 
-@section('title', 'Troca de Elemento Filtrante')
+@section('title', 'Controle de Troca do Elemento Filtrante')
 
 @section('content_header')
-    <h1><i class="fas fa-file"></i> &nbsp;Troca de Elemento Filtrante</h1>
+    <h1><i class="fas fa-file"></i> &nbsp;Controle de Troca do Elemento Filtrante</h1>
 @stop
 
 @section('content')
@@ -16,6 +16,12 @@
         <div class="card-body border-0">
             <form id="formFiltrotroca_elemento_filtrante">
                 <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="id_parameter_area_filter">Área</label>
+                            <select required name="id_parameter_area_filter" id="id_parameter_area_filter" class="form-control"></select>
+                        </div>
+                    </div>
                     <div class="col-md-3">
                         <div class="form-group">
                             <label for="mes_troca">Mês da troca</label>
@@ -38,8 +44,11 @@
             @if(auth()->user()->id_unit)
                 <h3 class="card-title"> </h3>
                 <div class="card-tools">
-                    <a href="#" class="btn btn-tool btn-sm" data-toggle="modal" data-target="#modalStoretroca_elemento_filtrante">
-                    <i class="fas fa-plus"></i>
+                    <a href="#" class="btn btn-tool btn-sm" id="abrirPDF" title="Visualizar planilha">
+                        <i class="fas fa-file-pdf"></i>
+                    </a>
+                    <a href="#" class="btn btn-tool btn-sm" data-toggle="modal" data-target="#modalStoretroca_elemento_filtrante" title="Adicionar novo item">
+                        <i class="fas fa-plus"></i>
                     </a>
                 </div>
             @endif
@@ -67,7 +76,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Cadastrar: Troca de Elemento Filtrante</h5>
+                <h5 class="modal-title">Cadastrar: Controle de Troca do Elemento Filtrante</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
@@ -79,19 +88,19 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="id_parameter_area">Área</label>
-                                <select type="text" required name="id_parameter_area" id="id_parameter_area" class="form-control"></select>
+                                <select required name="id_parameter_area" id="id_parameter_area" class="form-control"></select>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="id_parameter_filtro">Filtro</label>
-                                <select type="text" required name="id_parameter_filtro" id="id_parameter_filtro" class="form-control"></select>
+                                <select required name="id_parameter_filtro" id="id_parameter_filtro" class="form-control"></select>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="id_parameter_responsavel">Responsável</label>
-                                <select type="text" required name="id_parameter_responsavel" id="id_parameter_responsavel" class="form-control"></select>
+                                <select required name="id_parameter_responsavel" id="id_parameter_responsavel" class="form-control"></select>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -121,7 +130,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Editar: Troca de Elemento Filtrante</h5>
+                <h5 class="modal-title">Editar: Controle de Troca do Elemento Filtrante</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
@@ -134,19 +143,19 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="id_parameter_area_edit">Área</label>
-                                <select type="text" required name="id_parameter_area_edit" id="id_parameter_area_edit" class="form-control"></select>
+                                <select required name="id_parameter_area_edit" id="id_parameter_area_edit" class="form-control"></select>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="id_parameter_filtro_edit">Filtro</label>
-                                <select type="text" required name="id_parameter_filtro_edit" id="id_parameter_filtro_edit" class="form-control"></select>
+                                <select required name="id_parameter_filtro_edit" id="id_parameter_filtro_edit" class="form-control"></select>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="id_parameter_responsavel_edit">Responsável</label>
-                                <select type="text" required name="id_parameter_responsavel_edit" id="id_parameter_responsavel_edit" class="form-control"></select>
+                                <select required name="id_parameter_responsavel_edit" id="id_parameter_responsavel_edit" class="form-control"></select>
                             </div>
                         </div>
                         <div class="col-md-6">

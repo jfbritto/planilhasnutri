@@ -12,7 +12,7 @@ class PlanilhaLimpezaCaixaGordura extends Model
     protected $fillable = [
         'id',
         'id_parameter_caixa_gordura',
-        'id_parameter_local',
+        'id_parameter_area',
         'id_parameter_responsavel',
         'data_limpeza',
         'data_proxima_limpeza',

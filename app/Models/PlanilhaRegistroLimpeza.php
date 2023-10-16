@@ -13,7 +13,7 @@ class PlanilhaRegistroLimpeza extends Model
         'id',
         'data',
         'id_parameter_responsavel',
-        'id_parameter_local',
+        'id_parameter_area',
         'superficie_limpa',
         'frequencia',
         'conforme_naoconforme',

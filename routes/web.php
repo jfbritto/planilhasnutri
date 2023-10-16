@@ -25,6 +25,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/planilha/troca-elemento-filtrante/cadastrar', [App\Http\Controllers\Planilhas\PlanilhaTrocaElementoFiltranteController::class, 'store']);
     Route::put('/planilha/troca-elemento-filtrante/editar', [App\Http\Controllers\Planilhas\PlanilhaTrocaElementoFiltranteController::class, 'update']);
     Route::delete('/planilha/troca-elemento-filtrante/deletar', [App\Http\Controllers\Planilhas\PlanilhaTrocaElementoFiltranteController::class, 'destroy']);
+    Route::get('/planilha/troca-elemento-filtrante/visualizar', [App\Http\Controllers\Planilhas\PlanilhaTrocaElementoFiltranteController::class, 'gerarPDF']);
 
     // Planilha higienizacao-filtro-aparelho-climatizacao
     Route::get('/planilha/higienizacao-filtro-aparelho-climatizacao', [App\Http\Controllers\Planilhas\PlanilhaHigienizacaoFiltrosAparelhosClimatizacaoController::class, 'index']);

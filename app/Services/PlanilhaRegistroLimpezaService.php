@@ -42,7 +42,7 @@ class PlanilhaRegistroLimpezaService
                         ->update([
                             'data' => $data['data'],
                             'id_parameter_responsavel' => $data['id_parameter_responsavel'],
-                            'id_parameter_local' => $data['id_parameter_local'],
+                            'id_parameter_area' => $data['id_parameter_area'],
                             'superficie_limpa' => $data['superficie_limpa'],
                             'frequencia' => $data['frequencia'],
                             'conforme_naoconforme' => $data['conforme_naoconforme'],
@@ -99,12 +99,12 @@ class PlanilhaRegistroLimpezaService
             $return = DB::select( DB::raw("SELECT
                                                 us.name as usuario,
                                                 ifnull(un.name, 'Controle') as unidade,
-                                                p_lo.name as nome_local,
+                                                p_ar.name as area,
                                                 p_re.name as responsavel,
                                                 prl.*
                                             FROM
                                                 planilha_registro_limpezas prl
-                                                JOIN parameters p_lo ON prl.id_parameter_local = p_lo.id
+                                                JOIN parameters p_ar ON prl.id_parameter_area = p_ar.id
                                                 JOIN parameters p_re ON prl.id_parameter_responsavel = p_re.id
                                                 JOIN users us ON prl.id_user = us.id {$condition}
                                                 LEFT JOIN units un ON us.id_unit = un.id

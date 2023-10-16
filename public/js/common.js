@@ -128,9 +128,22 @@ function showSuccess(title = null, text = null, functions = null, param = null)
 
 }
 
-// LISTAR PARAMETROS
-function loadGlobalParameters(id, element, idSelected = null)
-{
+/**
+ * Carregar o select na tela
+ *
+ * @param {int} id
+ * @param {*} element
+ * @param {*} idSelected
+ * @param {*} filtro
+ * @param {*} feminino
+ */
+function loadGlobalParameters(
+    id,
+    element,
+    idSelected = null,
+    filtro = false,
+    feminino = true
+) {
     $.get(window.location.origin + "/parametro/encontrar", {
         id_parameter_type:id
     })
@@ -141,7 +154,16 @@ function loadGlobalParameters(id, element, idSelected = null)
             $(`#${element}`).html(``);
 
             if(data.data.length > 0){
-                $(`#${element}`).append(`<option>-- Selecione --</option>`);
+                if (filtro) {
+                    if (feminino) {
+                        $(`#${element}`).append(`<option value="">Todas</option>`);
+                    } else {
+                        $(`#${element}`).append(`<option value="">Todos</option>`);
+                    }
+                } else {
+                    $(`#${element}`).append(`<option value="">-- Selecione --</option>`);
+                }
+
                 data.data.forEach(item => {
 
                     let selected = ``;
@@ -255,7 +277,6 @@ function cadastrarPlanilha(
 
 }
 
-
 function dataTable(table) {
     setTimeout(() => {
         $(`#${table}`).DataTable( {
@@ -264,4 +285,32 @@ function dataTable(table) {
             }
         } );
     }, 100);
+}
+
+/**
+ * Preenche o campo com a diferença de meses informada
+ *
+ * @param {string} campo1
+ * @param {string} campo2
+ * @param {int} meses_add
+ */
+function preencherProximaData(campo1, campo2, meses_add = 6) {
+    // Obtém o valor da data inicial
+    let data_inicial = $(`#${campo1}`).val();
+
+    // Verifica se a data inicial é válida
+    if (data_inicial) {
+        // Adiciona x meses à data inicial usando o jQuery
+        let data_final = new Date(data_inicial);
+        data_final.setMonth(data_final.getMonth() + meses_add);
+
+        // Formata a data final para o formato "yyyy-MM-dd"
+        let ano = data_final.getFullYear();
+        let mes = ("0" + (data_final.getMonth() + 1)).slice(-2);
+        let dia = ("0" + data_final.getDate()).slice(-2);
+        let data_final_formatada = ano + "-" + mes + "-" + dia;
+
+        // Define a data final no campo de entrada de data final usando jQuery
+        $(`#${campo2}`).val(data_final_formatada);
+    }
 }

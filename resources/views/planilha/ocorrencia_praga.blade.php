@@ -29,7 +29,7 @@
                     <thead>
                         <tr>
                             <th>Data</th>
-                            <th>Local</th>
+                            <th>Area</th>
                             <th>Praga</th>
                             <th>Observação</th>
                             <th></th>

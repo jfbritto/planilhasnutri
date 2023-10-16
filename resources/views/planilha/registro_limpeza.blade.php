@@ -29,7 +29,7 @@
                     <thead>
                         <tr>
                             <th>Data</th>
-                            <th>Local</th>
+                            <th>Area</th>
                             <th>Superfície Limpa</th>
                             <th>Frequência</th>
                             <th>Conforme?</th>
@@ -71,8 +71,8 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="id_parameter_local">Local</label>
-                                <select type="text" required name="id_parameter_local" id="id_parameter_local" class="form-control"></select>
+                                <label for="id_parameter_area">Area</label>
+                                <select type="text" required name="id_parameter_area" id="id_parameter_area" class="form-control"></select>
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -142,8 +142,8 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="id_parameter_local_edit">Local</label>
-                                <select type="text" required name="id_parameter_local_edit" id="id_parameter_local_edit" class="form-control"></select>
+                                <label for="id_parameter_area_edit">Area</label>
+                                <select type="text" required name="id_parameter_area_edit" id="id_parameter_area_edit" class="form-control"></select>
                             </div>
                         </div>
                         <div class="col-md-3">

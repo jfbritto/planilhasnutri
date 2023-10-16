@@ -105,6 +105,9 @@ class PlanilhaTrocaElementoFiltranteService
                 $data_fim = date('Y-m-t', strtotime($filter_array['mes_proxima_troca']));
                 $filter .= " and ptef.data_proxima_troca between '{$data_ini}' and '{$data_fim}'";
             }
+            if (!empty($filter_array['id_parameter_area'])) {
+                $filter .= " and ptef.id_parameter_area = {$filter_array['id_parameter_area']}";
+            }
 
             $return = DB::select( DB::raw("SELECT
                                                 us.name as usuario,

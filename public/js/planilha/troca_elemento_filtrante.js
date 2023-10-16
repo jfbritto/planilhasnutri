@@ -5,6 +5,9 @@ $(document).ready(function () {
     loadGlobalParameters(2, 'id_parameter_filtro');
     loadGlobalParameters(3, 'id_parameter_responsavel');
 
+    // Carregar filtros
+    loadGlobalParameters(1, 'id_parameter_area_filter', null, true);
+
     // LISTAGEM
     function loadtroca_elemento_filtrante()
     {
@@ -18,6 +21,7 @@ $(document).ready(function () {
                     $.get(window.location.origin + "/planilha/troca-elemento-filtrante/listar", {
                         mes_troca : $("#mes_troca").val(),
                         mes_proxima_troca : $("#mes_proxima_troca").val(),
+                        id_parameter_area : $("#id_parameter_area_filter option:selected").val(),
                     })
                     .then(function (data) {
                         if (data.status == "success") {
@@ -238,9 +242,26 @@ $(document).ready(function () {
 
     $("#formFiltrotroca_elemento_filtrante").change(function (e) {
         e.preventDefault();
-
         loadtroca_elemento_filtrante()
-        // console.log($("#mes").val())
+    });
+
+    $("#data_troca").change(function (e) {
+        e.preventDefault();
+        preencherProximaData('data_troca', 'data_proxima_troca')
     });
 
 });
+
+$("#abrirPDF").click(function(event) {
+    event.preventDefault();
+
+    montaUrlPdf();
+});
+
+function montaUrlPdf() {
+    let url = window.location.origin + "/planilha/troca-elemento-filtrante/visualizar";
+
+    url += `?mes_troca=${$("#mes_troca").val()}&mes_proxima_troca=${$("#mes_proxima_troca").val()}&id_parameter_area=${$("#id_parameter_area_filter option:selected").val()}`;
+
+    window.open(url, '_blank');
+}

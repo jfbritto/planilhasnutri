@@ -41,7 +41,7 @@ class PlanilhaLimpezaCaixaGorduraService
                         ->where('id', $data['id'])
                         ->update([
                             'id_parameter_caixa_gordura' => $data['id_parameter_caixa_gordura'],
-                            'id_parameter_local' => $data['id_parameter_local'],
+                            'id_parameter_area' => $data['id_parameter_area'],
                             'id_parameter_responsavel' => $data['id_parameter_responsavel'],
                             'data_limpeza' => $data['data_limpeza'],
                             'data_proxima_limpeza' => $data['data_proxima_limpeza'],
@@ -98,13 +98,13 @@ class PlanilhaLimpezaCaixaGorduraService
                                                 us.name as usuario,
                                                 ifnull(un.name, 'Controle') as unidade,
                                                 p_cg.name as caixa_gordura,
-                                                p_lo.name as nome_local,
+                                                p_ar.name as area,
                                                 p_re.name as responsavel,
                                                 plcg.*
                                             FROM
                                                 planilha_limpeza_caixa_gorduras plcg
                                                 JOIN parameters p_cg ON plcg.id_parameter_caixa_gordura = p_cg.id
-                                                JOIN parameters p_lo ON plcg.id_parameter_local = p_lo.id
+                                                JOIN parameters p_ar ON plcg.id_parameter_area = p_ar.id
                                                 JOIN parameters p_re ON plcg.id_parameter_responsavel = p_re.id
                                                 JOIN users us ON plcg.id_user = us.id {$condition}
                                                 LEFT JOIN units un ON us.id_unit = un.id
