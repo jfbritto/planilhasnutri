@@ -2,7 +2,7 @@ $(document).ready(function () {
 
     loadlimpeza_caixa_gorduras();
     loadGlobalParameters(6, 'id_parameter_caixa_gordura');
-    loadGlobalParameters(7, 'id_parameter_local');
+    loadGlobalParameters(1, 'id_parameter_area');
     loadGlobalParameters(3, 'id_parameter_responsavel');
 
     // LISTAGEM
@@ -41,7 +41,7 @@ $(document).ready(function () {
                                                 data-usuario="${item.usuario}"
                                                 data-unidade="${item.unidade}"
                                                 data-id_parameter_caixa_gordura="${item.id_parameter_caixa_gordura}"
-                                                data-id_parameter_local="${item.id_parameter_local}"
+                                                data-id_parameter_area="${item.id_parameter_area}"
                                                 data-id_parameter_responsavel="${item.id_parameter_responsavel}"
                                                 data-data_limpeza="${item.data_limpeza}"
                                                 data-data_proxima_limpeza="${item.data_proxima_limpeza}" href="#" class="btn btn-warning edit-limpeza_caixa_gorduras"><i style="color: white" class="fas fa-edit"></i></a>
@@ -88,7 +88,7 @@ $(document).ready(function () {
 
                     $.post(window.location.origin + "/planilha/limpeza-caixa-gordura/cadastrar", {
                         id_parameter_caixa_gordura: $("#id_parameter_caixa_gordura option:selected").val(),
-                        id_parameter_local: $("#id_parameter_local option:selected").val(),
+                        id_parameter_area: $("#id_parameter_area option:selected").val(),
                         id_parameter_responsavel: $("#id_parameter_responsavel option:selected").val(),
                         data_limpeza: $("#data_limpeza").val(),
                         data_proxima_limpeza: $("#data_proxima_limpeza").val(),
@@ -127,13 +127,13 @@ $(document).ready(function () {
         let usuario = $(this).data('usuario');
         let unidade = $(this).data('unidade');
         let id_parameter_caixa_gordura = $(this).data('id_parameter_caixa_gordura');
-        let id_parameter_local = $(this).data('id_parameter_local');
+        let id_parameter_area = $(this).data('id_parameter_area');
         let id_parameter_responsavel = $(this).data('id_parameter_responsavel');
         let data_limpeza = $(this).data('data_limpeza');
         let data_proxima_limpeza = $(this).data('data_proxima_limpeza');
 
         loadGlobalParameters(6, 'id_parameter_caixa_gordura_edit', id_parameter_caixa_gordura);
-        loadGlobalParameters(7, 'id_parameter_local_edit', id_parameter_local);
+        loadGlobalParameters(1, 'id_parameter_area_edit', id_parameter_area);
         loadGlobalParameters(3, 'id_parameter_responsavel_edit', id_parameter_responsavel);
 
         $("#id_edit").val(id);
@@ -161,7 +161,7 @@ $(document).ready(function () {
                         data:{
                             id: $("#id_edit").val(),
                             id_parameter_caixa_gordura: $("#id_parameter_caixa_gordura_edit option:selected").val(),
-                            id_parameter_local: $("#id_parameter_local_edit option:selected").val(),
+                            id_parameter_area: $("#id_parameter_area_edit option:selected").val(),
                             id_parameter_responsavel: $("#id_parameter_responsavel_edit option:selected").val(),
                             data_limpeza: $("#data_limpeza_edit").val(),
                             data_proxima_limpeza: $("#data_proxima_limpeza_edit").val(),

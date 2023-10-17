@@ -63,7 +63,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="id_parameter_area">Area</label>
+                                <label for="id_parameter_area">Área</label>
                                 <select type="text" required name="id_parameter_area" id="id_parameter_area" class="form-control"></select>
                             </div>
                         </div>
@@ -118,7 +118,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="id_parameter_area_edit">Area</label>
+                                <label for="id_parameter_area_edit">Área</label>
                                 <select type="text" required name="id_parameter_area_edit" id="id_parameter_area_edit" class="form-control"></select>
                             </div>
                         </div>
