@@ -217,6 +217,7 @@ $(document).ready(function () {
         let name = $(this).data('name');
 
         console.log(id, name)
+        $("#list2").html(``);
 
         $("#title-parametro").html(name);
 
