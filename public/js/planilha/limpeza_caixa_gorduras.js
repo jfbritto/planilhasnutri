@@ -31,7 +31,7 @@ $(document).ready(function () {
                                     $("#list").append(`
                                         <tr>
                                             <td class="align-middle">${item.caixa_gordura}</td>
-                                            <td class="align-middle">${item.nome_local}</td>
+                                            <td class="align-middle">${item.area}</td>
                                             <td class="align-middle">${dateFormat(item.data_limpeza)}</td>
                                             <td class="align-middle">${dateFormat(item.data_proxima_limpeza)}</td>
                                             <td class="align-middle">${item.responsavel}</td>

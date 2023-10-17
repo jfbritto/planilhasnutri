@@ -29,7 +29,7 @@
                     <thead>
                         <tr>
                             <th>Caixa de Gordura</th>
-                            <th>Area</th>
+                            <th>Área</th>
                             <th>Limpeza</th>
                             <th>Próxima Limpeza</th>
                             <th>Responsável</th>
