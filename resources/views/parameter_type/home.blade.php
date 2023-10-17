@@ -130,7 +130,13 @@
                                             <th></th>
                                         </tr>
                                     </thead>
-                                    <tbody id="list2"></tbody>
+                                    <tbody id="list2">
+                                        <tr>
+                                            <td colspan="3" class="text-center">
+                                                <i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i>
+                                            </td>
+                                        </tr>
+                                    </tbody>
                                 </table>
                             </div>
                         </div>

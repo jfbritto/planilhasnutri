@@ -217,7 +217,13 @@ $(document).ready(function () {
         let name = $(this).data('name');
 
         console.log(id, name)
-        $("#list2").html(``);
+        $("#list2").html(`
+            <tr>
+                <td colspan="3" class="text-center">
+                    <i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i>
+                </td>
+            </tr>
+        `);
 
         $("#title-parametro").html(name);
 
