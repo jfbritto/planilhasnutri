@@ -12,6 +12,33 @@
 
 @section('content')
 
+@if(!auth()->user()->id_unit)
+
+<div class="row" id="listaPendencias">
+    <div class="col-md-3 col-sm-6 col-12">
+        <div class="info-box">
+            <span class="info-box-icon bg-success"><i class="far fa-copy"></i></span>
+            <div class="info-box-content">
+                <span class="info-box-text">Royal Tulip Brasília</span>
+                <span class="info-box-text">Cadastrou <b>23</b> planilhas essa semana</span>
+                <span class="info-box-number"><a href="/unidades" class="" style="color: black">Conferir <i class="fas fa-arrow-circle-right"></i></a></span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-6 col-12">
+        <div class="info-box">
+            <span class="info-box-icon bg-success"><i class="far fa-copy"></i></span>
+            <div class="info-box-content">
+                <span class="info-box-text">Golden Tulip Gravatá</span>
+                <span class="info-box-text">Cadastrou <b>18</b> planilhas essa semana</span>
+                <span class="info-box-number"><a href="/unidades" class="" style="color: black">Conferir <i class="fas fa-arrow-circle-right"></i></a></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+@else
+
 <div class="row" id="listaPendencias">
     <div class="col-md-3 col-sm-6 col-12">
         <div class="info-box">
@@ -80,6 +107,8 @@
         </div>
     </div>
 </div>
+
+@endif
 
 @stop
 
