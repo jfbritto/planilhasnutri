@@ -82,7 +82,7 @@ class PlanilhaOcorrenciaPragaService
         return $response;
     }
 
-    public function list()
+    public function list($filter_array)
     {
         $response = [];
 
@@ -93,22 +93,35 @@ class PlanilhaOcorrenciaPragaService
                 $condition = " and us.id_unit = ".auth()->user()->id_unit;
             }
 
+            $filter = "";
+            if (!empty($filter_array['data_ini']) && !empty($filter_array['data_fim'])) {
+                $data_ini = date('Y-m-01', strtotime($filter_array['data_ini']));
+                $data_fim = date('Y-m-t', strtotime($filter_array['data_fim']));
+                $filter .= " and main_tb.data between '{$data_ini}' and '{$data_fim}'";
+            }
+            if (!empty($filter_array['id_parameter_area'])) {
+                $filter .= " and main_tb.id_parameter_area = {$filter_array['id_parameter_area']}";
+            }
+            if (!empty($filter_array['id_parameter_praga'])) {
+                $filter .= " and main_tb.id_parameter_praga = {$filter_array['id_parameter_praga']}";
+            }
+
             $return = DB::select( DB::raw("SELECT
                                                 us.name as usuario,
                                                 ifnull(un.name, 'Controle') as unidade,
                                                 p_ar.name as area,
                                                 p_pr.name as praga,
-                                                pop.*
+                                                main_tb.*
                                             FROM
-                                                planilha_ocorrencia_pragas pop
-                                                JOIN parameters p_ar ON pop.id_parameter_area = p_ar.id
-                                                JOIN parameters p_pr ON pop.id_parameter_praga = p_pr.id
-                                                JOIN users us ON pop.id_user = us.id {$condition}
+                                                planilha_ocorrencia_pragas main_tb
+                                                JOIN parameters p_ar ON main_tb.id_parameter_area = p_ar.id
+                                                JOIN parameters p_pr ON main_tb.id_parameter_praga = p_pr.id
+                                                JOIN users us ON main_tb.id_user = us.id {$condition}
                                                 LEFT JOIN units un ON us.id_unit = un.id
                                             WHERE
-                                                pop.status = 'A'
+                                                main_tb.status = 'A' {$filter}
                                             ORDER BY
-                                                pop.id DESC"));
+                                                main_tb.id DESC"));
 
             $response = ['status' => 'success', 'data' => $return];
         }catch(Exception $e){
@@ -123,7 +136,7 @@ class PlanilhaOcorrenciaPragaService
         $response = [];
 
         try{
-            $return = DB::select( DB::raw("SELECT * FROM planilha_ocorrencia_pragas pop WHERE pop.status = 'A' AND id = {$id}"));
+            $return = DB::select( DB::raw("SELECT * FROM planilha_ocorrencia_pragas main_tb WHERE main_tb.status = 'A' AND id = {$id}"));
 
             $response = ['status' => 'success', 'data' => $return];
         }catch(Exception $e){

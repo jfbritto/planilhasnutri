@@ -1,10 +1,13 @@
 $(document).ready(function () {
 
-    loadmanutencao_calibracao_equipamento();
+    loadPrincipal();
     loadGlobalParameters(4, 'id_parameter_equipamento');
 
+    // Carregar filtros
+    loadGlobalParameters(4, 'id_parameter_equipamento_filter', null, true, false);
+
     // LISTAGEM
-    function loadmanutencao_calibracao_equipamento()
+    function loadPrincipal()
     {
         Swal.queue([
             {
@@ -14,7 +17,7 @@ $(document).ready(function () {
                 onOpen: () => {
                     Swal.showLoading();
                     $.get(window.location.origin + "/planilha/manutencao-calibracao-equipamento/listar", {
-
+                        id_parameter_equipamento : $("#id_parameter_equipamento_filter option:selected").val(),
                     })
                     .then(function (data) {
                         if (data.status == "success") {
@@ -110,7 +113,7 @@ $(document).ready(function () {
 
                             $("#modalStoremanutencao_calibracao_equipamento").modal("hide");
 
-                            showSuccess("Cadastro efetuado!", null, loadmanutencao_calibracao_equipamento)
+                            showSuccess("Cadastro efetuado!", null, loadPrincipal)
                         } else if (data.status == "error") {
                             showError(data.message)
                         }
@@ -194,7 +197,7 @@ $(document).ready(function () {
 
                                 $("#modalEditmanutencao_calibracao_equipamento").modal("hide");
 
-                                showSuccess("Edição efetuada!", null, loadmanutencao_calibracao_equipamento)
+                                showSuccess("Edição efetuada!", null, loadPrincipal)
                             } else if (data.status == "error") {
                                 showError(data.message)
                             }
@@ -242,7 +245,7 @@ $(document).ready(function () {
                                     .then(function (data) {
                                         if (data.status == "success") {
 
-                                            showSuccess("Deletado com sucesso!", null, loadmanutencao_calibracao_equipamento)
+                                            showSuccess("Deletado com sucesso!", null, loadPrincipal)
                                         } else if (data.status == "error") {
                                             showError(data.message)
                                         }
@@ -259,6 +262,11 @@ $(document).ready(function () {
                 }
             })
 
+    });
+
+    $("#formFiltroPrincipal").change(function (e) {
+        e.preventDefault();
+        loadPrincipal()
     });
 
 });

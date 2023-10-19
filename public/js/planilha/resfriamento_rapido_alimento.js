@@ -1,11 +1,14 @@
 $(document).ready(function () {
 
-    loadresfriamento_rapido_alimento();
+    loadPrincipal();
     loadGlobalParameters(8, 'id_parameter_produto');
     loadGlobalParameters(3, 'id_parameter_responsavel');
 
+    // Carregar filtros
+    loadGlobalParameters(8, 'id_parameter_produto_filter', null, true, false);
+
     // LISTAGEM
-    function loadresfriamento_rapido_alimento()
+    function loadPrincipal()
     {
         Swal.queue([
             {
@@ -15,7 +18,7 @@ $(document).ready(function () {
                 onOpen: () => {
                     Swal.showLoading();
                     $.get(window.location.origin + "/planilha/resfriamento-rapido-alimento/listar", {
-
+                        id_parameter_produto : $("#id_parameter_produto_filter option:selected").val(),
                     })
                     .then(function (data) {
                         if (data.status == "success") {
@@ -110,7 +113,7 @@ $(document).ready(function () {
 
                             $("#modalStoreresfriamento_rapido_alimento").modal("hide");
 
-                            showSuccess("Cadastro efetuado!", null, loadresfriamento_rapido_alimento)
+                            showSuccess("Cadastro efetuado!", null, loadPrincipal)
                         } else if (data.status == "error") {
                             showError(data.message)
                         }
@@ -199,7 +202,7 @@ $(document).ready(function () {
 
                                 $("#modalEditresfriamento_rapido_alimento").modal("hide");
 
-                                showSuccess("Edição efetuada!", null, loadresfriamento_rapido_alimento)
+                                showSuccess("Edição efetuada!", null, loadPrincipal)
                             } else if (data.status == "error") {
                                 showError(data.message)
                             }
@@ -247,7 +250,7 @@ $(document).ready(function () {
                                     .then(function (data) {
                                         if (data.status == "success") {
 
-                                            showSuccess("Deletado com sucesso!", null, loadresfriamento_rapido_alimento)
+                                            showSuccess("Deletado com sucesso!", null, loadPrincipal)
                                         } else if (data.status == "error") {
                                             showError(data.message)
                                         }
@@ -264,6 +267,11 @@ $(document).ready(function () {
                 }
             })
 
+    });
+
+    $("#formFiltroPrincipal").change(function (e) {
+        e.preventDefault();
+        loadPrincipal()
     });
 
 });

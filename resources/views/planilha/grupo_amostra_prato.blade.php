@@ -13,6 +13,27 @@
 @section('content')
 
     <div class="card">
+        <div class="card-body border-0">
+            <form id="formFiltroPrincipal">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="data_ini_filter">Data inicial</label>
+                            <input type="date" value="{{now()->format('Y-m-01')}}" required name="data_ini_filter" id="data_ini_filter" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="data_fim_filter">Data final</label>
+                            <input type="date" value="{{now()->format('Y-m-t')}}" required name="data_fim_filter" id="data_fim_filter" class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="card">
         <div class="card-header border-0">
             @if(auth()->user()->id_unit)
                 <h3 class="card-title"> </h3>

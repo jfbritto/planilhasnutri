@@ -1,10 +1,13 @@
 $(document).ready(function () {
 
-    loadtemperatura_alimento_banho_maria();
+    loadPrincipal();
     loadGlobalParameters(8, 'id_parameter_produto');
 
+    // Carregar filtros
+    loadGlobalParameters(8, 'id_parameter_produto_filter', null, true, false);
+
     // LISTAGEM
-    function loadtemperatura_alimento_banho_maria()
+    function loadPrincipal()
     {
         Swal.queue([
             {
@@ -14,7 +17,7 @@ $(document).ready(function () {
                 onOpen: () => {
                     Swal.showLoading();
                     $.get(window.location.origin + "/planilha/temperatura-alimento-banho-maria/listar", {
-
+                        id_parameter_produto : $("#id_parameter_produto_filter option:selected").val(),
                     })
                     .then(function (data) {
                         if (data.status == "success") {
@@ -107,7 +110,7 @@ $(document).ready(function () {
 
                             $("#modalStoretemperatura_alimento_banho_maria").modal("hide");
 
-                            showSuccess("Cadastro efetuado!", null, loadtemperatura_alimento_banho_maria)
+                            showSuccess("Cadastro efetuado!", null, loadPrincipal)
                         } else if (data.status == "error") {
                             showError(data.message)
                         }
@@ -190,7 +193,7 @@ $(document).ready(function () {
 
                                 $("#modalEdittemperatura_alimento_banho_maria").modal("hide");
 
-                                showSuccess("Edição efetuada!", null, loadtemperatura_alimento_banho_maria)
+                                showSuccess("Edição efetuada!", null, loadPrincipal)
                             } else if (data.status == "error") {
                                 showError(data.message)
                             }
@@ -238,7 +241,7 @@ $(document).ready(function () {
                                     .then(function (data) {
                                         if (data.status == "success") {
 
-                                            showSuccess("Deletado com sucesso!", null, loadtemperatura_alimento_banho_maria)
+                                            showSuccess("Deletado com sucesso!", null, loadPrincipal)
                                         } else if (data.status == "error") {
                                             showError(data.message)
                                         }
@@ -255,6 +258,11 @@ $(document).ready(function () {
                 }
             })
 
+    });
+
+    $("#formFiltroPrincipal").change(function (e) {
+        e.preventDefault();
+        loadPrincipal()
     });
 
 });

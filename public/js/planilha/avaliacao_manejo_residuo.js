@@ -1,9 +1,9 @@
 $(document).ready(function () {
 
-    loadavaliacao_manejo_residuo();
+    loadPrincipal();
 
     // LISTAGEM
-    function loadavaliacao_manejo_residuo()
+    function loadPrincipal()
     {
         Swal.queue([
             {
@@ -13,7 +13,8 @@ $(document).ready(function () {
                 onOpen: () => {
                     Swal.showLoading();
                     $.get(window.location.origin + "/planilha/avaliacao-manejo-residuo/listar", {
-
+                        data_ini : $("#data_ini_filter").val(),
+                        data_fim : $("#data_fim_filter").val(),
                     })
                     .then(function (data) {
                         if (data.status == "success") {
@@ -107,7 +108,7 @@ $(document).ready(function () {
 
                             $("#modalStoreavaliacao_manejo_residuo").modal("hide");
 
-                            showSuccess("Cadastro efetuado!", null, loadavaliacao_manejo_residuo)
+                            showSuccess("Cadastro efetuado!", null, loadPrincipal)
                         } else if (data.status == "error") {
                             showError(data.message)
                         }
@@ -189,7 +190,7 @@ $(document).ready(function () {
 
                                 $("#modalEditavaliacao_manejo_residuo").modal("hide");
 
-                                showSuccess("Edição efetuada!", null, loadavaliacao_manejo_residuo)
+                                showSuccess("Edição efetuada!", null, loadPrincipal)
                             } else if (data.status == "error") {
                                 showError(data.message)
                             }
@@ -237,7 +238,7 @@ $(document).ready(function () {
                                     .then(function (data) {
                                         if (data.status == "success") {
 
-                                            showSuccess("Deletado com sucesso!", null, loadavaliacao_manejo_residuo)
+                                            showSuccess("Deletado com sucesso!", null, loadPrincipal)
                                         } else if (data.status == "error") {
                                             showError(data.message)
                                         }
@@ -254,6 +255,11 @@ $(document).ready(function () {
                 }
             })
 
+    });
+
+    $("#formFiltroPrincipal").change(function (e) {
+        e.preventDefault();
+        loadPrincipal()
     });
 
 });

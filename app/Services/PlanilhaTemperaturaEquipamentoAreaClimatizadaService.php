@@ -83,7 +83,7 @@ class PlanilhaTemperaturaEquipamentoAreaClimatizadaService
         return $response;
     }
 
-    public function list()
+    public function list($filter_array)
     {
         $response = [];
 
@@ -94,22 +94,27 @@ class PlanilhaTemperaturaEquipamentoAreaClimatizadaService
                 $condition = " and us.id_unit = ".auth()->user()->id_unit;
             }
 
+            $filter = "";
+            if (!empty($filter_array['id_parameter_equipamento'])) {
+                $filter .= " and main_tb.id_parameter_equipamento = {$filter_array['id_parameter_equipamento']}";
+            }
+
             $return = DB::select( DB::raw("SELECT
                                                 us.name as usuario,
                                                 ifnull(un.name, 'Controle') as unidade,
                                                 p_eq.name as equipamento,
                                                 p_re.name as responsavel,
-                                                pteac.*
+                                                main_tb.*
                                             FROM
-                                                planilha_temperatura_equipamento_area_climatizadas pteac
-                                                JOIN parameters p_eq ON pteac.id_parameter_equipamento = p_eq.id
-                                                JOIN parameters p_re ON pteac.id_parameter_responsavel = p_re.id
-                                                JOIN users us ON pteac.id_user = us.id {$condition}
+                                                planilha_temperatura_equipamento_area_climatizadas main_tb
+                                                JOIN parameters p_eq ON main_tb.id_parameter_equipamento = p_eq.id
+                                                JOIN parameters p_re ON main_tb.id_parameter_responsavel = p_re.id
+                                                JOIN users us ON main_tb.id_user = us.id {$condition}
                                                 LEFT JOIN units un ON us.id_unit = un.id
                                             WHERE
-                                                pteac.status = 'A'
+                                                main_tb.status = 'A' {$filter}
                                             ORDER BY
-                                                pteac.id DESC"));
+                                                main_tb.id DESC"));
 
             $response = ['status' => 'success', 'data' => $return];
         }catch(Exception $e){
@@ -124,7 +129,7 @@ class PlanilhaTemperaturaEquipamentoAreaClimatizadaService
         $response = [];
 
         try{
-            $return = DB::select( DB::raw("SELECT * FROM planilha_temperatura_equipamento_area_climatizadas pteac WHERE pteac.status = 'A' AND id = {$id}"));
+            $return = DB::select( DB::raw("SELECT * FROM planilha_temperatura_equipamento_area_climatizadas main_tb WHERE main_tb.status = 'A' AND id = {$id}"));
 
             $response = ['status' => 'success', 'data' => $return];
         }catch(Exception $e){

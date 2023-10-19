@@ -90,7 +90,7 @@ class PlanilhaRecebimentoMateriaPrimaService
         return $response;
     }
 
-    public function list()
+    public function list($filter_array)
     {
         $response = [];
 
@@ -101,24 +101,32 @@ class PlanilhaRecebimentoMateriaPrimaService
                 $condition = " and us.id_unit = ".auth()->user()->id_unit;
             }
 
+            $filter = "";
+            if (!empty($filter_array['id_parameter_produto'])) {
+                $filter .= " and main_tb.id_parameter_produto = {$filter_array['id_parameter_produto']}";
+            }
+            if (!empty($filter_array['id_parameter_fornecedor'])) {
+                $filter .= " and main_tb.id_parameter_fornecedor = {$filter_array['id_parameter_fornecedor']}";
+            }
+
             $return = DB::select( DB::raw("SELECT
                                                 us.name as usuario,
                                                 ifnull(un.name, 'Controle') as unidade,
                                                 p_pd.name as produto,
                                                 p_fo.name as fornecedor,
                                                 p_re.name as responsavel,
-                                                prmp.*
+                                                main_tb.*
                                             FROM
-                                                planilha_recebimento_materia_primas prmp
-                                                JOIN parameters p_pd ON prmp.id_parameter_produto = p_pd.id
-                                                JOIN parameters p_fo ON prmp.id_parameter_fornecedor = p_fo.id
-                                                JOIN parameters p_re ON prmp.id_parameter_responsavel = p_re.id
-                                                JOIN users us ON prmp.id_user = us.id {$condition}
+                                                planilha_recebimento_materia_primas main_tb
+                                                JOIN parameters p_pd ON main_tb.id_parameter_produto = p_pd.id
+                                                JOIN parameters p_fo ON main_tb.id_parameter_fornecedor = p_fo.id
+                                                JOIN parameters p_re ON main_tb.id_parameter_responsavel = p_re.id
+                                                JOIN users us ON main_tb.id_user = us.id {$condition}
                                                 LEFT JOIN units un ON us.id_unit = un.id
                                             WHERE
-                                                prmp.status = 'A'
+                                                main_tb.status = 'A' {$filter}
                                             ORDER BY
-                                                prmp.id DESC"));
+                                                main_tb.id DESC"));
 
             $response = ['status' => 'success', 'data' => $return];
         }catch(Exception $e){
@@ -133,7 +141,7 @@ class PlanilhaRecebimentoMateriaPrimaService
         $response = [];
 
         try{
-            $return = DB::select( DB::raw("SELECT * FROM planilha_recebimento_materia_primas prmp WHERE prmp.status = 'A' AND id = {$id}"));
+            $return = DB::select( DB::raw("SELECT * FROM planilha_recebimento_materia_primas main_tb WHERE main_tb.status = 'A' AND id = {$id}"));
 
             $response = ['status' => 'success', 'data' => $return];
         }catch(Exception $e){

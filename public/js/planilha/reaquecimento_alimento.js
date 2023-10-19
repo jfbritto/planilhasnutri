@@ -1,11 +1,14 @@
 $(document).ready(function () {
 
-    loadreaquecimento_alimento();
+    loadPrincipal();
     loadGlobalParameters(8, 'id_parameter_produto');
     loadGlobalParameters(3, 'id_parameter_responsavel');
 
+    // Carregar filtros
+    loadGlobalParameters(8, 'id_parameter_produto_filter', null, true, false);
+
     // LISTAGEM
-    function loadreaquecimento_alimento()
+    function loadPrincipal()
     {
         Swal.queue([
             {
@@ -15,7 +18,7 @@ $(document).ready(function () {
                 onOpen: () => {
                     Swal.showLoading();
                     $.get(window.location.origin + "/planilha/reaquecimento-alimento/listar", {
-
+                        id_parameter_produto : $("#id_parameter_produto_filter option:selected").val(),
                     })
                     .then(function (data) {
                         if (data.status == "success") {
@@ -108,7 +111,7 @@ $(document).ready(function () {
 
                             $("#modalStorereaquecimento_alimento").modal("hide");
 
-                            showSuccess("Cadastro efetuado!", null, loadreaquecimento_alimento)
+                            showSuccess("Cadastro efetuado!", null, loadPrincipal)
                         } else if (data.status == "error") {
                             showError(data.message)
                         }
@@ -194,7 +197,7 @@ $(document).ready(function () {
 
                                 $("#modalEditreaquecimento_alimento").modal("hide");
 
-                                showSuccess("Edição efetuada!", null, loadreaquecimento_alimento)
+                                showSuccess("Edição efetuada!", null, loadPrincipal)
                             } else if (data.status == "error") {
                                 showError(data.message)
                             }
@@ -242,7 +245,7 @@ $(document).ready(function () {
                                     .then(function (data) {
                                         if (data.status == "success") {
 
-                                            showSuccess("Deletado com sucesso!", null, loadreaquecimento_alimento)
+                                            showSuccess("Deletado com sucesso!", null, loadPrincipal)
                                         } else if (data.status == "error") {
                                             showError(data.message)
                                         }
@@ -259,6 +262,11 @@ $(document).ready(function () {
                 }
             })
 
+    });
+
+    $("#formFiltroPrincipal").change(function (e) {
+        e.preventDefault();
+        loadPrincipal()
     });
 
 });

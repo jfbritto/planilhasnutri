@@ -85,7 +85,7 @@ class PlanilhaVerificacaoProcedimentoHigienizacaoHortifrutiService
         return $response;
     }
 
-    public function list()
+    public function list($filter_array)
     {
         $response = [];
 
@@ -96,22 +96,27 @@ class PlanilhaVerificacaoProcedimentoHigienizacaoHortifrutiService
                 $condition = " and us.id_unit = ".auth()->user()->id_unit;
             }
 
+            $filter = "";
+            if (!empty($filter_array['id_parameter_alimento'])) {
+                $filter .= " and main_tb.id_parameter_alimento = {$filter_array['id_parameter_alimento']}";
+            }
+
             $return = DB::select( DB::raw("SELECT
                                                 us.name as usuario,
                                                 ifnull(un.name, 'Controle') as unidade,
                                                 p_al.name as alimento,
                                                 p_re.name as responsavel,
-                                                pvphh.*
+                                                main_tb.*
                                             FROM
-                                                planilha_verificacao_procedimento_higienizacao_hortifrutis pvphh
-                                                JOIN parameters p_al ON pvphh.id_parameter_alimento = p_al.id
-                                                JOIN parameters p_re ON pvphh.id_parameter_responsavel = p_re.id
-                                                JOIN users us ON pvphh.id_user = us.id {$condition}
+                                                planilha_verificacao_procedimento_higienizacao_hortifrutis main_tb
+                                                JOIN parameters p_al ON main_tb.id_parameter_alimento = p_al.id
+                                                JOIN parameters p_re ON main_tb.id_parameter_responsavel = p_re.id
+                                                JOIN users us ON main_tb.id_user = us.id {$condition}
                                                 LEFT JOIN units un ON us.id_unit = un.id
                                             WHERE
-                                                pvphh.status = 'A'
+                                                main_tb.status = 'A' {$filter}
                                             ORDER BY
-                                                pvphh.data DESC"));
+                                                main_tb.data DESC"));
 
             $response = ['status' => 'success', 'data' => $return];
         }catch(Exception $e){
@@ -126,7 +131,7 @@ class PlanilhaVerificacaoProcedimentoHigienizacaoHortifrutiService
         $response = [];
 
         try{
-            $return = DB::select( DB::raw("SELECT * FROM planilha_verificacao_procedimento_higienizacao_hortifrutis pvphh WHERE pvphh.status = 'A' AND id = {$id}"));
+            $return = DB::select( DB::raw("SELECT * FROM planilha_verificacao_procedimento_higienizacao_hortifrutis main_tb WHERE main_tb.status = 'A' AND id = {$id}"));
 
             $response = ['status' => 'success', 'data' => $return];
         }catch(Exception $e){

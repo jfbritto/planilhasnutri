@@ -86,7 +86,7 @@ class PlanilhaManutencaoCalibracaoEquipamentoService
         return $response;
     }
 
-    public function list()
+    public function list($filter_array)
     {
         $response = [];
 
@@ -97,20 +97,25 @@ class PlanilhaManutencaoCalibracaoEquipamentoService
                 $condition = " and us.id_unit = ".auth()->user()->id_unit;
             }
 
+            $filter = "";
+            if (!empty($filter_array['id_parameter_equipamento'])) {
+                $filter .= " and main_tb.id_parameter_equipamento = {$filter_array['id_parameter_equipamento']}";
+            }
+
             $return = DB::select( DB::raw("SELECT
                                                 us.name as usuario,
                                                 ifnull(un.name, 'Controle') as unidade,
                                                 p_eq.name as equipamento,
-                                                pmce.*
+                                                main_tb.*
                                             FROM
-                                                planilha_manutencao_calibracao_equipamentos pmce
-                                                JOIN parameters p_eq ON pmce.id_parameter_equipamento = p_eq.id
-                                                JOIN users us ON pmce.id_user = us.id {$condition}
+                                                planilha_manutencao_calibracao_equipamentos main_tb
+                                                JOIN parameters p_eq ON main_tb.id_parameter_equipamento = p_eq.id
+                                                JOIN users us ON main_tb.id_user = us.id {$condition}
                                                 LEFT JOIN units un ON us.id_unit = un.id
                                             WHERE
-                                                pmce.status = 'A'
+                                                main_tb.status = 'A' {$filter}
                                             ORDER BY
-                                                pmce.id DESC"));
+                                                main_tb.id DESC"));
 
             $response = ['status' => 'success', 'data' => $return];
         }catch(Exception $e){
@@ -125,7 +130,7 @@ class PlanilhaManutencaoCalibracaoEquipamentoService
         $response = [];
 
         try{
-            $return = DB::select( DB::raw("SELECT * FROM planilha_manutencao_calibracao_equipamentos pmce WHERE pmce.status = 'A' AND id = {$id}"));
+            $return = DB::select( DB::raw("SELECT * FROM planilha_manutencao_calibracao_equipamentos main_tb WHERE main_tb.status = 'A' AND id = {$id}"));
 
             $response = ['status' => 'success', 'data' => $return];
         }catch(Exception $e){

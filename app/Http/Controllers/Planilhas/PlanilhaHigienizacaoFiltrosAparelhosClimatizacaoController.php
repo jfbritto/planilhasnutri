@@ -74,9 +74,11 @@ class PlanilhaHigienizacaoFiltrosAparelhosClimatizacaoController extends Control
         return response()->json(['status'=>'error', 'message'=>$response['data']], 400);
     }
 
-    public function list()
+    public function list(Request $request)
     {
-        $response = $this->planilhaHigienizacaoFiltrosAparelhosClimatizacaoService->list();
+        $filter = $request->all();
+
+        $response = $this->planilhaHigienizacaoFiltrosAparelhosClimatizacaoService->list($filter);
 
         if($response['status'] == 'success')
             return response()->json(['status'=>'success', 'data'=>$response['data']], 200);

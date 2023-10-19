@@ -13,6 +13,21 @@
 @section('content')
 
     <div class="card">
+        <div class="card-body border-0">
+            <form id="formFiltroPrincipal">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="id_parameter_produto_filter">Produto</label>
+                            <select required name="id_parameter_produto_filter" id="id_parameter_produto_filter" class="form-control"></select>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="card">
         <div class="card-header border-0">
             @if(auth()->user()->id_unit)
                 <h3 class="card-title"> </h3>

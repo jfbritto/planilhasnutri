@@ -1,13 +1,16 @@
 $(document).ready(function () {
 
-    loadsaturacao_oleo_gordura();
+    loadPrincipal();
     loadGlobalParameters(1, 'id_parameter_area');
     loadGlobalParameters(4, 'id_parameter_equipamento');
     loadGlobalParameters(3, 'id_parameter_responsavel');
     loadGlobalParameters(3, 'id_parameter_responsavel_acao');
 
+    // Carregar filtros
+    loadGlobalParameters(1, 'id_parameter_area_filter', null, true);
+
     // LISTAGEM
-    function loadsaturacao_oleo_gordura()
+    function loadPrincipal()
     {
         Swal.queue([
             {
@@ -17,7 +20,7 @@ $(document).ready(function () {
                 onOpen: () => {
                     Swal.showLoading();
                     $.get(window.location.origin + "/planilha/saturacao-oleo-gordura/listar", {
-
+                        id_parameter_area : $("#id_parameter_area_filter option:selected").val(),
                     })
                     .then(function (data) {
                         if (data.status == "success") {
@@ -119,7 +122,7 @@ $(document).ready(function () {
 
                             $("#modalStoresaturacao_oleo_gordura").modal("hide");
 
-                            showSuccess("Cadastro efetuado!", null, loadsaturacao_oleo_gordura)
+                            showSuccess("Cadastro efetuado!", null, loadPrincipal)
                         } else if (data.status == "error") {
                             showError(data.message)
                         }
@@ -215,7 +218,7 @@ $(document).ready(function () {
 
                                 $("#modalEditsaturacao_oleo_gordura").modal("hide");
 
-                                showSuccess("Edição efetuada!", null, loadsaturacao_oleo_gordura)
+                                showSuccess("Edição efetuada!", null, loadPrincipal)
                             } else if (data.status == "error") {
                                 showError(data.message)
                             }
@@ -263,7 +266,7 @@ $(document).ready(function () {
                                     .then(function (data) {
                                         if (data.status == "success") {
 
-                                            showSuccess("Deletado com sucesso!", null, loadsaturacao_oleo_gordura)
+                                            showSuccess("Deletado com sucesso!", null, loadPrincipal)
                                         } else if (data.status == "error") {
                                             showError(data.message)
                                         }
@@ -280,6 +283,11 @@ $(document).ready(function () {
                 }
             })
 
+    });
+
+    $("#formFiltroPrincipal").change(function (e) {
+        e.preventDefault();
+        loadPrincipal()
     });
 
 });

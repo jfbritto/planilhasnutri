@@ -86,7 +86,7 @@ class PlanilhaAvaliacaoManejoResiduoService
         return $response;
     }
 
-    public function list()
+    public function list($filter_array)
     {
         $response = [];
 
@@ -97,18 +97,25 @@ class PlanilhaAvaliacaoManejoResiduoService
                 $condition = " and us.id_unit = ".auth()->user()->id_unit;
             }
 
+            $filter = "";
+            if (!empty($filter_array['data_ini']) && !empty($filter_array['data_fim'])) {
+                $data_ini = date('Y-m-01', strtotime($filter_array['data_ini']));
+                $data_fim = date('Y-m-t', strtotime($filter_array['data_fim']));
+                $filter .= " and main_tb.data between '{$data_ini}' and '{$data_fim}'";
+            }
+
             $return = DB::select( DB::raw("SELECT
                                                 us.name as usuario,
                                                 ifnull(un.name, 'Controle') as unidade,
-                                                pamr.*
+                                                main_tb.*
                                             FROM
-                                                planilha_avaliacao_manejo_residuos pamr
-                                                JOIN users us ON pamr.id_user = us.id {$condition}
+                                                planilha_avaliacao_manejo_residuos main_tb
+                                                JOIN users us ON main_tb.id_user = us.id {$condition}
                                                 LEFT JOIN units un ON us.id_unit = un.id
                                             WHERE
-                                                pamr.status = 'A'
+                                                main_tb.status = 'A' {$filter}
                                             ORDER BY
-                                                pamr.id DESC"));
+                                                main_tb.id DESC"));
 
             $response = ['status' => 'success', 'data' => $return];
         }catch(Exception $e){
@@ -123,7 +130,7 @@ class PlanilhaAvaliacaoManejoResiduoService
         $response = [];
 
         try{
-            $return = DB::select( DB::raw("SELECT * FROM planilha_avaliacao_manejo_residuos pamr WHERE pamr.status = 'A' AND id = {$id}"));
+            $return = DB::select( DB::raw("SELECT * FROM planilha_avaliacao_manejo_residuos main_tb WHERE main_tb.status = 'A' AND id = {$id}"));
 
             $response = ['status' => 'success', 'data' => $return];
         }catch(Exception $e){

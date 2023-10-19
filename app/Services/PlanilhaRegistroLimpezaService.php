@@ -85,7 +85,7 @@ class PlanilhaRegistroLimpezaService
         return $response;
     }
 
-    public function list()
+    public function list($filter_array)
     {
         $response = [];
 
@@ -96,22 +96,27 @@ class PlanilhaRegistroLimpezaService
                 $condition = " and us.id_unit = ".auth()->user()->id_unit;
             }
 
+            $filter = "";
+            if (!empty($filter_array['id_parameter_area'])) {
+                $filter .= " and main_tb.id_parameter_area = {$filter_array['id_parameter_area']}";
+            }
+
             $return = DB::select( DB::raw("SELECT
                                                 us.name as usuario,
                                                 ifnull(un.name, 'Controle') as unidade,
                                                 p_ar.name as area,
                                                 p_re.name as responsavel,
-                                                prl.*
+                                                main_tb.*
                                             FROM
-                                                planilha_registro_limpezas prl
-                                                JOIN parameters p_ar ON prl.id_parameter_area = p_ar.id
-                                                JOIN parameters p_re ON prl.id_parameter_responsavel = p_re.id
-                                                JOIN users us ON prl.id_user = us.id {$condition}
+                                                planilha_registro_limpezas main_tb
+                                                JOIN parameters p_ar ON main_tb.id_parameter_area = p_ar.id
+                                                JOIN parameters p_re ON main_tb.id_parameter_responsavel = p_re.id
+                                                JOIN users us ON main_tb.id_user = us.id {$condition}
                                                 LEFT JOIN units un ON us.id_unit = un.id
                                             WHERE
-                                                prl.status = 'A'
+                                                main_tb.status = 'A' {$filter}
                                             ORDER BY
-                                                prl.id DESC"));
+                                                main_tb.id DESC"));
 
             $response = ['status' => 'success', 'data' => $return];
         }catch(Exception $e){
@@ -126,7 +131,7 @@ class PlanilhaRegistroLimpezaService
         $response = [];
 
         try{
-            $return = DB::select( DB::raw("SELECT * FROM planilha_registro_limpezas prl WHERE prl.status = 'A' AND id = {$id}"));
+            $return = DB::select( DB::raw("SELECT * FROM planilha_registro_limpezas main_tb WHERE main_tb.status = 'A' AND id = {$id}"));
 
             $response = ['status' => 'success', 'data' => $return];
         }catch(Exception $e){

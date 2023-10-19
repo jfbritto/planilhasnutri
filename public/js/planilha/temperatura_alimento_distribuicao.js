@@ -1,12 +1,15 @@
 $(document).ready(function () {
 
-    loadtemperatura_alimento_distribuicao();
+    loadPrincipal();
     loadGlobalParameters(3, 'id_parameter_responsavel');
     loadGlobalParameters(8, 'id_parameter_produto');
     loadGlobalParameters(11, 'id_parameter_evento');
 
+    // Carregar filtros
+    loadGlobalParameters(8, 'id_parameter_produto_filter', null, true, false);
+
     // LISTAGEM
-    function loadtemperatura_alimento_distribuicao()
+    function loadPrincipal()
     {
         Swal.queue([
             {
@@ -16,7 +19,7 @@ $(document).ready(function () {
                 onOpen: () => {
                     Swal.showLoading();
                     $.get(window.location.origin + "/planilha/temperatura-alimento-distribuicao/listar", {
-
+                        id_parameter_produto : $("#id_parameter_produto_filter option:selected").val(),
                     })
                     .then(function (data) {
                         if (data.status == "success") {
@@ -134,7 +137,7 @@ $(document).ready(function () {
 
                             $("#modalStoretemperatura_alimento_distribuicao").modal("hide");
 
-                            showSuccess("Cadastro efetuado!", null, loadtemperatura_alimento_distribuicao)
+                            showSuccess("Cadastro efetuado!", null, loadPrincipal)
                         } else if (data.status == "error") {
                             showError(data.message)
                         }
@@ -253,7 +256,7 @@ $(document).ready(function () {
 
                                 $("#modalEdittemperatura_alimento_distribuicao").modal("hide");
 
-                                showSuccess("Edição efetuada!", null, loadtemperatura_alimento_distribuicao)
+                                showSuccess("Edição efetuada!", null, loadPrincipal)
                             } else if (data.status == "error") {
                                 showError(data.message)
                             }
@@ -301,7 +304,7 @@ $(document).ready(function () {
                                     .then(function (data) {
                                         if (data.status == "success") {
 
-                                            showSuccess("Deletado com sucesso!", null, loadtemperatura_alimento_distribuicao)
+                                            showSuccess("Deletado com sucesso!", null, loadPrincipal)
                                         } else if (data.status == "error") {
                                             showError(data.message)
                                         }
@@ -318,6 +321,11 @@ $(document).ready(function () {
                 }
             })
 
+    });
+
+    $("#formFiltroPrincipal").change(function (e) {
+        e.preventDefault();
+        loadPrincipal()
     });
 
 });

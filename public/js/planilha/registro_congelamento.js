@@ -1,10 +1,13 @@
 $(document).ready(function () {
 
-    loadregistro_congelamento();
+    loadPrincipal();
     loadGlobalParameters(8, 'id_parameter_produto');
 
+    // Carregar filtros
+    loadGlobalParameters(8, 'id_parameter_produto_filter', null, true, false);
+
     // LISTAGEM
-    function loadregistro_congelamento()
+    function loadPrincipal()
     {
         Swal.queue([
             {
@@ -14,7 +17,7 @@ $(document).ready(function () {
                 onOpen: () => {
                     Swal.showLoading();
                     $.get(window.location.origin + "/planilha/registro-congelamento/listar", {
-
+                        id_parameter_produto : $("#id_parameter_produto_filter option:selected").val(),
                     })
                     .then(function (data) {
                         if (data.status == "success") {
@@ -103,7 +106,7 @@ $(document).ready(function () {
 
                             $("#modalStoreregistro_congelamento").modal("hide");
 
-                            showSuccess("Cadastro efetuado!", null, loadregistro_congelamento)
+                            showSuccess("Cadastro efetuado!", null, loadPrincipal)
                         } else if (data.status == "error") {
                             showError(data.message)
                         }
@@ -180,7 +183,7 @@ $(document).ready(function () {
 
                                 $("#modalEditregistro_congelamento").modal("hide");
 
-                                showSuccess("Edição efetuada!", null, loadregistro_congelamento)
+                                showSuccess("Edição efetuada!", null, loadPrincipal)
                             } else if (data.status == "error") {
                                 showError(data.message)
                             }
@@ -228,7 +231,7 @@ $(document).ready(function () {
                                     .then(function (data) {
                                         if (data.status == "success") {
 
-                                            showSuccess("Deletado com sucesso!", null, loadregistro_congelamento)
+                                            showSuccess("Deletado com sucesso!", null, loadPrincipal)
                                         } else if (data.status == "error") {
                                             showError(data.message)
                                         }
@@ -245,6 +248,11 @@ $(document).ready(function () {
                 }
             })
 
+    });
+
+    $("#formFiltroPrincipal").change(function (e) {
+        e.preventDefault();
+        loadPrincipal()
     });
 
 });

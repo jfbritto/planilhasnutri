@@ -1,11 +1,14 @@
 $(document).ready(function () {
 
-    loadregistro_limpeza();
-    loadGlobalParameters(7, 'id_parameter_local');
+    loadPrincipal();
+    loadGlobalParameters(1, 'id_parameter_area');
     loadGlobalParameters(3, 'id_parameter_responsavel');
 
+    // Carregar filtros
+    loadGlobalParameters(1, 'id_parameter_area_filter', null, true);
+
     // LISTAGEM
-    function loadregistro_limpeza()
+    function loadPrincipal()
     {
         Swal.queue([
             {
@@ -15,7 +18,7 @@ $(document).ready(function () {
                 onOpen: () => {
                     Swal.showLoading();
                     $.get(window.location.origin + "/planilha/registro-limpeza/listar", {
-
+                        id_parameter_area : $("#id_parameter_area_filter option:selected").val(),
                     })
                     .then(function (data) {
                         if (data.status == "success") {
@@ -30,7 +33,7 @@ $(document).ready(function () {
                                     $("#list").append(`
                                         <tr>
                                             <td class="align-middle">${dateFormat(item.data)}</td>
-                                            <td class="align-middle">${item.nome_local}</td>
+                                            <td class="align-middle">${item.area}</td>
                                             <td class="align-middle">${item.superficie_limpa}</td>
                                             <td class="align-middle">${item.frequencia}</td>
                                             <td class="align-middle">${item.conforme_naoconforme==1?'Sim':'Não'}</td>
@@ -43,7 +46,7 @@ $(document).ready(function () {
                                                 data-unidade="${item.unidade}"
                                                 data-data="${item.data}"
                                                 data-id_parameter_responsavel="${item.id_parameter_responsavel}"
-                                                data-id_parameter_local="${item.id_parameter_local}"
+                                                data-id_parameter_area="${item.id_parameter_area}"
                                                 data-superficie_limpa="${item.superficie_limpa}"
                                                 data-frequencia="${item.frequencia}"
                                                 data-conforme_naoconforme="${item.conforme_naoconforme}"
@@ -92,7 +95,7 @@ $(document).ready(function () {
                     $.post(window.location.origin + "/planilha/registro-limpeza/cadastrar", {
                         data: $("#data").val(),
                         id_parameter_responsavel: $("#id_parameter_responsavel option:selected").val(),
-                        id_parameter_local: $("#id_parameter_local option:selected").val(),
+                        id_parameter_area: $("#id_parameter_area option:selected").val(),
                         superficie_limpa: $("#superficie_limpa").val(),
                         frequencia: $("#frequencia").val(),
                         conforme_naoconforme: $("#conforme_naoconforme option:selected").val(),
@@ -107,7 +110,7 @@ $(document).ready(function () {
 
                             $("#modalStoreregistro_limpeza").modal("hide");
 
-                            showSuccess("Cadastro efetuado!", null, loadregistro_limpeza)
+                            showSuccess("Cadastro efetuado!", null, loadPrincipal)
                         } else if (data.status == "error") {
                             showError(data.message)
                         }
@@ -133,13 +136,13 @@ $(document).ready(function () {
         let unidade = $(this).data('unidade');
         let data = $(this).data('data');
         let id_parameter_responsavel = $(this).data('id_parameter_responsavel');
-        let id_parameter_local = $(this).data('id_parameter_local');
+        let id_parameter_area = $(this).data('id_parameter_area');
         let superficie_limpa = $(this).data('superficie_limpa');
         let frequencia = $(this).data('frequencia');
         let conforme_naoconforme = $(this).data('conforme_naoconforme');
         let comentarios = $(this).data('comentarios');
 
-        loadGlobalParameters(7, 'id_parameter_local_edit', id_parameter_local);
+        loadGlobalParameters(1, 'id_parameter_area_edit', id_parameter_area);
         loadGlobalParameters(3, 'id_parameter_responsavel_edit', id_parameter_responsavel);
 
         $("#id_edit").val(id);
@@ -171,7 +174,7 @@ $(document).ready(function () {
                             id: $("#id_edit").val(),
                             data: $("#data_edit").val(),
                             id_parameter_responsavel: $("#id_parameter_responsavel_edit option:selected").val(),
-                            id_parameter_local: $("#id_parameter_local_edit option:selected").val(),
+                            id_parameter_area: $("#id_parameter_area_edit option:selected").val(),
                             superficie_limpa: $("#superficie_limpa_edit").val(),
                             frequencia: $("#frequencia_edit").val(),
                             conforme_naoconforme: $("#conforme_naoconforme_edit option:selected").val(),
@@ -187,7 +190,7 @@ $(document).ready(function () {
 
                                 $("#modalEditregistro_limpeza").modal("hide");
 
-                                showSuccess("Edição efetuada!", null, loadregistro_limpeza)
+                                showSuccess("Edição efetuada!", null, loadPrincipal)
                             } else if (data.status == "error") {
                                 showError(data.message)
                             }
@@ -235,7 +238,7 @@ $(document).ready(function () {
                                     .then(function (data) {
                                         if (data.status == "success") {
 
-                                            showSuccess("Deletado com sucesso!", null, loadregistro_limpeza)
+                                            showSuccess("Deletado com sucesso!", null, loadPrincipal)
                                         } else if (data.status == "error") {
                                             showError(data.message)
                                         }
@@ -252,6 +255,11 @@ $(document).ready(function () {
                 }
             })
 
+    });
+
+    $("#formFiltroPrincipal").change(function (e) {
+        e.preventDefault();
+        loadPrincipal()
     });
 
 });

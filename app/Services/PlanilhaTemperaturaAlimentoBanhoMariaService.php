@@ -86,7 +86,7 @@ class PlanilhaTemperaturaAlimentoBanhoMariaService
         return $response;
     }
 
-    public function list()
+    public function list($filter_array)
     {
         $response = [];
 
@@ -97,20 +97,25 @@ class PlanilhaTemperaturaAlimentoBanhoMariaService
                 $condition = " and us.id_unit = ".auth()->user()->id_unit;
             }
 
+            $filter = "";
+            if (!empty($filter_array['id_parameter_produto'])) {
+                $filter .= " and main_tb.id_parameter_produto = {$filter_array['id_parameter_produto']}";
+            }
+
             $return = DB::select( DB::raw("SELECT
                                                 us.name as usuario,
                                                 ifnull(un.name, 'Controle') as unidade,
                                                 p_pr.name as produto,
-                                                ptabm.*
+                                                main_tb.*
                                             FROM
-                                                planilha_temperatura_alimento_banho_marias ptabm
-                                                JOIN parameters p_pr ON ptabm.id_parameter_produto = p_pr.id
-                                                JOIN users us ON ptabm.id_user = us.id {$condition}
+                                                planilha_temperatura_alimento_banho_marias main_tb
+                                                JOIN parameters p_pr ON main_tb.id_parameter_produto = p_pr.id
+                                                JOIN users us ON main_tb.id_user = us.id {$condition}
                                                 LEFT JOIN units un ON us.id_unit = un.id
                                             WHERE
-                                                ptabm.status = 'A'
+                                                main_tb.status = 'A' {$filter}
                                             ORDER BY
-                                                ptabm.id DESC"));
+                                                main_tb.id DESC"));
 
             $response = ['status' => 'success', 'data' => $return];
         }catch(Exception $e){
@@ -125,7 +130,7 @@ class PlanilhaTemperaturaAlimentoBanhoMariaService
         $response = [];
 
         try{
-            $return = DB::select( DB::raw("SELECT * FROM planilha_temperatura_alimento_banho_marias ptabm WHERE ptabm.status = 'A' AND id = {$id}"));
+            $return = DB::select( DB::raw("SELECT * FROM planilha_temperatura_alimento_banho_marias main_tb WHERE main_tb.status = 'A' AND id = {$id}"));
 
             $response = ['status' => 'success', 'data' => $return];
         }catch(Exception $e){

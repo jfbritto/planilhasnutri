@@ -1,11 +1,15 @@
 $(document).ready(function () {
 
-    loadocorrencia_praga();
+    loadPrincipal();
     loadGlobalParameters(1, 'id_parameter_area');
     loadGlobalParameters(12, 'id_parameter_praga');
 
+    // Carregar filtros
+    loadGlobalParameters(1, 'id_parameter_area_filter', null, true);
+    loadGlobalParameters(12, 'id_parameter_praga_filter', null, true);
+
     // LISTAGEM
-    function loadocorrencia_praga()
+    function loadPrincipal()
     {
         Swal.queue([
             {
@@ -15,7 +19,10 @@ $(document).ready(function () {
                 onOpen: () => {
                     Swal.showLoading();
                     $.get(window.location.origin + "/planilha/ocorrencia-praga/listar", {
-
+                        id_parameter_area : $("#id_parameter_area_filter option:selected").val(),
+                        id_parameter_praga : $("#id_parameter_praga_filter option:selected").val(),
+                        data_ini : $("#data_ini_filter").val(),
+                        data_fim : $("#data_fim_filter").val(),
                     })
                     .then(function (data) {
                         if (data.status == "success") {
@@ -100,7 +107,7 @@ $(document).ready(function () {
 
                             $("#modalStoreocorrencia_praga").modal("hide");
 
-                            showSuccess("Cadastro efetuado!", null, loadocorrencia_praga)
+                            showSuccess("Cadastro efetuado!", null, loadPrincipal)
                         } else if (data.status == "error") {
                             showError(data.message)
                         }
@@ -172,7 +179,7 @@ $(document).ready(function () {
 
                                 $("#modalEditocorrencia_praga").modal("hide");
 
-                                showSuccess("Edição efetuada!", null, loadocorrencia_praga)
+                                showSuccess("Edição efetuada!", null, loadPrincipal)
                             } else if (data.status == "error") {
                                 showError(data.message)
                             }
@@ -220,7 +227,7 @@ $(document).ready(function () {
                                     .then(function (data) {
                                         if (data.status == "success") {
 
-                                            showSuccess("Deletado com sucesso!", null, loadocorrencia_praga)
+                                            showSuccess("Deletado com sucesso!", null, loadPrincipal)
                                         } else if (data.status == "error") {
                                             showError(data.message)
                                         }
@@ -237,6 +244,11 @@ $(document).ready(function () {
                 }
             })
 
+    });
+
+    $("#formFiltroPrincipal").change(function (e) {
+        e.preventDefault();
+        loadPrincipal()
     });
 
 });

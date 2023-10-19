@@ -1,11 +1,14 @@
 $(document).ready(function () {
 
-    loadtemperatura_equipamento_area_climatizada();
+    loadPrincipal();
     loadGlobalParameters(4, 'id_parameter_equipamento');
     loadGlobalParameters(3, 'id_parameter_responsavel');
 
+    // Carregar filtros
+    loadGlobalParameters(4, 'id_parameter_equipamento_filter', null, true, false);
+
     // LISTAGEM
-    function loadtemperatura_equipamento_area_climatizada()
+    function loadPrincipal()
     {
         Swal.queue([
             {
@@ -15,7 +18,7 @@ $(document).ready(function () {
                 onOpen: () => {
                     Swal.showLoading();
                     $.get(window.location.origin + "/planilha/temperatura-equipamento-area-climatizada/listar", {
-
+                        id_parameter_equipamento : $("#id_parameter_equipamento_filter option:selected").val(),
                     })
                     .then(function (data) {
                         if (data.status == "success") {
@@ -103,7 +106,7 @@ $(document).ready(function () {
 
                             $("#modalStoretemperatura_equipamento_area_climatizada").modal("hide");
 
-                            showSuccess("Cadastro efetuado!", null, loadtemperatura_equipamento_area_climatizada)
+                            showSuccess("Cadastro efetuado!", null, loadPrincipal)
                         } else if (data.status == "error") {
                             showError(data.message)
                         }
@@ -178,7 +181,7 @@ $(document).ready(function () {
 
                                 $("#modalEdittemperatura_equipamento_area_climatizada").modal("hide");
 
-                                showSuccess("Edição efetuada!", null, loadtemperatura_equipamento_area_climatizada)
+                                showSuccess("Edição efetuada!", null, loadPrincipal)
                             } else if (data.status == "error") {
                                 showError(data.message)
                             }
@@ -226,7 +229,7 @@ $(document).ready(function () {
                                     .then(function (data) {
                                         if (data.status == "success") {
 
-                                            showSuccess("Deletado com sucesso!", null, loadtemperatura_equipamento_area_climatizada)
+                                            showSuccess("Deletado com sucesso!", null, loadPrincipal)
                                         } else if (data.status == "error") {
                                             showError(data.message)
                                         }
@@ -243,6 +246,11 @@ $(document).ready(function () {
                 }
             })
 
+    });
+
+    $("#formFiltroPrincipal").change(function (e) {
+        e.preventDefault();
+        loadPrincipal()
     });
 
 });

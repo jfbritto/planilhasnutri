@@ -87,7 +87,7 @@ class PlanilhaReaquecimentoAlimentoService
         return $response;
     }
 
-    public function list()
+    public function list($filter_array)
     {
         $response = [];
 
@@ -98,22 +98,27 @@ class PlanilhaReaquecimentoAlimentoService
                 $condition = " and us.id_unit = ".auth()->user()->id_unit;
             }
 
+            $filter = "";
+            if (!empty($filter_array['id_parameter_produto'])) {
+                $filter .= " and main_tb.id_parameter_produto = {$filter_array['id_parameter_produto']}";
+            }
+
             $return = DB::select( DB::raw("SELECT
                                                 us.name as usuario,
                                                 ifnull(un.name, 'Controle') as unidade,
                                                 p_pr.name as produto,
                                                 p_re.name as responsavel,
-                                                pra.*
+                                                main_tb.*
                                             FROM
-                                                planilha_reaquecimento_alimentos pra
-                                                JOIN parameters p_pr ON pra.id_parameter_produto = p_pr.id
-                                                JOIN parameters p_re ON pra.id_parameter_responsavel = p_re.id
-                                                JOIN users us ON pra.id_user = us.id {$condition}
+                                                planilha_reaquecimento_alimentos main_tb
+                                                JOIN parameters p_pr ON main_tb.id_parameter_produto = p_pr.id
+                                                JOIN parameters p_re ON main_tb.id_parameter_responsavel = p_re.id
+                                                JOIN users us ON main_tb.id_user = us.id {$condition}
                                                 LEFT JOIN units un ON us.id_unit = un.id
                                             WHERE
-                                                pra.status = 'A'
+                                                main_tb.status = 'A' {$filter}
                                             ORDER BY
-                                                pra.id DESC"));
+                                                main_tb.id DESC"));
 
             $response = ['status' => 'success', 'data' => $return];
         }catch(Exception $e){
@@ -128,7 +133,7 @@ class PlanilhaReaquecimentoAlimentoService
         $response = [];
 
         try{
-            $return = DB::select( DB::raw("SELECT * FROM planilha_reaquecimento_alimentos pra WHERE pra.status = 'A' AND id = {$id}"));
+            $return = DB::select( DB::raw("SELECT * FROM planilha_reaquecimento_alimentos main_tb WHERE main_tb.status = 'A' AND id = {$id}"));
 
             $response = ['status' => 'success', 'data' => $return];
         }catch(Exception $e){

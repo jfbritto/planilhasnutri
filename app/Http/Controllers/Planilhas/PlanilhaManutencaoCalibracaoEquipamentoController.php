@@ -79,9 +79,11 @@ class PlanilhaManutencaoCalibracaoEquipamentoController extends Controller
         return response()->json(['status'=>'error', 'message'=>$response['data']], 400);
     }
 
-    public function list()
+    public function list(Request $request)
     {
-        $response = $this->PlanilhaManutencaoCalibracaoEquipamentoService->list();
+        $filter = $request->all();
+
+        $response = $this->PlanilhaManutencaoCalibracaoEquipamentoService->list($filter);
 
         if($response['status'] == 'success')
             return response()->json(['status'=>'success', 'data'=>$response['data']], 200);

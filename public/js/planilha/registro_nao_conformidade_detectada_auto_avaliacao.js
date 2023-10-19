@@ -1,10 +1,10 @@
 $(document).ready(function () {
 
-    loadregistro_nao_conformidade_detectada_auto_avaliacao();
+    loadPrincipal();
     loadGlobalParameters(3, 'id_parameter_responsavel');
 
     // LISTAGEM
-    function loadregistro_nao_conformidade_detectada_auto_avaliacao()
+    function loadPrincipal()
     {
         Swal.queue([
             {
@@ -14,7 +14,8 @@ $(document).ready(function () {
                 onOpen: () => {
                     Swal.showLoading();
                     $.get(window.location.origin + "/planilha/registro-nao-conformidade-detectada-auto-avaliacao/listar", {
-
+                        data_ini : $("#data_ini_filter").val(),
+                        data_fim : $("#data_fim_filter").val(),
                     })
                     .then(function (data) {
                         if (data.status == "success") {
@@ -102,7 +103,7 @@ $(document).ready(function () {
 
                             $("#modalStoreregistro_nao_conformidade_detectada_auto_avaliacao").modal("hide");
 
-                            showSuccess("Cadastro efetuado!", null, loadregistro_nao_conformidade_detectada_auto_avaliacao)
+                            showSuccess("Cadastro efetuado!", null, loadPrincipal)
                         } else if (data.status == "error") {
                             showError(data.message)
                         }
@@ -179,7 +180,7 @@ $(document).ready(function () {
 
                                 $("#modalEditregistro_nao_conformidade_detectada_auto_avaliacao").modal("hide");
 
-                                showSuccess("Edição efetuada!", null, loadregistro_nao_conformidade_detectada_auto_avaliacao)
+                                showSuccess("Edição efetuada!", null, loadPrincipal)
                             } else if (data.status == "error") {
                                 showError(data.message)
                             }
@@ -227,7 +228,7 @@ $(document).ready(function () {
                                     .then(function (data) {
                                         if (data.status == "success") {
 
-                                            showSuccess("Deletado com sucesso!", null, loadregistro_nao_conformidade_detectada_auto_avaliacao)
+                                            showSuccess("Deletado com sucesso!", null, loadPrincipal)
                                         } else if (data.status == "error") {
                                             showError(data.message)
                                         }
@@ -244,6 +245,11 @@ $(document).ready(function () {
                 }
             })
 
+    });
+
+    $("#formFiltroPrincipal").change(function (e) {
+        e.preventDefault();
+        loadPrincipal()
     });
 
 });

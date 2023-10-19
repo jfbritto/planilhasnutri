@@ -1,11 +1,14 @@
 $(document).ready(function () {
 
-    loadverificacao_procedimento_higienizacao_hortifruti();
+    loadPrincipal();
     loadGlobalParameters(9, 'id_parameter_alimento');
     loadGlobalParameters(3, 'id_parameter_responsavel');
 
+    // Carregar filtros
+    loadGlobalParameters(9, 'id_parameter_alimento_filter', null, true, false);
+
     // LISTAGEM
-    function loadverificacao_procedimento_higienizacao_hortifruti()
+    function loadPrincipal()
     {
         Swal.queue([
             {
@@ -15,7 +18,7 @@ $(document).ready(function () {
                 onOpen: () => {
                     Swal.showLoading();
                     $.get(window.location.origin + "/planilha/verificacao-procedimento-higienizacao-hortifruti/listar", {
-
+                        id_parameter_alimento : $("#id_parameter_alimento_filter option:selected").val(),
                     })
                     .then(function (data) {
                         if (data.status == "success") {
@@ -106,7 +109,7 @@ $(document).ready(function () {
 
                             $("#modalStoreverificacao_procedimento_higienizacao_hortifruti").modal("hide");
 
-                            showSuccess("Cadastro efetuado!", null, loadverificacao_procedimento_higienizacao_hortifruti)
+                            showSuccess("Cadastro efetuado!", null, loadPrincipal)
                         } else if (data.status == "error") {
                             showError(data.message)
                         }
@@ -186,7 +189,7 @@ $(document).ready(function () {
 
                                 $("#modalEditverificacao_procedimento_higienizacao_hortifruti").modal("hide");
 
-                                showSuccess("Edição efetuada!", null, loadverificacao_procedimento_higienizacao_hortifruti)
+                                showSuccess("Edição efetuada!", null, loadPrincipal)
                             } else if (data.status == "error") {
                                 showError(data.message)
                             }
@@ -234,7 +237,7 @@ $(document).ready(function () {
                                     .then(function (data) {
                                         if (data.status == "success") {
 
-                                            showSuccess("Deletado com sucesso!", null, loadverificacao_procedimento_higienizacao_hortifruti)
+                                            showSuccess("Deletado com sucesso!", null, loadPrincipal)
                                         } else if (data.status == "error") {
                                             showError(data.message)
                                         }
@@ -251,6 +254,11 @@ $(document).ready(function () {
                 }
             })
 
+    });
+
+    $("#formFiltroPrincipal").change(function (e) {
+        e.preventDefault();
+        loadPrincipal()
     });
 
 });

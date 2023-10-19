@@ -82,7 +82,7 @@ class PlanilhaGrupoAmostraPratoService
         return $response;
     }
 
-    public function list()
+    public function list($filter_array)
     {
         $response = [];
 
@@ -93,18 +93,25 @@ class PlanilhaGrupoAmostraPratoService
                 $condition = " and us.id_unit = ".auth()->user()->id_unit;
             }
 
+            $filter = "";
+            if (!empty($filter_array['data_ini']) && !empty($filter_array['data_fim'])) {
+                $data_ini = date('Y-m-01', strtotime($filter_array['data_ini']));
+                $data_fim = date('Y-m-t', strtotime($filter_array['data_fim']));
+                $filter .= " and main_tb.data between '{$data_ini}' and '{$data_fim}'";
+            }
+
             $return = DB::select( DB::raw("SELECT
                                                 us.name as usuario,
                                                 ifnull(un.name, 'Controle') as unidade,
-                                                pgap.*
+                                                main_tb.*
                                             FROM
-                                                planilha_grupo_amostra_pratos pgap
-                                                JOIN users us ON pgap.id_user = us.id {$condition}
+                                                planilha_grupo_amostra_pratos main_tb
+                                                JOIN users us ON main_tb.id_user = us.id {$condition}
                                                 LEFT JOIN units un ON us.id_unit = un.id
                                             WHERE
-                                                pgap.status = 'A'
+                                                main_tb.status = 'A' {$filter}
                                             ORDER BY
-                                                pgap.id DESC"));
+                                                main_tb.id DESC"));
 
             $response = ['status' => 'success', 'data' => $return];
         }catch(Exception $e){
@@ -119,7 +126,7 @@ class PlanilhaGrupoAmostraPratoService
         $response = [];
 
         try{
-            $return = DB::select( DB::raw("SELECT * FROM planilha_grupo_amostra_pratos pgap WHERE pgap.status = 'A' AND id = {$id}"));
+            $return = DB::select( DB::raw("SELECT * FROM planilha_grupo_amostra_pratos main_tb WHERE main_tb.status = 'A' AND id = {$id}"));
 
             $response = ['status' => 'success', 'data' => $return];
         }catch(Exception $e){

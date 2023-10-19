@@ -1,12 +1,15 @@
 $(document).ready(function () {
 
-    loadlimpeza_caixa_gorduras();
+    loadPrincipal();
     loadGlobalParameters(6, 'id_parameter_caixa_gordura');
     loadGlobalParameters(1, 'id_parameter_area');
     loadGlobalParameters(3, 'id_parameter_responsavel');
 
+    // Carregar filtros
+    loadGlobalParameters(1, 'id_parameter_area_filter', null, true);
+
     // LISTAGEM
-    function loadlimpeza_caixa_gorduras()
+    function loadPrincipal()
     {
         Swal.queue([
             {
@@ -16,7 +19,7 @@ $(document).ready(function () {
                 onOpen: () => {
                     Swal.showLoading();
                     $.get(window.location.origin + "/planilha/limpeza-caixa-gordura/listar", {
-
+                        id_parameter_area : $("#id_parameter_area_filter option:selected").val(),
                     })
                     .then(function (data) {
                         if (data.status == "success") {
@@ -102,7 +105,7 @@ $(document).ready(function () {
 
                             $("#modalStorelimpeza_caixa_gorduras").modal("hide");
 
-                            showSuccess("Cadastro efetuado!", null, loadlimpeza_caixa_gorduras)
+                            showSuccess("Cadastro efetuado!", null, loadPrincipal)
                         } else if (data.status == "error") {
                             showError(data.message)
                         }
@@ -176,7 +179,7 @@ $(document).ready(function () {
 
                                 $("#modalEditlimpeza_caixa_gorduras").modal("hide");
 
-                                showSuccess("Edição efetuada!", null, loadlimpeza_caixa_gorduras)
+                                showSuccess("Edição efetuada!", null, loadPrincipal)
                             } else if (data.status == "error") {
                                 showError(data.message)
                             }
@@ -224,7 +227,7 @@ $(document).ready(function () {
                                     .then(function (data) {
                                         if (data.status == "success") {
 
-                                            showSuccess("Deletado com sucesso!", null, loadlimpeza_caixa_gorduras)
+                                            showSuccess("Deletado com sucesso!", null, loadPrincipal)
                                         } else if (data.status == "error") {
                                             showError(data.message)
                                         }
@@ -241,6 +244,16 @@ $(document).ready(function () {
                 }
             })
 
+    });
+
+    $("#formFiltroPrincipal").change(function (e) {
+        e.preventDefault();
+        loadPrincipal()
+    });
+
+    $("#data_limpeza").change(function (e) {
+        e.preventDefault();
+        preencherProximaData('data_limpeza', 'data_proxima_limpeza')
     });
 
 });

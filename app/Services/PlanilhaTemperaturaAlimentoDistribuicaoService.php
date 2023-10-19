@@ -98,7 +98,7 @@ class PlanilhaTemperaturaAlimentoDistribuicaoService
         return $response;
     }
 
-    public function list()
+    public function list($filter_array)
     {
         $response = [];
 
@@ -109,24 +109,29 @@ class PlanilhaTemperaturaAlimentoDistribuicaoService
                 $condition = " and us.id_unit = ".auth()->user()->id_unit;
             }
 
+            $filter = "";
+            if (!empty($filter_array['id_parameter_produto'])) {
+                $filter .= " and main_tb.id_parameter_produto = {$filter_array['id_parameter_produto']}";
+            }
+
             $return = DB::select( DB::raw("SELECT
                                                 us.name as usuario,
                                                 ifnull(un.name, 'Controle') as unidade,
                                                 p_ev.name as evento,
                                                 p_re.name as responsavel,
                                                 p_pr.name as produto,
-                                                ptad.*
+                                                main_tb.*
                                             FROM
-                                                planilha_temperatura_alimento_distribuicaos ptad
-                                                JOIN parameters p_ev ON ptad.id_parameter_evento = p_ev.id
-                                                JOIN parameters p_re ON ptad.id_parameter_responsavel = p_re.id
-                                                JOIN parameters p_pr ON ptad.id_parameter_produto = p_pr.id
-                                                JOIN users us ON ptad.id_user = us.id {$condition}
+                                                planilha_temperatura_alimento_distribuicaos main_tb
+                                                JOIN parameters p_ev ON main_tb.id_parameter_evento = p_ev.id
+                                                JOIN parameters p_re ON main_tb.id_parameter_responsavel = p_re.id
+                                                JOIN parameters p_pr ON main_tb.id_parameter_produto = p_pr.id
+                                                JOIN users us ON main_tb.id_user = us.id {$condition}
                                                 LEFT JOIN units un ON us.id_unit = un.id
                                             WHERE
-                                                ptad.status = 'A'
+                                                main_tb.status = 'A' {$filter}
                                             ORDER BY
-                                                ptad.id DESC"));
+                                                main_tb.id DESC"));
 
             $response = ['status' => 'success', 'data' => $return];
         }catch(Exception $e){
@@ -141,7 +146,7 @@ class PlanilhaTemperaturaAlimentoDistribuicaoService
         $response = [];
 
         try{
-            $return = DB::select( DB::raw("SELECT * FROM planilha_temperatura_alimento_distribuicaos ptad WHERE ptad.status = 'A' AND id = {$id}"));
+            $return = DB::select( DB::raw("SELECT * FROM planilha_temperatura_alimento_distribuicaos main_tb WHERE main_tb.status = 'A' AND id = {$id}"));
 
             $response = ['status' => 'success', 'data' => $return];
         }catch(Exception $e){

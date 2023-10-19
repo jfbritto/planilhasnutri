@@ -1,9 +1,9 @@
 $(document).ready(function () {
 
-    loadgrupo_amostra_prato();
+    loadPrincipal();
 
     // LISTAGEM
-    function loadgrupo_amostra_prato()
+    function loadPrincipal()
     {
         Swal.queue([
             {
@@ -13,7 +13,8 @@ $(document).ready(function () {
                 onOpen: () => {
                     Swal.showLoading();
                     $.get(window.location.origin + "/planilha/grupo-amostra-prato/listar", {
-
+                        data_ini : $("#data_ini_filter").val(),
+                        data_fim : $("#data_fim_filter").val(),
                     })
                     .then(function (data) {
                         if (data.status == "success") {
@@ -96,7 +97,7 @@ $(document).ready(function () {
 
                             $("#modalStoregrupo_amostra_prato").modal("hide");
 
-                            showSuccess("Cadastro efetuado!", null, loadgrupo_amostra_prato)
+                            showSuccess("Cadastro efetuado!", null, loadPrincipal)
                         } else if (data.status == "error") {
                             showError(data.message)
                         }
@@ -166,7 +167,7 @@ $(document).ready(function () {
 
                                 $("#modalEditgrupo_amostra_prato").modal("hide");
 
-                                showSuccess("Edição efetuada!", null, loadgrupo_amostra_prato)
+                                showSuccess("Edição efetuada!", null, loadPrincipal)
                             } else if (data.status == "error") {
                                 showError(data.message)
                             }
@@ -214,7 +215,7 @@ $(document).ready(function () {
                                     .then(function (data) {
                                         if (data.status == "success") {
 
-                                            showSuccess("Deletado com sucesso!", null, loadgrupo_amostra_prato)
+                                            showSuccess("Deletado com sucesso!", null, loadPrincipal)
                                         } else if (data.status == "error") {
                                             showError(data.message)
                                         }
@@ -231,6 +232,11 @@ $(document).ready(function () {
                 }
             })
 
+    });
+
+    $("#formFiltroPrincipal").change(function (e) {
+        e.preventDefault();
+        loadPrincipal()
     });
 
 });
