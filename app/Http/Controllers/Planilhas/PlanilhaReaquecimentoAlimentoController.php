@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Planilhas;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Services\PlanilhaReaquecimentoAlimentoService;
+use PDF;
 
 class PlanilhaReaquecimentoAlimentoController extends Controller
 {
@@ -103,5 +104,20 @@ class PlanilhaReaquecimentoAlimentoController extends Controller
             return response()->json(['status'=>'success', 'data'=>$response['data']], 200);
 
         return response()->json(['status'=>'error', 'message'=>$response['data']], 400);
+    }
+
+    public function gerarPDF(Request $request)
+    {
+        $filter = $request->all();
+
+        $itens = $this->planilhaReaquecimentoAlimentoService->list($filter)['data'];
+
+        $titulo = "titulo";
+
+        // Gere o PDF com a orientação do papel configurada como paisagem
+        $pdf = PDF::loadView('pdf.base', ['itens' => $itens, 'titulo' => $titulo]);
+        $pdf->setPaper('A4', 'landscape'); // Configuração de orientação paisagem
+
+        return $pdf->stream('base.pdf');
     }
 }

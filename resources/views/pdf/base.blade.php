@@ -98,21 +98,13 @@
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
-                    <th>Área</th>
-                    <th>Filtro</th>
-                    <th>Data de troca</th>
-                    <th>Próxima troca</th>
-                    <th>Responsável</th>
+                    <th>ID</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($itens as $item)
                     <tr>
-                        <td>{{ $item->area }}</td>
-                        <td>{{ $item->filtro }}</td>
-                        <td>{{ \Carbon\Carbon::parse($item->data_troca)->format('d/m/Y') }}</td>
-                        <td>{{ \Carbon\Carbon::parse($item->data_proxima_troca)->format('d/m/Y') }}</td>
-                        <td>{{ $item->responsavel }}</td>
+                        <td>{{ $item->id }}</td>
                     </tr>
                 @endforeach
             </tbody>

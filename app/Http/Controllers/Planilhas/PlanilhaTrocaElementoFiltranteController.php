@@ -103,8 +103,10 @@ class PlanilhaTrocaElementoFiltranteController extends Controller
 
         $itens = $this->planilhaTrocaElementoFiltranteService->list($filter)['data'];
 
+        $titulo = "Controle de Troca do Elemento Filtrante";
+
         // Gere o PDF com a orientação do papel configurada como paisagem
-        $pdf = PDF::loadView('pdf.troca_elemento_filtrante', compact('itens'));
+        $pdf = PDF::loadView('pdf.troca_elemento_filtrante', ['itens' => $itens, 'titulo' => $titulo]);
         $pdf->setPaper('A4', 'landscape'); // Configuração de orientação paisagem
 
         return $pdf->stream('troca_elemento_filtrante.pdf');

@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    loadtroca_elemento_filtrante();
+    loadPrincipal();
     loadGlobalParameters(1, 'id_parameter_area');
     loadGlobalParameters(2, 'id_parameter_filtro');
     loadGlobalParameters(3, 'id_parameter_responsavel');
@@ -9,7 +9,7 @@ $(document).ready(function () {
     loadGlobalParameters(1, 'id_parameter_area_filter', null, true);
 
     // LISTAGEM
-    function loadtroca_elemento_filtrante()
+    function loadPrincipal()
     {
         Swal.queue([
             {
@@ -19,9 +19,9 @@ $(document).ready(function () {
                 onOpen: () => {
                     Swal.showLoading();
                     $.get(window.location.origin + "/planilha/troca-elemento-filtrante/listar", {
-                        mes_troca : $("#mes_troca").val(),
-                        mes_proxima_troca : $("#mes_proxima_troca").val(),
-                        id_parameter_area : $("#id_parameter_area_filter option:selected").val(),
+                        mes_troca_filter : $("#mes_troca_filter").val(),
+                        mes_proxima_troca_filter : $("#mes_proxima_troca_filter").val(),
+                        id_parameter_area_filter : $("#id_parameter_area_filter option:selected").val(),
                     })
                     .then(function (data) {
                         if (data.status == "success") {
@@ -99,7 +99,7 @@ $(document).ready(function () {
 
                             $("#modalStoretroca_elemento_filtrante").modal("hide");
 
-                            showSuccess("Cadastro efetuado!", null, loadtroca_elemento_filtrante)
+                            showSuccess("Cadastro efetuado!", null, loadPrincipal)
                         } else if (data.status == "error") {
                             showError(data.message)
                         }
@@ -173,7 +173,7 @@ $(document).ready(function () {
 
                                 $("#modalEdittroca_elemento_filtrante").modal("hide");
 
-                                showSuccess("Edição efetuada!", null, loadtroca_elemento_filtrante)
+                                showSuccess("Edição efetuada!", null, loadPrincipal)
                             } else if (data.status == "error") {
                                 showError(data.message)
                             }
@@ -221,7 +221,7 @@ $(document).ready(function () {
                                     .then(function (data) {
                                         if (data.status == "success") {
 
-                                            showSuccess("Deletado com sucesso!", null, loadtroca_elemento_filtrante)
+                                            showSuccess("Deletado com sucesso!", null, loadPrincipal)
                                         } else if (data.status == "error") {
                                             showError(data.message)
                                         }
@@ -240,9 +240,9 @@ $(document).ready(function () {
 
     });
 
-    $("#formFiltrotroca_elemento_filtrante").change(function (e) {
+    $("#formFiltroPrincipal").change(function (e) {
         e.preventDefault();
-        loadtroca_elemento_filtrante()
+        loadPrincipal()
     });
 
     $("#data_troca").change(function (e) {
@@ -251,17 +251,3 @@ $(document).ready(function () {
     });
 
 });
-
-$("#abrirPDF").click(function(event) {
-    event.preventDefault();
-
-    montaUrlPdf();
-});
-
-function montaUrlPdf() {
-    let url = window.location.origin + "/planilha/troca-elemento-filtrante/visualizar";
-
-    url += `?mes_troca=${$("#mes_troca").val()}&mes_proxima_troca=${$("#mes_proxima_troca").val()}&id_parameter_area=${$("#id_parameter_area_filter option:selected").val()}`;
-
-    window.open(url, '_blank');
-}

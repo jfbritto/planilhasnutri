@@ -314,3 +314,19 @@ function preencherProximaData(campo1, campo2, meses_add = 6) {
         $(`#${campo2}`).val(data_final_formatada);
     }
 }
+
+$("#abrirPDF").click(function(event) {
+    event.preventDefault();
+
+    montaUrlPdf();
+});
+
+function montaUrlPdf() {
+
+    const formulario = document.getElementById("formFiltroPrincipal");
+    const formData = new FormData(formulario);
+    const params = new URLSearchParams(formData);
+    const url = `${window.location.href}/visualizar?${params.toString()}`;
+
+    window.open(url, '_blank');
+}

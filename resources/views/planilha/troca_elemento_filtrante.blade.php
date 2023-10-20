@@ -14,7 +14,7 @@
 
     <div class="card">
         <div class="card-body border-0">
-            <form id="formFiltrotroca_elemento_filtrante">
+            <form id="formFiltroPrincipal">
                 <div class="row">
                     <div class="col-md-3">
                         <div class="form-group">
@@ -24,14 +24,14 @@
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
-                            <label for="mes_troca">Mês da troca</label>
-                            <input type="month" value="{{now()->format('Y-m')}}" required name="mes_troca" id="mes_troca" class="form-control">
+                            <label for="mes_troca_filter">Mês da troca</label>
+                            <input type="month" value="{{now()->format('Y-m')}}" required name="mes_troca_filter" id="mes_troca_filter" class="form-control">
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
-                            <label for="mes_proxima_troca">Mês da próxima troca</label>
-                            <input type="month" required name="mes_proxima_troca" id="mes_proxima_troca" class="form-control">
+                            <label for="mes_proxima_troca_filter">Mês da próxima troca</label>
+                            <input type="month" required name="mes_proxima_troca_filter" id="mes_proxima_troca_filter" class="form-control">
                         </div>
                     </div>
                 </div>
@@ -41,17 +41,16 @@
 
     <div class="card">
         <div class="card-header border-0">
-            @if(auth()->user()->id_unit)
-                <h3 class="card-title"> </h3>
-                <div class="card-tools">
-                    <a href="#" class="btn btn-tool btn-sm" id="abrirPDF" title="Visualizar planilha">
-                        <i class="fas fa-file-pdf"></i>
-                    </a>
-                    <a href="#" class="btn btn-tool btn-sm" data-toggle="modal" data-target="#modalStoretroca_elemento_filtrante" title="Adicionar novo item">
-                        <i class="fas fa-plus"></i>
-                    </a>
-                </div>
-            @endif
+            <div class="card-tools">
+                <a href="#" class="btn btn-tool btn-sm" id="abrirPDF" title="Visualizar planilha">
+                    <i class="fas fa-file-pdf"></i>
+                </a>
+                @if(auth()->user()->id_unit)
+                <a href="#" class="btn btn-tool btn-sm" data-toggle="modal" data-target="#modalStoretroca_elemento_filtrante" title="Adicionar novo item">
+                    <i class="fas fa-plus"></i>
+                </a>
+                @endif
+            </div>
         </div>
         <div class="card-body">
             <div class="table-responsive">

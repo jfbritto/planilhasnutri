@@ -95,18 +95,18 @@ class PlanilhaTrocaElementoFiltranteService
             }
 
             $filter = "";
-            if (!empty($filter_array['mes_troca'])) {
-                $data_ini = date('Y-m-01', strtotime($filter_array['mes_troca']));
-                $data_fim = date('Y-m-t', strtotime($filter_array['mes_troca']));
-                $filter .= " and ptef.data_troca between '{$data_ini}' and '{$data_fim}'";
+            if (!empty($filter_array['mes_troca_filter'])) {
+                $data_ini = date('Y-m-01', strtotime($filter_array['mes_troca_filter']));
+                $data_fim = date('Y-m-t', strtotime($filter_array['mes_troca_filter']));
+                $filter .= " and main_tb.data_troca between '{$data_ini}' and '{$data_fim}'";
             }
-            if (!empty($filter_array['mes_proxima_troca'])) {
-                $data_ini = date('Y-m-01', strtotime($filter_array['mes_proxima_troca']));
-                $data_fim = date('Y-m-t', strtotime($filter_array['mes_proxima_troca']));
-                $filter .= " and ptef.data_proxima_troca between '{$data_ini}' and '{$data_fim}'";
+            if (!empty($filter_array['mes_proxima_troca_filter'])) {
+                $data_ini = date('Y-m-01', strtotime($filter_array['mes_proxima_troca_filter']));
+                $data_fim = date('Y-m-t', strtotime($filter_array['mes_proxima_troca_filter']));
+                $filter .= " and main_tb.data_proxima_troca between '{$data_ini}' and '{$data_fim}'";
             }
-            if (!empty($filter_array['id_parameter_area'])) {
-                $filter .= " and ptef.id_parameter_area = {$filter_array['id_parameter_area']}";
+            if (!empty($filter_array['id_parameter_area_filter'])) {
+                $filter .= " and main_tb.id_parameter_area = {$filter_array['id_parameter_area_filter']}";
             }
 
             $return = DB::select( DB::raw("SELECT
@@ -115,18 +115,18 @@ class PlanilhaTrocaElementoFiltranteService
                                                 p_ar.name as area,
                                                 p_fi.name as filtro,
                                                 p_re.name as responsavel,
-                                                ptef.*
+                                                main_tb.*
                                             FROM
-                                                planilha_troca_elemento_filtrantes ptef
-                                                JOIN parameters p_ar ON ptef.id_parameter_area = p_ar.id
-                                                JOIN parameters p_fi ON ptef.id_parameter_filtro = p_fi.id
-                                                JOIN parameters p_re ON ptef.id_parameter_responsavel = p_re.id
-                                                JOIN users us ON ptef.id_user = us.id {$condition}
+                                                planilha_troca_elemento_filtrantes main_tb
+                                                JOIN parameters p_ar ON main_tb.id_parameter_area = p_ar.id
+                                                JOIN parameters p_fi ON main_tb.id_parameter_filtro = p_fi.id
+                                                JOIN parameters p_re ON main_tb.id_parameter_responsavel = p_re.id
+                                                JOIN users us ON main_tb.id_user = us.id {$condition}
                                                 LEFT JOIN units un ON us.id_unit = un.id
                                             WHERE
-                                                ptef.status = 'A' {$filter}
+                                                main_tb.status = 'A' {$filter}
                                             ORDER BY
-                                                ptef.data_troca DESC"));
+                                                main_tb.data_troca DESC"));
 
             $response = ['status' => 'success', 'data' => $return];
         }catch(Exception $e){
@@ -141,7 +141,7 @@ class PlanilhaTrocaElementoFiltranteService
         $response = [];
 
         try{
-            $return = DB::select( DB::raw("SELECT * FROM planilha_troca_elemento_filtrantes ptef WHERE ptef.status = 'A' AND id = {$id}"));
+            $return = DB::select( DB::raw("SELECT * FROM planilha_troca_elemento_filtrantes main_tb WHERE main_tb.status = 'A' AND id = {$id}"));
 
             $response = ['status' => 'success', 'data' => $return];
         }catch(Exception $e){

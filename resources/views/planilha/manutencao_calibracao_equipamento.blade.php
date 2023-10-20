@@ -29,14 +29,16 @@
 
     <div class="card">
         <div class="card-header border-0">
-            @if(auth()->user()->id_unit)
-                <h3 class="card-title"> </h3>
-                <div class="card-tools">
-                    <a href="#" class="btn btn-tool btn-sm" data-toggle="modal" data-target="#modalStoremanutencao_calibracao_equipamento">
+            <div class="card-tools">
+                <a href="#" class="btn btn-tool btn-sm" id="abrirPDF" title="Visualizar planilha">
+                    <i class="fas fa-file-pdf"></i>
+                </a>
+                @if(auth()->user()->id_unit)
+                <a href="#" class="btn btn-tool btn-sm" data-toggle="modal" data-target="#modalStoremanutencao_calibracao_equipamento" title="Adicionar novo item">
                     <i class="fas fa-plus"></i>
-                    </a>
-                </div>
-            @endif
+                </a>
+                @endif
+            </div>
         </div>
         <div class="card-body p-0">
             <div class="table-responsive">
