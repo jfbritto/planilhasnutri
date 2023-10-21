@@ -18,7 +18,7 @@ class PlanilhaHigienizacaoFiltrosAparelhosClimatizacaoController extends Control
 
     public function index()
     {
-        return view('planilha.higienizacao_filtros_aparelhos_climatizacaos');
+        return view('planilha.higienizacao_filtros_aparelhos_climatizacao');
     }
 
     public function store(Request $request)
