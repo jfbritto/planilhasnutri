@@ -23,6 +23,16 @@ class PlanilhasController extends Controller
      */
     public function index()
     {
+        return view('planilha.home2');
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function index2()
+    {
         return view('planilha.home');
     }
 }

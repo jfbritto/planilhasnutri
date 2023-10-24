@@ -4,10 +4,10 @@
     <link rel="icon" href="/img/building.png" type="image/png">
 @stop
 
-@section('title', 'Registro de Não Conformidades Detectadas da Auto Avaliação')
+@section('title', 'Registro de Não Conformidades Detectadas na Auto Avaliação')
 
 @section('content_header')
-    <h1><i class="fas fa-file"></i> &nbsp;Registro de Não Conformidades Detectadas da Auto Avaliação</h1>
+    <h1><i class="fa-solid fa-triangle-exclamation"></i> &nbsp;Registro de Não Conformidades Detectadas na Auto Avaliação</h1>
 @stop
 
 @section('content')
@@ -37,11 +37,11 @@
         <div class="card-header border-0">
             <div class="card-tools">
                 <a href="#" class="btn btn-tool btn-sm" id="abrirPDF" title="Visualizar planilha">
-                    <i class="fas fa-file-pdf"></i>
+                    <i class="fa-regular fa-file-pdf fa-2xl"></i>
                 </a>
                 @if(auth()->user()->id_unit)
                 <a href="#" class="btn btn-tool btn-sm" data-toggle="modal" data-target="#modalStoreregistro_nao_conformidade_detectada_auto_avaliacao" title="Adicionar novo item">
-                    <i class="fas fa-plus"></i>
+                    <i class="fa-solid fa-square-plus fa-2xl color-green"></i>
                 </a>
                 @endif
             </div>
@@ -69,7 +69,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Cadastrar: Registro de Não Conformidades Detectadas da Auto Avaliação</h5>
+                <h5 class="modal-title">Cadastrar: Registro de Não Conformidades Detectadas na Auto Avaliação</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
@@ -129,7 +129,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Editar: Registro de Não Conformidades Detectadas da Auto Avaliação</h5>
+                <h5 class="modal-title">Editar: Registro de Não Conformidades Detectadas na Auto Avaliação</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>

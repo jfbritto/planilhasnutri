@@ -17,7 +17,7 @@
             <h3 class="card-title"> </h3>
             <div class="card-tools">
                 <a href="#" class="btn btn-tool btn-sm" data-toggle="modal" data-target="#modalStoreUser">
-                <i class="fas fa-plus"></i>
+                    <i class="fa-solid fa-square-plus fa-2xl color-green"></i>
                 </a>
             </div>
         </div>

@@ -7,7 +7,7 @@
 @section('title', 'Check-list de Avaliação do Manejo dos Resíduos')
 
 @section('content_header')
-    <h1><i class="fas fa-file"></i> &nbsp;Check-list de Avaliação do Manejo dos Resíduos</h1>
+    <h1><i class="fa-solid fa-list-check"></i> &nbsp;Check-list de Avaliação do Manejo dos Resíduos</h1>
 @stop
 
 @section('content')
@@ -37,11 +37,11 @@
         <div class="card-header border-0">
             <div class="card-tools">
                 <a href="#" class="btn btn-tool btn-sm" id="abrirPDF" title="Visualizar planilha">
-                    <i class="fas fa-file-pdf"></i>
+                    <i class="fa-regular fa-file-pdf fa-2xl"></i>
                 </a>
                 @if(auth()->user()->id_unit)
                 <a href="#" class="btn btn-tool btn-sm" data-toggle="modal" data-target="#modalStoreavaliacao_manejo_residuo" title="Adicionar novo item">
-                    <i class="fas fa-plus"></i>
+                    <i class="fa-solid fa-square-plus fa-2xl color-green"></i>
                 </a>
                 @endif
             </div>

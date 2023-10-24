@@ -343,7 +343,7 @@ return [
         [
             'text' => 'Planilhas',
             'url'  => 'planilhas',
-            'icon' => 'fas fa-fw fa-file'
+            'icon' => 'fas fa-fw fa-file-lines'
         ],
         // [
         //     'text' => 'Parâmetros',

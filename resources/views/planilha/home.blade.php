@@ -15,15 +15,15 @@
     <div class="card">
         <div class="card-body">
 
-            <div class="card-deck mb-3">
+            <div class="card-deck mb-2">
                 <div class="card">
                     <a href="/planilha/troca-elemento-filtrante">
                         <img class="card-img-top" src="data:image/jpeg;base64,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" alt="Imagem de capa do card">
                     </a>
                     <div class="card-body">
                     <h5 class="card-title">Controle de Troca do Elemento Filtrante</h5>
-                    {{-- <p class="card-text">Este é um card mais longo com suporte a texto embaixo, que funciona como uma introdução a um conteúdo adicional. Este conteúdo é um pouco maior.</p> --}}
-                    {{-- <p class="card-text"><small class="text-muted">Atualizados 3 minutos atrás</small></p> --}}
+                    {{-- <p class="card-text"></p>
+                    <p class="card-text"><small class="text-muted">Atualizados 3 minutos atrás</small></p> --}}
                     </div>
                 </div>
                 <div class="card">
@@ -66,8 +66,6 @@
                     {{-- <p class="card-text"><small class="text-muted">Atualizados 3 minutos atrás</small></p> --}}
                     </div>
                 </div>
-            </div>
-            <div class="card-deck mb-3">
                 <div class="card">
                     <a href="/planilha/verificacao-procedimento-higienizacao-hortifruti">
                         <img class="card-img-top" src="https://i0.wp.com/www.totalissaude.com.br/wp-content/uploads/2020/07/como-limpar-alimentos-totalis.jpg?fit=650%2C430&ssl=1" alt="Imagem de capa do card">
@@ -78,6 +76,8 @@
                     {{-- <p class="card-text"><small class="text-muted">Atualizados 3 minutos atrás</small></p> --}}
                     </div>
                 </div>
+            </div>
+            <div class="card-deck mb-2">
                 <div class="card">
                     <a href="/planilha/manutencao-calibracao-equipamento">
                         <img class="card-img-top" src="https://www.startlabsp.com.br/imagens/informacoes/manutencao-calibracao-equipamentos-medicao-01.jpg" alt="Imagem de capa do card">
@@ -118,8 +118,6 @@
                     {{-- <p class="card-text"><small class="text-muted">Atualizados 3 minutos atrás</small></p> --}}
                     </div>
                 </div>
-            </div>
-            <div class="card-deck mb-3">
                 <div class="card">
                     <a href="/planilha/reaquecimento-alimento">
                         <img class="card-img-top" src="https://consultoradealimentos.com.br/wp-content/uploads/2017/09/t_106_steak_small.jpg" alt="Imagem de capa do card">
@@ -135,11 +133,13 @@
                         <img class="card-img-top" src="https://www.8quali.com.br/wp-content/uploads/2016/07/road-sign-663368_1920-820x400-1-770x400.jpg" alt="Imagem de capa do card">
                     </a>
                     <div class="card-body">
-                    <h5 class="card-title">Registro de Não Conformidades Detectadas da Auto Avaliação</h5>
+                    <h5 class="card-title">Registro de Não Conformidades Detectadas na Auto Avaliação</h5>
                     {{-- <p class="card-text">Este é um card maior com suporte a texto embaixo, que funciona como uma introdução a um conteúdo adicional. Este card tem o conteúdo ainda maior que o primeiro, para mostrar a altura igual, em ação.</p> --}}
                     {{-- <p class="card-text"><small class="text-muted">Atualizados 3 minutos atrás</small></p> --}}
                     </div>
                 </div>
+            </div>
+            <div class="card-deck mb-2">
                 <div class="card">
                     <a href="/planilha/temperatura-alimento-banho-maria">
                         <img class="card-img-top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Bain-marie.JPG/1200px-Bain-marie.JPG" alt="Imagem de capa do card">
@@ -170,8 +170,6 @@
                     {{-- <p class="card-text"><small class="text-muted">Atualizados 3 minutos atrás</small></p> --}}
                     </div>
                 </div>
-            </div>
-            <div class="card-deck mb-3">
                 <div class="card">
                     <a href="/planilha/avaliacao-manejo-residuo">
                         <img class="card-img-top" src="https://www.vertown.com/uploads/2017/10/checklist-para-res%C3%ADduos-perigosos.-5.jpg" alt="Imagem de capa do card">
@@ -201,10 +199,6 @@
                     {{-- <p class="card-text">Este é um card maior com suporte a texto embaixo, que funciona como uma introdução a um conteúdo adicional. Este card tem o conteúdo ainda maior que o primeiro, para mostrar a altura igual, em ação.</p> --}}
                     {{-- <p class="card-text"><small class="text-muted">Atualizados 3 minutos atrás</small></p> --}}
                     </div>
-                </div>
-                <div class="card">
-                </div>
-                <div class="card">
                 </div>
             </div>
 

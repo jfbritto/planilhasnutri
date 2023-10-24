@@ -13,16 +13,16 @@
 @section('content')
 
     <div class="card">
+        @if(!auth()->user()->id_unit)
         <div class="card-header border-0">
-            @if(!auth()->user()->id_unit)
                 <h3 class="card-title"> </h3>
                 <div class="card-tools">
                     <a href="#" class="btn btn-tool btn-sm" data-toggle="modal" data-target="#modalStoreParameterType" title="Cadastrar Novo Parâmetro">
-                    <i class="fas fa-plus"></i>
+                        <i class="fa-solid fa-square-plus fa-2xl color-green"></i>
                     </a>
                 </div>
-            @endif
-        </div>
+            </div>
+        @endif
         <div class="card-body p-0">
             <div class="table-responsive">
                 <table class="table table-striped table-valign-middle table-hover table-sm">
@@ -116,7 +116,7 @@
                             <h3 class="card-title"> </h3>
                             <div class="card-tools">
                                 <a href="#" class="btn btn-tool btn-sm" data-toggle="modal" data-target="#modalStoreParameter" title="Cadastrar Novo Item">
-                                <i class="fas fa-plus"></i>
+                                    <i class="fa-solid fa-square-plus fa-2xl color-green"></i>
                                 </a>
                             </div>
                         </div>

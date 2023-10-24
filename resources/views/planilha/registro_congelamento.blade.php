@@ -7,7 +7,7 @@
 @section('title', 'Registro de Congelamento')
 
 @section('content_header')
-    <h1><i class="fas fa-file"></i> &nbsp;Registro de Congelamento</h1>
+    <h1><i class="fa-solid fa-snowflake"></i> &nbsp;Registro de Congelamento</h1>
 @stop
 
 @section('content')
@@ -31,11 +31,11 @@
         <div class="card-header border-0">
             <div class="card-tools">
                 <a href="#" class="btn btn-tool btn-sm" id="abrirPDF" title="Visualizar planilha">
-                    <i class="fas fa-file-pdf"></i>
+                    <i class="fa-regular fa-file-pdf fa-2xl"></i>
                 </a>
                 @if(auth()->user()->id_unit)
                 <a href="#" class="btn btn-tool btn-sm" data-toggle="modal" data-target="#modalStoreregistro_congelamento" title="Adicionar novo item">
-                    <i class="fas fa-plus"></i>
+                    <i class="fa-solid fa-square-plus fa-2xl color-green"></i>
                 </a>
                 @endif
             </div>
