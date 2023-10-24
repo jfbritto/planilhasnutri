@@ -3,6 +3,13 @@
 
 <head>
 
+    <!-- Meta Tags Open Graph para compartilhamento em redes sociais -->
+    <meta property="og:title" content="PlanilhasNUTRI">
+    <meta property="og:description" content="Sistema de controle e administração da segurança dos alimentos">
+    <meta property="og:image" content="/img/logo.png">
+    <meta property="og:url" content="https://planilhas.helpdiet.com.br/">
+    <meta property="og:type" content="website">
+
     {{-- Base Meta Tags --}}
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
