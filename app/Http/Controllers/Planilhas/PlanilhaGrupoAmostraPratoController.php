@@ -102,12 +102,12 @@ class PlanilhaGrupoAmostraPratoController extends Controller
 
         $itens = $this->planilhaGrupoAmostraPratoService->list($filter)['data'];
 
-        $titulo = "titulo";
+        $titulo = "Registro de Grupo de Amostras de Pratos";
 
         // Gere o PDF com a orientação do papel configurada como paisagem
-        $pdf = PDF::loadView('pdf.base', ['itens' => $itens, 'titulo' => $titulo]);
+        $pdf = PDF::loadView('pdf.grupo_amostra_prato', ['itens' => $itens, 'titulo' => $titulo]);
         $pdf->setPaper('A4', 'landscape'); // Configuração de orientação paisagem
 
-        return $pdf->stream('base.pdf');
+        return $pdf->stream('grupo_amostra_prato.pdf');
     }
 }

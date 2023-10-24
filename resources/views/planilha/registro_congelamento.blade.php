@@ -4,10 +4,10 @@
     <link rel="icon" href="/img/building.png" type="image/png">
 @stop
 
-@section('title', 'Registro Congelamento')
+@section('title', 'Registro de Congelamento')
 
 @section('content_header')
-    <h1><i class="fas fa-file"></i> &nbsp;Registro Congelamento</h1>
+    <h1><i class="fas fa-file"></i> &nbsp;Registro de Congelamento</h1>
 @stop
 
 @section('content')
@@ -64,7 +64,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Cadastrar: Registro Congelamento</h5>
+                <h5 class="modal-title">Cadastrar: Registro de Congelamento</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
@@ -124,7 +124,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Editar: Registro Congelamento</h5>
+                <h5 class="modal-title">Editar: Registro de Congelamento</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>

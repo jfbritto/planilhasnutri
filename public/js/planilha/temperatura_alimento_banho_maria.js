@@ -17,7 +17,7 @@ $(document).ready(function () {
                 onOpen: () => {
                     Swal.showLoading();
                     $.get(window.location.origin + "/planilha/temperatura-alimento-banho-maria/listar", {
-                        id_parameter_produto : $("#id_parameter_produto_filter option:selected").val(),
+                        id_parameter_produto_filter : $("#id_parameter_produto_filter option:selected").val(),
                     })
                     .then(function (data) {
                         if (data.status == "success") {

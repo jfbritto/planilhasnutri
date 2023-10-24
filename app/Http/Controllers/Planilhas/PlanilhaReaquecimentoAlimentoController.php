@@ -112,12 +112,12 @@ class PlanilhaReaquecimentoAlimentoController extends Controller
 
         $itens = $this->planilhaReaquecimentoAlimentoService->list($filter)['data'];
 
-        $titulo = "titulo";
+        $titulo = "Controle de Reaquecimento dos Alimentos";
 
         // Gere o PDF com a orientação do papel configurada como paisagem
-        $pdf = PDF::loadView('pdf.base', ['itens' => $itens, 'titulo' => $titulo]);
+        $pdf = PDF::loadView('pdf.reaquecimento_alimento', ['itens' => $itens, 'titulo' => $titulo]);
         $pdf->setPaper('A4', 'landscape'); // Configuração de orientação paisagem
 
-        return $pdf->stream('base.pdf');
+        return $pdf->stream('reaquecimento_alimento.pdf');
     }
 }

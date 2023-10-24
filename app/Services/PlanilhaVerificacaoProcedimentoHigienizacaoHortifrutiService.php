@@ -97,8 +97,8 @@ class PlanilhaVerificacaoProcedimentoHigienizacaoHortifrutiService
             }
 
             $filter = "";
-            if (!empty($filter_array['id_parameter_alimento'])) {
-                $filter .= " and main_tb.id_parameter_alimento = {$filter_array['id_parameter_alimento']}";
+            if (!empty($filter_array['id_parameter_alimento_filter'])) {
+                $filter .= " and main_tb.id_parameter_alimento = {$filter_array['id_parameter_alimento_filter']}";
             }
 
             $return = DB::select( DB::raw("SELECT

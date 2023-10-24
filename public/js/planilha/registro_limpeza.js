@@ -18,7 +18,7 @@ $(document).ready(function () {
                 onOpen: () => {
                     Swal.showLoading();
                     $.get(window.location.origin + "/planilha/registro-limpeza/listar", {
-                        id_parameter_area : $("#id_parameter_area_filter option:selected").val(),
+                        id_parameter_area_filter : $("#id_parameter_area_filter option:selected").val(),
                     })
                     .then(function (data) {
                         if (data.status == "success") {

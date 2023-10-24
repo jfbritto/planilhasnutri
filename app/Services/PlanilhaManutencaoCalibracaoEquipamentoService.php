@@ -98,8 +98,8 @@ class PlanilhaManutencaoCalibracaoEquipamentoService
             }
 
             $filter = "";
-            if (!empty($filter_array['id_parameter_equipamento'])) {
-                $filter .= " and main_tb.id_parameter_equipamento = {$filter_array['id_parameter_equipamento']}";
+            if (!empty($filter_array['id_parameter_equipamento_filter'])) {
+                $filter .= " and main_tb.id_parameter_equipamento = {$filter_array['id_parameter_equipamento_filter']}";
             }
 
             $return = DB::select( DB::raw("SELECT

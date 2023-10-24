@@ -110,12 +110,12 @@ class PlanilhaAvaliacaoManejoResiduoController extends Controller
 
         $itens = $this->planilhaAvaliacaoManejoResiduoService->list($filter)['data'];
 
-        $titulo = "titulo";
+        $titulo = "Check-list de Avaliação do Manejo dos Resíduos";
 
         // Gere o PDF com a orientação do papel configurada como paisagem
-        $pdf = PDF::loadView('pdf.base', ['itens' => $itens, 'titulo' => $titulo]);
+        $pdf = PDF::loadView('pdf.avaliacao_manejo_residuo', ['itens' => $itens, 'titulo' => $titulo]);
         $pdf->setPaper('A4', 'landscape'); // Configuração de orientação paisagem
 
-        return $pdf->stream('base.pdf');
+        return $pdf->stream('avaliacao_manejo_residuo.pdf');
     }
 }

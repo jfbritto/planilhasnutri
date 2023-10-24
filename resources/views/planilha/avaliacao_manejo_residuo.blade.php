@@ -4,10 +4,10 @@
     <link rel="icon" href="/img/building.png" type="image/png">
 @stop
 
-@section('title', 'Chack-list de Avaliação do Manejo dos Resíduos')
+@section('title', 'Check-list de Avaliação do Manejo dos Resíduos')
 
 @section('content_header')
-    <h1><i class="fas fa-file"></i> &nbsp;Chack-list de Avaliação do Manejo dos Resíduos</h1>
+    <h1><i class="fas fa-file"></i> &nbsp;Check-list de Avaliação do Manejo dos Resíduos</h1>
 @stop
 
 @section('content')
@@ -71,7 +71,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Cadastrar: Chack-list de Avaliação do Manejo dos Resíduos</h5>
+                <h5 class="modal-title">Cadastrar: Check-list de Avaliação do Manejo dos Resíduos</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
@@ -167,7 +167,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Editar: Chack-list de Avaliação do Manejo dos Resíduos</h5>
+                <h5 class="modal-title">Editar: Check-list de Avaliação do Manejo dos Resíduos</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>

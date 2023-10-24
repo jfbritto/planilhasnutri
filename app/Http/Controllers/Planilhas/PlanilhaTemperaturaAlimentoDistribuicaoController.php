@@ -134,12 +134,12 @@ class PlanilhaTemperaturaAlimentoDistribuicaoController extends Controller
 
         $itens = $this->planilhaTemperaturaAlimentoDistribuicaoService->list($filter)['data'];
 
-        $titulo = "titulo";
+        $titulo = "Controle de Temperatura dos Alimentos na Distribuição";
 
         // Gere o PDF com a orientação do papel configurada como paisagem
-        $pdf = PDF::loadView('pdf.base', ['itens' => $itens, 'titulo' => $titulo]);
+        $pdf = PDF::loadView('pdf.temperatura_alimento_distribuicao', ['itens' => $itens, 'titulo' => $titulo]);
         $pdf->setPaper('A4', 'landscape'); // Configuração de orientação paisagem
 
-        return $pdf->stream('base.pdf');
+        return $pdf->stream('temperatura_alimento_distribuicao.pdf');
     }
 }

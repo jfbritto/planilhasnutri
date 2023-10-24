@@ -14,8 +14,8 @@ $(document).ready(function () {
                 onOpen: () => {
                     Swal.showLoading();
                     $.get(window.location.origin + "/planilha/registro-nao-conformidade-detectada-auto-avaliacao/listar", {
-                        data_ini : $("#data_ini_filter").val(),
-                        data_fim : $("#data_fim_filter").val(),
+                        data_ini_filter : $("#data_ini_filter").val(),
+                        data_fim_filter : $("#data_fim_filter").val(),
                     })
                     .then(function (data) {
                         if (data.status == "success") {

@@ -98,8 +98,8 @@ class PlanilhaTemperaturaAlimentoBanhoMariaService
             }
 
             $filter = "";
-            if (!empty($filter_array['id_parameter_produto'])) {
-                $filter .= " and main_tb.id_parameter_produto = {$filter_array['id_parameter_produto']}";
+            if (!empty($filter_array['id_parameter_produto_filter'])) {
+                $filter .= " and main_tb.id_parameter_produto = {$filter_array['id_parameter_produto_filter']}";
             }
 
             $return = DB::select( DB::raw("SELECT
@@ -115,7 +115,7 @@ class PlanilhaTemperaturaAlimentoBanhoMariaService
                                             WHERE
                                                 main_tb.status = 'A' {$filter}
                                             ORDER BY
-                                                main_tb.id DESC"));
+                                                main_tb.data, main_tb.periodo"));
 
             $response = ['status' => 'success', 'data' => $return];
         }catch(Exception $e){

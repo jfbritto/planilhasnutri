@@ -98,9 +98,9 @@ class PlanilhaAvaliacaoManejoResiduoService
             }
 
             $filter = "";
-            if (!empty($filter_array['data_ini']) && !empty($filter_array['data_fim'])) {
-                $data_ini = date('Y-m-01', strtotime($filter_array['data_ini']));
-                $data_fim = date('Y-m-t', strtotime($filter_array['data_fim']));
+            if (!empty($filter_array['data_ini_filter']) && !empty($filter_array['data_fim_filter'])) {
+                $data_ini = date('Y-m-01', strtotime($filter_array['data_ini_filter']));
+                $data_fim = date('Y-m-t', strtotime($filter_array['data_fim_filter']));
                 $filter .= " and main_tb.data between '{$data_ini}' and '{$data_fim}'";
             }
 
@@ -115,7 +115,7 @@ class PlanilhaAvaliacaoManejoResiduoService
                                             WHERE
                                                 main_tb.status = 'A' {$filter}
                                             ORDER BY
-                                                main_tb.id DESC"));
+                                                main_tb.data"));
 
             $response = ['status' => 'success', 'data' => $return];
         }catch(Exception $e){

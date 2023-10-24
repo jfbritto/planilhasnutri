@@ -102,11 +102,11 @@ class PlanilhaRecebimentoMateriaPrimaService
             }
 
             $filter = "";
-            if (!empty($filter_array['id_parameter_produto'])) {
-                $filter .= " and main_tb.id_parameter_produto = {$filter_array['id_parameter_produto']}";
+            if (!empty($filter_array['id_parameter_produto_filter'])) {
+                $filter .= " and main_tb.id_parameter_produto = {$filter_array['id_parameter_produto_filter']}";
             }
-            if (!empty($filter_array['id_parameter_fornecedor'])) {
-                $filter .= " and main_tb.id_parameter_fornecedor = {$filter_array['id_parameter_fornecedor']}";
+            if (!empty($filter_array['id_parameter_fornecedor_filter'])) {
+                $filter .= " and main_tb.id_parameter_fornecedor = {$filter_array['id_parameter_fornecedor_filter']}";
             }
 
             $return = DB::select( DB::raw("SELECT

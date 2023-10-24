@@ -13,8 +13,8 @@ $(document).ready(function () {
                 onOpen: () => {
                     Swal.showLoading();
                     $.get(window.location.origin + "/planilha/avaliacao-manejo-residuo/listar", {
-                        data_ini : $("#data_ini_filter").val(),
-                        data_fim : $("#data_fim_filter").val(),
+                        data_ini_filter : $("#data_ini_filter").val(),
+                        data_fim_filter : $("#data_fim_filter").val(),
                     })
                     .then(function (data) {
                         if (data.status == "success") {
@@ -35,7 +35,7 @@ $(document).ready(function () {
                                             <td class="align-middle">${simNao(item.area_externa_apropriada)}</td>
                                             <td class="align-middle">${simNao(item.residuos_organicos_retirados)}</td>
                                             <td class="align-middle">${simNao(item.area_externa_higienizada)}</td>
-                                            <td class="align-middle" style="text-align: right">
+                                            <td class="align-middle" style="text-align: right; width: 120px">
                                                 <a title="Editar"
                                                 data-id="${item.id}"
                                                 data-usuario="${item.usuario}"

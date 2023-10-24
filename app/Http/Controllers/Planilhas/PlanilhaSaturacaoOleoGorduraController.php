@@ -118,12 +118,12 @@ class PlanilhaSaturacaoOleoGorduraController extends Controller
 
         $itens = $this->planilhaSaturacaoOleoGorduraService->list($filter)['data'];
 
-        $titulo = "titulo";
+        $titulo = "Controle de Saturação de Óleos e Gorduras";
 
         // Gere o PDF com a orientação do papel configurada como paisagem
-        $pdf = PDF::loadView('pdf.base', ['itens' => $itens, 'titulo' => $titulo]);
+        $pdf = PDF::loadView('pdf.saturacao_oleo_gordura', ['itens' => $itens, 'titulo' => $titulo]);
         $pdf->setPaper('A4', 'landscape'); // Configuração de orientação paisagem
 
-        return $pdf->stream('base.pdf');
+        return $pdf->stream('saturacao_oleo_gordura.pdf');
     }
 }

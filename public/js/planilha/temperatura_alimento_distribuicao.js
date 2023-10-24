@@ -7,6 +7,7 @@ $(document).ready(function () {
 
     // Carregar filtros
     loadGlobalParameters(8, 'id_parameter_produto_filter', null, true, false);
+    loadGlobalParameters(11, 'id_parameter_evento_filter', null, true, false);
 
     // LISTAGEM
     function loadPrincipal()
@@ -19,7 +20,8 @@ $(document).ready(function () {
                 onOpen: () => {
                     Swal.showLoading();
                     $.get(window.location.origin + "/planilha/temperatura-alimento-distribuicao/listar", {
-                        id_parameter_produto : $("#id_parameter_produto_filter option:selected").val(),
+                        id_parameter_evento_filter : $("#id_parameter_evento_filter option:selected").val(),
+                        id_parameter_produto_filter : $("#id_parameter_produto_filter option:selected").val(),
                     })
                     .then(function (data) {
                         if (data.status == "success") {

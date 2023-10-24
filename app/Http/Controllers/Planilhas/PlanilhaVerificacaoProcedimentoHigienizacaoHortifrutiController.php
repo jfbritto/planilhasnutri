@@ -108,12 +108,12 @@ class PlanilhaVerificacaoProcedimentoHigienizacaoHortifrutiController extends Co
 
         $itens = $this->planilhaVerificacaoProcedimentoHigienizacaoHortifrutiService->list($filter)['data'];
 
-        $titulo = "titulo";
+        $titulo = "Controle de Verificação do Procedimento de Higienização de Hortifrutis";
 
         // Gere o PDF com a orientação do papel configurada como paisagem
-        $pdf = PDF::loadView('pdf.base', ['itens' => $itens, 'titulo' => $titulo]);
+        $pdf = PDF::loadView('pdf.verificacao_procedimento_higienizacao_hortifruti', ['itens' => $itens, 'titulo' => $titulo]);
         $pdf->setPaper('A4', 'landscape'); // Configuração de orientação paisagem
 
-        return $pdf->stream('base.pdf');
+        return $pdf->stream('verificacao_procedimento_higienizacao_hortifruti.pdf');
     }
 }

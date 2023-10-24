@@ -104,12 +104,12 @@ class PlanilhaHigienizacaoFiltrosAparelhosClimatizacaoController extends Control
 
         $itens = $this->planilhaHigienizacaoFiltrosAparelhosClimatizacaoService->list($filter)['data'];
 
-        $titulo = "titulo";
+        $titulo = "Higienização dos Filtros e Aparelhos de Climatização";
 
         // Gere o PDF com a orientação do papel configurada como paisagem
-        $pdf = PDF::loadView('pdf.base', ['itens' => $itens, 'titulo' => $titulo]);
+        $pdf = PDF::loadView('pdf.higienizacao_filtros_aparelhos_climatizacao', ['itens' => $itens, 'titulo' => $titulo]);
         $pdf->setPaper('A4', 'landscape'); // Configuração de orientação paisagem
 
-        return $pdf->stream('base.pdf');
+        return $pdf->stream('higienizacao_filtros_aparelhos_climatizacao.pdf');
     }
 }

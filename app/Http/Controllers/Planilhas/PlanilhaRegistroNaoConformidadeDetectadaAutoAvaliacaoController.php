@@ -106,12 +106,12 @@ class PlanilhaRegistroNaoConformidadeDetectadaAutoAvaliacaoController extends Co
 
         $itens = $this->planilhaRegistroNaoConformidadeDetectadaAutoAvaliacaoService->list($filter)['data'];
 
-        $titulo = "titulo";
+        $titulo = "Registro de Não Conformidades Detectadas da Auto Avaliação";
 
         // Gere o PDF com a orientação do papel configurada como paisagem
-        $pdf = PDF::loadView('pdf.base', ['itens' => $itens, 'titulo' => $titulo]);
+        $pdf = PDF::loadView('pdf.registro_nao_conformidade_detectada_auto_avaliacao', ['itens' => $itens, 'titulo' => $titulo]);
         $pdf->setPaper('A4', 'landscape'); // Configuração de orientação paisagem
 
-        return $pdf->stream('base.pdf');
+        return $pdf->stream('registro_nao_conformidade_detectada_auto_avaliacao.pdf');
     }
 }

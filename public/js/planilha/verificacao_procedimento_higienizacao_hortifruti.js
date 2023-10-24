@@ -18,7 +18,7 @@ $(document).ready(function () {
                 onOpen: () => {
                     Swal.showLoading();
                     $.get(window.location.origin + "/planilha/verificacao-procedimento-higienizacao-hortifruti/listar", {
-                        id_parameter_alimento : $("#id_parameter_alimento_filter option:selected").val(),
+                        id_parameter_alimento_filter : $("#id_parameter_alimento_filter option:selected").val(),
                     })
                     .then(function (data) {
                         if (data.status == "success") {

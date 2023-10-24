@@ -103,12 +103,12 @@ class PlanilhaLimpezaCaixaGorduraController extends Controller
 
         $itens = $this->planilhaLimpezaCaixaGorduraService->list($filter)['data'];
 
-        $titulo = "titulo";
+        $titulo = "Registro de Limpeza de Caixa de Gordura";
 
         // Gere o PDF com a orientação do papel configurada como paisagem
-        $pdf = PDF::loadView('pdf.base', ['itens' => $itens, 'titulo' => $titulo]);
+        $pdf = PDF::loadView('pdf.limpeza_caixa_gorduras', ['itens' => $itens, 'titulo' => $titulo]);
         $pdf->setPaper('A4', 'landscape'); // Configuração de orientação paisagem
 
-        return $pdf->stream('base.pdf');
+        return $pdf->stream('limpeza_caixa_gorduras.pdf');
     }
 }

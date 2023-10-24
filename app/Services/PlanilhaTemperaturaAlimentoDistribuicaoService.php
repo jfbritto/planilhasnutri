@@ -110,8 +110,11 @@ class PlanilhaTemperaturaAlimentoDistribuicaoService
             }
 
             $filter = "";
-            if (!empty($filter_array['id_parameter_produto'])) {
-                $filter .= " and main_tb.id_parameter_produto = {$filter_array['id_parameter_produto']}";
+            if (!empty($filter_array['id_parameter_produto_filter'])) {
+                $filter .= " and main_tb.id_parameter_produto = {$filter_array['id_parameter_produto_filter']}";
+            }
+            if (!empty($filter_array['id_parameter_evento_filter'])) {
+                $filter .= " and main_tb.id_parameter_evento = {$filter_array['id_parameter_evento_filter']}";
             }
 
             $return = DB::select( DB::raw("SELECT

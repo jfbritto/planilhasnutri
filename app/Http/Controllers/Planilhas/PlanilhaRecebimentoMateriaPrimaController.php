@@ -117,12 +117,12 @@ class PlanilhaRecebimentoMateriaPrimaController extends Controller
 
         $itens = $this->planilhaRecebimentoMateriaPrimaService->list($filter)['data'];
 
-        $titulo = "titulo";
+        $titulo = "Controle de Recebimento de Matéria Prima";
 
         // Gere o PDF com a orientação do papel configurada como paisagem
-        $pdf = PDF::loadView('pdf.base', ['itens' => $itens, 'titulo' => $titulo]);
+        $pdf = PDF::loadView('pdf.recebimento_materia_prima', ['itens' => $itens, 'titulo' => $titulo]);
         $pdf->setPaper('A4', 'landscape'); // Configuração de orientação paisagem
 
-        return $pdf->stream('base.pdf');
+        return $pdf->stream('recebimento_materia_prima.pdf');
     }
 }

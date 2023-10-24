@@ -108,12 +108,12 @@ class PlanilhaRegistroLimpezaController extends Controller
 
         $itens = $this->planilhaRegistroLimpezaService->list($filter)['data'];
 
-        $titulo = "titulo";
+        $titulo = "Registro de Limpeza";
 
         // Gere o PDF com a orientação do papel configurada como paisagem
-        $pdf = PDF::loadView('pdf.base', ['itens' => $itens, 'titulo' => $titulo]);
+        $pdf = PDF::loadView('pdf.registro_limpeza', ['itens' => $itens, 'titulo' => $titulo]);
         $pdf->setPaper('A4', 'landscape'); // Configuração de orientação paisagem
 
-        return $pdf->stream('base.pdf');
+        return $pdf->stream('registro_limpeza.pdf');
     }
 }

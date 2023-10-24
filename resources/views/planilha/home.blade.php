@@ -177,7 +177,7 @@
                         <img class="card-img-top" src="https://www.vertown.com/uploads/2017/10/checklist-para-res%C3%ADduos-perigosos.-5.jpg" alt="Imagem de capa do card">
                     </a>
                     <div class="card-body">
-                    <h5 class="card-title">Chack-list de Avaliação do Manejo dos Resíduos</h5>
+                    <h5 class="card-title">Check-list de Avaliação do Manejo dos Resíduos</h5>
                     {{-- <p class="card-text">Este é um card maior com suporte a texto embaixo, que funciona como uma introdução a um conteúdo adicional. Este card tem o conteúdo ainda maior que o primeiro, para mostrar a altura igual, em ação.</p> --}}
                     {{-- <p class="card-text"><small class="text-muted">Atualizados 3 minutos atrás</small></p> --}}
                     </div>

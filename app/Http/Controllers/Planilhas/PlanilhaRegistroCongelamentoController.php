@@ -105,12 +105,12 @@ class PlanilhaRegistroCongelamentoController extends Controller
 
         $itens = $this->planilhaRegistroCongelamentoService->list($filter)['data'];
 
-        $titulo = "titulo";
+        $titulo = "Registro de Congelamento";
 
         // Gere o PDF com a orientação do papel configurada como paisagem
-        $pdf = PDF::loadView('pdf.base', ['itens' => $itens, 'titulo' => $titulo]);
+        $pdf = PDF::loadView('pdf.registro_congelamento', ['itens' => $itens, 'titulo' => $titulo]);
         $pdf->setPaper('A4', 'landscape'); // Configuração de orientação paisagem
 
-        return $pdf->stream('base.pdf');
+        return $pdf->stream('registro_congelamento.pdf');
     }
 }

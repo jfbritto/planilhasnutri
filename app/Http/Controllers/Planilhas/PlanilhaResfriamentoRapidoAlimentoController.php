@@ -114,12 +114,12 @@ class PlanilhaResfriamentoRapidoAlimentoController extends Controller
 
         $itens = $this->planilhaResfriamentoRapidoAlimentoService->list($filter)['data'];
 
-        $titulo = "titulo";
+        $titulo = "Controle de Resfriamento Rápido de Alimentos";
 
         // Gere o PDF com a orientação do papel configurada como paisagem
-        $pdf = PDF::loadView('pdf.base', ['itens' => $itens, 'titulo' => $titulo]);
+        $pdf = PDF::loadView('pdf.resfriamento_rapido_alimento', ['itens' => $itens, 'titulo' => $titulo]);
         $pdf->setPaper('A4', 'landscape'); // Configuração de orientação paisagem
 
-        return $pdf->stream('base.pdf');
+        return $pdf->stream('resfriamento_rapido_alimento.pdf');
     }
 }

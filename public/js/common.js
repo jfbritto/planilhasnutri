@@ -326,7 +326,8 @@ function montaUrlPdf() {
     const formulario = document.getElementById("formFiltroPrincipal");
     const formData = new FormData(formulario);
     const params = new URLSearchParams(formData);
-    const url = `${window.location.href}/visualizar?${params.toString()}`;
+    let path_formatado = window.location.href.replace("#","");
+    const url = `${path_formatado}/visualizar?${params.toString()}`;
 
     window.open(url, '_blank');
 }

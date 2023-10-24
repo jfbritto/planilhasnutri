@@ -99,8 +99,8 @@ class PlanilhaReaquecimentoAlimentoService
             }
 
             $filter = "";
-            if (!empty($filter_array['id_parameter_produto'])) {
-                $filter .= " and main_tb.id_parameter_produto = {$filter_array['id_parameter_produto']}";
+            if (!empty($filter_array['id_parameter_produto_filter'])) {
+                $filter .= " and main_tb.id_parameter_produto = {$filter_array['id_parameter_produto_filter']}";
             }
 
             $return = DB::select( DB::raw("SELECT

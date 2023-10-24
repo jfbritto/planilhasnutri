@@ -97,8 +97,8 @@ class PlanilhaRegistroLimpezaService
             }
 
             $filter = "";
-            if (!empty($filter_array['id_parameter_area'])) {
-                $filter .= " and main_tb.id_parameter_area = {$filter_array['id_parameter_area']}";
+            if (!empty($filter_array['id_parameter_area_filter'])) {
+                $filter .= " and main_tb.id_parameter_area = {$filter_array['id_parameter_area_filter']}";
             }
 
             $return = DB::select( DB::raw("SELECT

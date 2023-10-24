@@ -101,12 +101,12 @@ class PlanilhaOcorrenciaPragaController extends Controller
 
         $itens = $this->planilhaOcorrenciaPragaService->list($filter)['data'];
 
-        $titulo = "titulo";
+        $titulo = "Registro de Ocorrência de Pragas";
 
         // Gere o PDF com a orientação do papel configurada como paisagem
-        $pdf = PDF::loadView('pdf.base', ['itens' => $itens, 'titulo' => $titulo]);
+        $pdf = PDF::loadView('pdf.ocorrencia_praga', ['itens' => $itens, 'titulo' => $titulo]);
         $pdf->setPaper('A4', 'landscape'); // Configuração de orientação paisagem
 
-        return $pdf->stream('base.pdf');
+        return $pdf->stream('ocorrencia_praga.pdf');
     }
 }

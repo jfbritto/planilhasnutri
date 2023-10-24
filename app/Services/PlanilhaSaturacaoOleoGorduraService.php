@@ -102,8 +102,8 @@ class PlanilhaSaturacaoOleoGorduraService
             }
 
             $filter = "";
-            if (!empty($filter_array['id_parameter_area'])) {
-                $filter .= " and main_tb.id_parameter_area = {$filter_array['id_parameter_area']}";
+            if (!empty($filter_array['id_parameter_area_filter'])) {
+                $filter .= " and main_tb.id_parameter_area = {$filter_array['id_parameter_area_filter']}";
             }
 
             $return = DB::select( DB::raw("SELECT
@@ -111,12 +111,14 @@ class PlanilhaSaturacaoOleoGorduraService
                                                 ifnull(un.name, 'Controle') as unidade,
                                                 p_ar.name as area,
                                                 p_eq.name as equipamento,
+                                                p_re_ac.name as responsavel_acao,
                                                 p_re.name as responsavel,
                                                 main_tb.*
                                             FROM
                                                 planilha_saturacao_oleo_gorduras main_tb
                                                 JOIN parameters p_ar ON main_tb.id_parameter_area = p_ar.id
                                                 JOIN parameters p_eq ON main_tb.id_parameter_equipamento = p_eq.id
+                                                JOIN parameters p_re_ac ON main_tb.id_parameter_responsavel_acao = p_re_ac.id
                                                 JOIN parameters p_re ON main_tb.id_parameter_responsavel = p_re.id
                                                 JOIN users us ON main_tb.id_user = us.id {$condition}
                                                 LEFT JOIN units un ON us.id_unit = un.id
