@@ -11567,8 +11567,5 @@ textarea.form-control-lg {
 }
 
 .redux-text {
-    width: 200px; /* Largura do elemento pai */
-    white-space: nowrap; /* Evita que o texto seja quebrado em várias linhas */
-    overflow: hidden; /* Oculta qualquer conteúdo que ultrapasse a largura do elemento pai */
-    text-overflow: ellipsis;
+    width: 200px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
