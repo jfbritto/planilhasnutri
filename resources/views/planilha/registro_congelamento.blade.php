@@ -113,8 +113,8 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="alergeno">Alérgeno</label>
-                                <input type="text" required name="alergeno" id="alergeno" class="form-control">
+                                <label for="id_parameter_alergeno">Alérgeno</label>
+                                <select name="id_parameter_alergeno" id="id_parameter_alergeno" class="form-control"></select>
                             </div>
                         </div>
                     </div>
@@ -174,8 +174,8 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="alergeno_edit">Alérgeno</label>
-                                <input type="text" required name="alergeno_edit" id="alergeno_edit" class="form-control">
+                                <label for="id_parameter_alergeno_edit">Alérgeno</label>
+                                <select name="id_parameter_alergeno_edit" id="id_parameter_alergeno_edit" class="form-control"></select>
                             </div>
                         </div>
                         <div class="col-md-6">

@@ -2,6 +2,7 @@ $(document).ready(function () {
 
     loadPrincipal();
     loadGlobalParameters(8, 'id_parameter_produto');
+    loadGlobalParameters(5, 'id_parameter_alergeno');
 
     // Carregar filtros
     loadGlobalParameters(8, 'id_parameter_produto_filter', null, true, false);
@@ -47,7 +48,7 @@ $(document).ready(function () {
                                                 data-quantidade="${item.quantidade}"
                                                 data-data_recebimento="${item.data_recebimento}"
                                                 data-data_fabricacao="${item.data_fabricacao}"
-                                                data-alergeno="${item.alergeno}" href="#" class="btn btn-warning edit-registro_congelamento"><i style="color: white" class="fas fa-edit"></i></a>
+                                                data-id_parameter_alergeno="${item.id_parameter_alergeno}" href="#" class="btn btn-warning edit-registro_congelamento"><i style="color: white" class="fas fa-edit"></i></a>
                                                 <a title="Deletar" data-id="${item.id}" href="#" class="btn btn-danger delete-registro_congelamento"><i class="fas fa-trash-alt"></i></a>
                                             </td>
                                         </tr>
@@ -95,7 +96,7 @@ $(document).ready(function () {
                         quantidade: $("#quantidade").val(),
                         data_recebimento: $("#data_recebimento").val(),
                         data_fabricacao: $("#data_fabricacao").val(),
-                        alergeno: $("#alergeno").val(),
+                        id_parameter_alergeno: $("#id_parameter_alergeno option:selected").val(),
                     })
                     .then(function (data) {
                         if (data.status == "success") {
@@ -135,9 +136,10 @@ $(document).ready(function () {
         let quantidade = $(this).data('quantidade');
         let data_recebimento = $(this).data('data_recebimento');
         let data_fabricacao = $(this).data('data_fabricacao');
-        let alergeno = $(this).data('alergeno');
+        let id_parameter_alergeno = $(this).data('id_parameter_alergeno');
 
         loadGlobalParameters(8, 'id_parameter_produto_edit', id_parameter_produto);
+        loadGlobalParameters(5, 'id_parameter_alergeno_edit', id_parameter_alergeno);
 
         $("#id_edit").val(id);
         $("#usuario").val(usuario);
@@ -146,7 +148,7 @@ $(document).ready(function () {
         $("#quantidade_edit").val(quantidade);
         $("#data_recebimento_edit").val(data_recebimento);
         $("#data_fabricacao_edit").val(data_fabricacao);
-        $("#alergeno_edit").val(alergeno);
+        $("#id_parameter_alergeno_edit").val(id_parameter_alergeno);
 
         $("#modalEditregistro_congelamento").modal("show");
     });
@@ -171,7 +173,7 @@ $(document).ready(function () {
                             quantidade: $("#quantidade_edit").val(),
                             data_recebimento: $("#data_recebimento_edit").val(),
                             data_fabricacao: $("#data_fabricacao_edit").val(),
-                            alergeno: $("#alergeno_edit").val(),
+                            id_parameter_alergeno: $("#id_parameter_alergeno_edit option:selected").val(),
                         }
                     })
                         .then(function (data) {

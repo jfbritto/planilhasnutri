@@ -45,7 +45,7 @@ class PlanilhaRegistroCongelamentoService
                             'quantidade' => $data['quantidade'],
                             'data_recebimento' => $data['data_recebimento'],
                             'data_fabricacao' => $data['data_fabricacao'],
-                            'alergeno' => $data['alergeno'],
+                            'id_parameter_alergeno' => $data['id_parameter_alergeno'],
                         ]);
 
             DB::commit();
@@ -104,10 +104,12 @@ class PlanilhaRegistroCongelamentoService
                                                 us.name as usuario,
                                                 ifnull(un.name, 'Controle') as unidade,
                                                 p_pd.name as produto,
+                                                ifnull(p_al.name, '-') as alergeno,
                                                 main_tb.*
                                             FROM
                                                 planilha_registro_congelamentos main_tb
                                                 JOIN parameters p_pd ON main_tb.id_parameter_produto = p_pd.id
+                                                LEFT JOIN parameters p_al ON main_tb.id_parameter_alergeno = p_al.id
                                                 JOIN users us ON main_tb.id_user = us.id {$condition}
                                                 LEFT JOIN units un ON us.id_unit = un.id
                                             WHERE

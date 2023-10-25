@@ -42,7 +42,7 @@ class ParameterTypeSeeder extends Seeder
             [
                 'id' => 5,
                 'id_unit' => null,
-                'name' => 'Situações Gordura',
+                'name' => 'Alérgenos',
                 'status' => 'A'
             ],
             [

@@ -30,7 +30,7 @@ class PlanilhaRegistroCongelamentoController extends Controller
             'quantidade' => $request->quantidade,
             'data_recebimento' => $request->data_recebimento,
             'data_fabricacao' => $request->data_fabricacao,
-            'alergeno' => $request->alergeno
+            'id_parameter_alergeno' => $request->id_parameter_alergeno
         ];
 
         $response = $this->planilhaRegistroCongelamentoService->store($data);
@@ -50,7 +50,7 @@ class PlanilhaRegistroCongelamentoController extends Controller
             'quantidade' => $request->quantidade,
             'data_recebimento' => $request->data_recebimento,
             'data_fabricacao' => $request->data_fabricacao,
-            'alergeno' => $request->alergeno
+            'id_parameter_alergeno' => $request->id_parameter_alergeno
         ];
 
         $response = $this->planilhaRegistroCongelamentoService->update($data);

@@ -114,14 +114,14 @@ class ParameterSeeder extends Seeder
             [
                 'id' => 14,
                 'id_parameter_type' => 5,
-                'name' => 'Boa',
+                'name' => 'Soja',
                 'id_unit' => null,
                 'status' => 'A'
             ],
             [
                 'id' => 15,
                 'id_parameter_type' => 5,
-                'name' => 'Ruim',
+                'name' => 'Glúten',
                 'id_unit' => null,
                 'status' => 'A'
             ],

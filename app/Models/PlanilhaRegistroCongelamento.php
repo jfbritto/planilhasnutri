@@ -16,7 +16,7 @@ class PlanilhaRegistroCongelamento extends Model
         'quantidade',
         'data_recebimento',
         'data_fabricacao',
-        'alergeno',
+        'id_parameter_alergeno',
         'id_user',
         'status'
     ];
