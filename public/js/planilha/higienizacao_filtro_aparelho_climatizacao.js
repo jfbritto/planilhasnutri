@@ -45,7 +45,7 @@ $(document).ready(function () {
                                             <td class="align-middle">${dateFormat(item.data_higienizacao)}</td>
                                             <td class="align-middle">${dateFormat(item.data_proxima_higienizacao)}</td>
                                             <td class="align-middle">${item.responsavel}</td>
-                                            <td class="align-middle" style="text-align: right">
+                                            <td class="align-middle" style="text-align: right; min-width: 120px">
                                                 <a title="Editar" data-id="${item.id}" data-usuario="${item.usuario}" data-unidade="${item.unidade}" data-id_parameter_area="${item.id_parameter_area}" data-id_parameter_equipamento="${item.id_parameter_equipamento}" data-id_parameter_responsavel="${item.id_parameter_responsavel}" data-data_higienizacao="${item.data_higienizacao}" data-data_proxima_higienizacao="${item.data_proxima_higienizacao}" href="#" class="btn btn-warning edit-higienizacao_filtro_aparelho_climatizacao"><i style="color: white" class="fas fa-edit"></i></a>
                                                 <a title="Deletar" data-id="${item.id}" href="#" class="btn btn-danger delete-higienizacao_filtro_aparelho_climatizacao"><i class="fas fa-trash-alt"></i></a>
                                             </td>

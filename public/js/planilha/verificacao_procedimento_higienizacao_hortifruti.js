@@ -38,7 +38,7 @@ $(document).ready(function () {
                                             <td class="align-middle">${item.hora_imersao_fim}</td>
                                             <td class="align-middle">${item.concentracao_solucao_clorada}</td>
                                             <td class="align-middle">${item.responsavel}</td>
-                                            <td class="align-middle" style="text-align: right">
+                                            <td class="align-middle" style="text-align: right; min-width: 120px">
                                                 <a title="Editar"
                                                 data-id="${item.id}"
                                                 data-usuario="${item.usuario}"

@@ -35,7 +35,7 @@ $(document).ready(function () {
                                             <td class="align-middle">${simNao(item.area_externa_apropriada)}</td>
                                             <td class="align-middle">${simNao(item.residuos_organicos_retirados)}</td>
                                             <td class="align-middle">${simNao(item.area_externa_higienizada)}</td>
-                                            <td class="align-middle" style="text-align: right; width: 120px">
+                                            <td class="align-middle" style="text-align: right; min-width: 120px">
                                                 <a title="Editar"
                                                 data-id="${item.id}"
                                                 data-usuario="${item.usuario}"

@@ -37,7 +37,7 @@ $(document).ready(function () {
                                             <td class="align-middle">${item.equipamento}</td>
                                             <td class="align-middle">${item.temperatura_1}</td>
                                             <td class="align-middle">${item.temperatura_2}</td>
-                                            <td class="align-middle" style="text-align: right">
+                                            <td class="align-middle" style="text-align: right; min-width: 120px">
                                                 <a title="Editar"
                                                 data-id="${item.id}"
                                                 data-usuario="${item.usuario}"

@@ -38,7 +38,7 @@ $(document).ready(function () {
                                             <td class="align-middle">${dateFormat(item.data_limpeza)}</td>
                                             <td class="align-middle">${dateFormat(item.data_proxima_limpeza)}</td>
                                             <td class="align-middle">${item.responsavel}</td>
-                                            <td class="align-middle" style="text-align: right">
+                                            <td class="align-middle" style="text-align: right; min-width: 120px">
                                                 <a title="Editar"
                                                 data-id="${item.id}"
                                                 data-usuario="${item.usuario}"

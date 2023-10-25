@@ -41,7 +41,7 @@ $(document).ready(function () {
                                             <td class="align-middle">${item.nota_fiscal}</td>
                                             <td class="align-middle">${dateFormat(item.data_validade)}</td>
                                             <td class="align-middle">${item.responsavel}</td>
-                                            <td class="align-middle" style="text-align: right">
+                                            <td class="align-middle" style="text-align: right; min-width: 120px">
                                                 <a title="Editar"
                                                 data-id="${item.id}"
                                                 data-usuario="${item.usuario}"

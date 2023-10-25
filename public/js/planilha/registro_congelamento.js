@@ -37,7 +37,7 @@ $(document).ready(function () {
                                             <td class="align-middle">${dateFormat(item.data_recebimento)}</td>
                                             <td class="align-middle">${dateFormat(item.data_fabricacao)}</td>
                                             <td class="align-middle">${item.alergeno}</td>
-                                            <td class="align-middle" style="text-align: right">
+                                            <td class="align-middle" style="text-align: right; min-width: 120px">
                                                 <a title="Editar"
                                                 data-id="${item.id}"
                                                 data-usuario="${item.usuario}"

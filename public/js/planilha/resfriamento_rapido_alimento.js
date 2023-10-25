@@ -36,7 +36,7 @@ $(document).ready(function () {
                                             <td class="align-middle">${item.produto}</td>
                                             <td class="align-middle">${item.responsavel}</td>
                                             <td class="align-middle">${item.conforme_naoconforme==1?'Sim':'Não'}</td>
-                                            <td class="align-middle" style="text-align: right">
+                                            <td class="align-middle" style="text-align: right; min-width: 120px">
                                                 <a title="Editar"
                                                 data-id="${item.id}"
                                                 data-usuario="${item.usuario}"

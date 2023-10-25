@@ -45,7 +45,7 @@ $(document).ready(function () {
                                             <td class="align-middle">${dateFormat(item.data_troca)}</td>
                                             <td class="align-middle">${dateFormat(item.data_proxima_troca)}</td>
                                             <td class="align-middle">${item.responsavel}</td>
-                                            <td class="align-middle" style="text-align: right">
+                                            <td class="align-middle" style="text-align: right; min-width: 120px">
                                                 <a title="Editar" data-id="${item.id}" data-usuario="${item.usuario}" data-unidade="${item.unidade}" data-id_parameter_area="${item.id_parameter_area}" data-id_parameter_filtro="${item.id_parameter_filtro}" data-id_parameter_responsavel="${item.id_parameter_responsavel}" data-data_troca="${item.data_troca}" data-data_proxima_troca="${item.data_proxima_troca}" href="#" class="btn btn-warning edit-troca_elemento_filtrante"><i style="color: white" class="fas fa-edit"></i></a>
                                                 <a title="Deletar" data-id="${item.id}" href="#" class="btn btn-danger delete-troca_elemento_filtrante"><i class="fas fa-trash-alt"></i></a>
                                             </td>
