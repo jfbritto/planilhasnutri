@@ -13,6 +13,7 @@
 @section('content')
 
     <div class="card">
+        <input type="hidden" id="isAdmin" value="{{auth()->user()->is_admin}}">
         @if(!auth()->user()->id_unit)
         <div class="card-header border-0">
                 <h3 class="card-title"> </h3>
@@ -29,7 +30,6 @@
                     <thead>
                         <tr>
                             <th>Nome</th>
-                            <th>Unidade</th>
                             <th></th>
                         </tr>
                     </thead>

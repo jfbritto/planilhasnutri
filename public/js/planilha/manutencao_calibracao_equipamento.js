@@ -38,7 +38,7 @@ $(document).ready(function () {
                                             <td class="align-middle">${item.qual_problema}</td>
                                             <td class="align-middle">${item.providencias_tomadas}</td>
                                             <td class="align-middle">${item.problema_foi_solucionado==1?'Sim':'Não'}</td>
-                                            <td class="align-middle" style="text-align: right">
+                                            <td class="align-middle" style="text-align: right; width: 120px">
                                                 <a title="Editar"
                                                 data-id="${item.id}"
                                                 data-usuario="${item.usuario}"

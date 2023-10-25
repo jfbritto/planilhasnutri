@@ -4,16 +4,24 @@
     <link rel="icon" href="/img/building.png" type="image/png">
 @stop
 
-@section('title', 'Relatório de Manutenção e calibrações dos equipamentos')
+@section('title', 'Relatório de Manutenção e Calibrações dos Equipamentos')
 
 @section('content_header')
-    <h1><i class="fa-solid fa-screwdriver-wrench"></i> &nbsp;Relatório de Manutenção e calibrações dos equipamentos</h1>
+    <h1><i class="fa-solid fa-screwdriver-wrench"></i> &nbsp;Relatório de Manutenção e Calibrações dos Equipamentos</h1>
 @stop
 
 @section('content')
 
-    <div class="card">
-        <div class="card-body border-0">
+    <div class="card collapsed-card">
+        <div class="card-header" style="cursor: pointer" data-card-widget="collapse">
+            <h5 class="card-title">Filtros</h5>
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool">
+                    <i class="fas fa-arrow-down"></i>
+                </button>
+            </div>
+        </div>
+        <div class="card-body border-0" style="display: none;">
             <form id="formFiltroPrincipal">
                 <div class="row">
                     <div class="col-md-3">
@@ -46,11 +54,11 @@
                     <thead>
                         <tr>
                             <th>Equipamento</th>
-                            <th>Calibração foi feita?</th>
+                            <th>Calibração feita?</th>
                             <th>Data Calibração</th>
                             <th>Equipamento Com Problema?</th>
                             <th>Problema</th>
-                            <th>Providencias tomadas</th>
+                            <th>Providências tomadas</th>
                             <th>Problema Solucionado?</th>
                             <th></th>
                         </tr>
@@ -65,7 +73,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Cadastrar: Relatório de Manutenção e calibrações dos equipamentos</h5>
+                <h5 class="modal-title">Cadastrar: Relatório de Manutenção e Calibrações dos Equipamentos</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
@@ -131,7 +139,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="observacoes">Observações</label>
-                                <input type="text" required name="observacoes" id="observacoes" class="form-control">
+                                <input type="text" name="observacoes" id="observacoes" class="form-control">
                             </div>
                         </div>
                     </div>
@@ -149,7 +157,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Editar: Relatório de Manutenção e calibrações dos equipamentos</h5>
+                <h5 class="modal-title">Editar: Relatório de Manutenção e Calibrações dos Equipamentos</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
@@ -216,7 +224,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="observacoes_edit">Observações</label>
-                                <input type="text" required name="observacoes_edit" id="observacoes_edit" class="form-control">
+                                <input type="text" name="observacoes_edit" id="observacoes_edit" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-6">

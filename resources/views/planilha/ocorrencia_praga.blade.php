@@ -12,8 +12,16 @@
 
 @section('content')
 
-    <div class="card">
-        <div class="card-body border-0">
+    <div class="card collapsed-card">
+        <div class="card-header" style="cursor: pointer" data-card-widget="collapse">
+            <h5 class="card-title">Filtros</h5>
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool">
+                    <i class="fas fa-arrow-down"></i>
+                </button>
+            </div>
+        </div>
+        <div class="card-body border-0" style="display: none;">
             <form id="formFiltroPrincipal">
                 <div class="row">
                     <div class="col-md-3">
@@ -110,7 +118,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="observacoes">Observações</label>
-                                <input type="text" required name="observacoes" id="observacoes" class="form-control">
+                                <input type="text" name="observacoes" id="observacoes" class="form-control" placeholder="Informe algo que julgue relevante">
                             </div>
                         </div>
                     </div>
@@ -159,7 +167,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="observacoes_edit">Observações</label>
-                                <input type="text" required name="observacoes_edit" id="observacoes_edit" class="form-control">
+                                <input type="text" name="observacoes_edit" id="observacoes_edit" class="form-control" placeholder="Informe algo que julgue relevante">
                             </div>
                         </div>
                         <div class="col-md-6">

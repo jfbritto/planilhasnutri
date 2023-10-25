@@ -95,10 +95,8 @@ class PlanilhaTrocaElementoFiltranteService
             }
 
             $filter = "";
-            if (!empty($filter_array['mes_troca_filter'])) {
-                $data_ini = date('Y-m-01', strtotime($filter_array['mes_troca_filter']));
-                $data_fim = date('Y-m-t', strtotime($filter_array['mes_troca_filter']));
-                $filter .= " and main_tb.data_troca between '{$data_ini}' and '{$data_fim}'";
+            if (!empty($filter_array['data_ini_filter']) && !empty($filter_array['data_fim_filter'])) {
+                $filter .= " and main_tb.data_troca between '{$filter_array['data_ini_filter']}' and '{$filter_array['data_fim_filter']}'";
             }
             if (!empty($filter_array['mes_proxima_troca_filter'])) {
                 $data_ini = date('Y-m-01', strtotime($filter_array['mes_proxima_troca_filter']));
@@ -107,6 +105,12 @@ class PlanilhaTrocaElementoFiltranteService
             }
             if (!empty($filter_array['id_parameter_area_filter'])) {
                 $filter .= " and main_tb.id_parameter_area = {$filter_array['id_parameter_area_filter']}";
+            }
+            if (!empty($filter_array['id_parameter_filtro_filter'])) {
+                $filter .= " and main_tb.id_parameter_filtro = {$filter_array['id_parameter_filtro_filter']}";
+            }
+            if (!empty($filter_array['id_parameter_responsavel_filter'])) {
+                $filter .= " and main_tb.id_parameter_responsavel = {$filter_array['id_parameter_responsavel_filter']}";
             }
 
             $return = DB::select( DB::raw("SELECT

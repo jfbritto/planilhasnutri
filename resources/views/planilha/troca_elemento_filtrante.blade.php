@@ -12,26 +12,52 @@
 
 @section('content')
 
-    <div class="card">
-        <div class="card-body border-0">
+    <div class="card collapsed-card">
+        <div class="card-header" style="cursor: pointer" data-card-widget="collapse">
+            <h5 class="card-title">Filtros</h5>
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool">
+                    <i class="fas fa-arrow-down"></i>
+                </button>
+            </div>
+        </div>
+        <div class="card-body border-0" style="display: none;">
             <form id="formFiltroPrincipal">
                 <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="data_ini_filter">De</label>
+                            <input type="date" value="{{now()->format('Y-m-01')}}" required name="data_ini_filter" id="data_ini_filter" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="data_fim_filter">Até</label>
+                            <input type="date" value="{{now()->format('Y-m-t')}}" required name="data_fim_filter" id="data_fim_filter" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="mes_proxima_troca_filter">Próxima troca</label>
+                            <input type="month" required name="mes_proxima_troca_filter" id="mes_proxima_troca_filter" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
                         <div class="form-group">
                             <label for="id_parameter_area_filter">Área</label>
                             <select required name="id_parameter_area_filter" id="id_parameter_area_filter" class="form-control"></select>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <div class="form-group">
-                            <label for="mes_troca_filter">Mês da troca</label>
-                            <input type="month" value="{{now()->format('Y-m')}}" required name="mes_troca_filter" id="mes_troca_filter" class="form-control">
+                            <label for="id_parameter_filtro_filter">Filtro</label>
+                            <select required name="id_parameter_filtro_filter" id="id_parameter_filtro_filter" class="form-control"></select>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <div class="form-group">
-                            <label for="mes_proxima_troca_filter">Mês da próxima troca</label>
-                            <input type="month" required name="mes_proxima_troca_filter" id="mes_proxima_troca_filter" class="form-control">
+                            <label for="id_parameter_responsavel_filter">Responsável</label>
+                            <select required name="id_parameter_responsavel_filter" id="id_parameter_responsavel_filter" class="form-control"></select>
                         </div>
                     </div>
                 </div>

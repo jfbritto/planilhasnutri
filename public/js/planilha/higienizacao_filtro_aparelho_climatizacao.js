@@ -7,6 +7,8 @@ $(document).ready(function () {
 
     // Carregar filtros
     loadGlobalParameters(1, 'id_parameter_area_filter', null, true);
+    loadGlobalParameters(4, 'id_parameter_equipamento_filter', null, true, false);
+    loadGlobalParameters(3, 'id_parameter_responsavel_filter', null, true, false);
 
     // LISTAGEM
     function loadPrincipal()
@@ -19,7 +21,12 @@ $(document).ready(function () {
                 onOpen: () => {
                     Swal.showLoading();
                     $.get(window.location.origin + "/planilha/higienizacao-filtro-aparelho-climatizacao/listar", {
+                        data_ini_filter : $("#data_ini_filter").val(),
+                        data_fim_filter : $("#data_fim_filter").val(),
+                        mes_proxima_higienizacao_filter : $("#mes_proxima_higienizacao_filter").val(),
                         id_parameter_area_filter : $("#id_parameter_area_filter option:selected").val(),
+                        id_parameter_equipamento_filter : $("#id_parameter_equipamento_filter option:selected").val(),
+                        id_parameter_responsavel_filter : $("#id_parameter_responsavel_filter option:selected").val(),
                     })
                     .then(function (data) {
                         if (data.status == "success") {

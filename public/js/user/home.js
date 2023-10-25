@@ -22,6 +22,8 @@ $(document).ready(function () {
                                 Swal.close();
                                 $("#list").html(``);
 
+                                let isAdmin = $("#isAdmin").val() === "1"?'':'d-none';
+
                                 if(data.data.length > 0){
 
                                     data.data.forEach(item => {
@@ -30,7 +32,7 @@ $(document).ready(function () {
                                             <tr>
                                                 <td class="align-middle">${item.name}</td>
                                                 <td class="align-middle">${item.email}</td>
-                                                <td class="align-middle">${item.unidade}</td>
+                                                <td class="align-middle ${isAdmin}">${item.unidade}</td>
                                                 <td class="align-middle" style="text-align: right">
                                                     <a title="Editar" data-id="${item.id}" data-name="${item.name}" data-email="${item.email}" href="#" class="btn btn-warning edit-user"><i style="color: white" class="fas fa-edit"></i></a>
                                                     <a title="Deletar" data-id="${item.id}" href="#" class="btn btn-danger delete-user"><i class="fas fa-trash-alt"></i></a>
@@ -41,9 +43,11 @@ $(document).ready(function () {
 
                                 }else{
 
+                                    let colSpan = $("#isAdmin").val() === "1"?'4':'3';
+
                                     $("#list").append(`
                                         <tr>
-                                            <td class="align-middle text-center" colspan="2">Nenhum usuário cadastrado</td>
+                                            <td class="align-middle text-center" colspan="${colSpan}">Nenhum usuário cadastrado</td>
                                         </tr>
                                     `);
                                 }

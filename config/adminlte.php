@@ -341,14 +341,14 @@ return [
             'icon' => 'fas fa-fw fa-users',
         ],
         [
-            'text' => 'Parâmetros',
-            'url'  => 'tipo-parametros',
-            'icon' => 'fas fa-fw fa-cog'
-        ],
-        [
             'text' => 'Planilhas',
             'url'  => 'planilhas',
             'icon' => 'fas fa-fw fa-file-lines'
+        ],
+        [
+            'text' => 'Parâmetros',
+            'url'  => 'tipo-parametros',
+            'icon' => 'fas fa-fw fa-cog'
         ],
         // [
         //     'text' => 'Parâmetros',

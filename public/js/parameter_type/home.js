@@ -21,6 +21,8 @@ $(document).ready(function () {
                                 Swal.close();
                                 $("#list").html(``);
 
+                                let isAdmin = $("#isAdmin").val() === "1"?'':'d-none';
+
                                 if(data.data.length > 0){
 
                                     data.data.forEach(item => {
@@ -28,11 +30,10 @@ $(document).ready(function () {
                                         $("#list").append(`
                                             <tr>
                                                 <td class="align-middle">${item.name}</td>
-                                                <td class="align-middle">${item.unidade}</td>
                                                 <td class="align-middle" style="text-align: right">
                                                     <a title="Listar Itens" data-id="${item.id}" data-name="${item.name}" href="#" class="btn btn-info create-Parameter"><i style="color: white" class="fas fa-list"></i></a>
-                                                    <a title="Editar" data-id="${item.id}" data-name="${item.name}" href="#" class="btn btn-warning edit-ParameterType"><i style="color: white" class="fas fa-edit"></i></a>
-                                                    <a title="Deletar" data-id="${item.id}" href="#" class="btn btn-danger delete-ParameterType"><i class="fas fa-trash-alt"></i></a>
+                                                    <a title="Editar" data-id="${item.id}" data-name="${item.name}" href="#" class="btn btn-warning edit-ParameterType ${isAdmin}"><i style="color: white" class="fas fa-edit"></i></a>
+                                                    <a title="Deletar" data-id="${item.id}" href="#" class="btn btn-danger delete-ParameterType ${isAdmin}"><i class="fas fa-trash-alt"></i></a>
                                                 </td>
                                             </tr>
                                         `);

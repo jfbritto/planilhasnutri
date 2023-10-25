@@ -13,6 +13,7 @@
 @section('content')
 
     <div class="card">
+        <input type="hidden" id="isAdmin" value="{{auth()->user()->is_admin}}">
         <div class="card-header border-0">
             <h3 class="card-title"> </h3>
             <div class="card-tools">
@@ -28,7 +29,7 @@
                         <tr>
                             <th>Nome</th>
                             <th>E-mail</th>
-                            <th>Unidade</th>
+                            @if(auth()->user()->is_admin)<th>Unidade</th>@endif
                             <th></th>
                         </tr>
                     </thead>
