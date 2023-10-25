@@ -17,8 +17,8 @@ class CreatePlanilhaGrupoAmostraPratosTable extends Migration
             $table->id();
             $table->date('data');
             $table->string('nome_grupo');
-            $table->integer('numero_pessoas');
-            $table->string('cardapio');
+            $table->integer('numero_pessoas')->nullable();
+            $table->string('cardapio')->nullable();
             $table->integer('id_user');
             $table->string('status', 1)->default('A');
             $table->timestamps();

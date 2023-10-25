@@ -137,7 +137,7 @@
                         <td>{{ $item->temperatura_segunda_afericao }}</td>
                         <td>{{ $item->acao_corretiva }}</td>
                         <td>{{ $item->responsavel_acao }}</td>
-                        <td>{{ $item->leitura_fita }}</td>
+                        <td>{{ $item->leitura_fita }}%</td>
                         <td>{{ $item->situacao_gordura }}</td>
                         <td>{{ $item->responsavel }}</td>
                     </tr>

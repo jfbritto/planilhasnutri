@@ -8,6 +8,7 @@ $(document).ready(function () {
 
     // Carregar filtros
     loadGlobalParameters(1, 'id_parameter_area_filter', null, true);
+    loadGlobalParameters(4, 'id_parameter_equipamento_filter', null, true, false);
 
     // LISTAGEM
     function loadPrincipal()
@@ -20,7 +21,10 @@ $(document).ready(function () {
                 onOpen: () => {
                     Swal.showLoading();
                     $.get(window.location.origin + "/planilha/saturacao-oleo-gordura/listar", {
+                        data_ini_filter : $("#data_ini_filter").val(),
+                        data_fim_filter : $("#data_fim_filter").val(),
                         id_parameter_area_filter : $("#id_parameter_area_filter option:selected").val(),
+                        id_parameter_equipamento_filter : $("#id_parameter_equipamento_filter option:selected").val(),
                     })
                     .then(function (data) {
                         if (data.status == "success") {
@@ -38,6 +42,7 @@ $(document).ready(function () {
                                             <td class="align-middle">${item.area}/${item.equipamento}</td>
                                             <td class="align-middle">${item.hora_primeira_afericao}</td>
                                             <td class="align-middle">${item.temperatura_primeira_afericao}</td>
+                                            <td class="align-middle">${item.leitura_fita}%</td>
                                             <td class="align-middle">${item.situacao_gordura}</td>
                                             <td class="align-middle" style="text-align: right; min-width: 120px">
                                                 <a title="Editar"
@@ -68,7 +73,7 @@ $(document).ready(function () {
 
                                 $("#list").append(`
                                     <tr>
-                                        <td class="align-middle text-center" colspan="6">Nenhum registro encontrado</td>
+                                        <td class="align-middle text-center" colspan="7">Nenhum registro encontrado</td>
                                     </tr>
                                 `);
                             }
@@ -159,6 +164,8 @@ $(document).ready(function () {
         let leitura_fita = $(this).data('leitura_fita');
         let situacao_gordura = $(this).data('situacao_gordura');
         let id_parameter_responsavel = $(this).data('id_parameter_responsavel');
+
+        console.log(temperatura_primeira_afericao)
 
         loadGlobalParameters(1, 'id_parameter_area_edit', id_parameter_area);
         loadGlobalParameters(4, 'id_parameter_equipamento_edit', id_parameter_equipamento);

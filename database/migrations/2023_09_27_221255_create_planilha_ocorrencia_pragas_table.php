@@ -18,7 +18,7 @@ class CreatePlanilhaOcorrenciaPragasTable extends Migration
             $table->date('data');
             $table->integer('id_parameter_area');
             $table->integer('id_parameter_praga');
-            $table->string('observacoes');
+            $table->string('observacoes')->nullable();
             $table->integer('id_user');
             $table->string('status', 1)->default('A');
             $table->timestamps();

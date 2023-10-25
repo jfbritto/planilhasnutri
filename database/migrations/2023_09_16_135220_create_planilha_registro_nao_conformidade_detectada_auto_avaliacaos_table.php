@@ -19,7 +19,7 @@ class CreatePlanilhaRegistroNaoConformidadeDetectadaAutoAvaliacaosTable extends 
             $table->string('nao_conformidade');
             $table->string('possiveis_causas');
             $table->string('tratamento_produto');
-            $table->string('acoes_corretivas');
+            $table->string('acoes_corretivas')->nullable();
             $table->integer('id_parameter_responsavel');
             $table->integer('id_user');
             $table->string('status', 1)->default('A');

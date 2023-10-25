@@ -18,11 +18,11 @@ class CreatePlanilhaAvaliacaoManejoResiduosTable extends Migration
             $table->date('data');
             $table->integer('lixeira_apropriada');
             $table->integer('retirada_conforme');
-            $table->integer('manipuladores_treinados');
-            $table->integer('area_externa_apropriada');
-            $table->integer('residuos_organicos_retirados');
-            $table->integer('area_externa_higienizada');
-            $table->string('observacoes');
+            $table->integer('manipuladores_treinados')->nullable();
+            $table->integer('area_externa_apropriada')->nullable();
+            $table->integer('residuos_organicos_retirados')->nullable();
+            $table->integer('area_externa_higienizada')->nullable();
+            $table->string('observacoes')->nullable();
             $table->integer('id_user');
             $table->string('status', 1)->default('A');
             $table->timestamps();

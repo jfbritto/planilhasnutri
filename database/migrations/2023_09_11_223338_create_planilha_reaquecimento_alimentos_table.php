@@ -17,12 +17,12 @@ class CreatePlanilhaReaquecimentoAlimentosTable extends Migration
             $table->id();
             $table->date('data');
             $table->integer('id_parameter_produto');
-            $table->string('hora_temperatura_antes');
-            $table->string('temperatura_antes');
-            $table->string('hora_temperatura_depois');
-            $table->string('temperatura_depois');
-            $table->string('tempo_aquecimento');
-            $table->integer('conforme_naoconforme');
+            $table->string('hora_temperatura_antes')->nullable();
+            $table->string('temperatura_antes')->nullable();
+            $table->string('hora_temperatura_depois')->nullable();
+            $table->string('temperatura_depois')->nullable();
+            $table->string('tempo_aquecimento')->nullable();
+            $table->integer('conforme_naoconforme')->nullable();
             $table->integer('id_parameter_responsavel');
             $table->integer('id_user');
             $table->string('status', 1)->default('A');

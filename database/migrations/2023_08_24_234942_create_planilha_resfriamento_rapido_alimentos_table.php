@@ -19,11 +19,11 @@ class CreatePlanilhaResfriamentoRapidoAlimentosTable extends Migration
             $table->integer('id_parameter_produto');
             $table->string('cozimento_hora_final');
             $table->string('cozimento_temperatura_interna');
-            $table->string('resfriamento_hora_inicio');
-            $table->string('resfriamento_temperatura_central_inicio');
-            $table->string('resfriamento_hora_fim');
-            $table->string('resfriamento_temperatura_central_fim');
-            $table->integer('conforme_naoconforme');
+            $table->string('resfriamento_hora_inicio')->nullable();
+            $table->string('resfriamento_temperatura_central_inicio')->nullable();
+            $table->string('resfriamento_hora_fim')->nullable();
+            $table->string('resfriamento_temperatura_central_fim')->nullable();
+            $table->integer('conforme_naoconforme')->nullable();
             $table->integer('id_parameter_responsavel');
             $table->integer('id_user');
             $table->string('status', 1)->default('A');

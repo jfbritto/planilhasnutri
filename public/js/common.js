@@ -4,6 +4,8 @@ $('.money').mask('#.##0,00', {reverse: true});
 $('.zip_code').mask('00000-000');
 // mascara de cpf
 $('.cpf').mask('000.000.000-00');
+// mascara de porcentagem
+$('.percent').mask('##0,00', {reverse: true});
 
 
 // retorna o nome do dia da semana pelo seu numero referente enviado

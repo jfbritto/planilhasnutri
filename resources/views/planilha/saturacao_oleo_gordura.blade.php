@@ -26,8 +26,26 @@
                 <div class="row">
                     <div class="col-md-3">
                         <div class="form-group">
+                            <label for="data_ini_filter">De</label>
+                            <input type="date" value="{{now()->format('Y-m-01')}}" required name="data_ini_filter" id="data_ini_filter" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="data_fim_filter">Até</label>
+                            <input type="date" value="{{now()->format('Y-m-t')}}" required name="data_fim_filter" id="data_fim_filter" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
                             <label for="id_parameter_area_filter">Área</label>
                             <select required name="id_parameter_area_filter" id="id_parameter_area_filter" class="form-control"></select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="id_parameter_equipamento_filter">Equipamento</label>
+                            <select required name="id_parameter_equipamento_filter" id="id_parameter_equipamento_filter" class="form-control"></select>
                         </div>
                     </div>
                 </div>
@@ -56,7 +74,8 @@
                             <th>Data</th>
                             <th>Área/Equipamento</th>
                             <th>Hora 1ª aferição</th>
-                            <th>Temperatura 1ª aferição</th>
+                            <th>Tª 1ª aferição</th>
+                            <th>Leitura Fita</th>
                             <th>Situação gordura</th>
                             <th></th>
                         </tr>
@@ -83,7 +102,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="data">Data</label>
-                                <input type="date" required name="data" id="data" class="form-control">
+                                <input type="date" required name="data" id="data" class="form-control" value="{{ now()->toDateString() }}">
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -101,13 +120,13 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="hora_primeira_afericao">Hora 1ª afereição</label>
-                                <input type="time" name="hora_primeira_afericao" id="hora_primeira_afericao" class="form-control">
+                                <input type="time" required name="hora_primeira_afericao" id="hora_primeira_afericao" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="temperatura_primeira_afericao">Temperatura 1ª aferição</label>
-                                <input type="text" required name="temperatura_primeira_afericao" id="temperatura_primeira_afericao" class="form-control">
+                                <label for="temperatura_primeira_afericao">Temperatura 1ª aferição (ºC)</label>
+                                <input type="text" required name="temperatura_primeira_afericao" id="temperatura_primeira_afericao" class="form-control percent" placeholder="Informe a temperatura">
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -118,14 +137,14 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="temperatura_segunda_afericao">Temperatura 2ª aferição</label>
-                                <input type="text" required name="temperatura_segunda_afericao" id="temperatura_segunda_afericao" class="form-control">
+                                <label for="temperatura_segunda_afericao">Temperatura 2ª aferição (ºC)</label>
+                                <input type="text" name="temperatura_segunda_afericao" id="temperatura_segunda_afericao" class="form-control percent" placeholder="Informe a temperatura">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="acao_corretiva">Ação corretiva</label>
-                                <input type="text" required name="acao_corretiva" id="acao_corretiva" class="form-control">
+                                <input type="text" name="acao_corretiva" id="acao_corretiva" class="form-control" placeholder="Informe a ação">
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -136,8 +155,8 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="leitura_fita">Leitura da fita</label>
-                                <input type="text" required name="leitura_fita" id="leitura_fita" class="form-control">
+                                <label for="leitura_fita">Leitura da fita (%)</label>
+                                <input type="text" required name="leitura_fita" id="leitura_fita" class="form-control percent" placeholder="Informe a porcentagem">
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -202,13 +221,13 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="hora_primeira_afericao_edit">Hora 1ª afereição</label>
-                                <input type="time" name="hora_primeira_afericao_edit" id="hora_primeira_afericao_edit" class="form-control">
+                                <input type="time" required name="hora_primeira_afericao_edit" id="hora_primeira_afericao_edit" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="temperatura_primeira_afericao_edit">Temperatura 1ª aferição</label>
-                                <input type="text" required name="temperatura_primeira_afericao_edit" id="temperatura_primeira_afericao_edit" class="form-control">
+                                <label for="temperatura_primeira_afericao_edit">Temperatura 1ª aferição (ºC)</label>
+                                <input type="text" required name="temperatura_primeira_afericao_edit" id="temperatura_primeira_afericao_edit" class="form-control" placeholder="Informe a temperatura">
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -219,14 +238,14 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="temperatura_segunda_afericao_edit">Temperatura 2ª aferição</label>
-                                <input type="text" required name="temperatura_segunda_afericao_edit" id="temperatura_segunda_afericao_edit" class="form-control">
+                                <label for="temperatura_segunda_afericao_edit">Temperatura 2ª aferição (ºC)</label>
+                                <input type="text" name="temperatura_segunda_afericao_edit" id="temperatura_segunda_afericao_edit" class="form-control" placeholder="Informe a temperatura">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="acao_corretiva_edit">Ação corretiva</label>
-                                <input type="text" required name="acao_corretiva_edit" id="acao_corretiva_edit" class="form-control">
+                                <input type="text" name="acao_corretiva_edit" id="acao_corretiva_edit" class="form-control" placeholder="Informe a ação">
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -237,8 +256,8 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="leitura_fita_edit">Leitura da fita</label>
-                                <input type="text" required name="leitura_fita_edit" id="leitura_fita_edit" class="form-control">
+                                <label for="leitura_fita_edit">Leitura da fita (%)</label>
+                                <input type="text" required name="leitura_fita_edit" id="leitura_fita_edit" class="form-control percent" placeholder="Informe a porcentagem">
                             </div>
                         </div>
                         <div class="col-md-4">
