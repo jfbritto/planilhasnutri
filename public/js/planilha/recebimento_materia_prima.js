@@ -232,7 +232,6 @@ $(document).ready(function () {
         ]);
     });
 
-
     // "DELETAR"
     $("#list").on("click", ".delete-recebimento_materia_prima", function(){
 
@@ -281,94 +280,6 @@ $(document).ready(function () {
 
                 }
             })
-
-    });
-
-    // CADASTRAR FORNECEDOR
-    $("#formStoreParameterFornecedor").submit(function (e) {
-        e.preventDefault();
-
-        Swal.queue([
-            {
-                title: "Carregando...",
-                allowOutsideClick: false,
-                allowEscapeKey: false,
-                onOpen: () => {
-                    Swal.showLoading();
-
-                    $.post(window.location.origin + "/parametro/cadastrar", {
-                        name: $("#name_parameter_fornecedor").val(),
-                        id_parameter_type: 10,
-                    })
-                        .then(function (data) {
-                            if (data.status == "success") {
-
-                                $("#formStoreParameterFornecedor").each(function () {
-                                    this.reset();
-                                });
-
-                                $("#modalStoreParameterFornecedor").modal("hide");
-
-                                loadGlobalParameters(10, 'id_parameter_fornecedor');
-
-                                showSuccess("Cadastro efetuado!", null)
-                            } else if (data.status == "error") {
-                                showError(data.message)
-                            }
-                        })
-                        .catch(function (data) {
-                            if (data.responseJSON.status == "error") {
-                                showError(data.responseJSON.message)
-                            }
-                        });
-
-                },
-            },
-        ]);
-
-    });
-
-    // CADASTRAR PRODUTO
-    $("#formStoreParameterProduto").submit(function (e) {
-        e.preventDefault();
-
-        Swal.queue([
-            {
-                title: "Carregando...",
-                allowOutsideClick: false,
-                allowEscapeKey: false,
-                onOpen: () => {
-                    Swal.showLoading();
-
-                    $.post(window.location.origin + "/parametro/cadastrar", {
-                        name: $("#name_parameter_produto").val(),
-                        id_parameter_type: 8,
-                    })
-                        .then(function (data) {
-                            if (data.status == "success") {
-
-                                $("#formStoreParameterProduto").each(function () {
-                                    this.reset();
-                                });
-
-                                $("#modalStoreParameterProduto").modal("hide");
-
-                                loadGlobalParameters(8, 'id_parameter_produto');
-
-                                showSuccess("Cadastro efetuado!", null)
-                            } else if (data.status == "error") {
-                                showError(data.message)
-                            }
-                        })
-                        .catch(function (data) {
-                            if (data.responseJSON.status == "error") {
-                                showError(data.responseJSON.message)
-                            }
-                        });
-
-                },
-            },
-        ]);
 
     });
 

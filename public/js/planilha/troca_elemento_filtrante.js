@@ -255,4 +255,9 @@ $(document).ready(function () {
         preencherProximaData('data_troca', 'data_proxima_troca')
     });
 
+    $("#data_troca_edit").change(function (e) {
+        e.preventDefault();
+        preencherProximaData('data_troca_edit', 'data_proxima_troca_edit')
+    });
+
 });

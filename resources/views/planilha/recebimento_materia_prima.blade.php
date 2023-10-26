@@ -1,4 +1,5 @@
 @extends('adminlte::page')
+@extends('forms.forms')
 
 @section('meta_tags')
     <link rel="icon" href="/img/building.png" type="image/png">
@@ -266,7 +267,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="usuario">Nutricionista</label>
+                                <label for="usuario">Usuário</label>
                                 <input type="text" name="usuario" id="usuario" class="form-control" readonly>
                             </div>
                         </div>
@@ -282,66 +283,6 @@
             </div>
             <div class="modal-footer">
                 <button type="submit" class="btn btn-primary" form="formEditrecebimento_materia_prima">Salvar</button>
-            </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" tabindex="-1" role="dialog" id="modalStoreParameterFornecedor">
-        <div class="modal-dialog modal-md" role="document">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Novo Fornecedor</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-
-                <form id="formStoreParameterFornecedor">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="name_parameter_fornecedor">Nome</label>
-                                <input type="text" required name="name_parameter_fornecedor" id="name_parameter_fornecedor" class="form-control" placeholder="Nome do fornecedor">
-                            </div>
-                        </div>
-                    </div>
-                </form>
-
-            </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-primary" form="formStoreParameterFornecedor">Salvar</button>
-            </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" tabindex="-1" role="dialog" id="modalStoreParameterProduto">
-        <div class="modal-dialog modal-md" role="document">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Novo Produto</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-
-                <form id="formStoreParameterProduto">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="name_parameter_produto">Nome</label>
-                                <input type="text" required name="name_parameter_produto" id="name_parameter_produto" class="form-control" placeholder="Nome do produto">
-                            </div>
-                        </div>
-                    </div>
-                </form>
-
-            </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-primary" form="formStoreParameterProduto">Salvar</button>
             </div>
             </div>
         </div>

@@ -30,7 +30,7 @@ class ParameterController extends Controller
         $response = $this->parameterService->store($data);
 
         if($response['status'] == 'success')
-            return response()->json(['status'=>'success'], 201);
+            return response()->json(['status'=>'success', 'data' => $response], 201);
 
         return response()->json(['status'=>'error', 'message'=>$response['data']], 400);
     }

@@ -225,60 +225,6 @@ $("#editarSenha").on("click", function(){
 
 });
 
-
-
-
-
-/**
- * CADASTROS DIVERSOS
- */
-
-function cadastrarPlanilha(
-    rota = '',
-    funcao,
-    objParams
-) {
-    console.log(rota)
-    console.log(objParams)
-    let nome_referencia = rota.replace(/-/g, "_");
-    console.log(nome_referencia)
-    console.log(funcao)
-
-    Swal.queue([
-        {
-            title: "Carregando...",
-            allowOutsideClick: false,
-            allowEscapeKey: false,
-            onOpen: () => {
-                Swal.showLoading();
-
-                $.post(window.location.origin + `/planilha/${rota}/cadastrar`, objParams)
-                .then(function (data) {
-                    if (data.status == "success") {
-
-                        $(`#formStore${nome_referencia}`).each(function () {
-                            this.reset();
-                        });
-
-                        $(`#modalStore${nome_referencia}`).modal("hide");
-
-                        showSuccess("Cadastro efetuado!", null, funcao)
-                    } else if (data.status == "error") {
-                        showError(data.message)
-                    }
-                })
-                .catch(function (data) {
-                    if (data.responseJSON.status == "error") {
-                        showError(data.responseJSON.message)
-                    }
-                });
-
-            },
-        },
-    ]);
-
-}
-
 function dataTable(table) {
     setTimeout(() => {
         $(`#${table}`).DataTable( {
@@ -333,3 +279,250 @@ function montaUrlPdf() {
 
     window.open(url, '_blank');
 }
+
+// -------------------------------------------------------- FORMS --------------------------------------------------------
+
+// CADASTRAR RESPONSAVEL
+$("#formStoreParameterResponsavel").submit(function (e) {
+    e.preventDefault();
+
+    Swal.queue([
+        {
+            title: "Carregando...",
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            onOpen: () => {
+                Swal.showLoading();
+
+                $.post(window.location.origin + "/parametro/cadastrar", {
+                    name: $("#name_parameter_responsavel").val(),
+                    id_parameter_type: 3,
+                })
+                    .then(function (data) {
+                        if (data.status == "success") {
+
+                            $("#formStoreParameterResponsavel").each(function () {
+                                this.reset();
+                            });
+
+                            $("#modalStoreParameterResponsavel").modal("hide");
+
+                            let selected = null;
+                            if (data.data.data.id != undefined) {
+                                selected = data.data.data.id;
+                            }
+
+                            loadGlobalParameters(3, 'id_parameter_responsavel', selected);
+
+                            showSuccess("Cadastro efetuado!", null)
+                        } else if (data.status == "error") {
+                            showError(data.message)
+                        }
+                    })
+                    .catch(function (data) {
+                        if (data.responseJSON.status == "error") {
+                            showError(data.responseJSON.message)
+                        }
+                    });
+
+            },
+        },
+    ]);
+
+});
+
+// CADASTRAR AREA
+$("#formStoreParameterArea").submit(function (e) {
+    e.preventDefault();
+
+    Swal.queue([
+        {
+            title: "Carregando...",
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            onOpen: () => {
+                Swal.showLoading();
+
+                $.post(window.location.origin + "/parametro/cadastrar", {
+                    name: $("#name_parameter_area").val(),
+                    id_parameter_type: 1,
+                })
+                    .then(function (data) {
+                        if (data.status == "success") {
+
+                            $("#formStoreParameterArea").each(function () {
+                                this.reset();
+                            });
+
+                            $("#modalStoreParameterArea").modal("hide");
+
+                            let selected = null;
+                            if (data.data.data.id != undefined) {
+                                selected = data.data.data.id;
+                            }
+
+                            loadGlobalParameters(1, 'id_parameter_area', selected);
+
+                            showSuccess("Cadastro efetuado!", null)
+                        } else if (data.status == "error") {
+                            showError(data.message)
+                        }
+                    })
+                    .catch(function (data) {
+                        if (data.responseJSON.status == "error") {
+                            showError(data.responseJSON.message)
+                        }
+                    });
+
+            },
+        },
+    ]);
+
+});
+
+// CADASTRAR FILTRO
+$("#formStoreParameterFiltro").submit(function (e) {
+    e.preventDefault();
+
+    Swal.queue([
+        {
+            title: "Carregando...",
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            onOpen: () => {
+                Swal.showLoading();
+
+                $.post(window.location.origin + "/parametro/cadastrar", {
+                    name: $("#name_parameter_filtro").val(),
+                    id_parameter_type: 2,
+                })
+                    .then(function (data) {
+                        if (data.status == "success") {
+
+                            $("#formStoreParameterFiltro").each(function () {
+                                this.reset();
+                            });
+
+                            $("#modalStoreParameterFiltro").modal("hide");
+
+                            let selected = null;
+                            if (data.data.data.id != undefined) {
+                                selected = data.data.data.id;
+                            }
+
+                            loadGlobalParameters(2, 'id_parameter_filtro', selected);
+
+                            showSuccess("Cadastro efetuado!", null)
+                        } else if (data.status == "error") {
+                            showError(data.message)
+                        }
+                    })
+                    .catch(function (data) {
+                        if (data.responseJSON.status == "error") {
+                            showError(data.responseJSON.message)
+                        }
+                    });
+
+            },
+        },
+    ]);
+
+});
+
+// CADASTRAR FORNECEDOR
+$("#formStoreParameterFornecedor").submit(function (e) {
+    e.preventDefault();
+
+    Swal.queue([
+        {
+            title: "Carregando...",
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            onOpen: () => {
+                Swal.showLoading();
+
+                $.post(window.location.origin + "/parametro/cadastrar", {
+                    name: $("#name_parameter_fornecedor").val(),
+                    id_parameter_type: 10,
+                })
+                    .then(function (data) {
+                        if (data.status == "success") {
+
+                            $("#formStoreParameterFornecedor").each(function () {
+                                this.reset();
+                            });
+
+                            $("#modalStoreParameterFornecedor").modal("hide");
+
+                            let selected = null;
+                            if (data.data.data.id != undefined) {
+                                selected = data.data.data.id;
+                            }
+
+                            loadGlobalParameters(10, 'id_parameter_fornecedor', selected);
+
+                            showSuccess("Cadastro efetuado!", null)
+                        } else if (data.status == "error") {
+                            showError(data.message)
+                        }
+                    })
+                    .catch(function (data) {
+                        if (data.responseJSON.status == "error") {
+                            showError(data.responseJSON.message)
+                        }
+                    });
+
+            },
+        },
+    ]);
+
+});
+
+// CADASTRAR PRODUTO
+$("#formStoreParameterProduto").submit(function (e) {
+    e.preventDefault();
+
+    Swal.queue([
+        {
+            title: "Carregando...",
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            onOpen: () => {
+                Swal.showLoading();
+
+                $.post(window.location.origin + "/parametro/cadastrar", {
+                    name: $("#name_parameter_produto").val(),
+                    id_parameter_type: 8,
+                })
+                    .then(function (data) {
+                        if (data.status == "success") {
+
+                            $("#formStoreParameterProduto").each(function () {
+                                this.reset();
+                            });
+
+                            $("#modalStoreParameterProduto").modal("hide");
+
+                            let selected = null;
+                            if (data.data.data.id != undefined) {
+                                selected = data.data.data.id;
+                            }
+
+                            loadGlobalParameters(8, 'id_parameter_produto', selected);
+
+                            showSuccess("Cadastro efetuado!", null)
+                        } else if (data.status == "error") {
+                            showError(data.message)
+                        }
+                    })
+                    .catch(function (data) {
+                        if (data.responseJSON.status == "error") {
+                            showError(data.responseJSON.message)
+                        }
+                    });
+
+            },
+        },
+    ]);
+
+});

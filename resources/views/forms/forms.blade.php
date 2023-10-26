@@ -1,0 +1,150 @@
+<div class="modal fade" tabindex="-1" role="dialog" id="modalStoreParameterResponsavel" style="z-index: 9999;">
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">Nova Área</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+
+            <form id="formStoreParameterResponsavel">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="name_parameter_responsavel">Nome</label>
+                            <input type="text" required name="name_parameter_responsavel" id="name_parameter_responsavel" class="form-control" placeholder="Nome do responsável">
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" form="formStoreParameterResponsavel">Salvar</button>
+        </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" tabindex="-1" role="dialog" id="modalStoreParameterArea" style="z-index: 9999;">
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">Nova Área</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+
+            <form id="formStoreParameterArea">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="name_parameter_area">Nome</label>
+                            <input type="text" required name="name_parameter_area" id="name_parameter_area" class="form-control" placeholder="Nome do área">
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" form="formStoreParameterArea">Salvar</button>
+        </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" tabindex="-1" role="dialog" id="modalStoreParameterFiltro" style="z-index: 9999;">
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">Novo Filtro</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+
+            <form id="formStoreParameterFiltro">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="name_parameter_filtro">Nome</label>
+                            <input type="text" required name="name_parameter_filtro" id="name_parameter_filtro" class="form-control" placeholder="Nome do filtro">
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" form="formStoreParameterFiltro">Salvar</button>
+        </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" tabindex="-1" role="dialog" id="modalStoreParameterFornecedor" style="z-index: 9999;">
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">Novo Fornecedor</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+
+            <form id="formStoreParameterFornecedor">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="name_parameter_fornecedor">Nome</label>
+                            <input type="text" required name="name_parameter_fornecedor" id="name_parameter_fornecedor" class="form-control" placeholder="Nome do fornecedor">
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" form="formStoreParameterFornecedor">Salvar</button>
+        </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" tabindex="-1" role="dialog" id="modalStoreParameterProduto" style="z-index: 9999;">
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">Novo Produto</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+
+            <form id="formStoreParameterProduto">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="name_parameter_produto">Nome</label>
+                            <input type="text" required name="name_parameter_produto" id="name_parameter_produto" class="form-control" placeholder="Nome do produto">
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" form="formStoreParameterProduto">Salvar</button>
+        </div>
+        </div>
+    </div>
+</div>

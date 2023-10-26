@@ -192,7 +192,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="usuario">Nutricionista</label>
+                                <label for="usuario">Usuário</label>
                                 <input type="text" name="usuario" id="usuario" class="form-control" readonly>
                             </div>
                         </div>

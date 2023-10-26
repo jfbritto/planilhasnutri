@@ -1,4 +1,5 @@
 @extends('adminlte::page')
+@extends('forms.forms')
 
 @section('meta_tags')
     <link rel="icon" href="/img/building.png" type="image/png">
@@ -112,19 +113,31 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="id_parameter_area">Área</label>
+                                <label for="id_parameter_area">
+                                    Área
+                                    <i class="fa fa-plus-circle color-green" aria-hidden="true" style="cursor: pointer"
+                                    data-toggle="modal" data-target="#modalStoreParameterArea" title="Cadastrar novo item"></i>
+                                </label>
                                 <select required name="id_parameter_area" id="id_parameter_area" class="form-control"></select>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="id_parameter_filtro">Filtro</label>
+                                <label for="id_parameter_filtro">
+                                    Filtro
+                                    <i class="fa fa-plus-circle color-green" aria-hidden="true" style="cursor: pointer"
+                                    data-toggle="modal" data-target="#modalStoreParameterFiltro" title="Cadastrar novo item"></i>
+                                </label>
                                 <select required name="id_parameter_filtro" id="id_parameter_filtro" class="form-control"></select>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="id_parameter_responsavel">Responsável</label>
+                                <label for="id_parameter_responsavel">
+                                    Responsável
+                                    <i class="fa fa-plus-circle color-green" aria-hidden="true" style="cursor: pointer"
+                                    data-toggle="modal" data-target="#modalStoreParameterResponsavel" title="Cadastrar novo item"></i>
+                                </label>
                                 <select required name="id_parameter_responsavel" id="id_parameter_responsavel" class="form-control"></select>
                             </div>
                         </div>
@@ -197,7 +210,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="usuario">Nutricionista</label>
+                                <label for="usuario">Usuário</label>
                                 <input type="text" name="usuario" id="usuario" class="form-control" readonly>
                             </div>
                         </div>
