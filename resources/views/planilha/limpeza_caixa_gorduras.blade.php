@@ -11,6 +11,7 @@
 @stop
 
 @section('content')
+    @include('forms.forms')
 
     <div class="card collapsed-card">
         <div class="card-header" style="cursor: pointer" data-card-widget="collapse">
@@ -82,19 +83,31 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="id_parameter_caixa_gordura">Caixa de Gordura</label>
+                                <label for="id_parameter_caixa_gordura">
+                                    Caixa de Gordura
+                                    <i class="fa fa-plus-circle color-green" aria-hidden="true" style="cursor: pointer"
+                                    data-toggle="modal" data-target="#modalStoreParameterCaixaGordura" title="Cadastrar novo item"></i>
+                                </label>
                                 <select type="text" required name="id_parameter_caixa_gordura" id="id_parameter_caixa_gordura" class="form-control"></select>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="id_parameter_area">Área</label>
+                                <label for="id_parameter_area">
+                                    Área
+                                    <i class="fa fa-plus-circle color-green" aria-hidden="true" style="cursor: pointer"
+                                    data-toggle="modal" data-target="#modalStoreParameterArea" title="Cadastrar novo item"></i>
+                                </label>
                                 <select type="text" required name="id_parameter_area" id="id_parameter_area" class="form-control"></select>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="id_parameter_responsavel">Responsável</label>
+                                <label for="id_parameter_area">
+                                    Responsavel
+                                    <i class="fa fa-plus-circle color-green" aria-hidden="true" style="cursor: pointer"
+                                    data-toggle="modal" data-target="#modalStoreParameterResponsavel" title="Cadastrar novo item"></i>
+                                </label>
                                 <select type="text" required name="id_parameter_responsavel" id="id_parameter_responsavel" class="form-control"></select>
                             </div>
                         </div>

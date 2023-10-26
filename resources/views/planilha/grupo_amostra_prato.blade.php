@@ -94,19 +94,19 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="nome_grupo">Nome do Grupo</label>
-                                <input type="text" required name="nome_grupo" id="nome_grupo" class="form-control">
+                                <input type="text" required name="nome_grupo" id="nome_grupo" class="form-control" placeholder="Informe o nome do grupo">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="numero_pessoas">Número de Pessoas</label>
-                                <input type="number" required name="numero_pessoas" id="numero_pessoas" class="form-control">
+                                <input type="number" required name="numero_pessoas" id="numero_pessoas" class="form-control" placeholder="Informe o nº de pessoas">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="cardapio">Cardápio</label>
-                                <input type="text" required name="cardapio" id="cardapio" class="form-control">
+                                <input type="text" required name="cardapio" id="cardapio" class="form-control" placeholder="Informe o cardápio">
                             </div>
                         </div>
                     </div>
@@ -143,19 +143,19 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="nome_grupo_edit">Nome do Grupo</label>
-                                <input type="text" required name="nome_grupo_edit" id="nome_grupo_edit" class="form-control">
+                                <input type="text" required name="nome_grupo_edit" id="nome_grupo_edit" class="form-control" placeholder="Informe o nome do grupo">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="numero_pessoas_edit">Número de Pessoas</label>
-                                <input type="number" required name="numero_pessoas_edit" id="numero_pessoas_edit" class="form-control">
+                                <input type="number" required name="numero_pessoas_edit" id="numero_pessoas_edit" class="form-control" placeholder="Informe o nº de pessoas">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="cardapio_edit">Cardápio</label>
-                                <input type="text" required name="cardapio_edit" id="cardapio_edit" class="form-control">
+                                <input type="text" required name="cardapio_edit" id="cardapio_edit" class="form-control" placeholder="Informe o cardápio">
                             </div>
                         </div>
                         <div class="col-md-6">

@@ -157,7 +157,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="observacoes">Observações</label>
-                                <input type="text" name="observacoes" id="observacoes" class="form-control" placeholder="">
+                                <input type="text" name="observacoes" id="observacoes" class="form-control" placeholder="Informe as observações">
                             </div>
                         </div>
                     </div>
@@ -254,7 +254,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="observacoes_edit">Observações</label>
-                                <input type="text" name="observacoes_edit" id="observacoes_edit" class="form-control" placeholder="">
+                                <input type="text" name="observacoes_edit" id="observacoes_edit" class="form-control" placeholder="Informe as observações">
                             </div>
                         </div>
                         <div class="col-md-6">

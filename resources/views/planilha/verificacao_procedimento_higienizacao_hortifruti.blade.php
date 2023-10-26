@@ -11,6 +11,7 @@
 @stop
 
 @section('content')
+    @include('forms.forms')
 
     <div class="card collapsed-card">
         <div class="card-header" style="cursor: pointer" data-card-widget="collapse">
@@ -89,7 +90,11 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="id_parameter_alimento">Alimento</label>
+                                <label for="id_parameter_alimento">
+                                    Alimento
+                                    <i class="fa fa-plus-circle color-green" aria-hidden="true" style="cursor: pointer"
+                                    data-toggle="modal" data-target="#modalStoreParameterAlimento" title="Cadastrar novo item"></i>
+                                </label>
                                 <select type="text" required name="id_parameter_alimento" id="id_parameter_alimento" class="form-control"></select>
                             </div>
                         </div>
@@ -114,12 +119,16 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="acao_corretiva">Ação Corretiva</label>
-                                <input type="text" required name="acao_corretiva" id="acao_corretiva" class="form-control">
+                                <input type="text" required name="acao_corretiva" id="acao_corretiva" class="form-control" placeholder="Informe uma ação">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="id_parameter_responsavel">Responsável</label>
+                                <label for="id_parameter_area">
+                                    Responsavel
+                                    <i class="fa fa-plus-circle color-green" aria-hidden="true" style="cursor: pointer"
+                                    data-toggle="modal" data-target="#modalStoreParameterResponsavel" title="Cadastrar novo item"></i>
+                                </label>
                                 <select type="text" required name="id_parameter_responsavel" id="id_parameter_responsavel" class="form-control"></select>
                             </div>
                         </div>
@@ -181,7 +190,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="acao_corretiva_edit">Ação Corretiva</label>
-                                <input type="text" required name="acao_corretiva_edit" id="acao_corretiva_edit" class="form-control">
+                                <input type="text" required name="acao_corretiva_edit" id="acao_corretiva_edit" class="form-control" placeholder="Informe uma ação">
                             </div>
                         </div>
                         <div class="col-md-4">

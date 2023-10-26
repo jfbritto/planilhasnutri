@@ -1,5 +1,4 @@
 @extends('adminlte::page')
-@extends('forms.forms')
 
 @section('meta_tags')
     <link rel="icon" href="/img/building.png" type="image/png">
@@ -12,6 +11,7 @@
 @stop
 
 @section('content')
+    @include('forms.forms')
 
     <div class="card collapsed-card">
         <div class="card-header" style="cursor: pointer" data-card-widget="collapse">

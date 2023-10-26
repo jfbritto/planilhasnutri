@@ -11,6 +11,7 @@
 @stop
 
 @section('content')
+    @include('forms.forms')
 
     <div class="card collapsed-card">
         <div class="card-header" style="cursor: pointer" data-card-widget="collapse">
@@ -105,13 +106,21 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="id_parameter_area">Área</label>
+                                <label for="id_parameter_area">
+                                    Área
+                                    <i class="fa fa-plus-circle color-green" aria-hidden="true" style="cursor: pointer"
+                                    data-toggle="modal" data-target="#modalStoreParameterArea" title="Cadastrar novo item"></i>
+                                </label>
                                 <select required name="id_parameter_area" id="id_parameter_area" class="form-control"></select>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="id_parameter_praga">Praga</label>
+                                <label for="id_parameter_praga">
+                                    Praga
+                                    <i class="fa fa-plus-circle color-green" aria-hidden="true" style="cursor: pointer"
+                                    data-toggle="modal" data-target="#modalStoreParameterPraga" title="Cadastrar novo item"></i>
+                                </label>
                                 <select required name="id_parameter_praga" id="id_parameter_praga" class="form-control"></select>
                             </div>
                         </div>

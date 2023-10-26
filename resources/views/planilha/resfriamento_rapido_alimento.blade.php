@@ -11,6 +11,7 @@
 @stop
 
 @section('content')
+    @include('forms.forms')
 
     <div class="card collapsed-card">
         <div class="card-header" style="cursor: pointer" data-card-widget="collapse">
@@ -87,7 +88,11 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="id_parameter_produto">Produto</label>
+                                <label for="id_parameter_produto">
+                                    Produto
+                                    <i class="fa fa-plus-circle color-green" aria-hidden="true" style="cursor: pointer"
+                                    data-toggle="modal" data-target="#modalStoreParameterProduto" title="Cadastrar novo item"></i>
+                                </label>
                                 <select type="text" required name="id_parameter_produto" id="id_parameter_produto" class="form-control"></select>
                             </div>
                         </div>
@@ -112,7 +117,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="resfriamento_temperatura_central_inicio">Resfriamento Temperatura Central Inicio</label>
-                                <input type="text" required name="resfriamento_temperatura_central_inicio" id="resfriamento_temperatura_central_inicio" class="form-control">
+                                <input type="text" required name="resfriamento_temperatura_central_inicio" id="resfriamento_temperatura_central_inicio" class="form-control" placeholder="Informe a temperatura">
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -124,7 +129,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="resfriamento_temperatura_central_fim">Resfriamento Temperatura Central Fim</label>
-                                <input type="text" required name="resfriamento_temperatura_central_fim" id="resfriamento_temperatura_central_fim" class="form-control">
+                                <input type="text" required name="resfriamento_temperatura_central_fim" id="resfriamento_temperatura_central_fim" class="form-control" placeholder="Informe a temperatura">
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -139,7 +144,11 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="id_parameter_responsavel">Responsável</label>
+                                <label for="id_parameter_responsavel">
+                                    Responsável
+                                    <i class="fa fa-plus-circle color-green" aria-hidden="true" style="cursor: pointer"
+                                    data-toggle="modal" data-target="#modalStoreParameterResponsavel" title="Cadastrar novo item"></i>
+                                </label>
                                 <select type="text" required name="id_parameter_responsavel" id="id_parameter_responsavel" class="form-control"></select>
                             </div>
                         </div>
@@ -201,7 +210,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="resfriamento_temperatura_central_inicio_edit">Resfriamento Temperatura Central Inicio</label>
-                                <input type="text" required name="resfriamento_temperatura_central_inicio_edit" id="resfriamento_temperatura_central_inicio_edit" class="form-control">
+                                <input type="text" required name="resfriamento_temperatura_central_inicio_edit" id="resfriamento_temperatura_central_inicio_edit" class="form-control" placeholder="Informe a temperatura">
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -213,7 +222,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="resfriamento_temperatura_central_fim_edit">Resfriamento Temperatura Central Fim</label>
-                                <input type="text" required name="resfriamento_temperatura_central_fim_edit" id="resfriamento_temperatura_central_fim_edit" class="form-control">
+                                <input type="text" required name="resfriamento_temperatura_central_fim_edit" id="resfriamento_temperatura_central_fim_edit" class="form-control" placeholder="Informe a temperatura">
                             </div>
                         </div>
                         <div class="col-md-6">

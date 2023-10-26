@@ -11,6 +11,7 @@
 @stop
 
 @section('content')
+    @include('forms.forms')
 
     <div class="card collapsed-card">
         <div class="card-header" style="cursor: pointer" data-card-widget="collapse">
@@ -96,7 +97,11 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="id_parameter_evento">Evento</label>
+                                <label for="id_parameter_evento">
+                                    Evento
+                                    <i class="fa fa-plus-circle color-green" aria-hidden="true" style="cursor: pointer"
+                                    data-toggle="modal" data-target="#modalStoreParameterEvento" title="Cadastrar novo item"></i>
+                                </label>
                                 <select type="text" required name="id_parameter_evento" id="id_parameter_evento" class="form-control"></select>
                             </div>
                         </div>
@@ -114,7 +119,11 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="id_parameter_produto">Produto</label>
+                                <label for="id_parameter_produto">
+                                    Produto
+                                    <i class="fa fa-plus-circle color-green" aria-hidden="true" style="cursor: pointer"
+                                    data-toggle="modal" data-target="#modalStoreParameterProduto" title="Cadastrar novo item"></i>
+                                </label>
                                 <select type="text" required name="id_parameter_produto" id="id_parameter_produto" class="form-control"></select>
                             </div>
                         </div>
@@ -126,8 +135,8 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="tremperatura_1">Temperatura 1º aferição</label>
-                                <input type="text" required name="tremperatura_1" id="tremperatura_1" class="form-control">
+                                <label for="tremperatura_1">Tª 1º aferição</label>
+                                <input type="text" required name="tremperatura_1" id="tremperatura_1" class="form-control" placeholder="Informe a temperatura">
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -138,8 +147,8 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="tremperatura_2">Temperatura 2º aferição</label>
-                                <input type="text" name="tremperatura_2" id="tremperatura_2" class="form-control">
+                                <label for="tremperatura_2">Tª 2º aferição</label>
+                                <input type="text" name="tremperatura_2" id="tremperatura_2" class="form-control" placeholder="Informe a temperatura">
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -150,8 +159,8 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="tremperatura_3">Temperatura 3º aferição</label>
-                                <input type="text" name="tremperatura_3" id="tremperatura_3" class="form-control">
+                                <label for="tremperatura_3">Tª 3º aferição</label>
+                                <input type="text" name="tremperatura_3" id="tremperatura_3" class="form-control" placeholder="Informe a temperatura">
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -162,8 +171,8 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="tremperatura_4">Temperatura 4º aferição</label>
-                                <input type="text" name="tremperatura_4" id="tremperatura_4" class="form-control">
+                                <label for="tremperatura_4">Tª 4º aferição</label>
+                                <input type="text" name="tremperatura_4" id="tremperatura_4" class="form-control" placeholder="Informe a temperatura">
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -174,8 +183,8 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="tremperatura_5">Temperatura 5º aferição</label>
-                                <input type="text" name="tremperatura_5" id="tremperatura_5" class="form-control">
+                                <label for="tremperatura_5">Tª 5º aferição</label>
+                                <input type="text" name="tremperatura_5" id="tremperatura_5" class="form-control" placeholder="Informe a temperatura">
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -186,32 +195,24 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="tremperatura_6">Temperatura 6º aferição</label>
-                                <input type="text" name="tremperatura_6" id="tremperatura_6" class="form-control">
+                                <label for="tremperatura_6">Tª 6º aferição</label>
+                                <input type="text" name="tremperatura_6" id="tremperatura_6" class="form-control" placeholder="Informe a temperatura">
                             </div>
                         </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label for="hora_7">Hora 7º aferição</label>
-                                <input type="time" name="hora_7" id="hora_7" class="form-control">
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label for="tremperatura_7">Temperatura 7º aferição</label>
-                                <input type="text" name="tremperatura_7" id="tremperatura_7" class="form-control">
-                            </div>
-                        </div>
-                        <div class="col-md-6"></div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="acao_corretiva">Ação Corretiva</label>
-                                <input type="text" required name="acao_corretiva" id="acao_corretiva" class="form-control" placeholder="">
+                                <input type="text" required name="acao_corretiva" id="acao_corretiva" class="form-control" placeholder="Informe a ação">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="id_parameter_responsavel">Responsável</label>
+                                <label for="id_parameter_responsavel">
+                                    Responsável
+                                    <i class="fa fa-plus-circle color-green" aria-hidden="true" style="cursor: pointer"
+                                    data-toggle="modal" data-target="#modalStoreParameterResponsavel" title="Cadastrar novo item"></i>
+                                </label>
+
                                 <select type="text" required name="id_parameter_responsavel" id="id_parameter_responsavel" class="form-control"></select>
                             </div>
                         </div>
@@ -278,8 +279,8 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="tremperatura_1_edit">Temperatura 1º aferição</label>
-                                <input type="text" required name="tremperatura_1_edit" id="tremperatura_1_edit" class="form-control">
+                                <label for="tremperatura_1_edit">Tª 1º aferição</label>
+                                <input type="text" required name="tremperatura_1_edit" id="tremperatura_1_edit" class="form-control" placeholder="Informe a temperatura">
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -290,8 +291,8 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="tremperatura_2_edit">Temperatura 2º aferição</label>
-                                <input type="text" required name="tremperatura_2_edit" id="tremperatura_2_edit" class="form-control">
+                                <label for="tremperatura_2_edit">Tª 2º aferição</label>
+                                <input type="text" required name="tremperatura_2_edit" id="tremperatura_2_edit" class="form-control" placeholder="Informe a temperatura">
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -302,8 +303,8 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="tremperatura_3_edit">Temperatura 3º aferição</label>
-                                <input type="text" required name="tremperatura_3_edit" id="tremperatura_3_edit" class="form-control">
+                                <label for="tremperatura_3_edit">Tª 3º aferição</label>
+                                <input type="text" required name="tremperatura_3_edit" id="tremperatura_3_edit" class="form-control" placeholder="Informe a temperatura">
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -314,8 +315,8 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="tremperatura_4_edit">Temperatura 4º aferição</label>
-                                <input type="text" required name="tremperatura_4_edit" id="tremperatura_4_edit" class="form-control">
+                                <label for="tremperatura_4_edit">Tª 4º aferição</label>
+                                <input type="text" required name="tremperatura_4_edit" id="tremperatura_4_edit" class="form-control" placeholder="Informe a temperatura">
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -326,8 +327,8 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="tremperatura_5_edit">Temperatura 5º aferição</label>
-                                <input type="text" required name="tremperatura_5_edit" id="tremperatura_5_edit" class="form-control">
+                                <label for="tremperatura_5_edit">Tª 5º aferição</label>
+                                <input type="text" required name="tremperatura_5_edit" id="tremperatura_5_edit" class="form-control" placeholder="Informe a temperatura">
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -338,27 +339,15 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="tremperatura_6_edit">Temperatura 6º aferição</label>
-                                <input type="text" required name="tremperatura_6_edit" id="tremperatura_6_edit" class="form-control">
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label for="hora_7_edit">Hora 7º aferição</label>
-                                <input type="time" required name="hora_7_edit" id="hora_7_edit" class="form-control">
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label for="tremperatura_7_edit">Temperatura 7º aferição</label>
-                                <input type="text" required name="tremperatura_7_edit" id="tremperatura_7_edit" class="form-control">
+                                <label for="tremperatura_6_edit">Tª 6º aferição</label>
+                                <input type="text" required name="tremperatura_6_edit" id="tremperatura_6_edit" class="form-control" placeholder="Informe a temperatura">
                             </div>
                         </div>
                         <div class="col-md-6"></div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="acao_corretiva_edit">Ação Corretiva</label>
-                                <input type="text" required name="acao_corretiva_edit" id="acao_corretiva_edit" class="form-control" placeholder="">
+                                <input type="text" required name="acao_corretiva_edit" id="acao_corretiva_edit" class="form-control" placeholder="Informe a ação">
                             </div>
                         </div>
                         <div class="col-md-6">

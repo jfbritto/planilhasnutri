@@ -57,8 +57,6 @@ class PlanilhaTemperaturaAlimentoDistribuicaoService
                             'tremperatura_5' => $data['tremperatura_5'],
                             'hora_6' => $data['hora_6'],
                             'tremperatura_6' => $data['tremperatura_6'],
-                            'hora_7' => $data['hora_7'],
-                            'tremperatura_7' => $data['tremperatura_7'],
                             'acao_corretiva' => $data['acao_corretiva']
                         ]);
 

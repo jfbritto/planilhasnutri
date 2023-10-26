@@ -35,7 +35,7 @@ $(document).ready(function () {
                                             <td class="align-middle">${item.calibracao_foi_feita==1?'Sim':'Não'}</td>
                                             <td class="align-middle">${dateFormat(item.data_calibracao)}</td>
                                             <td class="align-middle">${item.equipamento_com_problema==1?'Sim':'Não'}</td>
-                                            <td class="align-middle">${item.qual_problema}</td>
+                                            <td class="align-middle">${item.qual_problema??'-'}</td>
                                             <td class="align-middle">${item.providencias_tomadas}</td>
                                             <td class="align-middle">${item.problema_foi_solucionado==1?'Sim':'Não'}</td>
                                             <td class="align-middle" style="text-align: right; min-width: 120px">

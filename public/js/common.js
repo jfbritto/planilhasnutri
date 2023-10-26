@@ -526,3 +526,297 @@ $("#formStoreParameterProduto").submit(function (e) {
     ]);
 
 });
+
+// CADASTRAR EQUIPAMENTO
+$("#formStoreParameterEquipamento").submit(function (e) {
+    e.preventDefault();
+
+    Swal.queue([
+        {
+            title: "Carregando...",
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            onOpen: () => {
+                Swal.showLoading();
+
+                $.post(window.location.origin + "/parametro/cadastrar", {
+                    name: $("#name_parameter_equipamento").val(),
+                    id_parameter_type: 4,
+                })
+                    .then(function (data) {
+                        if (data.status == "success") {
+
+                            $("#formStoreParameterEquipamento").each(function () {
+                                this.reset();
+                            });
+
+                            $("#modalStoreParameterEquipamento").modal("hide");
+
+                            let selected = null;
+                            if (data.data.data.id != undefined) {
+                                selected = data.data.data.id;
+                            }
+
+                            loadGlobalParameters(4, 'id_parameter_equipamento', selected);
+
+                            showSuccess("Cadastro efetuado!", null)
+                        } else if (data.status == "error") {
+                            showError(data.message)
+                        }
+                    })
+                    .catch(function (data) {
+                        if (data.responseJSON.status == "error") {
+                            showError(data.responseJSON.message)
+                        }
+                    });
+
+            },
+        },
+    ]);
+
+});
+
+// CADASTRAR CAIXA DE GORDURA
+$("#formStoreParameterCaixaGordura").submit(function (e) {
+    e.preventDefault();
+
+    Swal.queue([
+        {
+            title: "Carregando...",
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            onOpen: () => {
+                Swal.showLoading();
+
+                $.post(window.location.origin + "/parametro/cadastrar", {
+                    name: $("#name_parameter_caixa_gordura").val(),
+                    id_parameter_type: 6,
+                })
+                    .then(function (data) {
+                        if (data.status == "success") {
+
+                            $("#formStoreParameterCaixaGordura").each(function () {
+                                this.reset();
+                            });
+
+                            $("#modalStoreParameterCaixaGordura").modal("hide");
+
+                            let selected = null;
+                            if (data.data.data.id != undefined) {
+                                selected = data.data.data.id;
+                            }
+
+                            loadGlobalParameters(6, 'id_parameter_caixa_gordura', selected);
+
+                            showSuccess("Cadastro efetuado!", null)
+                        } else if (data.status == "error") {
+                            showError(data.message)
+                        }
+                    })
+                    .catch(function (data) {
+                        if (data.responseJSON.status == "error") {
+                            showError(data.responseJSON.message)
+                        }
+                    });
+
+            },
+        },
+    ]);
+
+});
+
+// CADASTRAR ALERGENO
+$("#formStoreParameterAlergeno").submit(function (e) {
+    e.preventDefault();
+
+    Swal.queue([
+        {
+            title: "Carregando...",
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            onOpen: () => {
+                Swal.showLoading();
+
+                $.post(window.location.origin + "/parametro/cadastrar", {
+                    name: $("#name_parameter_alergeno").val(),
+                    id_parameter_type: 5,
+                })
+                    .then(function (data) {
+                        if (data.status == "success") {
+
+                            $("#formStoreParameterAlergeno").each(function () {
+                                this.reset();
+                            });
+
+                            $("#modalStoreParameterAlergeno").modal("hide");
+
+                            let selected = null;
+                            if (data.data.data.id != undefined) {
+                                selected = data.data.data.id;
+                            }
+
+                            loadGlobalParameters(5, 'id_parameter_alergeno', selected);
+
+                            showSuccess("Cadastro efetuado!", null)
+                        } else if (data.status == "error") {
+                            showError(data.message)
+                        }
+                    })
+                    .catch(function (data) {
+                        if (data.responseJSON.status == "error") {
+                            showError(data.responseJSON.message)
+                        }
+                    });
+
+            },
+        },
+    ]);
+
+});
+
+// CADASTRAR ALIMENTO
+$("#formStoreParameterAlimento").submit(function (e) {
+    e.preventDefault();
+
+    Swal.queue([
+        {
+            title: "Carregando...",
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            onOpen: () => {
+                Swal.showLoading();
+
+                $.post(window.location.origin + "/parametro/cadastrar", {
+                    name: $("#name_parameter_alimento").val(),
+                    id_parameter_type: 9,
+                })
+                    .then(function (data) {
+                        if (data.status == "success") {
+
+                            $("#formStoreParameterAlimento").each(function () {
+                                this.reset();
+                            });
+
+                            $("#modalStoreParameterAlimento").modal("hide");
+
+                            let selected = null;
+                            if (data.data.data.id != undefined) {
+                                selected = data.data.data.id;
+                            }
+
+                            loadGlobalParameters(9, 'id_parameter_alimento', selected);
+
+                            showSuccess("Cadastro efetuado!", null)
+                        } else if (data.status == "error") {
+                            showError(data.message)
+                        }
+                    })
+                    .catch(function (data) {
+                        if (data.responseJSON.status == "error") {
+                            showError(data.responseJSON.message)
+                        }
+                    });
+
+            },
+        },
+    ]);
+
+});
+
+// CADASTRAR EVENTO
+$("#formStoreParameterEvento").submit(function (e) {
+    e.preventDefault();
+
+    Swal.queue([
+        {
+            title: "Carregando...",
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            onOpen: () => {
+                Swal.showLoading();
+
+                $.post(window.location.origin + "/parametro/cadastrar", {
+                    name: $("#name_parameter_evento").val(),
+                    id_parameter_type: 11,
+                })
+                    .then(function (data) {
+                        if (data.status == "success") {
+
+                            $("#formStoreParameterEvento").each(function () {
+                                this.reset();
+                            });
+
+                            $("#modalStoreParameterEvento").modal("hide");
+
+                            let selected = null;
+                            if (data.data.data.id != undefined) {
+                                selected = data.data.data.id;
+                            }
+
+                            loadGlobalParameters(11, 'id_parameter_evento', selected);
+
+                            showSuccess("Cadastro efetuado!", null)
+                        } else if (data.status == "error") {
+                            showError(data.message)
+                        }
+                    })
+                    .catch(function (data) {
+                        if (data.responseJSON.status == "error") {
+                            showError(data.responseJSON.message)
+                        }
+                    });
+
+            },
+        },
+    ]);
+
+});
+
+// CADASTRAR PRAGA
+$("#formStoreParameterPraga").submit(function (e) {
+    e.preventDefault();
+
+    Swal.queue([
+        {
+            title: "Carregando...",
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            onOpen: () => {
+                Swal.showLoading();
+
+                $.post(window.location.origin + "/parametro/cadastrar", {
+                    name: $("#name_parameter_praga").val(),
+                    id_parameter_type: 12,
+                })
+                    .then(function (data) {
+                        if (data.status == "success") {
+
+                            $("#formStoreParameterPraga").each(function () {
+                                this.reset();
+                            });
+
+                            $("#modalStoreParameterPraga").modal("hide");
+
+                            let selected = null;
+                            if (data.data.data.id != undefined) {
+                                selected = data.data.data.id;
+                            }
+
+                            loadGlobalParameters(12, 'id_parameter_praga', selected);
+
+                            showSuccess("Cadastro efetuado!", null)
+                        } else if (data.status == "error") {
+                            showError(data.message)
+                        }
+                    })
+                    .catch(function (data) {
+                        if (data.responseJSON.status == "error") {
+                            showError(data.responseJSON.message)
+                        }
+                    });
+
+            },
+        },
+    ]);
+
+});

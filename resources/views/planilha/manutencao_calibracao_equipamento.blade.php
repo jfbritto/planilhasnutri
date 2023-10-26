@@ -11,6 +11,7 @@
 @stop
 
 @section('content')
+    @include('forms.forms')
 
     <div class="card collapsed-card">
         <div class="card-header" style="cursor: pointer" data-card-widget="collapse">
@@ -84,7 +85,11 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="id_parameter_equipamento">Equipamento</label>
+                                <label for="id_parameter_equipamento">
+                                    Equipamento
+                                    <i class="fa fa-plus-circle color-green" aria-hidden="true" style="cursor: pointer"
+                                    data-toggle="modal" data-target="#modalStoreParameterEquipamento" title="Cadastrar novo item"></i>
+                                </label>
                                 <select required name="id_parameter_equipamento" id="id_parameter_equipamento" class="form-control"></select>
                             </div>
                         </div>
@@ -117,13 +122,13 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="qual_problema">Qual o problema?</label>
-                                <input type="text" name="qual_problema" id="qual_problema" class="form-control">
+                                <input type="text" name="qual_problema" id="qual_problema" class="form-control" placeholder="Informe o problema">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="providencias_tomadas">Providencias Tomadas</label>
-                                <input type="text" required name="providencias_tomadas" id="providencias_tomadas" class="form-control">
+                                <input type="text" required name="providencias_tomadas" id="providencias_tomadas" class="form-control" placeholder="Informe as providências tomadas">
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -139,7 +144,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="observacoes">Observações</label>
-                                <input type="text" name="observacoes" id="observacoes" class="form-control">
+                                <input type="text" name="observacoes" id="observacoes" class="form-control" placeholder="Informe as Observações">
                             </div>
                         </div>
                     </div>
@@ -202,13 +207,13 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="qual_problema_edit">Qual o problema?</label>
-                                <input type="text" name="qual_problema_edit" id="qual_problema_edit" class="form-control">
+                                <input type="text" name="qual_problema_edit" id="qual_problema_edit" class="form-control" placeholder="Informe o problema">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="providencias_tomadas_edit">Providencias Tomadas</label>
-                                <input type="text" required name="providencias_tomadas_edit" id="providencias_tomadas_edit" class="form-control">
+                                <input type="text" required name="providencias_tomadas_edit" id="providencias_tomadas_edit" class="form-control" placeholder="Informe as providências tomadas">
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -224,7 +229,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="observacoes_edit">Observações</label>
-                                <input type="text" name="observacoes_edit" id="observacoes_edit" class="form-control">
+                                <input type="text" name="observacoes_edit" id="observacoes_edit" class="form-control" placeholder="Informe as Observações">
                             </div>
                         </div>
                         <div class="col-md-6">

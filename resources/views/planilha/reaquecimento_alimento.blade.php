@@ -11,6 +11,7 @@
 @stop
 
 @section('content')
+    @include('forms.forms')
 
     <div class="card collapsed-card">
         <div class="card-header" style="cursor: pointer" data-card-widget="collapse">
@@ -87,7 +88,11 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="id_parameter_produto">Produto</label>
+                                <label for="id_parameter_produto">
+                                    Produto
+                                    <i class="fa fa-plus-circle color-green" aria-hidden="true" style="cursor: pointer"
+                                    data-toggle="modal" data-target="#modalStoreParameterProduto" title="Cadastrar novo item"></i>
+                                </label>
                                 <select type="text" required name="id_parameter_produto" id="id_parameter_produto" class="form-control"></select>
                             </div>
                         </div>
@@ -100,7 +105,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="temperatura_antes">Temperatura aferição antes do aquecimento</label>
-                                <input type="text" required name="temperatura_antes" id="temperatura_antes" class="form-control">
+                                <input type="text" required name="temperatura_antes" id="temperatura_antes" class="form-control" placeholder="Informe a temperatura">
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -112,7 +117,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="temperatura_depois">Temperatura aferição após o aquecimento</label>
-                                <input type="text" required name="temperatura_depois" id="temperatura_depois" class="form-control">
+                                <input type="text" required name="temperatura_depois" id="temperatura_depois" class="form-control" placeholder="Informe a temperatura">
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -133,7 +138,11 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="id_parameter_responsavel">Responsável</label>
+                                <label for="id_parameter_responsavel">
+                                    Responsável
+                                    <i class="fa fa-plus-circle color-green" aria-hidden="true" style="cursor: pointer"
+                                    data-toggle="modal" data-target="#modalStoreParameterResponsavel" title="Cadastrar novo item"></i>
+                                </label>
                                 <select type="text" required name="id_parameter_responsavel" id="id_parameter_responsavel" class="form-control"></select>
                             </div>
                         </div>
@@ -183,7 +192,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="temperatura_antes_edit">Temperatura aferição antes do aquecimento</label>
-                                <input type="text" required name="temperatura_antes_edit" id="temperatura_antes_edit" class="form-control">
+                                <input type="text" required name="temperatura_antes_edit" id="temperatura_antes_edit" class="form-control" placeholder="Informe a temperatura">
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -195,7 +204,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="temperatura_depois_edit">Temperatura aferição após o aquecimento</label>
-                                <input type="text" required name="temperatura_depois_edit" id="temperatura_depois_edit" class="form-control">
+                                <input type="text" required name="temperatura_depois_edit" id="temperatura_depois_edit" class="form-control" placeholder="Informe a temperatura">
                             </div>
                         </div>
                         <div class="col-md-12">

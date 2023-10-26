@@ -64,8 +64,6 @@ $(document).ready(function () {
                                                 data-tremperatura_5="${item.tremperatura_5}"
                                                 data-hora_6="${item.hora_6}"
                                                 data-tremperatura_6="${item.tremperatura_6}"
-                                                data-hora_7="${item.hora_7}"
-                                                data-tremperatura_7="${item.tremperatura_7}"
                                                 data-acao_corretiva="${item.acao_corretiva}" href="#" class="btn btn-warning edit-temperatura_alimento_distribuicao"><i style="color: white" class="fas fa-edit"></i></a>
                                                 <a title="Deletar" data-id="${item.id}" href="#" class="btn btn-danger delete-temperatura_alimento_distribuicao"><i class="fas fa-trash-alt"></i></a>
                                             </td>
@@ -126,8 +124,6 @@ $(document).ready(function () {
                         tremperatura_5: $("#tremperatura_5").val(),
                         hora_6: $("#hora_6").val(),
                         tremperatura_6: $("#tremperatura_6").val(),
-                        hora_7: $("#hora_7").val(),
-                        tremperatura_7: $("#tremperatura_7").val(),
                         acao_corretiva: $("#acao_corretiva").val(),
                     })
                     .then(function (data) {
@@ -180,8 +176,6 @@ $(document).ready(function () {
         let tremperatura_5 = $(this).data('tremperatura_5');
         let hora_6 = $(this).data('hora_6');
         let tremperatura_6 = $(this).data('tremperatura_6');
-        let hora_7 = $(this).data('hora_7');
-        let tremperatura_7 = $(this).data('tremperatura_7');
         let acao_corretiva = $(this).data('acao_corretiva');
 
         loadGlobalParameters(3, 'id_parameter_responsavel_edit', id_parameter_responsavel);
@@ -205,8 +199,6 @@ $(document).ready(function () {
         $("#tremperatura_5_edit").val(tremperatura_5);
         $("#hora_6_edit").val(hora_6);
         $("#tremperatura_6_edit").val(tremperatura_6);
-        $("#hora_7_edit").val(hora_7);
-        $("#tremperatura_7_edit").val(tremperatura_7);
         $("#acao_corretiva_edit").val(acao_corretiva);
 
         $("#modalEdittemperatura_alimento_distribuicao").modal("show");
@@ -244,8 +236,6 @@ $(document).ready(function () {
                             tremperatura_5: $("#tremperatura_5_edit").val(),
                             hora_6: $("#hora_6_edit").val(),
                             tremperatura_6: $("#tremperatura_6_edit").val(),
-                            hora_7: $("#hora_7_edit").val(),
-                            tremperatura_7: $("#tremperatura_7_edit").val(),
                             acao_corretiva: $("#acao_corretiva_edit").val(),
                         }
                     })

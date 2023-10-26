@@ -11,6 +11,7 @@
 @stop
 
 @section('content')
+    @include('forms.forms')
 
     <div class="card collapsed-card">
         <div class="card-header" style="cursor: pointer" data-card-widget="collapse">
@@ -99,7 +100,11 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="id_parameter_produto">Produto</label>
+                                <label for="id_parameter_produto">
+                                    Produto
+                                    <i class="fa fa-plus-circle color-green" aria-hidden="true" style="cursor: pointer"
+                                    data-toggle="modal" data-target="#modalStoreParameterProduto" title="Cadastrar novo item"></i>
+                                </label>
                                 <select type="text" required name="id_parameter_produto" id="id_parameter_produto" class="form-control"></select>
                             </div>
                         </div>
@@ -112,7 +117,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="primeira_tremperatura">Temperatura 1º aferição</label>
-                                <input type="text" required name="primeira_tremperatura" id="primeira_tremperatura" class="form-control">
+                                <input type="text" required name="primeira_tremperatura" id="primeira_tremperatura" class="form-control" placeholder="Informe a temperatura">
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -124,13 +129,13 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="segunda_tremperatura">Temperatura 2º aferição</label>
-                                <input type="text" required name="segunda_tremperatura" id="segunda_tremperatura" class="form-control">
+                                <input type="text" required name="segunda_tremperatura" id="segunda_tremperatura" class="form-control" placeholder="Informe a temperatura">
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="acao_corretiva">Ação Corretiva</label>
-                                <input type="text" required name="acao_corretiva" id="acao_corretiva" class="form-control" placeholder="">
+                                <input type="text" required name="acao_corretiva" id="acao_corretiva" class="form-control" placeholder="Informe a ação">
                             </div>
                         </div>
                     </div>
@@ -189,7 +194,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="primeira_tremperatura_edit">Temperatura 1º aferição</label>
-                                <input type="text" required name="primeira_tremperatura_edit" id="primeira_tremperatura_edit" class="form-control">
+                                <input type="text" required name="primeira_tremperatura_edit" id="primeira_tremperatura_edit" class="form-control" placeholder="Informe a temperatura">
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -201,13 +206,13 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="segunda_tremperatura_edit">Temperatura 2º aferição</label>
-                                <input type="text" required name="segunda_tremperatura_edit" id="segunda_tremperatura_edit" class="form-control">
+                                <input type="text" required name="segunda_tremperatura_edit" id="segunda_tremperatura_edit" class="form-control" placeholder="Informe a temperatura">
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="acao_corretiva_edit">Ação Corretiva</label>
-                                <input type="text" required name="acao_corretiva_edit" id="acao_corretiva_edit" class="form-control" placeholder="">
+                                <input type="text" required name="acao_corretiva_edit" id="acao_corretiva_edit" class="form-control" placeholder="Informe a ação">
                             </div>
                         </div>
                         <div class="col-md-6">

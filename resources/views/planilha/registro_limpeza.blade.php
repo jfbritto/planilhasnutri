@@ -11,6 +11,7 @@
 @stop
 
 @section('content')
+    @include('forms.forms')
 
     <div class="card collapsed-card">
         <div class="card-header" style="cursor: pointer" data-card-widget="collapse">
@@ -90,26 +91,34 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="id_parameter_responsavel">Responsável</label>
+                                <label for="id_parameter_responsavel">
+                                    Responsável
+                                    <i class="fa fa-plus-circle color-green" aria-hidden="true" style="cursor: pointer"
+                                    data-toggle="modal" data-target="#modalStoreParameterResponsavel" title="Cadastrar novo item"></i>
+                                </label>
                                 <select type="text" required name="id_parameter_responsavel" id="id_parameter_responsavel" class="form-control"></select>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="id_parameter_area">Área</label>
+                                <label for="id_parameter_area">
+                                    Área
+                                    <i class="fa fa-plus-circle color-green" aria-hidden="true" style="cursor: pointer"
+                                    data-toggle="modal" data-target="#modalStoreParameterArea" title="Cadastrar novo item"></i>
+                                </label>
                                 <select type="text" required name="id_parameter_area" id="id_parameter_area" class="form-control"></select>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="superficie_limpa">Superfície Limpa</label>
-                                <input type="text" required name="superficie_limpa" id="superficie_limpa" class="form-control">
+                                <input type="text" required name="superficie_limpa" id="superficie_limpa" class="form-control" placeholder="Informe a superfície">
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="frequencia">Frequência</label>
-                                <input type="text" required name="frequencia" id="frequencia" class="form-control">
+                                <input type="text" required name="frequencia" id="frequencia" class="form-control" placeholder="Informe a frequência">
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -125,7 +134,7 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="comentarios">Comentários</label>
-                                <input type="text" required name="comentarios" id="comentarios" class="form-control">
+                                <input type="text" required name="comentarios" id="comentarios" class="form-control" placeholder="Comente sobre a limpeza">
                             </div>
                         </div>
                     </div>
@@ -174,13 +183,13 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="superficie_limpa_edit">Superfície Limpa</label>
-                                <input type="text" required name="superficie_limpa_edit" id="superficie_limpa_edit" class="form-control">
+                                <input type="text" required name="superficie_limpa_edit" id="superficie_limpa_edit" class="form-control" placeholder="Informe a superfície">
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="frequencia_edit">Frequência</label>
-                                <input type="text" required name="frequencia_edit" id="frequencia_edit" class="form-control">
+                                <input type="text" required name="frequencia_edit" id="frequencia_edit" class="form-control" placeholder="Informe a frequência">
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -196,7 +205,7 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="comentarios_edit">Comentários</label>
-                                <input type="text" required name="comentarios_edit" id="comentarios_edit" class="form-control">
+                                <input type="text" required name="comentarios_edit" id="comentarios_edit" class="form-control" placeholder="Comente sobre a limpeza">
                             </div>
                         </div>
                         <div class="col-md-6">

@@ -11,6 +11,7 @@
 @stop
 
 @section('content')
+    @include('forms.forms')
 
     <div class="card collapsed-card">
         <div class="card-header" style="cursor: pointer" data-card-widget="collapse">
@@ -89,14 +90,18 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="id_parameter_produto">Produto</label>
+                                <label for="id_parameter_produto">
+                                    Produto
+                                    <i class="fa fa-plus-circle color-green" aria-hidden="true" style="cursor: pointer"
+                                    data-toggle="modal" data-target="#modalStoreParameterProduto" title="Cadastrar novo item"></i>
+                                </label>
                                 <select required name="id_parameter_produto" id="id_parameter_produto" class="form-control"></select>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="quantidade">Quantidade</label>
-                                <input type="text" required name="quantidade" id="quantidade" class="form-control">
+                                <input type="text" required name="quantidade" id="quantidade" class="form-control" placeholder="Informe a quantidade">
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -113,7 +118,11 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="id_parameter_alergeno">Alérgeno</label>
+                                <label for="id_parameter_alergeno">
+                                    Alérgeno
+                                    <i class="fa fa-plus-circle color-green" aria-hidden="true" style="cursor: pointer"
+                                    data-toggle="modal" data-target="#modalStoreParameterAlergeno" title="Cadastrar novo item"></i>
+                                </label>
                                 <select name="id_parameter_alergeno" id="id_parameter_alergeno" class="form-control"></select>
                             </div>
                         </div>
@@ -157,7 +166,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="quantidade_edit">Quantidade</label>
-                                <input type="text" required name="quantidade_edit" id="quantidade_edit" class="form-control">
+                                <input type="text" required name="quantidade_edit" id="quantidade_edit" class="form-control" placeholder="Informe a quantidade">
                             </div>
                         </div>
                         <div class="col-md-4">

@@ -11,6 +11,7 @@
 @stop
 
 @section('content')
+    @include('forms.forms')
 
     <div class="card collapsed-card">
         <div class="card-header" style="cursor: pointer" data-card-widget="collapse">
@@ -88,26 +89,34 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="id_parameter_responsavel">Responsável</label>
-                                <select required name="id_parameter_responsavel" id="id_parameter_responsavel" class="form-control"></select>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="id_parameter_equipamento">Equipamento</label>
+                                <label for="id_parameter_equipamento">
+                                    Equipamento
+                                    <i class="fa fa-plus-circle color-green" aria-hidden="true" style="cursor: pointer"
+                                    data-toggle="modal" data-target="#modalStoreParameterEquipamento" title="Cadastrar novo item"></i>
+                                </label>
                                 <select required name="id_parameter_equipamento" id="id_parameter_equipamento" class="form-control"></select>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="temperatura_1">Temperatura 10:00</label>
-                                <input type="text" required name="temperatura_1" id="temperatura_1" class="form-control">
+                                <input type="text" required name="temperatura_1" id="temperatura_1" class="form-control" placeholder="Informe a temperatura">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="temperatura_2">Temperatura 16:00</label>
-                                <input type="text" required name="temperatura_2" id="temperatura_2" class="form-control">
+                                <input type="text" required name="temperatura_2" id="temperatura_2" class="form-control" placeholder="Informe a temperatura">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="id_parameter_responsavel">
+                                    Responsável
+                                    <i class="fa fa-plus-circle color-green" aria-hidden="true" style="cursor: pointer"
+                                    data-toggle="modal" data-target="#modalStoreParameterResponsavel" title="Cadastrar novo item"></i>
+                                </label>
+                                <select required name="id_parameter_responsavel" id="id_parameter_responsavel" class="form-control"></select>
                             </div>
                         </div>
                     </div>
@@ -143,12 +152,6 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="id_parameter_responsavel_edit">Responsável</label>
-                                <select required name="id_parameter_responsavel_edit" id="id_parameter_responsavel_edit" class="form-control"></select>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
                                 <label for="id_parameter_equipamento_edit">Equipamento</label>
                                 <select required name="id_parameter_equipamento_edit" id="id_parameter_equipamento_edit" class="form-control"></select>
                             </div>
@@ -156,13 +159,19 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="temperatura_1_edit">Temperatura 10:00</label>
-                                <input type="text" required name="temperatura_1_edit" id="temperatura_1_edit" class="form-control">
+                                <input type="text" required name="temperatura_1_edit" id="temperatura_1_edit" class="form-control" placeholder="Informe a temperatura">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="temperatura_2_edit">Temperatura 16:00</label>
-                                <input type="text" required name="temperatura_2_edit" id="temperatura_2_edit" class="form-control">
+                                <input type="text" required name="temperatura_2_edit" id="temperatura_2_edit" class="form-control" placeholder="Informe a temperatura">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="id_parameter_responsavel_edit">Responsável</label>
+                                <select required name="id_parameter_responsavel_edit" id="id_parameter_responsavel_edit" class="form-control"></select>
                             </div>
                         </div>
                         <div class="col-md-6">

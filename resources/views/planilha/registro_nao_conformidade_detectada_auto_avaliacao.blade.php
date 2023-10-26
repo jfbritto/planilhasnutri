@@ -11,6 +11,7 @@
 @stop
 
 @section('content')
+    @include('forms.forms')
 
     <div class="card collapsed-card">
         <div class="card-header" style="cursor: pointer" data-card-widget="collapse">
@@ -95,30 +96,34 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="nao_conformidade">Não Conformidade</label>
-                                <input type="text" required name="nao_conformidade" id="nao_conformidade" class="form-control">
+                                <input type="text" required name="nao_conformidade" id="nao_conformidade" class="form-control" placeholder="Informe a não conformidade">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="possiveis_causas">Possíveis Causas</label>
-                                <input type="text" required name="possiveis_causas" id="possiveis_causas" class="form-control">
+                                <input type="text" required name="possiveis_causas" id="possiveis_causas" class="form-control" placeholder="Informe as possíveis causas">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="tratamento_produto">Tratamento do Produto</label>
-                                <input type="text" required name="tratamento_produto" id="tratamento_produto" class="form-control">
+                                <input type="text" required name="tratamento_produto" id="tratamento_produto" class="form-control" placeholder="Informe o tratamento do produto">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="acoes_corretivas">Ação corretiva para evitar novas ocorrências</label>
-                                <input type="text" required name="acoes_corretivas" id="acoes_corretivas" class="form-control">
+                                <input type="text" required name="acoes_corretivas" id="acoes_corretivas" class="form-control" placeholder="Informe as ações corretivas">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="id_parameter_responsavel">Responsável</label>
+                                <label for="id_parameter_responsavel">
+                                    Responsável
+                                    <i class="fa fa-plus-circle color-green" aria-hidden="true" style="cursor: pointer"
+                                    data-toggle="modal" data-target="#modalStoreParameterResponsavel" title="Cadastrar novo item"></i>
+                                </label>
                                 <select type="text" required name="id_parameter_responsavel" id="id_parameter_responsavel" class="form-control"></select>
                             </div>
                         </div>
@@ -156,25 +161,25 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="nao_conformidade_edit">Não Conformidade</label>
-                                <input type="text" required name="nao_conformidade_edit" id="nao_conformidade_edit" class="form-control">
+                                <input type="text" required name="nao_conformidade_edit" id="nao_conformidade_edit" class="form-control" placeholder="Informe a não conformidade">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="possiveis_causas_edit">Possíveis Causas</label>
-                                <input type="text" required name="possiveis_causas_edit" id="possiveis_causas_edit" class="form-control">
+                                <input type="text" required name="possiveis_causas_edit" id="possiveis_causas_edit" class="form-control" placeholder="Informe as possíveis causas">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="tratamento_produto_edit">Tratamento do Produto</label>
-                                <input type="text" required name="tratamento_produto_edit" id="tratamento_produto_edit" class="form-control">
+                                <input type="text" required name="tratamento_produto_edit" id="tratamento_produto_edit" class="form-control" placeholder="Informe o tratamento do produto">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="acoes_corretivas_edit">Ação corretiva para evitar novas ocorrências</label>
-                                <input type="text" required name="acoes_corretivas_edit" id="acoes_corretivas_edit" class="form-control">
+                                <input type="text" required name="acoes_corretivas_edit" id="acoes_corretivas_edit" class="form-control" placeholder="Informe as ações corretivas">
                             </div>
                         </div>
                         <div class="col-md-6">
