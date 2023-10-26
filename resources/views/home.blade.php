@@ -110,6 +110,15 @@
 
 @endif
 
+<div class="card">
+    <div class="card-header">
+        Gráfico
+    </div>
+    <div class="card-body">
+        <canvas id="myChart" width="400" height="100"></canvas>
+    </div>
+</div>
+
 @stop
 
 @section('js')
