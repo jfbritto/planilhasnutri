@@ -2,11 +2,11 @@
 
 namespace App\Services;
 
-use App\Models\PlanilhaGrupoAmostraPrato;
+use App\Models\PlanilhaTemperaturaAlimentoDistribuicaoConfig;
 use Exception;
 use Illuminate\Support\Facades\DB as DB;
 
-class PlanilhaGrupoAmostraPratoService
+class PlanilhaTemperaturaAlimentoDistribuicaoConfigService
 {
     public function store(array $data)
     {
@@ -15,7 +15,7 @@ class PlanilhaGrupoAmostraPratoService
         try{
             DB::beginTransaction();
 
-            $result = PlanilhaGrupoAmostraPrato::create($data);
+            $result = PlanilhaTemperaturaAlimentoDistribuicaoConfig::create($data);
 
             DB::commit();
 
@@ -29,7 +29,7 @@ class PlanilhaGrupoAmostraPratoService
         return $response;
     }
 
-    public function update(array $data)
+    public function destroy($periodo)
     {
         $response = [];
 
@@ -37,42 +37,14 @@ class PlanilhaGrupoAmostraPratoService
 
             DB::beginTransaction();
 
-            $planilha = DB::table('planilha_grupo_amostra_pratos')
-                        ->where('id', $data['id'])
-                        ->update([
-                            'data' => $data['data'],
-                            'nome_grupo' => $data['nome_grupo'],
-                            'numero_pessoas' => $data['numero_pessoas'],
-                            'cardapio' => $data['cardapio'],
-                        ]);
+            DB::table('planilha_temperatura_alimento_distribuicao_configs')
+                        ->where('id_unit', auth()->user()->id_unit)
+                        ->where('periodo', $periodo)
+                        ->delete();
 
             DB::commit();
 
-            $response = ['status' => 'success', 'data' => $planilha];
-
-        }catch(Exception $e){
-            DB::rollBack();
-            $response = ['status' => 'error', 'data' => $e->getMessage()];
-        }
-
-        return $response;
-    }
-
-    public function destroy(array $data)
-    {
-        $response = [];
-
-        try{
-
-            DB::beginTransaction();
-
-            $planilha = DB::table('planilha_grupo_amostra_pratos')
-                        ->where('id', $data['id'])
-                        ->update(['status' => $data['status']]);
-
-            DB::commit();
-
-            $response = ['status' => 'success', 'data' => $planilha];
+            $response = ['status' => 'success'];
 
         }catch(Exception $e){
             DB::rollBack();
@@ -94,22 +66,24 @@ class PlanilhaGrupoAmostraPratoService
             }
 
             $filter = "";
-            if (!empty($filter_array['data_ini_filter']) && !empty($filter_array['data_fim_filter'])) {
-                $filter .= " and main_tb.data between '{$filter_array['data_ini_filter']}' and '{$filter_array['data_fim_filter']}'";
+            if (!empty($filter_array['periodo_filter'])) {
+                $filter .= " and main_tb.periodo = '{$filter_array['periodo_filter']}'";
             }
 
             $return = DB::select( DB::raw("SELECT
                                                 us.name as usuario,
                                                 ifnull(un.name, 'Controle') as unidade,
-                                                main_tb.*
+                                                main_tb.id_parameter_produto as id,
+                                                p_pr.name as name
                                             FROM
-                                                planilha_grupo_amostra_pratos main_tb
+                                                planilha_temperatura_alimento_distribuicao_configs main_tb
+                                                JOIN parameters p_pr ON main_tb.id_parameter_produto = p_pr.id
                                                 JOIN users us ON main_tb.id_user = us.id {$condition}
                                                 LEFT JOIN units un ON us.id_unit = un.id
                                             WHERE
                                                 main_tb.status = 'A' {$filter}
                                             ORDER BY
-                                                main_tb.data DESC"));
+                                                main_tb.id"));
 
             $response = ['status' => 'success', 'data' => $return];
         }catch(Exception $e){
@@ -124,7 +98,7 @@ class PlanilhaGrupoAmostraPratoService
         $response = [];
 
         try{
-            $return = DB::select( DB::raw("SELECT * FROM planilha_grupo_amostra_pratos main_tb WHERE main_tb.status = 'A' AND id = {$id}"));
+            $return = DB::select( DB::raw("SELECT * FROM planilha_temperatura_alimento_distribuicao_configs main_tb WHERE main_tb.status = 'A' AND id = {$id}"));
 
             $response = ['status' => 'success', 'data' => $return];
         }catch(Exception $e){

@@ -64,9 +64,9 @@
     <div class="card">
         <div class="card-header border-0">
             <div class="card-tools">
-                {{-- <a href="#" class="btn btn-tool btn-sm" id="abrirPDF" title="Visualizar planilha">
-                    <i class="fa-regular fa-file-pdf fa-2xl"></i>
-                </a> --}}
+                <a href="#" class="btn btn-tool btn-sm" id="abrirConfig" title="Configurar Alimentos Padrão">
+                    <i class="fa-solid fa-gear fa-xl"></i>
+                </a>
                 @if(auth()->user()->id_unit)
                 <a href="#" class="btn btn-tool btn-sm" data-toggle="modal" data-target="#modalStoretemperatura_alimento_distribuicao" id="openModalDistribuicao" title="Adicionar novo item">
                     <i class="fa-solid fa-square-plus fa-2xl color-green"></i>
@@ -213,7 +213,9 @@
                         </div>
                     </div>
                     <div id="dolly-edit"></div>
+                    @if(auth()->user()->id_unit)
                     <span class="badge bg-success mb-3" style="cursor: pointer" title="Inserir mais um produto" id="maisUmItemEdit">Mais um</span>
+                    @endif
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
@@ -237,9 +239,51 @@
                 </form>
 
             </div>
+            @if(auth()->user()->id_unit)
             <div class="modal-footer">
                 <button type="submit" class="btn btn-primary" form="formEdittemperatura_alimento_distribuicao">Salvar</button>
             </div>
+            @endif
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="modalConfigurarAlimentosPadrao">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Configurar Alimentos Padrão</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <form id="formConfigurarAlimentosPadrao">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="periodo_config">Período</label>
+                                <select required name="periodo_config" id="periodo_config" class="form-control">
+                                    <option value="">-- Selecione --</option>
+                                    <option value="desjejum">Desjejum</option>
+                                    <option value="cafe">Café da manhã</option>
+                                    <option value="almoco">Almoço</option>
+                                    <option value="jantar">Jantar</option>
+                                    <option value="ceia">Ceia</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" id="checkbox-list"></div>
+                </form>
+
+            </div>
+            @if(auth()->user()->id_unit)
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" form="formConfigurarAlimentosPadrao">Salvar</button>
+            </div>
+            @endif
             </div>
         </div>
     </div>

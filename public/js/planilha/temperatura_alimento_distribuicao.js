@@ -2,6 +2,7 @@ $(document).ready(function () {
 
     // Variável para armazenar o cache dos produtos
     var cacheProdutos = null;
+    var cacheProdutosSelecionados = null;
 
     // Variável para armazenar o contator de itens na tela
     var contador = 1;
@@ -324,28 +325,13 @@ $(document).ready(function () {
     // ao trocar o select de período faça:
     $("#periodo").change(function () {
 
-
-        switch (this.value) {
-            case 'cafe':
-                $("#dolly").html("")
-                const produtos = preencherTelaComItensAutomaticamente();
-                break;
-
-            default:
-                // adicionarCamposNaTela()
-                break;
-        }
-
+        $("#dolly").html("")
+        const produtos = preencherTelaComItensAutomaticamente(this.value);
     });
 
-    async function preencherTelaComItensAutomaticamente() {
+    async function preencherTelaComItensAutomaticamente(periodo) {
 
-        const objProdutosSelecionados = [
-            {'id':34, 'name':'Abacaxi'},
-            {'id':39, 'name':'Agua Frutada'},
-            {'id':36, 'name':'Iogurte'},
-            {'id':31, 'name':'Mamão'},
-        ]
+        const objProdutosSelecionados = await buscarProdutosSelecionadosConfig(periodo);
 
         const produtos = await buscarProdutos();
 
@@ -554,4 +540,126 @@ $(document).ready(function () {
 
         });
     }
+
+    // ao clicar no botão de editar os alimentos padrão
+    $("#abrirConfig").click(function(){
+        $("#checkbox-list").html("");
+        $("#formConfigurarAlimentosPadrao").each(function () {
+            this.reset();
+        });
+
+        $("#modalConfigurarAlimentosPadrao").modal('show');
+    })
+
+    // ao trocar o select de período faça:
+    $("#periodo_config").change(function () {
+
+        $("#checkbox-list").html("");
+        preencheConfig(this.value);
+
+    });
+
+    // Preencher o select de produto
+    async function preencheConfig(periodo) {
+        try {
+            const produtos = await buscarProdutos();
+            const produtos_selecionados = await buscarProdutosSelecionadosConfig(periodo);
+
+            if (produtos.length > 0) {
+                // Seletor do elemento onde os checkboxes serão inseridos
+                var checkboxList = $("#checkbox-list");
+
+                // Itera sobre o array de objetos e cria checkboxes estilizados
+                produtos.forEach(function(item) {
+                    var checkboxMarcado = produtos_selecionados.some(function(selecionado) {
+                        return selecionado.id === item.id;
+                    });
+
+                    var checkbox = `
+                        <div class="col-md-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="${item.id}" id="checkbox-${item.id}" ${checkboxMarcado ? 'checked' : ''}>
+                                <label class="form-check-label" for="checkbox-${item.id}">
+                                    ${item.name}
+                                </label>
+                            </div>
+                        </div>
+                    `;
+                    // Adiciona o checkbox à lista
+                    checkboxList.append(checkbox);
+                });
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    // Função para buscar produtos já pré selecionados
+    function buscarProdutosSelecionadosConfig(periodo) {
+        return new Promise((resolve, reject) => {
+
+            $.get(window.location.origin + "/planilha/temperatura-alimento-distribuicao-config/listar", {
+                periodo_filter: periodo
+            })
+            .then(function (data) {
+                if (data.status === "success") {
+                    resolve(data.data);
+                } else {
+                    reject("Nenhum item encontrado");
+                }
+            })
+            .catch(reject);
+
+        });
+    }
+
+    // CADASTRO CONFIGURAÇÕES
+    $("#formConfigurarAlimentosPadrao").submit(function (e) {
+        e.preventDefault();
+
+        Swal.queue([
+            {
+                title: "Carregando...",
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                onOpen: () => {
+                    Swal.showLoading();
+
+                     // Array para armazenar os IDs dos checkboxes marcados
+                    var ids_produtos = [];
+
+                    // Obtém os IDs dos checkboxes marcados
+                    $(".form-check-input:checked").each(function() {
+                        ids_produtos.push(parseInt($(this).val()));
+                    });
+
+                    $.post(window.location.origin + "/planilha/temperatura-alimento-distribuicao-config/cadastrar", {
+                        periodo_config: $("#periodo_config option:selected").val(),
+                        ids_produtos: ids_produtos
+                    })
+                    .then(function (data) {
+                        if (data.status == "success") {
+
+                            $("#formConfigurarAlimentosPadrao").each(function () {
+                                this.reset();
+                            });
+
+                            $("#modalConfigurarAlimentosPadrao").modal("hide");
+
+                            showSuccess("Cadastro efetuado!", null, loadPrincipal)
+                        } else if (data.status == "error") {
+                            showError(data.message)
+                        }
+                    })
+                    .catch(function (data) {
+                        if (data.responseJSON.status == "error") {
+                            showError(data.responseJSON.message)
+                        }
+                    });
+
+                },
+            },
+        ]);
+
+    });
 });
