@@ -5,15 +5,21 @@ namespace App\Http\Controllers\Planilhas;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Services\PlanilhaTemperaturaAlimentoDistribuicaoService;
+use App\Services\PlanilhaTemperaturaAlimentoDistribuicaoProdutoService;
 use PDF;
 
 class PlanilhaTemperaturaAlimentoDistribuicaoController extends Controller
 {
     private $planilhaTemperaturaAlimentoDistribuicaoService;
+    private $planilhaTemperaturaAlimentoDistribuicaoProdutoService;
 
-    public function __construct(PlanilhaTemperaturaAlimentoDistribuicaoService $planilhaTemperaturaAlimentoDistribuicaoService)
+    public function __construct(
+        PlanilhaTemperaturaAlimentoDistribuicaoService $planilhaTemperaturaAlimentoDistribuicaoService,
+        PlanilhaTemperaturaAlimentoDistribuicaoProdutoService $planilhaTemperaturaAlimentoDistribuicaoProdutoService
+    )
     {
         $this->planilhaTemperaturaAlimentoDistribuicaoService = $planilhaTemperaturaAlimentoDistribuicaoService;
+        $this->planilhaTemperaturaAlimentoDistribuicaoProdutoService = $planilhaTemperaturaAlimentoDistribuicaoProdutoService;
     }
 
     public function index()
@@ -23,31 +29,35 @@ class PlanilhaTemperaturaAlimentoDistribuicaoController extends Controller
 
     public function store(Request $request)
     {
+
         $data = [
             'id_user' => auth()->user()->id,
             'data' => $request->data,
             'periodo' => $request->periodo,
-            'id_parameter_produto' => $request->id_parameter_produto,
             'id_parameter_evento' => $request->id_parameter_evento,
             'id_parameter_responsavel' => $request->id_parameter_responsavel,
-            'hora_1' => $request->hora_1,
-            'tremperatura_1' => $request->tremperatura_1,
-            'hora_2' => $request->hora_2,
-            'tremperatura_2' => $request->tremperatura_2,
-            'hora_3' => $request->hora_3,
-            'tremperatura_3' => $request->tremperatura_3,
-            'hora_4' => $request->hora_4,
-            'tremperatura_4' => $request->tremperatura_4,
-            'hora_5' => $request->hora_5,
-            'tremperatura_5' => $request->tremperatura_5,
-            'hora_6' => $request->hora_6,
-            'tremperatura_6' => $request->tremperatura_6,
-            'hora_7' => $request->hora_7,
-            'tremperatura_7' => $request->tremperatura_7,
             'acao_corretiva' => $request->acao_corretiva
         ];
 
         $response = $this->planilhaTemperaturaAlimentoDistribuicaoService->store($data);
+        $id_planilha = $response["data"]->id;
+
+        if (!empty($request->itens_planilha)) {
+            $itensPlanilha = $request->itens_planilha;
+            foreach ($itensPlanilha as $key => $value) {
+                $data2 = [
+                    'id_user' => auth()->user()->id,
+                    'id_planilha_distribuicao' => $id_planilha,
+                    'id_parameter_produto' => $value['id_parameter_produto'],
+                    'hora_1' => $value['hora_1'],
+                    'tremperatura_1' => $value['tremperatura_1'],
+                    'hora_2' => $value['hora_2'],
+                    'tremperatura_2' => $value['tremperatura_2']
+                ];
+
+                $response = $this->planilhaTemperaturaAlimentoDistribuicaoProdutoService->store($data2);
+            }
+        }
 
         if($response['status'] == 'success')
             return response()->json(['status'=>'success'], 201);
@@ -62,27 +72,33 @@ class PlanilhaTemperaturaAlimentoDistribuicaoController extends Controller
             'id' => $request->id,
             'data' => $request->data,
             'periodo' => $request->periodo,
-            'id_parameter_produto' => $request->id_parameter_produto,
             'id_parameter_evento' => $request->id_parameter_evento,
             'id_parameter_responsavel' => $request->id_parameter_responsavel,
-            'hora_1' => $request->hora_1,
-            'tremperatura_1' => $request->tremperatura_1,
-            'hora_2' => $request->hora_2,
-            'tremperatura_2' => $request->tremperatura_2,
-            'hora_3' => $request->hora_3,
-            'tremperatura_3' => $request->tremperatura_3,
-            'hora_4' => $request->hora_4,
-            'tremperatura_4' => $request->tremperatura_4,
-            'hora_5' => $request->hora_5,
-            'tremperatura_5' => $request->tremperatura_5,
-            'hora_6' => $request->hora_6,
-            'tremperatura_6' => $request->tremperatura_6,
-            'hora_7' => $request->hora_7,
-            'tremperatura_7' => $request->tremperatura_7,
             'acao_corretiva' => $request->acao_corretiva
         ];
 
         $response = $this->planilhaTemperaturaAlimentoDistribuicaoService->update($data);
+        $id_planilha = $request->id;
+
+        if (!empty($request->itens_planilha)) {
+
+            $this->planilhaTemperaturaAlimentoDistribuicaoProdutoService->destroy($id_planilha);
+
+            $itensPlanilha = $request->itens_planilha;
+            foreach ($itensPlanilha as $key => $value) {
+                $data2 = [
+                    'id_user' => auth()->user()->id,
+                    'id_planilha_distribuicao' => $id_planilha,
+                    'id_parameter_produto' => $value['id_parameter_produto'],
+                    'hora_1' => $value['hora_1'],
+                    'tremperatura_1' => $value['tremperatura_1'],
+                    'hora_2' => $value['hora_2'],
+                    'tremperatura_2' => $value['tremperatura_2']
+                ];
+
+                $response = $this->planilhaTemperaturaAlimentoDistribuicaoProdutoService->store($data2);
+            }
+        }
 
         if($response['status'] == 'success')
             return response()->json(['status'=>'success'], 200);

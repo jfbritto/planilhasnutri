@@ -172,16 +172,170 @@ class ParameterSeeder extends Seeder
             ],
             // produtos
             [
-                'id' => 22,
+                'id' => 31,
                 'id_parameter_type' => 8,
-                'name' => 'Macarronada',
+                'name' => 'Mamão',
                 'id_unit' => null,
                 'status' => 'A'
             ],
             [
-                'id' => 23,
+                'id' => 32,
                 'id_parameter_type' => 8,
-                'name' => 'feijão',
+                'name' => 'Melão',
+                'id_unit' => null,
+                'status' => 'A'
+            ],
+            [
+                'id' => 33,
+                'id_parameter_type' => 8,
+                'name' => 'Melancia',
+                'id_unit' => null,
+                'status' => 'A'
+            ],
+            [
+                'id' => 34,
+                'id_parameter_type' => 8,
+                'name' => 'Abacaxi',
+                'id_unit' => null,
+                'status' => 'A'
+            ],
+            [
+                'id' => 35,
+                'id_parameter_type' => 8,
+                'name' => 'Salada de Frutas',
+                'id_unit' => null,
+                'status' => 'A'
+            ],
+            [
+                'id' => 36,
+                'id_parameter_type' => 8,
+                'name' => 'Iogurte',
+                'id_unit' => null,
+                'status' => 'A'
+            ],
+            [
+                'id' => 37,
+                'id_parameter_type' => 8,
+                'name' => 'Suco de Laranja',
+                'id_unit' => null,
+                'status' => 'A'
+            ],
+            [
+                'id' => 38,
+                'id_parameter_type' => 8,
+                'name' => 'Suco Detox',
+                'id_unit' => null,
+                'status' => 'A'
+            ],
+            [
+                'id' => 39,
+                'id_parameter_type' => 8,
+                'name' => 'Água Frutada',
+                'id_unit' => null,
+                'status' => 'A'
+            ],
+            [
+                'id' => 40,
+                'id_parameter_type' => 8,
+                'name' => 'Presunto',
+                'id_unit' => null,
+                'status' => 'A'
+            ],
+            [
+                'id' => 41,
+                'id_parameter_type' => 8,
+                'name' => 'Queijo Branco',
+                'id_unit' => null,
+                'status' => 'A'
+            ],
+            [
+                'id' => 42,
+                'id_parameter_type' => 8,
+                'name' => 'Mussarela',
+                'id_unit' => null,
+                'status' => 'A'
+            ],
+            [
+                'id' => 43,
+                'id_parameter_type' => 8,
+                'name' => 'Peito de Peru',
+                'id_unit' => null,
+                'status' => 'A'
+            ],
+            [
+                'id' => 44,
+                'id_parameter_type' => 8,
+                'name' => 'Requeijão Sachê',
+                'id_unit' => null,
+                'status' => 'A'
+            ],
+            [
+                'id' => 45,
+                'id_parameter_type' => 8,
+                'name' => 'Manteiga Sachê c/ sal',
+                'id_unit' => null,
+                'status' => 'A'
+            ],
+            [
+                'id' => 46,
+                'id_parameter_type' => 8,
+                'name' => 'Vitamina',
+                'id_unit' => null,
+                'status' => 'A'
+            ],
+            [
+                'id' => 47,
+                'id_parameter_type' => 8,
+                'name' => 'Leite Integral Quente',
+                'id_unit' => null,
+                'status' => 'A'
+            ],
+            [
+                'id' => 48,
+                'id_parameter_type' => 8,
+                'name' => 'Leite Desnatado',
+                'id_unit' => null,
+                'status' => 'A'
+            ],
+            [
+                'id' => 49,
+                'id_parameter_type' => 8,
+                'name' => 'Leite De Soja',
+                'id_unit' => null,
+                'status' => 'A'
+            ],
+            [
+                'id' => 50,
+                'id_parameter_type' => 8,
+                'name' => 'Leite sem Lactose',
+                'id_unit' => null,
+                'status' => 'A'
+            ],
+            [
+                'id' => 51,
+                'id_parameter_type' => 8,
+                'name' => 'Leite Integral Gelado',
+                'id_unit' => null,
+                'status' => 'A'
+            ],
+            [
+                'id' => 52,
+                'id_parameter_type' => 8,
+                'name' => 'Ovos Mexidos',
+                'id_unit' => null,
+                'status' => 'A'
+            ],
+            [
+                'id' => 53,
+                'id_parameter_type' => 8,
+                'name' => 'Calabresa ou Salsicha',
+                'id_unit' => null,
+                'status' => 'A'
+            ],
+            [
+                'id' => 54,
+                'id_parameter_type' => 8,
+                'name' => 'Pão de Queijo',
                 'id_unit' => null,
                 'status' => 'A'
             ],

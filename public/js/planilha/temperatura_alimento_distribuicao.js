@@ -1,12 +1,16 @@
 $(document).ready(function () {
 
+    // Variável para armazenar o cache dos produtos
+    var cacheProdutos = null;
+
+    // Variável para armazenar o contator de itens na tela
+    var contador = 1;
+
     loadPrincipal();
     loadGlobalParameters(3, 'id_parameter_responsavel');
-    loadGlobalParameters(8, 'id_parameter_produto');
     loadGlobalParameters(11, 'id_parameter_evento');
 
     // Carregar filtros
-    loadGlobalParameters(8, 'id_parameter_produto_filter', null, true, false);
     loadGlobalParameters(11, 'id_parameter_evento_filter', null, true, false);
 
     // LISTAGEM
@@ -20,8 +24,10 @@ $(document).ready(function () {
                 onOpen: () => {
                     Swal.showLoading();
                     $.get(window.location.origin + "/planilha/temperatura-alimento-distribuicao/listar", {
+                        data_ini_filter : $("#data_ini_filter").val(),
+                        data_fim_filter : $("#data_fim_filter").val(),
                         id_parameter_evento_filter : $("#id_parameter_evento_filter option:selected").val(),
-                        id_parameter_produto_filter : $("#id_parameter_produto_filter option:selected").val(),
+                        periodo_filter : $("#periodo_filter option:selected").val(),
                     })
                     .then(function (data) {
                         if (data.status == "success") {
@@ -36,12 +42,9 @@ $(document).ready(function () {
                                     $("#list").append(`
                                         <tr>
                                             <td class="align-middle">${dateFormat(item.data)}</td>
-                                            <td class="align-middle">${item.evento}</td>
                                             <td class="align-middle">${periodo(item.periodo)}</td>
-                                            <td class="align-middle">${item.produto}</td>
-                                            <td class="align-middle">${item.hora_1}</td>
-                                            <td class="align-middle">${item.tremperatura_1}</td>
-                                            <td class="align-middle">${item.acao_corretiva}</td>
+                                            <td class="align-middle">${item.evento}</td>
+                                            <td class="align-middle">${item.total_produtos}</td>
                                             <td class="align-middle" style="text-align: right; min-width: 120px">
                                                 <a title="Editar"
                                                 data-id="${item.id}"
@@ -49,21 +52,8 @@ $(document).ready(function () {
                                                 data-unidade="${item.unidade}"
                                                 data-data="${item.data}"
                                                 data-periodo="${item.periodo}"
-                                                data-id_parameter_produto="${item.id_parameter_produto}"
                                                 data-id_parameter_evento="${item.id_parameter_evento}"
                                                 data-id_parameter_responsavel="${item.id_parameter_responsavel}"
-                                                data-hora_1="${item.hora_1}"
-                                                data-tremperatura_1="${item.tremperatura_1}"
-                                                data-hora_2="${item.hora_2}"
-                                                data-tremperatura_2="${item.tremperatura_2}"
-                                                data-hora_3="${item.hora_3}"
-                                                data-tremperatura_3="${item.tremperatura_3}"
-                                                data-hora_4="${item.hora_4}"
-                                                data-tremperatura_4="${item.tremperatura_4}"
-                                                data-hora_5="${item.hora_5}"
-                                                data-tremperatura_5="${item.tremperatura_5}"
-                                                data-hora_6="${item.hora_6}"
-                                                data-tremperatura_6="${item.tremperatura_6}"
                                                 data-acao_corretiva="${item.acao_corretiva}" href="#" class="btn btn-warning edit-temperatura_alimento_distribuicao"><i style="color: white" class="fas fa-edit"></i></a>
                                                 <a title="Deletar" data-id="${item.id}" href="#" class="btn btn-danger delete-temperatura_alimento_distribuicao"><i class="fas fa-trash-alt"></i></a>
                                             </td>
@@ -75,7 +65,7 @@ $(document).ready(function () {
 
                                 $("#list").append(`
                                     <tr>
-                                        <td class="align-middle text-center" colspan="8">Nenhum registro encontrado</td>
+                                        <td class="align-middle text-center" colspan="5">Nenhum registro encontrado</td>
                                     </tr>
                                 `);
                             }
@@ -106,25 +96,42 @@ $(document).ready(function () {
                 onOpen: () => {
                     Swal.showLoading();
 
+                    // Coleta os dados dos campos dinâmicos (produtos e valores)
+                    let produtos = document.querySelectorAll(".produto");
+                    let primeirasHoras = document.querySelectorAll(".primeiraHora");
+                    let primeirasTemperaturas = document.querySelectorAll(".primeiraTemperatura");
+                    let segundasHoras = document.querySelectorAll(".segundaHora");
+                    let segundasTemperaturas = document.querySelectorAll(".segundaTemperatura");
+
+                    // Armazena os dados em um array de objetos
+                    let itens_planilha = [];
+                    for (let i = 0; i < produtos.length; i++) {
+                        let id_parameter_produto = produtos[i].value;
+                        let hora_1 = primeirasHoras[i].value;
+                        let tremperatura_1 = primeirasTemperaturas[i].value;
+                        let hora_2 = segundasHoras[i].value;
+                        let tremperatura_2 = segundasTemperaturas[i].value;
+                        itens_planilha.push({
+                            id_parameter_produto: id_parameter_produto,
+                            hora_1: hora_1,
+                            tremperatura_1: tremperatura_1,
+                            hora_2: hora_2,
+                            tremperatura_2: tremperatura_2
+                        });
+                    }
+
+                    if (itens_planilha.length === 0) {
+                        showError('Informe ao menos um produto!')
+                        return false
+                    }
+
                     $.post(window.location.origin + "/planilha/temperatura-alimento-distribuicao/cadastrar", {
                         data: $("#data").val(),
                         periodo: $("#periodo option:selected").val(),
-                        id_parameter_produto: $("#id_parameter_produto option:selected").val(),
                         id_parameter_evento: $("#id_parameter_evento option:selected").val(),
                         id_parameter_responsavel: $("#id_parameter_responsavel option:selected").val(),
-                        hora_1: $("#hora_1").val(),
-                        tremperatura_1: $("#tremperatura_1").val(),
-                        hora_2: $("#hora_2").val(),
-                        tremperatura_2: $("#tremperatura_2").val(),
-                        hora_3: $("#hora_3").val(),
-                        tremperatura_3: $("#tremperatura_3").val(),
-                        hora_4: $("#hora_4").val(),
-                        tremperatura_4: $("#tremperatura_4").val(),
-                        hora_5: $("#hora_5").val(),
-                        tremperatura_5: $("#tremperatura_5").val(),
-                        hora_6: $("#hora_6").val(),
-                        tremperatura_6: $("#tremperatura_6").val(),
                         acao_corretiva: $("#acao_corretiva").val(),
+                        itens_planilha: itens_planilha
                     })
                     .then(function (data) {
                         if (data.status == "success") {
@@ -161,44 +168,20 @@ $(document).ready(function () {
         let unidade = $(this).data('unidade');
         let data = $(this).data('data');
         let periodo = $(this).data('periodo');
-        let id_parameter_produto = $(this).data('id_parameter_produto');
         let id_parameter_evento = $(this).data('id_parameter_evento');
         let id_parameter_responsavel = $(this).data('id_parameter_responsavel');
-        let hora_1 = $(this).data('hora_1');
-        let tremperatura_1 = $(this).data('tremperatura_1');
-        let hora_2 = $(this).data('hora_2');
-        let tremperatura_2 = $(this).data('tremperatura_2');
-        let hora_3 = $(this).data('hora_3');
-        let tremperatura_3 = $(this).data('tremperatura_3');
-        let hora_4 = $(this).data('hora_4');
-        let tremperatura_4 = $(this).data('tremperatura_4');
-        let hora_5 = $(this).data('hora_5');
-        let tremperatura_5 = $(this).data('tremperatura_5');
-        let hora_6 = $(this).data('hora_6');
-        let tremperatura_6 = $(this).data('tremperatura_6');
         let acao_corretiva = $(this).data('acao_corretiva');
 
         loadGlobalParameters(3, 'id_parameter_responsavel_edit', id_parameter_responsavel);
-        loadGlobalParameters(8, 'id_parameter_produto_edit', id_parameter_produto);
         loadGlobalParameters(11, 'id_parameter_evento_edit', id_parameter_evento);
+
+        preencherItensCadastrados(id)
 
         $("#id_edit").val(id);
         $("#usuario").val(usuario);
         $("#unidade").val(unidade);
         $("#data_edit").val(data);
         $("#periodo_edit").val(periodo);
-        $("#hora_1_edit").val(hora_1);
-        $("#tremperatura_1_edit").val(tremperatura_1);
-        $("#hora_2_edit").val(hora_2);
-        $("#tremperatura_2_edit").val(tremperatura_2);
-        $("#hora_3_edit").val(hora_3);
-        $("#tremperatura_3_edit").val(tremperatura_3);
-        $("#hora_4_edit").val(hora_4);
-        $("#tremperatura_4_edit").val(tremperatura_4);
-        $("#hora_5_edit").val(hora_5);
-        $("#tremperatura_5_edit").val(tremperatura_5);
-        $("#hora_6_edit").val(hora_6);
-        $("#tremperatura_6_edit").val(tremperatura_6);
         $("#acao_corretiva_edit").val(acao_corretiva);
 
         $("#modalEdittemperatura_alimento_distribuicao").modal("show");
@@ -214,6 +197,36 @@ $(document).ready(function () {
                 allowEscapeKey: false,
                 onOpen: () => {
                     Swal.showLoading();
+
+                    // Coleta os dados dos campos dinâmicos (produtos e valores)
+                    let produtos = document.querySelectorAll(".produto_edit");
+                    let primeirasHoras = document.querySelectorAll(".primeiraHora_edit");
+                    let primeirasTemperaturas = document.querySelectorAll(".primeiraTemperatura_edit");
+                    let segundasHoras = document.querySelectorAll(".segundaHora_edit");
+                    let segundasTemperaturas = document.querySelectorAll(".segundaTemperatura_edit");
+
+                    // Armazena os dados em um array de objetos
+                    let itens_planilha = [];
+                    for (let i = 0; i < produtos.length; i++) {
+                        let id_parameter_produto = produtos[i].value;
+                        let hora_1 = primeirasHoras[i].value;
+                        let tremperatura_1 = primeirasTemperaturas[i].value;
+                        let hora_2 = segundasHoras[i].value;
+                        let tremperatura_2 = segundasTemperaturas[i].value;
+                        itens_planilha.push({
+                            id_parameter_produto: id_parameter_produto,
+                            hora_1: hora_1,
+                            tremperatura_1: tremperatura_1,
+                            hora_2: hora_2,
+                            tremperatura_2: tremperatura_2
+                        });
+                    }
+
+                    if (itens_planilha.length === 0) {
+                        showError('Informe ao menos um produto!')
+                        return false
+                    }
+
                     $.ajax({
                         url: window.location.origin + "/planilha/temperatura-alimento-distribuicao/editar",
                         type: 'PUT',
@@ -221,22 +234,10 @@ $(document).ready(function () {
                             id: $("#id_edit").val(),
                             data: $("#data_edit").val(),
                             periodo: $("#periodo_edit option:selected").val(),
-                            id_parameter_produto: $("#id_parameter_produto_edit option:selected").val(),
                             id_parameter_evento: $("#id_parameter_evento_edit option:selected").val(),
                             id_parameter_responsavel: $("#id_parameter_responsavel_edit option:selected").val(),
-                            hora_1: $("#hora_1_edit").val(),
-                            tremperatura_1: $("#tremperatura_1_edit").val(),
-                            hora_2: $("#hora_2_edit").val(),
-                            tremperatura_2: $("#tremperatura_2_edit").val(),
-                            hora_3: $("#hora_3_edit").val(),
-                            tremperatura_3: $("#tremperatura_3_edit").val(),
-                            hora_4: $("#hora_4_edit").val(),
-                            tremperatura_4: $("#tremperatura_4_edit").val(),
-                            hora_5: $("#hora_5_edit").val(),
-                            tremperatura_5: $("#tremperatura_5_edit").val(),
-                            hora_6: $("#hora_6_edit").val(),
-                            tremperatura_6: $("#tremperatura_6_edit").val(),
                             acao_corretiva: $("#acao_corretiva_edit").val(),
+                            itens_planilha: itens_planilha
                         }
                     })
                         .then(function (data) {
@@ -320,4 +321,237 @@ $(document).ready(function () {
         loadPrincipal()
     });
 
+    // ao trocar o select de período faça:
+    $("#periodo").change(function () {
+
+
+        switch (this.value) {
+            case 'cafe':
+                $("#dolly").html("")
+                const produtos = preencherTelaComItensAutomaticamente();
+                break;
+
+            default:
+                // adicionarCamposNaTela()
+                break;
+        }
+
+    });
+
+    async function preencherTelaComItensAutomaticamente() {
+
+        const objProdutosSelecionados = [
+            {'id':34, 'name':'Abacaxi'},
+            {'id':39, 'name':'Agua Frutada'},
+            {'id':36, 'name':'Iogurte'},
+            {'id':31, 'name':'Mamão'},
+        ]
+
+        const produtos = await buscarProdutos();
+
+        $.each(produtos, function(index, produto) {
+            $.each(objProdutosSelecionados, function(index, produto_pre_selecionado) {
+                // Verifica se os IDs são iguais antes de chamar a função
+                if (produto_pre_selecionado.id === produto.id) {
+                    adicionarCamposNaTela(true, produto_pre_selecionado);
+                }
+            });
+        });
+    }
+
+    // ao abrir o modal
+    $("#openModalDistribuicao").click(function(){
+        $("#dolly").html("")
+
+        $("#formStoretemperatura_alimento_distribuicao").each(function () {
+            this.reset();
+        });
+
+        atualizarDataAtual()
+        adicionarCamposNaTela()
+    })
+
+    // ao clicar no botão de adicionar mais um item
+    $("#maisUmItem").click(function(){
+        adicionarCamposNaTela()
+    })
+
+    // ao clicar no botão de adicionar mais um item no modal de edição
+    $("#maisUmItemEdit").click(function(){
+        adicionarCamposNaTela(false, null, true)
+    })
+
+    // Função para adicionar campos dinâmicos de produto
+    async function adicionarCamposNaTela(disabled = false, objProduto = null, modalCadastroEdicao = false) {
+        let html = ``;
+        const options = await preencherSelectProduto(objProduto);
+
+        let cadastroEdit = modalCadastroEdicao?"_edit":"";
+
+        html = montaHTML(options, disabled, false, null, cadastroEdit);
+
+        if (modalCadastroEdicao) {
+            $("#dolly-edit").append(html)
+        } else {
+            $("#dolly").append(html)
+        }
+    }
+
+    function montaHTML(options, disabled = false, edicao = false, item = null, complemento_edit = "") {
+
+        contador++
+
+        let h1 = "";
+        let t1 = "";
+        let h2 = "";
+        let t2 = "";
+
+        if (edicao) {
+            h1 = item.hora_1 || "";
+            t1 = item.tremperatura_1 || "";
+            h2 = item.hora_2 || "";
+            t2 = item.tremperatura_2 || "";
+
+        } else {
+            // Obtém a hora atual
+            let agora = new Date();
+
+            // Obtém a hora e os minutos atuais e formata para o padrão HH:MM
+            let horas = agora.getHours().toString().padStart(2, '0'); // adiciona um zero à esquerda, se necessário
+            let minutos = agora.getMinutes().toString().padStart(2, '0'); // adiciona um zero à esquerda, se necessário
+
+            // Formata a hora no formato HH:MM
+            h1 = horas + ':' + minutos;
+        }
+
+        return `
+            <div class="alert alert-secondary alert-dismissible fade show" role="alert">
+                <div class="row">
+                    <div class="col-md-4 col-xs-12 col-sm-12 col-12">
+                        <div class="form-group">
+                            <label for="id_parameter_produto_${contador}">Produto</label>
+                            <select type="text" ${disabled?'disabled="true"':''} required name="id_parameter_produto_${contador}" id="id_parameter_produto_${contador}" class="form-control produto${complemento_edit}">${options}</select>
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-xs-6 col-sm-6 col-6">
+                        <div class="form-group">
+                            <label for="hora_1_${contador}">1º H</label>
+                            <input type="time" required name="hora_1_${contador}" id="hora_1_${contador}" class="form-control primeiraHora${complemento_edit}" value="${h1}">
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-xs-6 col-sm-6 col-6">
+                        <div class="form-group">
+                            <label for="tremperatura_1_${contador}">1º Tª</label>
+                            <input type="text" required name="tremperatura_1_${contador}" id="tremperatura_1_${contador}" class="form-control primeiraTemperatura${complemento_edit}" placeholder="Informe a temperatura" value="${t1}">
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-xs-6 col-sm-6 col-6">
+                        <div class="form-group">
+                            <label for="hora_2_${contador}">2º H</label>
+                            <input type="time" name="hora_2_${contador}" id="hora_2_${contador}" class="form-control segundaHora${complemento_edit}" value="${h2}">
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-xs-6 col-sm-6 col-6">
+                        <div class="form-group">
+                            <label for="tremperatura_2_${contador}">2º Tª</label>
+                            <input type="text" name="tremperatura_2_${contador}" id="tremperatura_2_${contador}" class="form-control segundaTemperatura${complemento_edit}" placeholder="Informe a temperatura" value="${t2}">
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="close btn-remover" data-dismiss="alert" aria-label="Close" title="Remover item">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        `;
+    }
+
+    // Adiciona um manipulador de eventos para o botão de remoção
+    $("#dolly").on("click", ".btn-remover", function() {
+        $(this).closest(".row").remove(); // Remove o elemento pai do botão de remoção
+    });
+
+    // Função para buscar produtos, com verificação de cache
+    function buscarProdutos() {
+        return new Promise((resolve, reject) => {
+            // Se o cache já foi preenchido, retorna o cache
+            if (cacheProdutos !== null) {
+                resolve(cacheProdutos);
+            } else {
+                // Se o cache está vazio, faz a solicitação ao servidor
+                $.get(window.location.origin + "/parametro/encontrar", {
+                    id_parameter_type: 8
+                })
+                .then(function (data) {
+                    if (data.status === "success") {
+                        // Armazena o resultado em cache
+                        cacheProdutos = data.data;
+                        resolve(cacheProdutos);
+                    } else {
+                        reject("Nenhum item encontrado");
+                    }
+                })
+                .catch(reject);
+            }
+        });
+    }
+
+    // Preencher o select de produto
+    async function preencherSelectProduto(objProduto) {
+        try {
+            const produtos = await buscarProdutos();
+            let options = `<option value="">-- Selecione --</option>`;
+            if (produtos.length > 0) {
+                produtos.forEach(item => {
+
+                    let selected = ``;
+                    if (objProduto && objProduto.id == item.id) {
+                        selected = `selected`;
+                    }
+
+                    options += `<option ${selected} value="${item.id}">${item.name}</option>`;
+                });
+            } else {
+                options += `<option>Nenhum item encontrado</option>`;
+            }
+            return options;
+        } catch (error) {
+            return `<option>${error}</option>`;
+        }
+    }
+
+    async function preencherItensCadastrados(id_planilha) {
+
+        try {
+            $("#dolly-edit").html("")
+            const produtos = await buscarProdutosDaPlanilha(id_planilha)
+            let option = ``;
+            if (produtos.length > 0) {
+                produtos.forEach(item => {
+                    option = `<option value="${item.id_parameter_produto}">${item.produto}</option>`;
+                    $("#dolly-edit").append(montaHTML(option, true, true, item, "_edit"))
+                });
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    // Função para buscar produtos já cadastrados na planilha
+    function buscarProdutosDaPlanilha(id_planilha) {
+        return new Promise((resolve, reject) => {
+
+            $.get(window.location.origin + "/planilha/temperatura-alimento-distribuicao-produto/listar", {
+                id_planilha_distribuicao_filter: id_planilha
+            })
+            .then(function (data) {
+                if (data.status === "success") {
+                    resolve(data.data);
+                } else {
+                    reject("Nenhum item encontrado");
+                }
+            })
+            .catch(reject);
+
+        });
+    }
 });

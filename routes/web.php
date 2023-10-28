@@ -145,6 +145,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::delete('/planilha/temperatura-alimento-distribuicao/deletar', [App\Http\Controllers\Planilhas\PlanilhaTemperaturaAlimentoDistribuicaoController::class, 'destroy']);
     Route::get('/planilha/temperatura-alimento-distribuicao/visualizar', [App\Http\Controllers\Planilhas\PlanilhaTemperaturaAlimentoDistribuicaoController::class, 'gerarPDF']);
 
+    // Planilha temperatura_alimento_distribuicao_produto
+    Route::get('/planilha/temperatura-alimento-distribuicao-produto/listar', [App\Http\Controllers\Planilhas\PlanilhaTemperaturaAlimentoDistribuicaoProdutoController::class, 'list']);
+
     // Planilha grupo_amostra_prato
     Route::get('/planilha/grupo-amostra-prato', [App\Http\Controllers\Planilhas\PlanilhaGrupoAmostraPratoController::class, 'index']);
     Route::get('/planilha/grupo-amostra-prato/listar', [App\Http\Controllers\Planilhas\PlanilhaGrupoAmostraPratoController::class, 'list']);

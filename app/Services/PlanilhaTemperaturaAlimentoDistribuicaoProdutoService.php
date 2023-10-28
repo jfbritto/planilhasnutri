@@ -2,11 +2,11 @@
 
 namespace App\Services;
 
-use App\Models\PlanilhaTemperaturaAlimentoDistribuicao;
+use App\Models\PlanilhaTemperaturaAlimentoDistribuicaoProduto;
 use Exception;
 use Illuminate\Support\Facades\DB as DB;
 
-class PlanilhaTemperaturaAlimentoDistribuicaoService
+class PlanilhaTemperaturaAlimentoDistribuicaoProdutoService
 {
     public function store(array $data)
     {
@@ -15,7 +15,7 @@ class PlanilhaTemperaturaAlimentoDistribuicaoService
         try{
             DB::beginTransaction();
 
-            $result = PlanilhaTemperaturaAlimentoDistribuicao::create($data);
+            $result = PlanilhaTemperaturaAlimentoDistribuicaoProduto::create($data);
 
             DB::commit();
 
@@ -37,14 +37,24 @@ class PlanilhaTemperaturaAlimentoDistribuicaoService
 
             DB::beginTransaction();
 
-            $planilha = DB::table('planilha_temperatura_alimento_distribuicaos')
+            $planilha = DB::table('planilha_temperatura_alimento_distribuicao_produtos')
                         ->where('id', $data['id'])
                         ->update([
-                            'data' => $data['data'],
-                            'periodo' => $data['periodo'],
-                            'id_parameter_evento' => $data['id_parameter_evento'],
-                            'id_parameter_responsavel' => $data['id_parameter_responsavel'],
-                            'acao_corretiva' => $data['acao_corretiva']
+                            'id_parameter_produto' => $data['id_parameter_produto'],
+                            'hora_1' => $data['hora_1'],
+                            'tremperatura_1' => $data['tremperatura_1'],
+                            'hora_2' => $data['hora_2'],
+                            'tremperatura_2' => $data['tremperatura_2'],
+                            'hora_3' => $data['hora_3'],
+                            'tremperatura_3' => $data['tremperatura_3'],
+                            'hora_4' => $data['hora_4'],
+                            'tremperatura_4' => $data['tremperatura_4'],
+                            'hora_5' => $data['hora_5'],
+                            'tremperatura_5' => $data['tremperatura_5'],
+                            'hora_6' => $data['hora_6'],
+                            'tremperatura_6' => $data['tremperatura_6'],
+                            'hora_7' => $data['hora_7'],
+                            'tremperatura_7' => $data['tremperatura_7']
                         ]);
 
             DB::commit();
@@ -59,7 +69,7 @@ class PlanilhaTemperaturaAlimentoDistribuicaoService
         return $response;
     }
 
-    public function destroy(array $data)
+    public function destroy($id)
     {
         $response = [];
 
@@ -67,13 +77,13 @@ class PlanilhaTemperaturaAlimentoDistribuicaoService
 
             DB::beginTransaction();
 
-            $planilha = DB::table('planilha_temperatura_alimento_distribuicaos')
-                        ->where('id', $data['id'])
-                        ->update(['status' => $data['status']]);
+            DB::table('planilha_temperatura_alimento_distribuicao_produtos')
+                        ->where('id_planilha_distribuicao', $id)
+                        ->delete();
 
             DB::commit();
 
-            $response = ['status' => 'success', 'data' => $planilha];
+            $response = ['status' => 'success'];
 
         }catch(Exception $e){
             DB::rollBack();
@@ -95,38 +105,24 @@ class PlanilhaTemperaturaAlimentoDistribuicaoService
             }
 
             $filter = "";
-            if (!empty($filter_array['data_ini_filter']) && !empty($filter_array['data_fim_filter'])) {
-                $data_ini = date('Y-m-01', strtotime($filter_array['data_ini_filter']));
-                $data_fim = date('Y-m-t', strtotime($filter_array['data_fim_filter']));
-                $filter .= " and main_tb.data between '{$data_ini}' and '{$data_fim}'";
-            }
-            if (!empty($filter_array['id_parameter_evento_filter'])) {
-                $filter .= " and main_tb.id_parameter_evento = {$filter_array['id_parameter_evento_filter']}";
-            }
-            if (!empty($filter_array['periodo_filter'])) {
-                $filter .= " and main_tb.periodo = '{$filter_array['periodo_filter']}'";
+            if (!empty($filter_array['id_planilha_distribuicao_filter'])) {
+                $filter .= " and main_tb.id_planilha_distribuicao = {$filter_array['id_planilha_distribuicao_filter']}";
             }
 
             $return = DB::select( DB::raw("SELECT
                                                 us.name as usuario,
                                                 ifnull(un.name, 'Controle') as unidade,
-                                                ifnull(p_ev.name, '-') as evento,
-                                                p_re.name as responsavel,
-                                                count(ptadp.id) as total_produtos,
+                                                p_pr.name as produto,
                                                 main_tb.*
                                             FROM
-                                                planilha_temperatura_alimento_distribuicaos main_tb
-                                                LEFT JOIN parameters p_ev ON main_tb.id_parameter_evento = p_ev.id
-                                                LEFT JOIN planilha_temperatura_alimento_distribuicao_produtos ptadp ON main_tb.id = ptadp.id_planilha_distribuicao
-                                                JOIN parameters p_re ON main_tb.id_parameter_responsavel = p_re.id
+                                                planilha_temperatura_alimento_distribuicao_produtos main_tb
+                                                JOIN parameters p_pr ON main_tb.id_parameter_produto = p_pr.id
                                                 JOIN users us ON main_tb.id_user = us.id {$condition}
                                                 LEFT JOIN units un ON us.id_unit = un.id
                                             WHERE
                                                 main_tb.status = 'A' {$filter}
-                                            GROUP BY
-	                                            main_tb.id
                                             ORDER BY
-                                                main_tb.id DESC"));
+                                                main_tb.id"));
 
             $response = ['status' => 'success', 'data' => $return];
         }catch(Exception $e){
@@ -141,7 +137,7 @@ class PlanilhaTemperaturaAlimentoDistribuicaoService
         $response = [];
 
         try{
-            $return = DB::select( DB::raw("SELECT * FROM planilha_temperatura_alimento_distribuicaos main_tb WHERE main_tb.status = 'A' AND id = {$id}"));
+            $return = DB::select( DB::raw("SELECT * FROM planilha_temperatura_alimento_distribuicao_produtos main_tb WHERE main_tb.status = 'A' AND id = {$id}"));
 
             $response = ['status' => 'success', 'data' => $return];
         }catch(Exception $e){

@@ -7,22 +7,26 @@ $('.cpf').mask('000.000.000-00');
 // mascara de porcentagem
 $('.percent').mask('##0,00', {reverse: true});
 
-let dataAtual = new Date().toISOString().slice(0, 10);
+atualizarDataAtual()
+function atualizarDataAtual() {
+    let dataAtual = new Date().toISOString().slice(0, 10);
 
-let inputDate = document.getElementById("data");
-if (inputDate != null) {
-    inputDate.value = dataAtual;
+    let inputDate = document.getElementById("data");
+    if (inputDate != null) {
+        inputDate.value = dataAtual;
+    }
+
+    let dataCongelamento = document.getElementById("data_congelamento");
+    if (dataCongelamento != null) {
+        dataCongelamento.value = dataAtual;
+    }
+
+    let dataCalibracao = document.getElementById("data_calibracao");
+    if (dataCalibracao != null) {
+        dataCalibracao.value = dataAtual;
+    }
 }
 
-let dataCongelamento = document.getElementById("data_congelamento");
-if (dataCongelamento != null) {
-    dataCongelamento.value = dataAtual;
-}
-
-let dataCalibracao = document.getElementById("data_calibracao");
-if (dataCalibracao != null) {
-    dataCalibracao.value = dataAtual;
-}
 
 // retorna o nome do dia da semana pelo seu numero referente enviado
 function weekDayDescription(val)
@@ -51,7 +55,7 @@ function monthDescription(val)
 // retorna o nome do mes pelo seu numero referente enviado
 function periodo(val)
 {
-    const periodo = {'desjejum':'Desjejum','almoco':'Almoço','jantar':'Jantar','ceia':'Ceia'};
+    const periodo = {'desjejum':'Desjejum','cafe':'Café da manhã','almoco':'Almoço','jantar':'Jantar','ceia':'Ceia'};
 
     return `${periodo[val]}`
 
@@ -190,7 +194,6 @@ function loadGlobalParameters(
                     }
 
                     $(`#${element}`).append(`<option ${selected} value="${item.id}">${item.name}</option>`);
-                    // $(`#${element}`).select2();
                 });
             } else {
                 $(`#${element}`).append(`<option>Nenhum item encontrado</option>`);
