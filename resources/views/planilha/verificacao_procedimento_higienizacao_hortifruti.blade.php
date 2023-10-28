@@ -25,10 +25,22 @@
         <div class="card-body border-0" style="display: none;">
             <form id="formFiltroPrincipal">
                 <div class="row">
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label for="data_ini_filter">De</label>
+                            <input type="date" value="{{now()->format('Y-m-01')}}" name="data_ini_filter" id="data_ini_filter" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label for="data_fim_filter">Até</label>
+                            <input type="date" name="data_fim_filter" id="data_fim_filter" class="form-control">
+                        </div>
+                    </div>
                     <div class="col-md-3">
                         <div class="form-group">
-                            <label for="id_parameter_alimento_filter">Alimento</label>
-                            <select required name="id_parameter_alimento_filter" id="id_parameter_alimento_filter" class="form-control"></select>
+                            <label for="id_parameter_produto_filter">Produto</label>
+                            <select required name="id_parameter_produto_filter" id="id_parameter_produto_filter" class="form-control"></select>
                         </div>
                     </div>
                 </div>
@@ -55,7 +67,7 @@
                     <thead>
                         <tr>
                             <th>Data</th>
-                            <th>Alimento</th>
+                            <th>Produto</th>
                             <th>Hora inicio</th>
                             <th>Hora fim</th>
                             <th>Concentração</th>
@@ -90,12 +102,12 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="id_parameter_alimento">
-                                    Alimento
+                                <label for="id_parameter_produto">
+                                    Produto
                                     <i class="fa fa-plus-circle color-green" aria-hidden="true" style="cursor: pointer"
-                                    data-toggle="modal" data-target="#modalStoreParameterAlimento" title="Cadastrar novo item"></i>
+                                    data-toggle="modal" data-target="#modalStoreParameterProduto" title="Cadastrar novo item"></i>
                                 </label>
-                                <select type="text" required name="id_parameter_alimento" id="id_parameter_alimento" class="form-control"></select>
+                                <select type="text" required name="id_parameter_produto" id="id_parameter_produto" class="form-control"></select>
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -165,8 +177,8 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="id_parameter_alimento_edit">Alimento</label>
-                                <select type="text" required name="id_parameter_alimento_edit" id="id_parameter_alimento_edit" class="form-control"></select>
+                                <label for="id_parameter_produto_edit">Produto</label>
+                                <select type="text" required name="id_parameter_produto_edit" id="id_parameter_produto_edit" class="form-control"></select>
                             </div>
                         </div>
                         <div class="col-md-3">

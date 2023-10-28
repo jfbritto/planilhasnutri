@@ -7,6 +7,7 @@ $(document).ready(function () {
 
     // Carregar filtros
     loadGlobalParameters(1, 'id_parameter_area_filter', null, true);
+    loadGlobalParameters(6, 'id_parameter_caixa_gordura_filter', null, true);
 
     // LISTAGEM
     function loadPrincipal()
@@ -19,6 +20,10 @@ $(document).ready(function () {
                 onOpen: () => {
                     Swal.showLoading();
                     $.get(window.location.origin + "/planilha/limpeza-caixa-gordura/listar", {
+                        data_ini_filter : $("#data_ini_filter").val(),
+                        data_fim_filter : $("#data_fim_filter").val(),
+                        mes_proxima_limpeza_filter : $("#mes_proxima_limpeza_filter").val(),
+                        id_parameter_caixa_gordura_filter : $("#id_parameter_caixa_gordura_filter option:selected").val(),
                         id_parameter_area_filter : $("#id_parameter_area_filter option:selected").val(),
                     })
                     .then(function (data) {

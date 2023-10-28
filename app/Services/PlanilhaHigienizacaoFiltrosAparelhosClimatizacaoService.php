@@ -95,8 +95,11 @@ class PlanilhaHigienizacaoFiltrosAparelhosClimatizacaoService
             }
 
             $filter = "";
-            if (!empty($filter_array['data_ini_filter']) && !empty($filter_array['data_fim_filter'])) {
-                $filter .= " and main_tb.data_higienizacao between '{$filter_array['data_ini_filter']}' and '{$filter_array['data_fim_filter']}'";
+            if (!empty($filter_array['data_ini_filter'])) {
+                $filter .= " and main_tb.data_higienizacao >= '{$filter_array['data_ini_filter']}'";
+            }
+            if (!empty($filter_array['data_fim_filter'])) {
+                $filter .= " and main_tb.data_higienizacao <= '{$filter_array['data_fim_filter']}'";
             }
             if (!empty($filter_array['mes_proxima_higienizacao_filter'])) {
                 $data_ini = date('Y-m-01', strtotime($filter_array['mes_proxima_higienizacao_filter']));

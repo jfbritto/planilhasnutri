@@ -15,7 +15,7 @@
 
     <div class="card collapsed-card">
         <div class="card-header" style="cursor: pointer" data-card-widget="collapse">
-            <h5 class="card-title">bBuscar</h5>
+            <h5 class="card-title">Buscar</h5>
             <div class="card-tools">
                 <button type="button" class="btn btn-tool">
                     <i class="fas fa-arrow-down"></i>
@@ -25,6 +25,18 @@
         <div class="card-body border-0" style="display: none;">
             <form id="formFiltroPrincipal">
                 <div class="row">
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label for="data_ini_filter">De</label>
+                            <input type="date" value="{{now()->format('Y-m-01')}}" name="data_ini_filter" id="data_ini_filter" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label for="data_fim_filter">Até</label>
+                            <input type="date" name="data_fim_filter" id="data_fim_filter" class="form-control">
+                        </div>
+                    </div>
                     <div class="col-md-3">
                         <div class="form-group">
                             <label for="id_parameter_produto_filter">Produto</label>

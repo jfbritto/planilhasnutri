@@ -46,7 +46,7 @@
         /* Estilos para as células de cabeçalho */
         .table th,
         .table td {
-            padding: 0.5rem;
+            padding: 0.3rem;
             vertical-align: top;
             border-top: 1px solid #dee2e6;
         }
@@ -98,7 +98,7 @@
             <thead>
                 <tr>
                     <th>Data</th>
-                    <th>Alimento</th>
+                    <th>Produto</th>
                     <th colspan="2">Tempo de Imersão</th>
                     <th>Concentração da solução clorada (ppm)</th>
                     <th>Ação Corretiva</th>
@@ -118,7 +118,7 @@
                 @foreach($itens as $item)
                     <tr>
                         <td>{{ \Carbon\Carbon::parse($item->data)->format('d/m/Y') }}</td>
-                        <td>{{ $item->alimento }}</td>
+                        <td>{{ $item->produto }}</td>
                         <td>{{ $item->hora_imersao_inicio }}</td>
                         <td>{{ $item->hora_imersao_fim }}</td>
                         <td style="text-align: center">{{ $item->concentracao_solucao_clorada }}</td>

@@ -28,19 +28,19 @@
                     <div class="col-md-3">
                         <div class="form-group">
                             <label for="data_ini_filter">Data inicial</label>
-                            <input type="date" value="{{now()->format('Y-m-01')}}" required name="data_ini_filter" id="data_ini_filter" class="form-control">
+                            <input type="date" value="{{now()->format('Y-m-01')}}" name="data_ini_filter" id="data_ini_filter" class="form-control">
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
                             <label for="data_fim_filter">Data final</label>
-                            <input type="date" value="{{now()->format('Y-m-t')}}" required name="data_fim_filter" id="data_fim_filter" class="form-control">
+                            <input type="date" name="data_fim_filter" id="data_fim_filter" class="form-control">
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
                             <label for="periodo_filter">Período</label>
-                            <select required name="periodo_filter" id="periodo_filter" class="form-control">
+                            <select name="periodo_filter" id="periodo_filter" class="form-control">
                                 <option value="">-- Selecione --</option>
                                 <option value="desjejum">Desjejum</option>
                                 <option value="cafe">Café da manhã</option>
@@ -53,7 +53,7 @@
                     <div class="col-md-3">
                         <div class="form-group">
                             <label for="id_parameter_evento_filter">Evento</label>
-                            <select required name="id_parameter_evento_filter" id="id_parameter_evento_filter" class="form-control"></select>
+                            <select name="id_parameter_evento_filter" id="id_parameter_evento_filter" class="form-control"></select>
                         </div>
                     </div>
                 </div>

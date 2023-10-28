@@ -96,8 +96,11 @@ class PlanilhaRegistroNaoConformidadeDetectadaAutoAvaliacaoService
             }
 
             $filter = "";
-            if (!empty($filter_array['data_ini_filter']) && !empty($filter_array['data_fim_filter'])) {
-                $filter .= " and main_tb.data between '{$filter_array['data_ini_filter']}' and '{$filter_array['data_fim_filter']}'";
+            if (!empty($filter_array['data_ini_filter'])) {
+                $filter .= " and main_tb.data >= '{$filter_array['data_ini_filter']}'";
+            }
+            if (!empty($filter_array['data_fim_filter'])) {
+                $filter .= " and main_tb.data <= '{$filter_array['data_fim_filter']}'";
             }
 
             $return = DB::select( DB::raw("SELECT

@@ -26,7 +26,7 @@ class PlanilhaVerificacaoProcedimentoHigienizacaoHortifrutiController extends Co
         $data = [
             'id_user' => auth()->user()->id,
             'data' => $request->data,
-            'id_parameter_alimento' => $request->id_parameter_alimento,
+            'id_parameter_produto' => $request->id_parameter_produto,
             'hora_imersao_inicio' => $request->hora_imersao_inicio,
             'hora_imersao_fim' => $request->hora_imersao_fim,
             'concentracao_solucao_clorada' => $request->concentracao_solucao_clorada,
@@ -48,7 +48,7 @@ class PlanilhaVerificacaoProcedimentoHigienizacaoHortifrutiController extends Co
         $data = [
             'id' => $request->id,
             'data' => $request->data,
-            'id_parameter_alimento' => $request->id_parameter_alimento,
+            'id_parameter_produto' => $request->id_parameter_produto,
             'hora_imersao_inicio' => $request->hora_imersao_inicio,
             'hora_imersao_fim' => $request->hora_imersao_fim,
             'concentracao_solucao_clorada' => $request->concentracao_solucao_clorada,

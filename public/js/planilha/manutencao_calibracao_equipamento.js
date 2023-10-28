@@ -17,6 +17,8 @@ $(document).ready(function () {
                 onOpen: () => {
                     Swal.showLoading();
                     $.get(window.location.origin + "/planilha/manutencao-calibracao-equipamento/listar", {
+                        data_ini_filter : $("#data_ini_filter").val(),
+                        data_fim_filter : $("#data_fim_filter").val(),
                         id_parameter_equipamento_filter : $("#id_parameter_equipamento_filter option:selected").val(),
                     })
                     .then(function (data) {

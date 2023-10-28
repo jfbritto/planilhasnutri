@@ -1,11 +1,11 @@
 $(document).ready(function () {
 
     loadPrincipal();
-    loadGlobalParameters(9, 'id_parameter_alimento');
+    loadGlobalParameters(8, 'id_parameter_produto');
     loadGlobalParameters(3, 'id_parameter_responsavel');
 
     // Carregar filtros
-    loadGlobalParameters(9, 'id_parameter_alimento_filter', null, true, false);
+    loadGlobalParameters(8, 'id_parameter_produto_filter', null, true, false);
 
     // LISTAGEM
     function loadPrincipal()
@@ -18,7 +18,9 @@ $(document).ready(function () {
                 onOpen: () => {
                     Swal.showLoading();
                     $.get(window.location.origin + "/planilha/verificacao-procedimento-higienizacao-hortifruti/listar", {
-                        id_parameter_alimento_filter : $("#id_parameter_alimento_filter option:selected").val(),
+                        data_ini_filter : $("#data_ini_filter").val(),
+                        data_fim_filter : $("#data_fim_filter").val(),
+                        id_parameter_produto_filter : $("#id_parameter_produto_filter option:selected").val(),
                     })
                     .then(function (data) {
                         if (data.status == "success") {
@@ -33,7 +35,7 @@ $(document).ready(function () {
                                     $("#list").append(`
                                         <tr>
                                             <td class="align-middle">${dateFormat(item.data)}</td>
-                                            <td class="align-middle">${item.alimento}</td>
+                                            <td class="align-middle">${item.produto}</td>
                                             <td class="align-middle">${item.hora_imersao_inicio}</td>
                                             <td class="align-middle">${item.hora_imersao_fim}</td>
                                             <td class="align-middle">${item.concentracao_solucao_clorada}</td>
@@ -44,7 +46,7 @@ $(document).ready(function () {
                                                 data-usuario="${item.usuario}"
                                                 data-unidade="${item.unidade}"
                                                 data-data="${item.data}"
-                                                data-id_parameter_alimento="${item.id_parameter_alimento}"
+                                                data-id_parameter_produto="${item.id_parameter_produto}"
                                                 data-hora_imersao_inicio="${item.hora_imersao_inicio}"
                                                 data-hora_imersao_fim="${item.hora_imersao_fim}"
                                                 data-concentracao_solucao_clorada="${item.concentracao_solucao_clorada}"
@@ -93,7 +95,7 @@ $(document).ready(function () {
 
                     $.post(window.location.origin + "/planilha/verificacao-procedimento-higienizacao-hortifruti/cadastrar", {
                         data: $("#data").val(),
-                        id_parameter_alimento: $("#id_parameter_alimento option:selected").val(),
+                        id_parameter_produto: $("#id_parameter_produto option:selected").val(),
                         hora_imersao_inicio: $("#hora_imersao_inicio").val(),
                         hora_imersao_fim: $("#hora_imersao_fim").val(),
                         concentracao_solucao_clorada: $("#concentracao_solucao_clorada").val(),
@@ -134,14 +136,14 @@ $(document).ready(function () {
         let usuario = $(this).data('usuario');
         let unidade = $(this).data('unidade');
         let data = $(this).data('data');
-        let id_parameter_alimento = $(this).data('id_parameter_alimento');
+        let id_parameter_produto = $(this).data('id_parameter_produto');
         let hora_imersao_inicio = $(this).data('hora_imersao_inicio');
         let hora_imersao_fim = $(this).data('hora_imersao_fim');
         let concentracao_solucao_clorada = $(this).data('concentracao_solucao_clorada');
         let acao_corretiva = $(this).data('acao_corretiva');
         let id_parameter_responsavel = $(this).data('id_parameter_responsavel');
 
-        loadGlobalParameters(9, 'id_parameter_alimento_edit', id_parameter_alimento);
+        loadGlobalParameters(8, 'id_parameter_produto_edit', id_parameter_produto);
         loadGlobalParameters(3, 'id_parameter_responsavel_edit', id_parameter_responsavel);
 
         $("#id_edit").val(id);
@@ -172,7 +174,7 @@ $(document).ready(function () {
                         data:{
                             id: $("#id_edit").val(),
                             data: $("#data_edit").val(),
-                            id_parameter_alimento: $("#id_parameter_alimento_edit option:selected").val(),
+                            id_parameter_produto: $("#id_parameter_produto_edit option:selected").val(),
                             hora_imersao_inicio: $("#hora_imersao_inicio_edit").val(),
                             hora_imersao_fim: $("#hora_imersao_fim_edit").val(),
                             concentracao_solucao_clorada: $("#concentracao_solucao_clorada_edit").val(),

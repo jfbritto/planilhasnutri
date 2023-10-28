@@ -17,6 +17,8 @@ $(document).ready(function () {
                 onOpen: () => {
                     Swal.showLoading();
                     $.get(window.location.origin + "/planilha/temperatura-alimento-banho-maria/listar", {
+                        data_ini_filter : $("#data_ini_filter").val(),
+                        data_fim_filter : $("#data_fim_filter").val(),
                         id_parameter_produto_filter : $("#id_parameter_produto_filter option:selected").val(),
                     })
                     .then(function (data) {
@@ -35,7 +37,7 @@ $(document).ready(function () {
                                             <td class="align-middle">${periodo(item.periodo)}</td>
                                             <td class="align-middle">${item.produto}</td>
                                             <td class="align-middle">${item.primeira_hora}</td>
-                                            <td class="align-middle">${item.primeira_tremperatura}</td>
+                                            <td class="align-middle">${item.primeira_temperatura}</td>
                                             <td class="align-middle">${item.acao_corretiva}</td>
                                             <td class="align-middle" style="text-align: right; min-width: 120px">
                                                 <a title="Editar"
@@ -46,9 +48,9 @@ $(document).ready(function () {
                                                 data-periodo="${item.periodo}"
                                                 data-id_parameter_produto="${item.id_parameter_produto}"
                                                 data-primeira_hora="${item.primeira_hora}"
-                                                data-primeira_tremperatura="${item.primeira_tremperatura}"
+                                                data-primeira_temperatura="${item.primeira_temperatura}"
                                                 data-segunda_hora="${item.segunda_hora}"
-                                                data-segunda_tremperatura="${item.segunda_tremperatura}"
+                                                data-segunda_temperatura="${item.segunda_temperatura}"
                                                 data-acao_corretiva="${item.acao_corretiva}" href="#" class="btn btn-warning edit-temperatura_alimento_banho_maria"><i style="color: white" class="fas fa-edit"></i></a>
                                                 <a title="Deletar" data-id="${item.id}" href="#" class="btn btn-danger delete-temperatura_alimento_banho_maria"><i class="fas fa-trash-alt"></i></a>
                                             </td>
@@ -96,9 +98,9 @@ $(document).ready(function () {
                         periodo: $("#periodo option:selected").val(),
                         id_parameter_produto: $("#id_parameter_produto option:selected").val(),
                         primeira_hora: $("#primeira_hora").val(),
-                        primeira_tremperatura: $("#primeira_tremperatura").val(),
+                        primeira_temperatura: $("#primeira_temperatura").val(),
                         segunda_hora: $("#segunda_hora").val(),
-                        segunda_tremperatura: $("#segunda_tremperatura").val(),
+                        segunda_temperatura: $("#segunda_temperatura").val(),
                         acao_corretiva: $("#acao_corretiva").val(),
                     })
                     .then(function (data) {
@@ -138,9 +140,9 @@ $(document).ready(function () {
         let periodo = $(this).data('periodo');
         let id_parameter_produto = $(this).data('id_parameter_produto');
         let primeira_hora = $(this).data('primeira_hora');
-        let primeira_tremperatura = $(this).data('primeira_tremperatura');
+        let primeira_temperatura = $(this).data('primeira_temperatura');
         let segunda_hora = $(this).data('segunda_hora');
-        let segunda_tremperatura = $(this).data('segunda_tremperatura');
+        let segunda_temperatura = $(this).data('segunda_temperatura');
         let acao_corretiva = $(this).data('acao_corretiva');
 
         loadGlobalParameters(8, 'id_parameter_produto_edit', id_parameter_produto);
@@ -151,9 +153,9 @@ $(document).ready(function () {
         $("#periodo_edit").val(periodo);
         $("#data_edit").val(data);
         $("#primeira_hora_edit").val(primeira_hora);
-        $("#primeira_tremperatura_edit").val(primeira_tremperatura);
+        $("#primeira_temperatura_edit").val(primeira_temperatura);
         $("#segunda_hora_edit").val(segunda_hora);
-        $("#segunda_tremperatura_edit").val(segunda_tremperatura);
+        $("#segunda_temperatura_edit").val(segunda_temperatura);
         $("#acao_corretiva_edit").val(acao_corretiva);
 
         $("#modalEdittemperatura_alimento_banho_maria").modal("show");
@@ -178,9 +180,9 @@ $(document).ready(function () {
                             periodo: $("#periodo_edit option:selected").val(),
                             id_parameter_produto: $("#id_parameter_produto_edit option:selected").val(),
                             primeira_hora: $("#primeira_hora_edit").val(),
-                            primeira_tremperatura: $("#primeira_tremperatura_edit").val(),
+                            primeira_temperatura: $("#primeira_temperatura_edit").val(),
                             segunda_hora: $("#segunda_hora_edit").val(),
-                            segunda_tremperatura: $("#segunda_tremperatura_edit").val(),
+                            segunda_temperatura: $("#segunda_temperatura_edit").val(),
                             acao_corretiva: $("#acao_corretiva_edit").val(),
                         }
                     })

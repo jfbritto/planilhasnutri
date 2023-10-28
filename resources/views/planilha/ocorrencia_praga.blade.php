@@ -27,26 +27,26 @@
                 <div class="row">
                     <div class="col-md-3">
                         <div class="form-group">
-                            <label for="id_parameter_area_filter">Área</label>
-                            <select required name="id_parameter_area_filter" id="id_parameter_area_filter" class="form-control"></select>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label for="id_parameter_praga_filter">Praga</label>
-                            <select required name="id_parameter_praga_filter" id="id_parameter_praga_filter" class="form-control"></select>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-group">
                             <label for="data_ini_filter">Data inicial</label>
-                            <input type="date" value="{{now()->format('Y-m-01')}}" required name="data_ini_filter" id="data_ini_filter" class="form-control">
+                            <input type="date" value="{{now()->format('Y-m-01')}}" name="data_ini_filter" id="data_ini_filter" class="form-control">
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
                             <label for="data_fim_filter">Data final</label>
-                            <input type="date" value="{{now()->format('Y-m-t')}}" required name="data_fim_filter" id="data_fim_filter" class="form-control">
+                            <input type="date" name="data_fim_filter" id="data_fim_filter" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="id_parameter_area_filter">Área</label>
+                            <select name="id_parameter_area_filter" id="id_parameter_area_filter" class="form-control"></select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="id_parameter_praga_filter">Praga</label>
+                            <select name="id_parameter_praga_filter" id="id_parameter_praga_filter" class="form-control"></select>
                         </div>
                     </div>
                 </div>

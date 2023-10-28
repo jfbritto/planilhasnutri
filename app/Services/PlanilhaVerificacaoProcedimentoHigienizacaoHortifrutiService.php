@@ -41,7 +41,7 @@ class PlanilhaVerificacaoProcedimentoHigienizacaoHortifrutiService
                         ->where('id', $data['id'])
                         ->update([
                             'data' => $data['data'],
-                            'id_parameter_alimento' => $data['id_parameter_alimento'],
+                            'id_parameter_produto' => $data['id_parameter_produto'],
                             'hora_imersao_inicio' => $data['hora_imersao_inicio'],
                             'hora_imersao_fim' => $data['hora_imersao_fim'],
                             'concentracao_solucao_clorada' => $data['concentracao_solucao_clorada'],
@@ -97,19 +97,25 @@ class PlanilhaVerificacaoProcedimentoHigienizacaoHortifrutiService
             }
 
             $filter = "";
-            if (!empty($filter_array['id_parameter_alimento_filter'])) {
-                $filter .= " and main_tb.id_parameter_alimento = {$filter_array['id_parameter_alimento_filter']}";
+            if (!empty($filter_array['data_ini_filter'])) {
+                $filter .= " and main_tb.data >= '{$filter_array['data_ini_filter']}'";
+            }
+            if (!empty($filter_array['data_fim_filter'])) {
+                $filter .= " and main_tb.data <= '{$filter_array['data_fim_filter']}'";
+            }
+            if (!empty($filter_array['id_parameter_produto_filter'])) {
+                $filter .= " and main_tb.id_parameter_produto = {$filter_array['id_parameter_produto_filter']}";
             }
 
             $return = DB::select( DB::raw("SELECT
                                                 us.name as usuario,
                                                 ifnull(un.name, 'Controle') as unidade,
-                                                p_al.name as alimento,
+                                                p_pr.name as produto,
                                                 p_re.name as responsavel,
                                                 main_tb.*
                                             FROM
                                                 planilha_verificacao_procedimento_higienizacao_hortifrutis main_tb
-                                                JOIN parameters p_al ON main_tb.id_parameter_alimento = p_al.id
+                                                JOIN parameters p_pr ON main_tb.id_parameter_produto = p_pr.id
                                                 JOIN parameters p_re ON main_tb.id_parameter_responsavel = p_re.id
                                                 JOIN users us ON main_tb.id_user = us.id {$condition}
                                                 LEFT JOIN units un ON us.id_unit = un.id

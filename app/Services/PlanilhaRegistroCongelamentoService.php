@@ -96,6 +96,12 @@ class PlanilhaRegistroCongelamentoService
             }
 
             $filter = "";
+            if (!empty($filter_array['data_ini_filter'])) {
+                $filter .= " and main_tb.data_congelamento >= '{$filter_array['data_ini_filter']}'";
+            }
+            if (!empty($filter_array['data_fim_filter'])) {
+                $filter .= " and main_tb.data_congelamento <= '{$filter_array['data_fim_filter']}'";
+            }
             if (!empty($filter_array['id_parameter_produto_filter'])) {
                 $filter .= " and main_tb.id_parameter_produto = {$filter_array['id_parameter_produto_filter']}";
             }

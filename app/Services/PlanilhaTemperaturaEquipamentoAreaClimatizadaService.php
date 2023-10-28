@@ -95,6 +95,12 @@ class PlanilhaTemperaturaEquipamentoAreaClimatizadaService
             }
 
             $filter = "";
+            if (!empty($filter_array['data_ini_filter'])) {
+                $filter .= " and main_tb.data >= '{$filter_array['data_ini_filter']}'";
+            }
+            if (!empty($filter_array['data_fim_filter'])) {
+                $filter .= " and main_tb.data <= '{$filter_array['data_fim_filter']}'";
+            }
             if (!empty($filter_array['id_parameter_equipamento_filter'])) {
                 $filter .= " and main_tb.id_parameter_equipamento = {$filter_array['id_parameter_equipamento_filter']}";
             }

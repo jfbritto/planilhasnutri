@@ -12,7 +12,7 @@ class PlanilhaVerificacaoProcedimentoHigienizacaoHortifruti extends Model
     protected $fillable = [
         'id',
         'data',
-        'id_parameter_alimento',
+        'id_parameter_produto',
         'hora_imersao_inicio',
         'hora_imersao_fim',
         'concentracao_solucao_clorada',

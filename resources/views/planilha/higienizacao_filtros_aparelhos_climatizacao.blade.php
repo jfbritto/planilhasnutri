@@ -28,31 +28,31 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="data_ini_filter">De</label>
-                            <input type="date" value="{{now()->format('Y-m-01')}}" required name="data_ini_filter" id="data_ini_filter" class="form-control">
+                            <input type="date" value="{{now()->format('Y-m-01')}}" name="data_ini_filter" id="data_ini_filter" class="form-control">
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="data_fim_filter">Até</label>
-                            <input type="date" value="{{now()->format('Y-m-t')}}" required name="data_fim_filter" id="data_fim_filter" class="form-control">
+                            <input type="date" name="data_fim_filter" id="data_fim_filter" class="form-control">
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="mes_proxima_higienizacao_filter">Próxima Higienização</label>
-                            <input type="month" required name="mes_proxima_higienizacao_filter" id="mes_proxima_higienizacao_filter" class="form-control">
+                            <input type="month" name="mes_proxima_higienizacao_filter" id="mes_proxima_higienizacao_filter" class="form-control">
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="id_parameter_area_filter">Área</label>
-                            <select required name="id_parameter_area_filter" id="id_parameter_area_filter" class="form-control"></select>
+                            <select name="id_parameter_area_filter" id="id_parameter_area_filter" class="form-control"></select>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="id_parameter_equipamento_filter">Equipamento</label>
-                            <select required name="id_parameter_equipamento_filter" id="id_parameter_equipamento_filter" class="form-control"></select>
+                            <select name="id_parameter_equipamento_filter" id="id_parameter_equipamento_filter" class="form-control"></select>
                         </div>
                     </div>
                     <div class="col-md-4">

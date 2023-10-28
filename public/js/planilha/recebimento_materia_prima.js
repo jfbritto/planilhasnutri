@@ -20,6 +20,8 @@ $(document).ready(function () {
                 onOpen: () => {
                     Swal.showLoading();
                     $.get(window.location.origin + "/planilha/recebimento-materia-prima/listar", {
+                        data_ini_filter : $("#data_ini_filter").val(),
+                        data_fim_filter : $("#data_fim_filter").val(),
                         id_parameter_produto_filter : $("#id_parameter_produto_filter option:selected").val(),
                         id_parameter_fornecedor_filter : $("#id_parameter_fornecedor_filter option:selected").val(),
                     })
