@@ -47,6 +47,7 @@ $(document).ready(function () {
                                             <td class="align-middle">${item.evento}</td>
                                             <td class="align-middle">${item.total_produtos}</td>
                                             <td class="align-middle" style="text-align: right; min-width: 120px">
+                                                <a title="Imprimir" target="_blank" href="/planilha/temperatura-alimento-distribuicao/visualizar?id_planilha_filter=${item.id}" class="btn btn-primary"><i class="fa-regular fa-file-pdf"></i></a>
                                                 <a title="Editar"
                                                 data-id="${item.id}"
                                                 data-usuario="${item.usuario}"
@@ -109,15 +110,15 @@ $(document).ready(function () {
                     for (let i = 0; i < produtos.length; i++) {
                         let id_parameter_produto = produtos[i].value;
                         let hora_1 = primeirasHoras[i].value;
-                        let tremperatura_1 = primeirasTemperaturas[i].value;
+                        let temperatura_1 = primeirasTemperaturas[i].value;
                         let hora_2 = segundasHoras[i].value;
-                        let tremperatura_2 = segundasTemperaturas[i].value;
+                        let temperatura_2 = segundasTemperaturas[i].value;
                         itens_planilha.push({
                             id_parameter_produto: id_parameter_produto,
                             hora_1: hora_1,
-                            tremperatura_1: tremperatura_1,
+                            temperatura_1: temperatura_1,
                             hora_2: hora_2,
-                            tremperatura_2: tremperatura_2
+                            temperatura_2: temperatura_2
                         });
                     }
 
@@ -211,15 +212,15 @@ $(document).ready(function () {
                     for (let i = 0; i < produtos.length; i++) {
                         let id_parameter_produto = produtos[i].value;
                         let hora_1 = primeirasHoras[i].value;
-                        let tremperatura_1 = primeirasTemperaturas[i].value;
+                        let temperatura_1 = primeirasTemperaturas[i].value;
                         let hora_2 = segundasHoras[i].value;
-                        let tremperatura_2 = segundasTemperaturas[i].value;
+                        let temperatura_2 = segundasTemperaturas[i].value;
                         itens_planilha.push({
                             id_parameter_produto: id_parameter_produto,
                             hora_1: hora_1,
-                            tremperatura_1: tremperatura_1,
+                            temperatura_1: temperatura_1,
                             hora_2: hora_2,
-                            tremperatura_2: tremperatura_2
+                            temperatura_2: temperatura_2
                         });
                     }
 
@@ -400,9 +401,9 @@ $(document).ready(function () {
 
         if (edicao) {
             h1 = item.hora_1 || "";
-            t1 = item.tremperatura_1 || "";
+            t1 = item.temperatura_1 || "";
             h2 = item.hora_2 || "";
-            t2 = item.tremperatura_2 || "";
+            t2 = item.temperatura_2 || "";
 
         } else {
             // Obtém a hora atual
@@ -433,8 +434,8 @@ $(document).ready(function () {
                     </div>
                     <div class="col-md-2 col-xs-6 col-sm-6 col-6">
                         <div class="form-group">
-                            <label for="tremperatura_1_${contador}">1º Tª</label>
-                            <input type="text" required name="tremperatura_1_${contador}" id="tremperatura_1_${contador}" class="form-control primeiraTemperatura${complemento_edit}" placeholder="Informe a temperatura" value="${t1}">
+                            <label for="temperatura_1_${contador}">1º Tª</label>
+                            <input type="text" required name="temperatura_1_${contador}" id="temperatura_1_${contador}" class="form-control primeiraTemperatura${complemento_edit}" placeholder="Informe a temperatura" value="${t1}">
                         </div>
                     </div>
                     <div class="col-md-2 col-xs-6 col-sm-6 col-6">
@@ -445,8 +446,8 @@ $(document).ready(function () {
                     </div>
                     <div class="col-md-2 col-xs-6 col-sm-6 col-6">
                         <div class="form-group">
-                            <label for="tremperatura_2_${contador}">2º Tª</label>
-                            <input type="text" name="tremperatura_2_${contador}" id="tremperatura_2_${contador}" class="form-control segundaTemperatura${complemento_edit}" placeholder="Informe a temperatura" value="${t2}">
+                            <label for="temperatura_2_${contador}">2º Tª</label>
+                            <input type="text" name="temperatura_2_${contador}" id="temperatura_2_${contador}" class="form-control segundaTemperatura${complemento_edit}" placeholder="Informe a temperatura" value="${t2}">
                         </div>
                     </div>
                 </div>

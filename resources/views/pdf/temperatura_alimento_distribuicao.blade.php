@@ -46,7 +46,7 @@
         /* Estilos para as células de cabeçalho */
         .table th,
         .table td {
-            padding: 0.5rem;
+            padding: 0.3rem;
             vertical-align: top;
             border-top: 1px solid #dee2e6;
         }
@@ -95,46 +95,45 @@
             <h1>{{$titulo}}</h1>
         </div>
 
-        <table class="table table-bordered table-striped">
+        <table class="table table-bordered">
             <thead>
                 <tr>
                     <th style="vertical-align: middle">Data</th>
                     <th style="vertical-align: middle">Evento</th>
                     <th style="vertical-align: middle">Período</th>
-                    <th style="vertical-align: middle">Produto</th>
-                    <th style="vertical-align: middle">Hora</th>
-                    <th style="vertical-align: middle">T(ºC)</th>
-                    <th style="vertical-align: middle">Hora</th>
-                    <th style="vertical-align: middle">T(ºC)</th>
-                    <th style="vertical-align: middle">Hora</th>
-                    <th style="vertical-align: middle">T(ºC)</th>
-                    <th style="vertical-align: middle">Hora</th>
-                    <th style="vertical-align: middle">T(ºC)</th>
-                    <th style="vertical-align: middle">Hora</th>
-                    <th style="vertical-align: middle">T(ºC)</th>
                     <th style="vertical-align: middle">Ação Corretiva</th>
                     <th style="vertical-align: middle">Responsável</th>
                 </tr>
             </thead>
             <tbody>
+                <tr>
+                    <td style="vertical-align: middle; text-align: center">{{ \Carbon\Carbon::parse($itens[0]->data)->format('d/m/Y') }}</td>
+                    <td style="vertical-align: middle; text-align: center">{{ $itens[0]->evento }}</td>
+                    <td style="vertical-align: middle; text-align: center">{{ strtoupper($itens[0]->periodo) }}</td>
+                    <td style="vertical-align: middle; text-align: center">{{ $itens[0]->acao_corretiva }}</td>
+                    <td style="vertical-align: middle; text-align: center">{{ $itens[0]->responsavel }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th style="vertical-align: middle">Produto</th>
+                    <th style="vertical-align: middle">Hora</th>
+                    <th style="vertical-align: middle">T(ºC)</th>
+                    <th style="vertical-align: middle">Hora</th>
+                    <th style="vertical-align: middle">T(ºC)</th>
+                </tr>
+            </thead>
+            <tbody>
                 @foreach($itens as $item)
                     <tr>
-                        <td style="vertical-align: middle">{{ \Carbon\Carbon::parse($item->data)->format('d/m/Y') }}</td>
-                        <td style="vertical-align: middle">{{ $item->evento }}</td>
-                        <td style="vertical-align: middle">{{ strtoupper($item->periodo) }}</td>
                         <td style="vertical-align: middle">{{ $item->produto }}</td>
-                        <td style="vertical-align: middle">{{ $item->hora_1 }}</td>
-                        <td style="vertical-align: middle">{{ $item->tremperatura_1 }}</td>
-                        <td style="vertical-align: middle">{{ $item->hora_2 }}</td>
-                        <td style="vertical-align: middle">{{ $item->tremperatura_2 }}</td>
-                        <td style="vertical-align: middle">{{ $item->hora_3 }}</td>
-                        <td style="vertical-align: middle">{{ $item->tremperatura_3 }}</td>
-                        <td style="vertical-align: middle">{{ $item->hora_4 }}</td>
-                        <td style="vertical-align: middle">{{ $item->tremperatura_4 }}</td>
-                        <td style="vertical-align: middle">{{ $item->hora_5 }}</td>
-                        <td style="vertical-align: middle">{{ $item->tremperatura_5 }}</td>
-                        <td style="vertical-align: middle">{{ $item->acao_corretiva }}</td>
-                        <td style="vertical-align: middle">{{ $item->responsavel }}</td>
+                        <td style="vertical-align: middle; text-align: center">{{ $item->hora_1 }}</td>
+                        <td style="vertical-align: middle; text-align: center">{{ $item->temperatura_1 }}</td>
+                        <td style="vertical-align: middle; text-align: center">{{ $item->hora_2 }}</td>
+                        <td style="vertical-align: middle; text-align: center">{{ $item->temperatura_2 }}</td>
                     </tr>
                 @endforeach
             </tbody>

@@ -29,9 +29,9 @@ class PlanilhaTemperaturaAlimentoBanhoMariaController extends Controller
             'periodo' => $request->periodo,
             'id_parameter_produto' => $request->id_parameter_produto,
             'primeira_hora' => $request->primeira_hora,
-            'primeira_tremperatura' => $request->primeira_tremperatura,
+            'primeira_temperatura' => $request->primeira_temperatura,
             'segunda_hora' => $request->segunda_hora,
-            'segunda_tremperatura' => $request->segunda_tremperatura,
+            'segunda_temperatura' => $request->segunda_temperatura,
             'acao_corretiva' => $request->acao_corretiva
         ];
 
@@ -52,9 +52,9 @@ class PlanilhaTemperaturaAlimentoBanhoMariaController extends Controller
             'periodo' => $request->periodo,
             'id_parameter_produto' => $request->id_parameter_produto,
             'primeira_hora' => $request->primeira_hora,
-            'primeira_tremperatura' => $request->primeira_tremperatura,
+            'primeira_temperatura' => $request->primeira_temperatura,
             'segunda_hora' => $request->segunda_hora,
-            'segunda_tremperatura' => $request->segunda_tremperatura,
+            'segunda_temperatura' => $request->segunda_temperatura,
             'acao_corretiva' => $request->acao_corretiva
         ];
 

@@ -15,9 +15,9 @@ class PlanilhaTemperaturaAlimentoBanhoMaria extends Model
         'periodo',
         'id_parameter_produto',
         'primeira_hora',
-        'primeira_tremperatura',
+        'primeira_temperatura',
         'segunda_hora',
-        'segunda_tremperatura',
+        'segunda_temperatura',
         'acao_corretiva',
         'id_user',
         'status'

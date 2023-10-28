@@ -44,9 +44,9 @@ class PlanilhaTemperaturaAlimentoBanhoMariaService
                             'periodo' => $data['periodo'],
                             'id_parameter_produto' => $data['id_parameter_produto'],
                             'primeira_hora' => $data['primeira_hora'],
-                            'primeira_tremperatura' => $data['primeira_tremperatura'],
+                            'primeira_temperatura' => $data['primeira_temperatura'],
                             'segunda_hora' => $data['segunda_hora'],
-                            'segunda_tremperatura' => $data['segunda_tremperatura'],
+                            'segunda_temperatura' => $data['segunda_temperatura'],
                             'acao_corretiva' => $data['acao_corretiva']
                         ]);
 

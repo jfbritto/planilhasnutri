@@ -15,7 +15,7 @@
 
     <div class="card collapsed-card">
         <div class="card-header" style="cursor: pointer" data-card-widget="collapse">
-            <h5 class="card-title">Filtros</h5>
+            <h5 class="card-title">Buscar</h5>
             <div class="card-tools">
                 <button type="button" class="btn btn-tool">
                     <i class="fas fa-arrow-down"></i>
@@ -116,8 +116,8 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="primeira_tremperatura">Temperatura 1º aferição</label>
-                                <input type="text" required name="primeira_tremperatura" id="primeira_tremperatura" class="form-control" placeholder="Informe a temperatura">
+                                <label for="primeira_temperatura">Temperatura 1º aferição</label>
+                                <input type="text" required name="primeira_temperatura" id="primeira_temperatura" class="form-control" placeholder="Informe a temperatura">
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -128,8 +128,8 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="segunda_tremperatura">Temperatura 2º aferição</label>
-                                <input type="text" required name="segunda_tremperatura" id="segunda_tremperatura" class="form-control" placeholder="Informe a temperatura">
+                                <label for="segunda_temperatura">Temperatura 2º aferição</label>
+                                <input type="text" required name="segunda_temperatura" id="segunda_temperatura" class="form-control" placeholder="Informe a temperatura">
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -193,8 +193,8 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="primeira_tremperatura_edit">Temperatura 1º aferição</label>
-                                <input type="text" required name="primeira_tremperatura_edit" id="primeira_tremperatura_edit" class="form-control" placeholder="Informe a temperatura">
+                                <label for="primeira_temperatura_edit">Temperatura 1º aferição</label>
+                                <input type="text" required name="primeira_temperatura_edit" id="primeira_temperatura_edit" class="form-control" placeholder="Informe a temperatura">
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -205,8 +205,8 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="segunda_tremperatura_edit">Temperatura 2º aferição</label>
-                                <input type="text" required name="segunda_tremperatura_edit" id="segunda_tremperatura_edit" class="form-control" placeholder="Informe a temperatura">
+                                <label for="segunda_temperatura_edit">Temperatura 2º aferição</label>
+                                <input type="text" required name="segunda_temperatura_edit" id="segunda_temperatura_edit" class="form-control" placeholder="Informe a temperatura">
                             </div>
                         </div>
                         <div class="col-md-12">

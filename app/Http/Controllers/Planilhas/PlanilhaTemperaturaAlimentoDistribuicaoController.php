@@ -50,9 +50,9 @@ class PlanilhaTemperaturaAlimentoDistribuicaoController extends Controller
                     'id_planilha_distribuicao' => $id_planilha,
                     'id_parameter_produto' => $value['id_parameter_produto'],
                     'hora_1' => $value['hora_1'],
-                    'tremperatura_1' => $value['tremperatura_1'],
+                    'temperatura_1' => $value['temperatura_1'],
                     'hora_2' => $value['hora_2'],
-                    'tremperatura_2' => $value['tremperatura_2']
+                    'temperatura_2' => $value['temperatura_2']
                 ];
 
                 $response = $this->planilhaTemperaturaAlimentoDistribuicaoProdutoService->store($data2);
@@ -91,9 +91,9 @@ class PlanilhaTemperaturaAlimentoDistribuicaoController extends Controller
                     'id_planilha_distribuicao' => $id_planilha,
                     'id_parameter_produto' => $value['id_parameter_produto'],
                     'hora_1' => $value['hora_1'],
-                    'tremperatura_1' => $value['tremperatura_1'],
+                    'temperatura_1' => $value['temperatura_1'],
                     'hora_2' => $value['hora_2'],
-                    'tremperatura_2' => $value['tremperatura_2']
+                    'temperatura_2' => $value['temperatura_2']
                 ];
 
                 $response = $this->planilhaTemperaturaAlimentoDistribuicaoProdutoService->store($data2);
@@ -148,7 +148,11 @@ class PlanilhaTemperaturaAlimentoDistribuicaoController extends Controller
     {
         $filter = $request->all();
 
-        $itens = $this->planilhaTemperaturaAlimentoDistribuicaoService->list($filter)['data'];
+        $itens = $this->planilhaTemperaturaAlimentoDistribuicaoService->find($filter)['data'];
+
+        if (empty($itens)) {
+            abort(404);
+        }
 
         $titulo = "Controle de Temperatura dos Alimentos na Distribuição";
 

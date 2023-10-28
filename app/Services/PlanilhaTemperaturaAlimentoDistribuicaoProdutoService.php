@@ -42,19 +42,19 @@ class PlanilhaTemperaturaAlimentoDistribuicaoProdutoService
                         ->update([
                             'id_parameter_produto' => $data['id_parameter_produto'],
                             'hora_1' => $data['hora_1'],
-                            'tremperatura_1' => $data['tremperatura_1'],
+                            'temperatura_1' => $data['temperatura_1'],
                             'hora_2' => $data['hora_2'],
-                            'tremperatura_2' => $data['tremperatura_2'],
+                            'temperatura_2' => $data['temperatura_2'],
                             'hora_3' => $data['hora_3'],
-                            'tremperatura_3' => $data['tremperatura_3'],
+                            'temperatura_3' => $data['temperatura_3'],
                             'hora_4' => $data['hora_4'],
-                            'tremperatura_4' => $data['tremperatura_4'],
+                            'temperatura_4' => $data['temperatura_4'],
                             'hora_5' => $data['hora_5'],
-                            'tremperatura_5' => $data['tremperatura_5'],
+                            'temperatura_5' => $data['temperatura_5'],
                             'hora_6' => $data['hora_6'],
-                            'tremperatura_6' => $data['tremperatura_6'],
+                            'temperatura_6' => $data['temperatura_6'],
                             'hora_7' => $data['hora_7'],
-                            'tremperatura_7' => $data['tremperatura_7']
+                            'temperatura_7' => $data['temperatura_7']
                         ]);
 
             DB::commit();

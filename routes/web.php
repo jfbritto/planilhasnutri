@@ -3,6 +3,33 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PlanilhasController;
+use App\Http\Controllers\Planilhas\PlanilhaTrocaElementoFiltranteController;
+use App\Http\Controllers\Planilhas\PlanilhaHigienizacaoFiltrosAparelhosClimatizacaoController;
+use App\Http\Controllers\Planilhas\PlanilhaSaturacaoOleoGorduraController;
+use App\Http\Controllers\Planilhas\PlanilhaLimpezaCaixaGorduraController;
+use App\Http\Controllers\Planilhas\PlanilhaRegistroCongelamentoController;
+use App\Http\Controllers\Planilhas\PlanilhaVerificacaoProcedimentoHigienizacaoHortifrutiController;
+use App\Http\Controllers\Planilhas\PlanilhaManutencaoCalibracaoEquipamentoController;
+use App\Http\Controllers\Planilhas\PlanilhaRegistroLimpezaController;
+use App\Http\Controllers\Planilhas\PlanilhaRecebimentoMateriaPrimaController;
+use App\Http\Controllers\Planilhas\PlanilhaResfriamentoRapidoAlimentoController;
+use App\Http\Controllers\Planilhas\PlanilhaReaquecimentoAlimentoController;
+use App\Http\Controllers\Planilhas\PlanilhaRegistroNaoConformidadeDetectadaAutoAvaliacaoController;
+use App\Http\Controllers\Planilhas\PlanilhaTemperaturaAlimentoBanhoMariaController;
+use App\Http\Controllers\Planilhas\PlanilhaTemperaturaAlimentoDistribuicaoController;
+use App\Http\Controllers\Planilhas\PlanilhaTemperaturaAlimentoDistribuicaoProdutoController;
+use App\Http\Controllers\Planilhas\PlanilhaTemperaturaAlimentoDistribuicaoConfigController;
+use App\Http\Controllers\Planilhas\PlanilhaGrupoAmostraPratoController;
+use App\Http\Controllers\Planilhas\PlanilhaAvaliacaoManejoResiduoController;
+use App\Http\Controllers\Planilhas\PlanilhaOcorrenciaPragaController;
+use App\Http\Controllers\Planilhas\PlanilhaTemperaturaEquipamentoAreaClimatizadaController;
+use App\Http\Controllers\ParameterController;
+use App\Http\Controllers\ParameterTypeController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\UnitController;
+
 Route::get('/', [AuthenticatedSessionController::class, 'create'])->name('login');
 Route::get('login', [AuthenticatedSessionController::class, 'create'])->name('login');
 Route::post('login', [AuthenticatedSessionController::class, 'store']);
@@ -13,212 +40,212 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
     // Dashboard
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
 
     // Planilhas
-    Route::get('/planilhas', [App\Http\Controllers\PlanilhasController::class, 'index']);
-    Route::get('/planilhas-2', [App\Http\Controllers\PlanilhasController::class, 'index2']);
+    Route::get('/planilhas', [PlanilhasController::class, 'index']);
+    Route::get('/planilhas-2', [PlanilhasController::class, 'index2']);
 
     // Planilha troca-elemento-filtrante
-    Route::get('/planilha/troca-elemento-filtrante', [App\Http\Controllers\Planilhas\PlanilhaTrocaElementoFiltranteController::class, 'index']);
-    Route::get('/planilha/troca-elemento-filtrante/listar', [App\Http\Controllers\Planilhas\PlanilhaTrocaElementoFiltranteController::class, 'list']);
-    Route::get('/planilha/troca-elemento-filtrante/encontrar', [App\Http\Controllers\Planilhas\PlanilhaTrocaElementoFiltranteController::class, 'find']);
-    Route::post('/planilha/troca-elemento-filtrante/cadastrar', [App\Http\Controllers\Planilhas\PlanilhaTrocaElementoFiltranteController::class, 'store']);
-    Route::put('/planilha/troca-elemento-filtrante/editar', [App\Http\Controllers\Planilhas\PlanilhaTrocaElementoFiltranteController::class, 'update']);
-    Route::delete('/planilha/troca-elemento-filtrante/deletar', [App\Http\Controllers\Planilhas\PlanilhaTrocaElementoFiltranteController::class, 'destroy']);
-    Route::get('/planilha/troca-elemento-filtrante/visualizar', [App\Http\Controllers\Planilhas\PlanilhaTrocaElementoFiltranteController::class, 'gerarPDF']);
+    Route::get('/planilha/troca-elemento-filtrante', [PlanilhaTrocaElementoFiltranteController::class, 'index']);
+    Route::get('/planilha/troca-elemento-filtrante/listar', [PlanilhaTrocaElementoFiltranteController::class, 'list']);
+    Route::get('/planilha/troca-elemento-filtrante/encontrar', [PlanilhaTrocaElementoFiltranteController::class, 'find']);
+    Route::post('/planilha/troca-elemento-filtrante/cadastrar', [PlanilhaTrocaElementoFiltranteController::class, 'store']);
+    Route::put('/planilha/troca-elemento-filtrante/editar', [PlanilhaTrocaElementoFiltranteController::class, 'update']);
+    Route::delete('/planilha/troca-elemento-filtrante/deletar', [PlanilhaTrocaElementoFiltranteController::class, 'destroy']);
+    Route::get('/planilha/troca-elemento-filtrante/visualizar', [PlanilhaTrocaElementoFiltranteController::class, 'gerarPDF']);
 
     // Planilha higienizacao-filtro-aparelho-climatizacao
-    Route::get('/planilha/higienizacao-filtro-aparelho-climatizacao', [App\Http\Controllers\Planilhas\PlanilhaHigienizacaoFiltrosAparelhosClimatizacaoController::class, 'index']);
-    Route::get('/planilha/higienizacao-filtro-aparelho-climatizacao/listar', [App\Http\Controllers\Planilhas\PlanilhaHigienizacaoFiltrosAparelhosClimatizacaoController::class, 'list']);
-    Route::get('/planilha/higienizacao-filtro-aparelho-climatizacao/encontrar', [App\Http\Controllers\Planilhas\PlanilhaHigienizacaoFiltrosAparelhosClimatizacaoController::class, 'find']);
-    Route::post('/planilha/higienizacao-filtro-aparelho-climatizacao/cadastrar', [App\Http\Controllers\Planilhas\PlanilhaHigienizacaoFiltrosAparelhosClimatizacaoController::class, 'store']);
-    Route::put('/planilha/higienizacao-filtro-aparelho-climatizacao/editar', [App\Http\Controllers\Planilhas\PlanilhaHigienizacaoFiltrosAparelhosClimatizacaoController::class, 'update']);
-    Route::delete('/planilha/higienizacao-filtro-aparelho-climatizacao/deletar', [App\Http\Controllers\Planilhas\PlanilhaHigienizacaoFiltrosAparelhosClimatizacaoController::class, 'destroy']);
-    Route::get('/planilha/higienizacao-filtro-aparelho-climatizacao/visualizar', [App\Http\Controllers\Planilhas\PlanilhaHigienizacaoFiltrosAparelhosClimatizacaoController::class, 'gerarPDF']);
+    Route::get('/planilha/higienizacao-filtro-aparelho-climatizacao', [PlanilhaHigienizacaoFiltrosAparelhosClimatizacaoController::class, 'index']);
+    Route::get('/planilha/higienizacao-filtro-aparelho-climatizacao/listar', [PlanilhaHigienizacaoFiltrosAparelhosClimatizacaoController::class, 'list']);
+    Route::get('/planilha/higienizacao-filtro-aparelho-climatizacao/encontrar', [PlanilhaHigienizacaoFiltrosAparelhosClimatizacaoController::class, 'find']);
+    Route::post('/planilha/higienizacao-filtro-aparelho-climatizacao/cadastrar', [PlanilhaHigienizacaoFiltrosAparelhosClimatizacaoController::class, 'store']);
+    Route::put('/planilha/higienizacao-filtro-aparelho-climatizacao/editar', [PlanilhaHigienizacaoFiltrosAparelhosClimatizacaoController::class, 'update']);
+    Route::delete('/planilha/higienizacao-filtro-aparelho-climatizacao/deletar', [PlanilhaHigienizacaoFiltrosAparelhosClimatizacaoController::class, 'destroy']);
+    Route::get('/planilha/higienizacao-filtro-aparelho-climatizacao/visualizar', [PlanilhaHigienizacaoFiltrosAparelhosClimatizacaoController::class, 'gerarPDF']);
 
     // Planilha saturacao-oleo-gordura
-    Route::get('/planilha/saturacao-oleo-gordura', [App\Http\Controllers\Planilhas\PlanilhaSaturacaoOleoGorduraController::class, 'index']);
-    Route::get('/planilha/saturacao-oleo-gordura/listar', [App\Http\Controllers\Planilhas\PlanilhaSaturacaoOleoGorduraController::class, 'list']);
-    Route::get('/planilha/saturacao-oleo-gordura/encontrar', [App\Http\Controllers\Planilhas\PlanilhaSaturacaoOleoGorduraController::class, 'find']);
-    Route::post('/planilha/saturacao-oleo-gordura/cadastrar', [App\Http\Controllers\Planilhas\PlanilhaSaturacaoOleoGorduraController::class, 'store']);
-    Route::put('/planilha/saturacao-oleo-gordura/editar', [App\Http\Controllers\Planilhas\PlanilhaSaturacaoOleoGorduraController::class, 'update']);
-    Route::delete('/planilha/saturacao-oleo-gordura/deletar', [App\Http\Controllers\Planilhas\PlanilhaSaturacaoOleoGorduraController::class, 'destroy']);
-    Route::get('/planilha/saturacao-oleo-gordura/visualizar', [App\Http\Controllers\Planilhas\PlanilhaSaturacaoOleoGorduraController::class, 'gerarPDF']);
+    Route::get('/planilha/saturacao-oleo-gordura', [PlanilhaSaturacaoOleoGorduraController::class, 'index']);
+    Route::get('/planilha/saturacao-oleo-gordura/listar', [PlanilhaSaturacaoOleoGorduraController::class, 'list']);
+    Route::get('/planilha/saturacao-oleo-gordura/encontrar', [PlanilhaSaturacaoOleoGorduraController::class, 'find']);
+    Route::post('/planilha/saturacao-oleo-gordura/cadastrar', [PlanilhaSaturacaoOleoGorduraController::class, 'store']);
+    Route::put('/planilha/saturacao-oleo-gordura/editar', [PlanilhaSaturacaoOleoGorduraController::class, 'update']);
+    Route::delete('/planilha/saturacao-oleo-gordura/deletar', [PlanilhaSaturacaoOleoGorduraController::class, 'destroy']);
+    Route::get('/planilha/saturacao-oleo-gordura/visualizar', [PlanilhaSaturacaoOleoGorduraController::class, 'gerarPDF']);
 
     // Planilha limpeza-caixa-gorduras
-    Route::get('/planilha/limpeza-caixa-gordura', [App\Http\Controllers\Planilhas\PlanilhaLimpezaCaixaGorduraController::class, 'index']);
-    Route::get('/planilha/limpeza-caixa-gordura/listar', [App\Http\Controllers\Planilhas\PlanilhaLimpezaCaixaGorduraController::class, 'list']);
-    Route::get('/planilha/limpeza-caixa-gordura/encontrar', [App\Http\Controllers\Planilhas\PlanilhaLimpezaCaixaGorduraController::class, 'find']);
-    Route::post('/planilha/limpeza-caixa-gordura/cadastrar', [App\Http\Controllers\Planilhas\PlanilhaLimpezaCaixaGorduraController::class, 'store']);
-    Route::put('/planilha/limpeza-caixa-gordura/editar', [App\Http\Controllers\Planilhas\PlanilhaLimpezaCaixaGorduraController::class, 'update']);
-    Route::delete('/planilha/limpeza-caixa-gordura/deletar', [App\Http\Controllers\Planilhas\PlanilhaLimpezaCaixaGorduraController::class, 'destroy']);
-    Route::get('/planilha/limpeza-caixa-gordura/visualizar', [App\Http\Controllers\Planilhas\PlanilhaLimpezaCaixaGorduraController::class, 'gerarPDF']);
+    Route::get('/planilha/limpeza-caixa-gordura', [PlanilhaLimpezaCaixaGorduraController::class, 'index']);
+    Route::get('/planilha/limpeza-caixa-gordura/listar', [PlanilhaLimpezaCaixaGorduraController::class, 'list']);
+    Route::get('/planilha/limpeza-caixa-gordura/encontrar', [PlanilhaLimpezaCaixaGorduraController::class, 'find']);
+    Route::post('/planilha/limpeza-caixa-gordura/cadastrar', [PlanilhaLimpezaCaixaGorduraController::class, 'store']);
+    Route::put('/planilha/limpeza-caixa-gordura/editar', [PlanilhaLimpezaCaixaGorduraController::class, 'update']);
+    Route::delete('/planilha/limpeza-caixa-gordura/deletar', [PlanilhaLimpezaCaixaGorduraController::class, 'destroy']);
+    Route::get('/planilha/limpeza-caixa-gordura/visualizar', [PlanilhaLimpezaCaixaGorduraController::class, 'gerarPDF']);
 
     // Planilha registro-congelamento
-    Route::get('/planilha/registro-congelamento', [App\Http\Controllers\Planilhas\PlanilhaRegistroCongelamentoController::class, 'index']);
-    Route::get('/planilha/registro-congelamento/listar', [App\Http\Controllers\Planilhas\PlanilhaRegistroCongelamentoController::class, 'list']);
-    Route::get('/planilha/registro-congelamento/encontrar', [App\Http\Controllers\Planilhas\PlanilhaRegistroCongelamentoController::class, 'find']);
-    Route::post('/planilha/registro-congelamento/cadastrar', [App\Http\Controllers\Planilhas\PlanilhaRegistroCongelamentoController::class, 'store']);
-    Route::put('/planilha/registro-congelamento/editar', [App\Http\Controllers\Planilhas\PlanilhaRegistroCongelamentoController::class, 'update']);
-    Route::delete('/planilha/registro-congelamento/deletar', [App\Http\Controllers\Planilhas\PlanilhaRegistroCongelamentoController::class, 'destroy']);
-    Route::get('/planilha/registro-congelamento/visualizar', [App\Http\Controllers\Planilhas\PlanilhaRegistroCongelamentoController::class, 'gerarPDF']);
+    Route::get('/planilha/registro-congelamento', [PlanilhaRegistroCongelamentoController::class, 'index']);
+    Route::get('/planilha/registro-congelamento/listar', [PlanilhaRegistroCongelamentoController::class, 'list']);
+    Route::get('/planilha/registro-congelamento/encontrar', [PlanilhaRegistroCongelamentoController::class, 'find']);
+    Route::post('/planilha/registro-congelamento/cadastrar', [PlanilhaRegistroCongelamentoController::class, 'store']);
+    Route::put('/planilha/registro-congelamento/editar', [PlanilhaRegistroCongelamentoController::class, 'update']);
+    Route::delete('/planilha/registro-congelamento/deletar', [PlanilhaRegistroCongelamentoController::class, 'destroy']);
+    Route::get('/planilha/registro-congelamento/visualizar', [PlanilhaRegistroCongelamentoController::class, 'gerarPDF']);
 
     // Planilha verificacao-procedimento-higienizacao-hortifruti
-    Route::get('/planilha/verificacao-procedimento-higienizacao-hortifruti', [App\Http\Controllers\Planilhas\PlanilhaVerificacaoProcedimentoHigienizacaoHortifrutiController::class, 'index']);
-    Route::get('/planilha/verificacao-procedimento-higienizacao-hortifruti/listar', [App\Http\Controllers\Planilhas\PlanilhaVerificacaoProcedimentoHigienizacaoHortifrutiController::class, 'list']);
-    Route::get('/planilha/verificacao-procedimento-higienizacao-hortifruti/encontrar', [App\Http\Controllers\Planilhas\PlanilhaVerificacaoProcedimentoHigienizacaoHortifrutiController::class, 'find']);
-    Route::post('/planilha/verificacao-procedimento-higienizacao-hortifruti/cadastrar', [App\Http\Controllers\Planilhas\PlanilhaVerificacaoProcedimentoHigienizacaoHortifrutiController::class, 'store']);
-    Route::put('/planilha/verificacao-procedimento-higienizacao-hortifruti/editar', [App\Http\Controllers\Planilhas\PlanilhaVerificacaoProcedimentoHigienizacaoHortifrutiController::class, 'update']);
-    Route::delete('/planilha/verificacao-procedimento-higienizacao-hortifruti/deletar', [App\Http\Controllers\Planilhas\PlanilhaVerificacaoProcedimentoHigienizacaoHortifrutiController::class, 'destroy']);
-    Route::get('/planilha/verificacao-procedimento-higienizacao-hortifruti/visualizar', [App\Http\Controllers\Planilhas\PlanilhaVerificacaoProcedimentoHigienizacaoHortifrutiController::class, 'gerarPDF']);
+    Route::get('/planilha/verificacao-procedimento-higienizacao-hortifruti', [PlanilhaVerificacaoProcedimentoHigienizacaoHortifrutiController::class, 'index']);
+    Route::get('/planilha/verificacao-procedimento-higienizacao-hortifruti/listar', [PlanilhaVerificacaoProcedimentoHigienizacaoHortifrutiController::class, 'list']);
+    Route::get('/planilha/verificacao-procedimento-higienizacao-hortifruti/encontrar', [PlanilhaVerificacaoProcedimentoHigienizacaoHortifrutiController::class, 'find']);
+    Route::post('/planilha/verificacao-procedimento-higienizacao-hortifruti/cadastrar', [PlanilhaVerificacaoProcedimentoHigienizacaoHortifrutiController::class, 'store']);
+    Route::put('/planilha/verificacao-procedimento-higienizacao-hortifruti/editar', [PlanilhaVerificacaoProcedimentoHigienizacaoHortifrutiController::class, 'update']);
+    Route::delete('/planilha/verificacao-procedimento-higienizacao-hortifruti/deletar', [PlanilhaVerificacaoProcedimentoHigienizacaoHortifrutiController::class, 'destroy']);
+    Route::get('/planilha/verificacao-procedimento-higienizacao-hortifruti/visualizar', [PlanilhaVerificacaoProcedimentoHigienizacaoHortifrutiController::class, 'gerarPDF']);
 
     // Planilha manutencao-calibracao-equipamento
-    Route::get('/planilha/manutencao-calibracao-equipamento', [App\Http\Controllers\Planilhas\PlanilhaManutencaoCalibracaoEquipamentoController::class, 'index']);
-    Route::get('/planilha/manutencao-calibracao-equipamento/listar', [App\Http\Controllers\Planilhas\PlanilhaManutencaoCalibracaoEquipamentoController::class, 'list']);
-    Route::get('/planilha/manutencao-calibracao-equipamento/encontrar', [App\Http\Controllers\Planilhas\PlanilhaManutencaoCalibracaoEquipamentoController::class, 'find']);
-    Route::post('/planilha/manutencao-calibracao-equipamento/cadastrar', [App\Http\Controllers\Planilhas\PlanilhaManutencaoCalibracaoEquipamentoController::class, 'store']);
-    Route::put('/planilha/manutencao-calibracao-equipamento/editar', [App\Http\Controllers\Planilhas\PlanilhaManutencaoCalibracaoEquipamentoController::class, 'update']);
-    Route::delete('/planilha/manutencao-calibracao-equipamento/deletar', [App\Http\Controllers\Planilhas\PlanilhaManutencaoCalibracaoEquipamentoController::class, 'destroy']);
-    Route::get('/planilha/manutencao-calibracao-equipamento/visualizar', [App\Http\Controllers\Planilhas\PlanilhaManutencaoCalibracaoEquipamentoController::class, 'gerarPDF']);
+    Route::get('/planilha/manutencao-calibracao-equipamento', [PlanilhaManutencaoCalibracaoEquipamentoController::class, 'index']);
+    Route::get('/planilha/manutencao-calibracao-equipamento/listar', [PlanilhaManutencaoCalibracaoEquipamentoController::class, 'list']);
+    Route::get('/planilha/manutencao-calibracao-equipamento/encontrar', [PlanilhaManutencaoCalibracaoEquipamentoController::class, 'find']);
+    Route::post('/planilha/manutencao-calibracao-equipamento/cadastrar', [PlanilhaManutencaoCalibracaoEquipamentoController::class, 'store']);
+    Route::put('/planilha/manutencao-calibracao-equipamento/editar', [PlanilhaManutencaoCalibracaoEquipamentoController::class, 'update']);
+    Route::delete('/planilha/manutencao-calibracao-equipamento/deletar', [PlanilhaManutencaoCalibracaoEquipamentoController::class, 'destroy']);
+    Route::get('/planilha/manutencao-calibracao-equipamento/visualizar', [PlanilhaManutencaoCalibracaoEquipamentoController::class, 'gerarPDF']);
 
     // Planilha registro-limpeza
-    Route::get('/planilha/registro-limpeza', [App\Http\Controllers\Planilhas\PlanilhaRegistroLimpezaController::class, 'index']);
-    Route::get('/planilha/registro-limpeza/listar', [App\Http\Controllers\Planilhas\PlanilhaRegistroLimpezaController::class, 'list']);
-    Route::get('/planilha/registro-limpeza/encontrar', [App\Http\Controllers\Planilhas\PlanilhaRegistroLimpezaController::class, 'find']);
-    Route::post('/planilha/registro-limpeza/cadastrar', [App\Http\Controllers\Planilhas\PlanilhaRegistroLimpezaController::class, 'store']);
-    Route::put('/planilha/registro-limpeza/editar', [App\Http\Controllers\Planilhas\PlanilhaRegistroLimpezaController::class, 'update']);
-    Route::delete('/planilha/registro-limpeza/deletar', [App\Http\Controllers\Planilhas\PlanilhaRegistroLimpezaController::class, 'destroy']);
-    Route::get('/planilha/registro-limpeza/visualizar', [App\Http\Controllers\Planilhas\PlanilhaRegistroLimpezaController::class, 'gerarPDF']);
+    Route::get('/planilha/registro-limpeza', [PlanilhaRegistroLimpezaController::class, 'index']);
+    Route::get('/planilha/registro-limpeza/listar', [PlanilhaRegistroLimpezaController::class, 'list']);
+    Route::get('/planilha/registro-limpeza/encontrar', [PlanilhaRegistroLimpezaController::class, 'find']);
+    Route::post('/planilha/registro-limpeza/cadastrar', [PlanilhaRegistroLimpezaController::class, 'store']);
+    Route::put('/planilha/registro-limpeza/editar', [PlanilhaRegistroLimpezaController::class, 'update']);
+    Route::delete('/planilha/registro-limpeza/deletar', [PlanilhaRegistroLimpezaController::class, 'destroy']);
+    Route::get('/planilha/registro-limpeza/visualizar', [PlanilhaRegistroLimpezaController::class, 'gerarPDF']);
 
     // Planilha recebimento-materia-prima
-    Route::get('/planilha/recebimento-materia-prima', [App\Http\Controllers\Planilhas\PlanilhaRecebimentoMateriaPrimaController::class, 'index']);
-    Route::get('/planilha/recebimento-materia-prima/listar', [App\Http\Controllers\Planilhas\PlanilhaRecebimentoMateriaPrimaController::class, 'list']);
-    Route::get('/planilha/recebimento-materia-prima/encontrar', [App\Http\Controllers\Planilhas\PlanilhaRecebimentoMateriaPrimaController::class, 'find']);
-    Route::post('/planilha/recebimento-materia-prima/cadastrar', [App\Http\Controllers\Planilhas\PlanilhaRecebimentoMateriaPrimaController::class, 'store']);
-    Route::put('/planilha/recebimento-materia-prima/editar', [App\Http\Controllers\Planilhas\PlanilhaRecebimentoMateriaPrimaController::class, 'update']);
-    Route::delete('/planilha/recebimento-materia-prima/deletar', [App\Http\Controllers\Planilhas\PlanilhaRecebimentoMateriaPrimaController::class, 'destroy']);
-    Route::get('/planilha/recebimento-materia-prima/visualizar', [App\Http\Controllers\Planilhas\PlanilhaRecebimentoMateriaPrimaController::class, 'gerarPDF']);
+    Route::get('/planilha/recebimento-materia-prima', [PlanilhaRecebimentoMateriaPrimaController::class, 'index']);
+    Route::get('/planilha/recebimento-materia-prima/listar', [PlanilhaRecebimentoMateriaPrimaController::class, 'list']);
+    Route::get('/planilha/recebimento-materia-prima/encontrar', [PlanilhaRecebimentoMateriaPrimaController::class, 'find']);
+    Route::post('/planilha/recebimento-materia-prima/cadastrar', [PlanilhaRecebimentoMateriaPrimaController::class, 'store']);
+    Route::put('/planilha/recebimento-materia-prima/editar', [PlanilhaRecebimentoMateriaPrimaController::class, 'update']);
+    Route::delete('/planilha/recebimento-materia-prima/deletar', [PlanilhaRecebimentoMateriaPrimaController::class, 'destroy']);
+    Route::get('/planilha/recebimento-materia-prima/visualizar', [PlanilhaRecebimentoMateriaPrimaController::class, 'gerarPDF']);
 
     // Planilha resfriamento-rapido-alimento
-    Route::get('/planilha/resfriamento-rapido-alimento', [App\Http\Controllers\Planilhas\PlanilhaResfriamentoRapidoAlimentoController::class, 'index']);
-    Route::get('/planilha/resfriamento-rapido-alimento/listar', [App\Http\Controllers\Planilhas\PlanilhaResfriamentoRapidoAlimentoController::class, 'list']);
-    Route::get('/planilha/resfriamento-rapido-alimento/encontrar', [App\Http\Controllers\Planilhas\PlanilhaResfriamentoRapidoAlimentoController::class, 'find']);
-    Route::post('/planilha/resfriamento-rapido-alimento/cadastrar', [App\Http\Controllers\Planilhas\PlanilhaResfriamentoRapidoAlimentoController::class, 'store']);
-    Route::put('/planilha/resfriamento-rapido-alimento/editar', [App\Http\Controllers\Planilhas\PlanilhaResfriamentoRapidoAlimentoController::class, 'update']);
-    Route::delete('/planilha/resfriamento-rapido-alimento/deletar', [App\Http\Controllers\Planilhas\PlanilhaResfriamentoRapidoAlimentoController::class, 'destroy']);
-    Route::get('/planilha/resfriamento-rapido-alimento/visualizar', [App\Http\Controllers\Planilhas\PlanilhaResfriamentoRapidoAlimentoController::class, 'gerarPDF']);
+    Route::get('/planilha/resfriamento-rapido-alimento', [PlanilhaResfriamentoRapidoAlimentoController::class, 'index']);
+    Route::get('/planilha/resfriamento-rapido-alimento/listar', [PlanilhaResfriamentoRapidoAlimentoController::class, 'list']);
+    Route::get('/planilha/resfriamento-rapido-alimento/encontrar', [PlanilhaResfriamentoRapidoAlimentoController::class, 'find']);
+    Route::post('/planilha/resfriamento-rapido-alimento/cadastrar', [PlanilhaResfriamentoRapidoAlimentoController::class, 'store']);
+    Route::put('/planilha/resfriamento-rapido-alimento/editar', [PlanilhaResfriamentoRapidoAlimentoController::class, 'update']);
+    Route::delete('/planilha/resfriamento-rapido-alimento/deletar', [PlanilhaResfriamentoRapidoAlimentoController::class, 'destroy']);
+    Route::get('/planilha/resfriamento-rapido-alimento/visualizar', [PlanilhaResfriamentoRapidoAlimentoController::class, 'gerarPDF']);
 
     // Planilha reaquecimento-alimento
-    Route::get('/planilha/reaquecimento-alimento', [App\Http\Controllers\Planilhas\PlanilhaReaquecimentoAlimentoController::class, 'index']);
-    Route::get('/planilha/reaquecimento-alimento/listar', [App\Http\Controllers\Planilhas\PlanilhaReaquecimentoAlimentoController::class, 'list']);
-    Route::get('/planilha/reaquecimento-alimento/encontrar', [App\Http\Controllers\Planilhas\PlanilhaReaquecimentoAlimentoController::class, 'find']);
-    Route::post('/planilha/reaquecimento-alimento/cadastrar', [App\Http\Controllers\Planilhas\PlanilhaReaquecimentoAlimentoController::class, 'store']);
-    Route::put('/planilha/reaquecimento-alimento/editar', [App\Http\Controllers\Planilhas\PlanilhaReaquecimentoAlimentoController::class, 'update']);
-    Route::delete('/planilha/reaquecimento-alimento/deletar', [App\Http\Controllers\Planilhas\PlanilhaReaquecimentoAlimentoController::class, 'destroy']);
-    Route::get('/planilha/reaquecimento-alimento/visualizar', [App\Http\Controllers\Planilhas\PlanilhaReaquecimentoAlimentoController::class, 'gerarPDF']);
+    Route::get('/planilha/reaquecimento-alimento', [PlanilhaReaquecimentoAlimentoController::class, 'index']);
+    Route::get('/planilha/reaquecimento-alimento/listar', [PlanilhaReaquecimentoAlimentoController::class, 'list']);
+    Route::get('/planilha/reaquecimento-alimento/encontrar', [PlanilhaReaquecimentoAlimentoController::class, 'find']);
+    Route::post('/planilha/reaquecimento-alimento/cadastrar', [PlanilhaReaquecimentoAlimentoController::class, 'store']);
+    Route::put('/planilha/reaquecimento-alimento/editar', [PlanilhaReaquecimentoAlimentoController::class, 'update']);
+    Route::delete('/planilha/reaquecimento-alimento/deletar', [PlanilhaReaquecimentoAlimentoController::class, 'destroy']);
+    Route::get('/planilha/reaquecimento-alimento/visualizar', [PlanilhaReaquecimentoAlimentoController::class, 'gerarPDF']);
 
     // Planilha registro-nao-conformidade-detectada-auto-avaliacao
-    Route::get('/planilha/registro-nao-conformidade-detectada-auto-avaliacao', [App\Http\Controllers\Planilhas\PlanilhaRegistroNaoConformidadeDetectadaAutoAvaliacaoController::class, 'index']);
-    Route::get('/planilha/registro-nao-conformidade-detectada-auto-avaliacao/listar', [App\Http\Controllers\Planilhas\PlanilhaRegistroNaoConformidadeDetectadaAutoAvaliacaoController::class, 'list']);
-    Route::get('/planilha/registro-nao-conformidade-detectada-auto-avaliacao/encontrar', [App\Http\Controllers\Planilhas\PlanilhaRegistroNaoConformidadeDetectadaAutoAvaliacaoController::class, 'find']);
-    Route::post('/planilha/registro-nao-conformidade-detectada-auto-avaliacao/cadastrar', [App\Http\Controllers\Planilhas\PlanilhaRegistroNaoConformidadeDetectadaAutoAvaliacaoController::class, 'store']);
-    Route::put('/planilha/registro-nao-conformidade-detectada-auto-avaliacao/editar', [App\Http\Controllers\Planilhas\PlanilhaRegistroNaoConformidadeDetectadaAutoAvaliacaoController::class, 'update']);
-    Route::delete('/planilha/registro-nao-conformidade-detectada-auto-avaliacao/deletar', [App\Http\Controllers\Planilhas\PlanilhaRegistroNaoConformidadeDetectadaAutoAvaliacaoController::class, 'destroy']);
-    Route::get('/planilha/registro-nao-conformidade-detectada-auto-avaliacao/visualizar', [App\Http\Controllers\Planilhas\PlanilhaRegistroNaoConformidadeDetectadaAutoAvaliacaoController::class, 'gerarPDF']);
+    Route::get('/planilha/registro-nao-conformidade-detectada-auto-avaliacao', [PlanilhaRegistroNaoConformidadeDetectadaAutoAvaliacaoController::class, 'index']);
+    Route::get('/planilha/registro-nao-conformidade-detectada-auto-avaliacao/listar', [PlanilhaRegistroNaoConformidadeDetectadaAutoAvaliacaoController::class, 'list']);
+    Route::get('/planilha/registro-nao-conformidade-detectada-auto-avaliacao/encontrar', [PlanilhaRegistroNaoConformidadeDetectadaAutoAvaliacaoController::class, 'find']);
+    Route::post('/planilha/registro-nao-conformidade-detectada-auto-avaliacao/cadastrar', [PlanilhaRegistroNaoConformidadeDetectadaAutoAvaliacaoController::class, 'store']);
+    Route::put('/planilha/registro-nao-conformidade-detectada-auto-avaliacao/editar', [PlanilhaRegistroNaoConformidadeDetectadaAutoAvaliacaoController::class, 'update']);
+    Route::delete('/planilha/registro-nao-conformidade-detectada-auto-avaliacao/deletar', [PlanilhaRegistroNaoConformidadeDetectadaAutoAvaliacaoController::class, 'destroy']);
+    Route::get('/planilha/registro-nao-conformidade-detectada-auto-avaliacao/visualizar', [PlanilhaRegistroNaoConformidadeDetectadaAutoAvaliacaoController::class, 'gerarPDF']);
 
     // Planilha temperatura_alimento_banho_maria
-    Route::get('/planilha/temperatura-alimento-banho-maria', [App\Http\Controllers\Planilhas\PlanilhaTemperaturaAlimentoBanhoMariaController::class, 'index']);
-    Route::get('/planilha/temperatura-alimento-banho-maria/listar', [App\Http\Controllers\Planilhas\PlanilhaTemperaturaAlimentoBanhoMariaController::class, 'list']);
-    Route::get('/planilha/temperatura-alimento-banho-maria/encontrar', [App\Http\Controllers\Planilhas\PlanilhaTemperaturaAlimentoBanhoMariaController::class, 'find']);
-    Route::post('/planilha/temperatura-alimento-banho-maria/cadastrar', [App\Http\Controllers\Planilhas\PlanilhaTemperaturaAlimentoBanhoMariaController::class, 'store']);
-    Route::put('/planilha/temperatura-alimento-banho-maria/editar', [App\Http\Controllers\Planilhas\PlanilhaTemperaturaAlimentoBanhoMariaController::class, 'update']);
-    Route::delete('/planilha/temperatura-alimento-banho-maria/deletar', [App\Http\Controllers\Planilhas\PlanilhaTemperaturaAlimentoBanhoMariaController::class, 'destroy']);
-    Route::get('/planilha/temperatura-alimento-banho-maria/visualizar', [App\Http\Controllers\Planilhas\PlanilhaTemperaturaAlimentoBanhoMariaController::class, 'gerarPDF']);
+    Route::get('/planilha/temperatura-alimento-banho-maria', [PlanilhaTemperaturaAlimentoBanhoMariaController::class, 'index']);
+    Route::get('/planilha/temperatura-alimento-banho-maria/listar', [PlanilhaTemperaturaAlimentoBanhoMariaController::class, 'list']);
+    Route::get('/planilha/temperatura-alimento-banho-maria/encontrar', [PlanilhaTemperaturaAlimentoBanhoMariaController::class, 'find']);
+    Route::post('/planilha/temperatura-alimento-banho-maria/cadastrar', [PlanilhaTemperaturaAlimentoBanhoMariaController::class, 'store']);
+    Route::put('/planilha/temperatura-alimento-banho-maria/editar', [PlanilhaTemperaturaAlimentoBanhoMariaController::class, 'update']);
+    Route::delete('/planilha/temperatura-alimento-banho-maria/deletar', [PlanilhaTemperaturaAlimentoBanhoMariaController::class, 'destroy']);
+    Route::get('/planilha/temperatura-alimento-banho-maria/visualizar', [PlanilhaTemperaturaAlimentoBanhoMariaController::class, 'gerarPDF']);
 
     // Planilha temperatura_alimento_distribuicao
-    Route::get('/planilha/temperatura-alimento-distribuicao', [App\Http\Controllers\Planilhas\PlanilhaTemperaturaAlimentoDistribuicaoController::class, 'index']);
-    Route::get('/planilha/temperatura-alimento-distribuicao/listar', [App\Http\Controllers\Planilhas\PlanilhaTemperaturaAlimentoDistribuicaoController::class, 'list']);
-    Route::get('/planilha/temperatura-alimento-distribuicao/encontrar', [App\Http\Controllers\Planilhas\PlanilhaTemperaturaAlimentoDistribuicaoController::class, 'find']);
-    Route::post('/planilha/temperatura-alimento-distribuicao/cadastrar', [App\Http\Controllers\Planilhas\PlanilhaTemperaturaAlimentoDistribuicaoController::class, 'store']);
-    Route::put('/planilha/temperatura-alimento-distribuicao/editar', [App\Http\Controllers\Planilhas\PlanilhaTemperaturaAlimentoDistribuicaoController::class, 'update']);
-    Route::delete('/planilha/temperatura-alimento-distribuicao/deletar', [App\Http\Controllers\Planilhas\PlanilhaTemperaturaAlimentoDistribuicaoController::class, 'destroy']);
-    Route::get('/planilha/temperatura-alimento-distribuicao/visualizar', [App\Http\Controllers\Planilhas\PlanilhaTemperaturaAlimentoDistribuicaoController::class, 'gerarPDF']);
+    Route::get('/planilha/temperatura-alimento-distribuicao', [PlanilhaTemperaturaAlimentoDistribuicaoController::class, 'index']);
+    Route::get('/planilha/temperatura-alimento-distribuicao/listar', [PlanilhaTemperaturaAlimentoDistribuicaoController::class, 'list']);
+    Route::get('/planilha/temperatura-alimento-distribuicao/encontrar', [PlanilhaTemperaturaAlimentoDistribuicaoController::class, 'find']);
+    Route::post('/planilha/temperatura-alimento-distribuicao/cadastrar', [PlanilhaTemperaturaAlimentoDistribuicaoController::class, 'store']);
+    Route::put('/planilha/temperatura-alimento-distribuicao/editar', [PlanilhaTemperaturaAlimentoDistribuicaoController::class, 'update']);
+    Route::delete('/planilha/temperatura-alimento-distribuicao/deletar', [PlanilhaTemperaturaAlimentoDistribuicaoController::class, 'destroy']);
+    Route::get('/planilha/temperatura-alimento-distribuicao/visualizar', [PlanilhaTemperaturaAlimentoDistribuicaoController::class, 'gerarPDF']);
 
     // Planilha temperatura_alimento_distribuicao_produto
-    Route::get('/planilha/temperatura-alimento-distribuicao-produto/listar', [App\Http\Controllers\Planilhas\PlanilhaTemperaturaAlimentoDistribuicaoProdutoController::class, 'list']);
+    Route::get('/planilha/temperatura-alimento-distribuicao-produto/listar', [PlanilhaTemperaturaAlimentoDistribuicaoProdutoController::class, 'list']);
 
     // Planilha temperatura_alimento_distribuicao_config
-    Route::get('/planilha/temperatura-alimento-distribuicao-config/listar', [App\Http\Controllers\Planilhas\PlanilhaTemperaturaAlimentoDistribuicaoConfigController::class, 'list']);
-    Route::post('/planilha/temperatura-alimento-distribuicao-config/cadastrar', [App\Http\Controllers\Planilhas\PlanilhaTemperaturaAlimentoDistribuicaoConfigController::class, 'store']);
+    Route::get('/planilha/temperatura-alimento-distribuicao-config/listar', [PlanilhaTemperaturaAlimentoDistribuicaoConfigController::class, 'list']);
+    Route::post('/planilha/temperatura-alimento-distribuicao-config/cadastrar', [PlanilhaTemperaturaAlimentoDistribuicaoConfigController::class, 'store']);
 
     // Planilha grupo_amostra_prato
-    Route::get('/planilha/grupo-amostra-prato', [App\Http\Controllers\Planilhas\PlanilhaGrupoAmostraPratoController::class, 'index']);
-    Route::get('/planilha/grupo-amostra-prato/listar', [App\Http\Controllers\Planilhas\PlanilhaGrupoAmostraPratoController::class, 'list']);
-    Route::get('/planilha/grupo-amostra-prato/encontrar', [App\Http\Controllers\Planilhas\PlanilhaGrupoAmostraPratoController::class, 'find']);
-    Route::post('/planilha/grupo-amostra-prato/cadastrar', [App\Http\Controllers\Planilhas\PlanilhaGrupoAmostraPratoController::class, 'store']);
-    Route::put('/planilha/grupo-amostra-prato/editar', [App\Http\Controllers\Planilhas\PlanilhaGrupoAmostraPratoController::class, 'update']);
-    Route::delete('/planilha/grupo-amostra-prato/deletar', [App\Http\Controllers\Planilhas\PlanilhaGrupoAmostraPratoController::class, 'destroy']);
-    Route::get('/planilha/grupo-amostra-prato/visualizar', [App\Http\Controllers\Planilhas\PlanilhaGrupoAmostraPratoController::class, 'gerarPDF']);
+    Route::get('/planilha/grupo-amostra-prato', [PlanilhaGrupoAmostraPratoController::class, 'index']);
+    Route::get('/planilha/grupo-amostra-prato/listar', [PlanilhaGrupoAmostraPratoController::class, 'list']);
+    Route::get('/planilha/grupo-amostra-prato/encontrar', [PlanilhaGrupoAmostraPratoController::class, 'find']);
+    Route::post('/planilha/grupo-amostra-prato/cadastrar', [PlanilhaGrupoAmostraPratoController::class, 'store']);
+    Route::put('/planilha/grupo-amostra-prato/editar', [PlanilhaGrupoAmostraPratoController::class, 'update']);
+    Route::delete('/planilha/grupo-amostra-prato/deletar', [PlanilhaGrupoAmostraPratoController::class, 'destroy']);
+    Route::get('/planilha/grupo-amostra-prato/visualizar', [PlanilhaGrupoAmostraPratoController::class, 'gerarPDF']);
 
     // Planilha avaliacao_manejo_residuo
-    Route::get('/planilha/avaliacao-manejo-residuo', [App\Http\Controllers\Planilhas\PlanilhaAvaliacaoManejoResiduoController::class, 'index']);
-    Route::get('/planilha/avaliacao-manejo-residuo/listar', [App\Http\Controllers\Planilhas\PlanilhaAvaliacaoManejoResiduoController::class, 'list']);
-    Route::get('/planilha/avaliacao-manejo-residuo/encontrar', [App\Http\Controllers\Planilhas\PlanilhaAvaliacaoManejoResiduoController::class, 'find']);
-    Route::post('/planilha/avaliacao-manejo-residuo/cadastrar', [App\Http\Controllers\Planilhas\PlanilhaAvaliacaoManejoResiduoController::class, 'store']);
-    Route::put('/planilha/avaliacao-manejo-residuo/editar', [App\Http\Controllers\Planilhas\PlanilhaAvaliacaoManejoResiduoController::class, 'update']);
-    Route::delete('/planilha/avaliacao-manejo-residuo/deletar', [App\Http\Controllers\Planilhas\PlanilhaAvaliacaoManejoResiduoController::class, 'destroy']);
-    Route::get('/planilha/avaliacao-manejo-residuo/visualizar', [App\Http\Controllers\Planilhas\PlanilhaAvaliacaoManejoResiduoController::class, 'gerarPDF']);
+    Route::get('/planilha/avaliacao-manejo-residuo', [PlanilhaAvaliacaoManejoResiduoController::class, 'index']);
+    Route::get('/planilha/avaliacao-manejo-residuo/listar', [PlanilhaAvaliacaoManejoResiduoController::class, 'list']);
+    Route::get('/planilha/avaliacao-manejo-residuo/encontrar', [PlanilhaAvaliacaoManejoResiduoController::class, 'find']);
+    Route::post('/planilha/avaliacao-manejo-residuo/cadastrar', [PlanilhaAvaliacaoManejoResiduoController::class, 'store']);
+    Route::put('/planilha/avaliacao-manejo-residuo/editar', [PlanilhaAvaliacaoManejoResiduoController::class, 'update']);
+    Route::delete('/planilha/avaliacao-manejo-residuo/deletar', [PlanilhaAvaliacaoManejoResiduoController::class, 'destroy']);
+    Route::get('/planilha/avaliacao-manejo-residuo/visualizar', [PlanilhaAvaliacaoManejoResiduoController::class, 'gerarPDF']);
 
     // Planilha ocorrencia_praga
-    Route::get('/planilha/ocorrencia-praga', [App\Http\Controllers\Planilhas\PlanilhaOcorrenciaPragaController::class, 'index']);
-    Route::get('/planilha/ocorrencia-praga/listar', [App\Http\Controllers\Planilhas\PlanilhaOcorrenciaPragaController::class, 'list']);
-    Route::get('/planilha/ocorrencia-praga/encontrar', [App\Http\Controllers\Planilhas\PlanilhaOcorrenciaPragaController::class, 'find']);
-    Route::post('/planilha/ocorrencia-praga/cadastrar', [App\Http\Controllers\Planilhas\PlanilhaOcorrenciaPragaController::class, 'store']);
-    Route::put('/planilha/ocorrencia-praga/editar', [App\Http\Controllers\Planilhas\PlanilhaOcorrenciaPragaController::class, 'update']);
-    Route::delete('/planilha/ocorrencia-praga/deletar', [App\Http\Controllers\Planilhas\PlanilhaOcorrenciaPragaController::class, 'destroy']);
-    Route::get('/planilha/ocorrencia-praga/visualizar', [App\Http\Controllers\Planilhas\PlanilhaOcorrenciaPragaController::class, 'gerarPDF']);
+    Route::get('/planilha/ocorrencia-praga', [PlanilhaOcorrenciaPragaController::class, 'index']);
+    Route::get('/planilha/ocorrencia-praga/listar', [PlanilhaOcorrenciaPragaController::class, 'list']);
+    Route::get('/planilha/ocorrencia-praga/encontrar', [PlanilhaOcorrenciaPragaController::class, 'find']);
+    Route::post('/planilha/ocorrencia-praga/cadastrar', [PlanilhaOcorrenciaPragaController::class, 'store']);
+    Route::put('/planilha/ocorrencia-praga/editar', [PlanilhaOcorrenciaPragaController::class, 'update']);
+    Route::delete('/planilha/ocorrencia-praga/deletar', [PlanilhaOcorrenciaPragaController::class, 'destroy']);
+    Route::get('/planilha/ocorrencia-praga/visualizar', [PlanilhaOcorrenciaPragaController::class, 'gerarPDF']);
 
     // Planilha temperatura_equipamento_area_climatizada
-    Route::get('/planilha/temperatura-equipamento-area-climatizada', [App\Http\Controllers\Planilhas\PlanilhaTemperaturaEquipamentoAreaClimatizadaController::class, 'index']);
-    Route::get('/planilha/temperatura-equipamento-area-climatizada/listar', [App\Http\Controllers\Planilhas\PlanilhaTemperaturaEquipamentoAreaClimatizadaController::class, 'list']);
-    Route::get('/planilha/temperatura-equipamento-area-climatizada/encontrar', [App\Http\Controllers\Planilhas\PlanilhaTemperaturaEquipamentoAreaClimatizadaController::class, 'find']);
-    Route::post('/planilha/temperatura-equipamento-area-climatizada/cadastrar', [App\Http\Controllers\Planilhas\PlanilhaTemperaturaEquipamentoAreaClimatizadaController::class, 'store']);
-    Route::put('/planilha/temperatura-equipamento-area-climatizada/editar', [App\Http\Controllers\Planilhas\PlanilhaTemperaturaEquipamentoAreaClimatizadaController::class, 'update']);
-    Route::delete('/planilha/temperatura-equipamento-area-climatizada/deletar', [App\Http\Controllers\Planilhas\PlanilhaTemperaturaEquipamentoAreaClimatizadaController::class, 'destroy']);
-    Route::get('/planilha/temperatura-equipamento-area-climatizada/visualizar', [App\Http\Controllers\Planilhas\PlanilhaTemperaturaEquipamentoAreaClimatizadaController::class, 'gerarPDF']);
+    Route::get('/planilha/temperatura-equipamento-area-climatizada', [PlanilhaTemperaturaEquipamentoAreaClimatizadaController::class, 'index']);
+    Route::get('/planilha/temperatura-equipamento-area-climatizada/listar', [PlanilhaTemperaturaEquipamentoAreaClimatizadaController::class, 'list']);
+    Route::get('/planilha/temperatura-equipamento-area-climatizada/encontrar', [PlanilhaTemperaturaEquipamentoAreaClimatizadaController::class, 'find']);
+    Route::post('/planilha/temperatura-equipamento-area-climatizada/cadastrar', [PlanilhaTemperaturaEquipamentoAreaClimatizadaController::class, 'store']);
+    Route::put('/planilha/temperatura-equipamento-area-climatizada/editar', [PlanilhaTemperaturaEquipamentoAreaClimatizadaController::class, 'update']);
+    Route::delete('/planilha/temperatura-equipamento-area-climatizada/deletar', [PlanilhaTemperaturaEquipamentoAreaClimatizadaController::class, 'destroy']);
+    Route::get('/planilha/temperatura-equipamento-area-climatizada/visualizar', [PlanilhaTemperaturaEquipamentoAreaClimatizadaController::class, 'gerarPDF']);
 
     // Parametros
-    Route::get('/parametros', [App\Http\Controllers\ParameterController::class, 'index']);
-    Route::get('/parametro/listar', [App\Http\Controllers\ParameterController::class, 'list']);
-    Route::get('/parametro/encontrar', [App\Http\Controllers\ParameterController::class, 'find']);
-    Route::post('/parametro/cadastrar', [App\Http\Controllers\ParameterController::class, 'store']);
-    Route::put('/parametro/editar', [App\Http\Controllers\ParameterController::class, 'update']);
-    Route::delete('/parametro/deletar', [App\Http\Controllers\ParameterController::class, 'destroy']);
+    Route::get('/parametros', [ParameterController::class, 'index']);
+    Route::get('/parametro/listar', [ParameterController::class, 'list']);
+    Route::get('/parametro/encontrar', [ParameterController::class, 'find']);
+    Route::post('/parametro/cadastrar', [ParameterController::class, 'store']);
+    Route::put('/parametro/editar', [ParameterController::class, 'update']);
+    Route::delete('/parametro/deletar', [ParameterController::class, 'destroy']);
 
     // Tipos de parametros
-    Route::get('/tipo-parametros', [App\Http\Controllers\ParameterTypeController::class, 'index']);
-    Route::get('/tipo-parametro/listar', [App\Http\Controllers\ParameterTypeController::class, 'list']);
-    Route::post('/tipo-parametro/cadastrar', [App\Http\Controllers\ParameterTypeController::class, 'store']);
-    Route::put('/tipo-parametro/editar', [App\Http\Controllers\ParameterTypeController::class, 'update']);
-    Route::delete('/tipo-parametro/deletar', [App\Http\Controllers\ParameterTypeController::class, 'destroy']);
+    Route::get('/tipo-parametros', [ParameterTypeController::class, 'index']);
+    Route::get('/tipo-parametro/listar', [ParameterTypeController::class, 'list']);
+    Route::post('/tipo-parametro/cadastrar', [ParameterTypeController::class, 'store']);
+    Route::put('/tipo-parametro/editar', [ParameterTypeController::class, 'update']);
+    Route::delete('/tipo-parametro/deletar', [ParameterTypeController::class, 'destroy']);
 
     // Usuários
-    Route::get('/usuarios', [App\Http\Controllers\UserController::class, 'index']);
-    Route::get('/usuario/listar', [App\Http\Controllers\UserController::class, 'list']);
-    Route::post('/usuario/cadastrar', [App\Http\Controllers\UserController::class, 'store']);
-    Route::put('/usuario/editar', [App\Http\Controllers\UserController::class, 'update']);
-    Route::put('/usuario/editar-senha', [App\Http\Controllers\UserController::class, 'updatePassword']);
-    Route::delete('/usuario/deletar', [App\Http\Controllers\UserController::class, 'destroy']);
+    Route::get('/usuarios', [UserController::class, 'index']);
+    Route::get('/usuario/listar', [UserController::class, 'list']);
+    Route::post('/usuario/cadastrar', [UserController::class, 'store']);
+    Route::put('/usuario/editar', [UserController::class, 'update']);
+    Route::put('/usuario/editar-senha', [UserController::class, 'updatePassword']);
+    Route::delete('/usuario/deletar', [UserController::class, 'destroy']);
 
     Route::group(['middleware' => ['admin']], function () {
 
         // Unidades
-        Route::get('/unidades', [App\Http\Controllers\UnitController::class, 'index']);
-        Route::get('/unidade/listar', [App\Http\Controllers\UnitController::class, 'list']);
-        Route::post('/unidade/cadastrar', [App\Http\Controllers\UnitController::class, 'store']);
-        Route::put('/unidade/editar', [App\Http\Controllers\UnitController::class, 'update']);
-        Route::delete('/unidade/deletar', [App\Http\Controllers\UnitController::class, 'destroy']);
+        Route::get('/unidades', [UnitController::class, 'index']);
+        Route::get('/unidade/listar', [UnitController::class, 'list']);
+        Route::post('/unidade/cadastrar', [UnitController::class, 'store']);
+        Route::put('/unidade/editar', [UnitController::class, 'update']);
+        Route::delete('/unidade/deletar', [UnitController::class, 'destroy']);
 
     });
 

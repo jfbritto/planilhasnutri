@@ -123,9 +123,9 @@
                         <td>{{ strtoupper($item->periodo) }}</td>
                         <td>{{ $item->produto }}</td>
                         <td>{{ $item->primeira_hora }}</td>
-                        <td>{{ $item->primeira_tremperatura }}</td>
+                        <td>{{ $item->primeira_temperatura }}</td>
                         <td>{{ $item->segunda_hora }}</td>
-                        <td>{{ $item->segunda_tremperatura }}</td>
+                        <td>{{ $item->segunda_temperatura }}</td>
                         <td>{{ $item->acao_corretiva }}</td>
                     </tr>
                 @endforeach

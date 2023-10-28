@@ -19,9 +19,9 @@ class CreatePlanilhaTemperaturaAlimentoBanhoMariasTable extends Migration
             $table->string('periodo');
             $table->integer('id_parameter_produto');
             $table->string('primeira_hora');
-            $table->string('primeira_tremperatura');
+            $table->string('primeira_temperatura');
             $table->string('segunda_hora')->nullable();
-            $table->string('segunda_tremperatura')->nullable();
+            $table->string('segunda_temperatura')->nullable();
             $table->string('acao_corretiva')->nullable();
             $table->integer('id_user');
             $table->string('status', 1)->default('A');

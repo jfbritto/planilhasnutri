@@ -134,12 +134,44 @@ class PlanilhaTemperaturaAlimentoDistribuicaoService
         return $response;
     }
 
-    public function find($id)
+    public function find($filter_array)
     {
         $response = [];
 
         try{
-            $return = DB::select( DB::raw("SELECT * FROM planilha_temperatura_alimento_distribuicaos main_tb WHERE main_tb.status = 'A' AND id = {$id}"));
+
+            $condition = "";
+            if (auth()->user()->id_unit) {
+                $condition = " and us.id_unit = ".auth()->user()->id_unit;
+            }
+
+            $filter = "";
+            if (!empty($filter_array['id_planilha_filter'])) {
+                $filter .= " and main_tb.id = '{$filter_array['id_planilha_filter']}'";
+            }
+            $return = DB::select( DB::raw("SELECT
+                                                us.name as usuario,
+                                                ifnull(un.name, 'Controle') as unidade,
+                                                ifnull(p_ev.name, '-') as evento,
+                                                p_pr.name as produto,
+                                                p_re.name as responsavel,
+                                                ptadp.hora_1,
+                                                ptadp.temperatura_1,
+                                                ptadp.hora_2,
+                                                ptadp.temperatura_2,
+                                                main_tb.*
+                                            FROM
+                                                planilha_temperatura_alimento_distribuicaos main_tb
+                                                JOIN parameters p_re ON main_tb.id_parameter_responsavel = p_re.id
+                                                LEFT JOIN parameters p_ev ON main_tb.id_parameter_evento = p_ev.id
+                                                LEFT JOIN planilha_temperatura_alimento_distribuicao_produtos ptadp ON main_tb.id = ptadp.id_planilha_distribuicao
+                                                LEFT JOIN parameters p_pr ON ptadp.id_parameter_produto = p_pr.id
+                                                JOIN users us ON main_tb.id_user = us.id {$condition}
+                                                LEFT JOIN units un ON us.id_unit = un.id
+                                            WHERE
+                                                main_tb.status = 'A' {$filter}
+                                            ORDER BY
+                                                main_tb.id DESC"));
 
             $response = ['status' => 'success', 'data' => $return];
         }catch(Exception $e){
