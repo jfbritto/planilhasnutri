@@ -326,7 +326,13 @@ $(document).ready(function () {
     $("#periodo").change(function () {
 
         $("#dolly").html("")
-        const produtos = preencherTelaComItensAutomaticamente(this.value);
+
+        if (this.value) {
+            const produtos = preencherTelaComItensAutomaticamente(this.value);
+        } else {
+            adicionarCamposNaTela()
+        }
+
     });
 
     async function preencherTelaComItensAutomaticamente(periodo) {
