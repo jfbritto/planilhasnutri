@@ -346,6 +346,11 @@ return [
             'icon' => 'fas fa-fw fa-file-lines'
         ],
         [
+            'text' => 'Serviços',
+            'url'  => 'servicos',
+            'icon' => 'fas fa-fw fa-calendar'
+        ],
+        [
             'text' => 'Parâmetros',
             'url'  => 'tipo-parametros',
             'icon' => 'fas fa-fw fa-cog'

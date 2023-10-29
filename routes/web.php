@@ -30,6 +30,7 @@ use App\Http\Controllers\ParameterTypeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\HistoricoController;
+use App\Http\Controllers\ServicoController;
 
 Route::get('/', [AuthenticatedSessionController::class, 'create'])->name('login');
 Route::get('login', [AuthenticatedSessionController::class, 'create'])->name('login');
@@ -230,6 +231,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/tipo-parametro/cadastrar', [ParameterTypeController::class, 'store']);
     Route::put('/tipo-parametro/editar', [ParameterTypeController::class, 'update']);
     Route::delete('/tipo-parametro/deletar', [ParameterTypeController::class, 'destroy']);
+
+    // Serviços
+    Route::get('/servicos', [ServicoController::class, 'index']);
 
     // Usuários
     Route::get('/usuarios', [UserController::class, 'index']);
