@@ -17,5 +17,6 @@ class DatabaseSeeder extends Seeder
         $this->call(UnitSeeder::class);
         $this->call(ParameterTypeSeeder::class);
         $this->call(ParameterSeeder::class);
+        $this->call(PlanilhasSeeder::class);
     }
 }

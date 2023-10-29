@@ -299,6 +299,48 @@ function montaUrlPdf() {
     window.open(url, '_blank');
 }
 
+$("#list").on("click", ".abrirHistorico", function(){
+
+    let id = $(this).data('id');
+    let id_planilha = $(this).data('id_planilha');
+
+    let itens = ``;
+
+    $.get(window.location.origin + "/historico/listar", {
+        id_planilha_registro_filter:id,
+        id_planilha_filter:id_planilha
+    })
+    .then(function (data) {
+        if (data.status == "success") {
+
+            if(data.data.length > 0){
+                data.data.forEach(item => {
+                    itens += `<li class="list-group-item">${dateFormatFull(item.data)} | ${item.acao}</li>`;
+                });
+            } else {
+                itens += `<li class="list-group-item">Nenhum registro encontrado</li>`
+            }
+
+            $("#list-historico").html("")
+
+            let html = `
+                <ul class="list-group list-group-flush">
+                    ${itens}
+                </ul>
+            `
+
+            $("#list-historico").append(html)
+
+            $("#modalHistorico").modal("show")
+
+        } else if (data.status == "error") {
+            showError(data.message)
+        }
+    })
+    .catch();
+
+});
+
 // -------------------------------------------------------- FORMS --------------------------------------------------------
 
 // CADASTRAR RESPONSAVEL

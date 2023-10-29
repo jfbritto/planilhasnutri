@@ -15,6 +15,7 @@ class CreatePlanilhaTemperaturaEquipamentoAreaClimatizadasTable extends Migratio
     {
         Schema::create('planilha_temperatura_equipamento_area_climatizadas', function (Blueprint $table) {
             $table->id();
+            $table->integer('id_planilha')->default(18);
             $table->date('data');
             $table->integer('id_parameter_responsavel');
             $table->integer('id_parameter_equipamento');

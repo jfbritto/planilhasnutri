@@ -15,6 +15,7 @@ class CreatePlanilhaOcorrenciaPragasTable extends Migration
     {
         Schema::create('planilha_ocorrencia_pragas', function (Blueprint $table) {
             $table->id();
+            $table->integer('id_planilha')->default(17);
             $table->date('data');
             $table->integer('id_parameter_area');
             $table->integer('id_parameter_praga');

@@ -15,6 +15,7 @@ class CreatePlanilhaVerificacaoProcedimentoHigienizacaoHortifrutisTable extends 
     {
         Schema::create('planilha_verificacao_procedimento_higienizacao_hortifrutis', function (Blueprint $table) {
             $table->id();
+            $table->integer('id_planilha')->default(6);
             $table->date('data');
             $table->integer('id_parameter_produto');
             $table->string('hora_imersao_inicio', 5);

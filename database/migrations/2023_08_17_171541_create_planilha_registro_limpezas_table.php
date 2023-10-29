@@ -15,6 +15,7 @@ class CreatePlanilhaRegistroLimpezasTable extends Migration
     {
         Schema::create('planilha_registro_limpezas', function (Blueprint $table) {
             $table->id();
+            $table->integer('id_planilha')->default(8);
             $table->date('data');
             $table->integer('id_parameter_responsavel');
             $table->integer('id_parameter_area');

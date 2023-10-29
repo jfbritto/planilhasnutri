@@ -29,6 +29,7 @@ use App\Http\Controllers\ParameterController;
 use App\Http\Controllers\ParameterTypeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UnitController;
+use App\Http\Controllers\HistoricoController;
 
 Route::get('/', [AuthenticatedSessionController::class, 'create'])->name('login');
 Route::get('login', [AuthenticatedSessionController::class, 'create'])->name('login');
@@ -237,6 +238,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('/usuario/editar', [UserController::class, 'update']);
     Route::put('/usuario/editar-senha', [UserController::class, 'updatePassword']);
     Route::delete('/usuario/deletar', [UserController::class, 'destroy']);
+
+    // Histórico
+    Route::get('/historico', [HistoricoController::class, 'index']);
+    Route::get('/historico/listar', [HistoricoController::class, 'list']);
 
     Route::group(['middleware' => ['admin']], function () {
 

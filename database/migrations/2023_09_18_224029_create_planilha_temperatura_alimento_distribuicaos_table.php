@@ -15,6 +15,7 @@ class CreatePlanilhaTemperaturaAlimentoDistribuicaosTable extends Migration
     {
         Schema::create('planilha_temperatura_alimento_distribuicaos', function (Blueprint $table) {
             $table->id();
+            $table->integer('id_planilha')->default(14);
             $table->date('data');
             $table->string('periodo');
             $table->integer('id_parameter_evento')->nullable();

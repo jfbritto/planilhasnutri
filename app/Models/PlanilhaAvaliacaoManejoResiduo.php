@@ -11,6 +11,7 @@ class PlanilhaAvaliacaoManejoResiduo extends Model
 
     protected $fillable = [
         'id',
+        'id_planilha',
         'data',
         'lixeira_apropriada',
         'retirada_conforme',

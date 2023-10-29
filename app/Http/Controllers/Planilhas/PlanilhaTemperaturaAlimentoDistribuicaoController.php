@@ -6,20 +6,25 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Services\PlanilhaTemperaturaAlimentoDistribuicaoService;
 use App\Services\PlanilhaTemperaturaAlimentoDistribuicaoProdutoService;
+use App\Services\HistoricoService;
 use PDF;
 
 class PlanilhaTemperaturaAlimentoDistribuicaoController extends Controller
 {
     private $planilhaTemperaturaAlimentoDistribuicaoService;
     private $planilhaTemperaturaAlimentoDistribuicaoProdutoService;
+    private $historicoService;
+    private $idPlanilha = 14;
 
     public function __construct(
         PlanilhaTemperaturaAlimentoDistribuicaoService $planilhaTemperaturaAlimentoDistribuicaoService,
-        PlanilhaTemperaturaAlimentoDistribuicaoProdutoService $planilhaTemperaturaAlimentoDistribuicaoProdutoService
+        PlanilhaTemperaturaAlimentoDistribuicaoProdutoService $planilhaTemperaturaAlimentoDistribuicaoProdutoService,
+        HistoricoService $historicoService
     )
     {
         $this->planilhaTemperaturaAlimentoDistribuicaoService = $planilhaTemperaturaAlimentoDistribuicaoService;
         $this->planilhaTemperaturaAlimentoDistribuicaoProdutoService = $planilhaTemperaturaAlimentoDistribuicaoProdutoService;
+        $this->historicoService = $historicoService;
     }
 
     public function index()
@@ -40,8 +45,22 @@ class PlanilhaTemperaturaAlimentoDistribuicaoController extends Controller
         ];
 
         $response = $this->planilhaTemperaturaAlimentoDistribuicaoService->store($data);
-        $id_planilha = $response["data"]->id;
 
+        if ($response['status'] == 'success') {
+
+            $historico = [
+                'data' => date('Y-m-d H:i:s'),
+                'id_user' => auth()->user()->id,
+                'id_unit' => auth()->user()->id_unit,
+                'id_planilha' => $this->idPlanilha,
+                'id_planilha_registro' => $response["data"]->id,
+                'acao' => "Planilha cadastrada",
+            ];
+
+            $this->historicoService->store($historico);
+        }
+
+        $id_planilha = $response["data"]->id;
         if (!empty($request->itens_planilha)) {
             $itensPlanilha = $request->itens_planilha;
             foreach ($itensPlanilha as $key => $value) {
@@ -78,8 +97,22 @@ class PlanilhaTemperaturaAlimentoDistribuicaoController extends Controller
         ];
 
         $response = $this->planilhaTemperaturaAlimentoDistribuicaoService->update($data);
-        $id_planilha = $request->id;
 
+        if ($response['status'] == 'success') {
+
+            $historico = [
+                'data' => date('Y-m-d H:i:s'),
+                'id_user' => auth()->user()->id,
+                'id_unit' => auth()->user()->id_unit,
+                'id_planilha' => $this->idPlanilha,
+                'id_planilha_registro' => $request->id,
+                'acao' => "Planilha editada",
+            ];
+
+            $this->historicoService->store($historico);
+        }
+
+        $id_planilha = $request->id;
         if (!empty($request->itens_planilha)) {
 
             $this->planilhaTemperaturaAlimentoDistribuicaoProdutoService->destroy($id_planilha);

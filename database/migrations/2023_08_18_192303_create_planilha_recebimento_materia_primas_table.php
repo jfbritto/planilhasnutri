@@ -15,6 +15,7 @@ class CreatePlanilhaRecebimentoMateriaPrimasTable extends Migration
     {
         Schema::create('planilha_recebimento_materia_primas', function (Blueprint $table) {
             $table->id();
+            $table->integer('id_planilha')->default(9);
             $table->date('data');
             $table->integer('id_parameter_produto');
             $table->integer('id_parameter_fornecedor');

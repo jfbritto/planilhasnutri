@@ -15,6 +15,7 @@ class CreatePlanilhaAvaliacaoManejoResiduosTable extends Migration
     {
         Schema::create('planilha_avaliacao_manejo_residuos', function (Blueprint $table) {
             $table->id();
+            $table->integer('id_planilha')->default(16);
             $table->date('data');
             $table->integer('lixeira_apropriada');
             $table->integer('retirada_conforme');

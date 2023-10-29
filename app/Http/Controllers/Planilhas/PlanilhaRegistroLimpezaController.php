@@ -5,15 +5,19 @@ namespace App\Http\Controllers\Planilhas;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Services\PlanilhaRegistroLimpezaService;
+use App\Services\HistoricoService;
 use PDF;
 
 class PlanilhaRegistroLimpezaController extends Controller
 {
     private $planilhaRegistroLimpezaService;
+    private $historicoService;
+    private $idPlanilha = 8;
 
-    public function __construct(PlanilhaRegistroLimpezaService $planilhaRegistroLimpezaService)
+    public function __construct(PlanilhaRegistroLimpezaService $planilhaRegistroLimpezaService, HistoricoService $historicoService)
     {
         $this->planilhaRegistroLimpezaService = $planilhaRegistroLimpezaService;
+        $this->historicoService = $historicoService;
     }
 
     public function index()
@@ -36,6 +40,20 @@ class PlanilhaRegistroLimpezaController extends Controller
 
         $response = $this->planilhaRegistroLimpezaService->store($data);
 
+        if ($response['status'] == 'success') {
+
+            $historico = [
+                'data' => date('Y-m-d H:i:s'),
+                'id_user' => auth()->user()->id,
+                'id_unit' => auth()->user()->id_unit,
+                'id_planilha' => $this->idPlanilha,
+                'id_planilha_registro' => $response["data"]->id,
+                'acao' => "Planilha cadastrada",
+            ];
+
+            $this->historicoService->store($historico);
+        }
+
         if($response['status'] == 'success')
             return response()->json(['status'=>'success'], 201);
 
@@ -57,6 +75,20 @@ class PlanilhaRegistroLimpezaController extends Controller
         ];
 
         $response = $this->planilhaRegistroLimpezaService->update($data);
+
+        if ($response['status'] == 'success') {
+
+            $historico = [
+                'data' => date('Y-m-d H:i:s'),
+                'id_user' => auth()->user()->id,
+                'id_unit' => auth()->user()->id_unit,
+                'id_planilha' => $this->idPlanilha,
+                'id_planilha_registro' => $request->id,
+                'acao' => "Planilha editada",
+            ];
+
+            $this->historicoService->store($historico);
+        }
 
         if($response['status'] == 'success')
             return response()->json(['status'=>'success'], 200);

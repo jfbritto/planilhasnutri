@@ -15,6 +15,7 @@ class CreatePlanilhaManutencaoCalibracaoEquipamentosTable extends Migration
     {
         Schema::create('planilha_manutencao_calibracao_equipamentos', function (Blueprint $table) {
             $table->id();
+            $table->integer('id_planilha')->default(7);
             $table->integer('id_parameter_equipamento');
             $table->integer('calibracao_foi_feita');
             $table->date('data_calibracao')->nullable();

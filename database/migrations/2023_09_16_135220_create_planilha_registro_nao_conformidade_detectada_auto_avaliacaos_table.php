@@ -15,6 +15,7 @@ class CreatePlanilhaRegistroNaoConformidadeDetectadaAutoAvaliacaosTable extends 
     {
         Schema::create('planilha_registro_nao_conformidade_detectada_auto_avaliacaos', function (Blueprint $table) {
             $table->id();
+            $table->integer('id_planilha')->default(12);
             $table->date('data');
             $table->string('nao_conformidade');
             $table->string('possiveis_causas');

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePlanilhaGrupoAmostraPratosTable extends Migration
+class CreateHistoricosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreatePlanilhaGrupoAmostraPratosTable extends Migration
      */
     public function up()
     {
-        Schema::create('planilha_grupo_amostra_pratos', function (Blueprint $table) {
+        Schema::create('historicos', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_planilha')->default(15);
-            $table->date('data');
-            $table->string('nome_grupo');
-            $table->integer('numero_pessoas')->nullable();
-            $table->string('cardapio')->nullable();
+            $table->dateTime('data');
             $table->integer('id_user');
+            $table->integer('id_unit');
+            $table->integer('id_planilha')->nullable();
+            $table->integer('id_planilha_registro')->nullable();
+            $table->string('acao');
             $table->string('status', 1)->default('A');
             $table->timestamps();
         });
@@ -33,6 +33,6 @@ class CreatePlanilhaGrupoAmostraPratosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('planilha_grupo_amostra_pratos');
+        Schema::dropIfExists('historicos');
     }
 }

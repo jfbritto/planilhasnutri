@@ -15,6 +15,7 @@ class CreatePlanilhaSaturacaoOleoGordurasTable extends Migration
     {
         Schema::create('planilha_saturacao_oleo_gorduras', function (Blueprint $table) {
             $table->id();
+            $table->integer('id_planilha')->default(3);
             $table->date('data');
             $table->integer('id_parameter_area');
             $table->integer('id_parameter_equipamento');

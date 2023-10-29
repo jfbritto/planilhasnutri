@@ -5,15 +5,21 @@ namespace App\Http\Controllers\Planilhas;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Services\PlanilhaTemperaturaEquipamentoAreaClimatizadaService;
+use App\Services\HistoricoService;
 use PDF;
 
 class PlanilhaTemperaturaEquipamentoAreaClimatizadaController extends Controller
 {
     private $planilhaTemperaturaEquipamentoAreaClimatizadaService;
+    private $historicoService;
+    private $idPlanilha = 18;
 
-    public function __construct(PlanilhaTemperaturaEquipamentoAreaClimatizadaService $planilhaTemperaturaEquipamentoAreaClimatizadaService)
-    {
+    public function __construct(
+        PlanilhaTemperaturaEquipamentoAreaClimatizadaService $planilhaTemperaturaEquipamentoAreaClimatizadaService,
+        HistoricoService $historicoService
+    ) {
         $this->planilhaTemperaturaEquipamentoAreaClimatizadaService = $planilhaTemperaturaEquipamentoAreaClimatizadaService;
+        $this->historicoService = $historicoService;
     }
 
     public function index()
@@ -34,6 +40,20 @@ class PlanilhaTemperaturaEquipamentoAreaClimatizadaController extends Controller
 
         $response = $this->planilhaTemperaturaEquipamentoAreaClimatizadaService->store($data);
 
+        if ($response['status'] == 'success') {
+
+            $historico = [
+                'data' => date('Y-m-d H:i:s'),
+                'id_user' => auth()->user()->id,
+                'id_unit' => auth()->user()->id_unit,
+                'id_planilha' => $this->idPlanilha,
+                'id_planilha_registro' => $response["data"]->id,
+                'acao' => "Planilha cadastrada",
+            ];
+
+            $this->historicoService->store($historico);
+        }
+
         if($response['status'] == 'success')
             return response()->json(['status'=>'success'], 201);
 
@@ -52,6 +72,20 @@ class PlanilhaTemperaturaEquipamentoAreaClimatizadaController extends Controller
         ];
 
         $response = $this->planilhaTemperaturaEquipamentoAreaClimatizadaService->update($data);
+
+        if ($response['status'] == 'success') {
+
+            $historico = [
+                'data' => date('Y-m-d H:i:s'),
+                'id_user' => auth()->user()->id,
+                'id_unit' => auth()->user()->id_unit,
+                'id_planilha' => $this->idPlanilha,
+                'id_planilha_registro' => $request->id,
+                'acao' => "Planilha editada",
+            ];
+
+            $this->historicoService->store($historico);
+        }
 
         if($response['status'] == 'success')
             return response()->json(['status'=>'success'], 200);

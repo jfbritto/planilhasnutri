@@ -15,6 +15,7 @@ class CreatePlanilhaTrocaElementoFiltrantesTable extends Migration
     {
         Schema::create('planilha_troca_elemento_filtrantes', function (Blueprint $table) {
             $table->id();
+            $table->integer('id_planilha')->default(1);
             $table->integer('id_parameter_area');
             $table->integer('id_parameter_filtro');
             $table->integer('id_parameter_responsavel');

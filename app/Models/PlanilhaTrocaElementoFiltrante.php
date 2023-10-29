@@ -11,6 +11,7 @@ class PlanilhaTrocaElementoFiltrante extends Model
 
     protected $fillable = [
         'id',
+        'id_planilha',
         'id_user',
         'id_parameter_area',
         'id_parameter_filtro',

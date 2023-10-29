@@ -15,6 +15,7 @@ class CreatePlanilhaRegistroCongelamentosTable extends Migration
     {
         Schema::create('planilha_registro_congelamentos', function (Blueprint $table) {
             $table->id();
+            $table->integer('id_planilha')->default(5);
             $table->date('data_congelamento');
             $table->integer('id_parameter_produto');
             $table->string('quantidade');

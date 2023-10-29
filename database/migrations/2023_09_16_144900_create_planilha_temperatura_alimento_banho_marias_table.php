@@ -15,6 +15,7 @@ class CreatePlanilhaTemperaturaAlimentoBanhoMariasTable extends Migration
     {
         Schema::create('planilha_temperatura_alimento_banho_marias', function (Blueprint $table) {
             $table->id();
+            $table->integer('id_planilha')->default(13);
             $table->date('data');
             $table->string('periodo');
             $table->integer('id_parameter_produto');

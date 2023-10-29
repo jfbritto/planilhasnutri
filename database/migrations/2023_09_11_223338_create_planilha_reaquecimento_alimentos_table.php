@@ -15,6 +15,7 @@ class CreatePlanilhaReaquecimentoAlimentosTable extends Migration
     {
         Schema::create('planilha_reaquecimento_alimentos', function (Blueprint $table) {
             $table->id();
+            $table->integer('id_planilha')->default(11);
             $table->date('data');
             $table->integer('id_parameter_produto');
             $table->string('hora_temperatura_antes')->nullable();

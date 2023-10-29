@@ -15,6 +15,7 @@ class CreatePlanilhaResfriamentoRapidoAlimentosTable extends Migration
     {
         Schema::create('planilha_resfriamento_rapido_alimentos', function (Blueprint $table) {
             $table->id();
+            $table->integer('id_planilha')->default(10);
             $table->date('data');
             $table->integer('id_parameter_produto');
             $table->string('cozimento_hora_final');
