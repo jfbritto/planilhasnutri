@@ -11,15 +11,16 @@
 @stop
 
 @section('content')
+    @include('forms.forms')
 
-    {{-- <div class="card">
-        <input type="hidden" id="isAdmin" value="{{auth()->user()->is_admin}}">
+    <div class="card">
         <div class="card-header border-0">
-            <h3 class="card-title"> </h3>
             <div class="card-tools">
-                <a href="#" class="btn btn-tool btn-sm" data-toggle="modal" data-target="#modalStoreUser">
+                @if(auth()->user()->id_unit)
+                <a href="#" class="btn btn-tool btn-sm" data-toggle="modal" data-target="#modalStoreservicos" title="Adicionar novo item">
                     <i class="fa-solid fa-square-plus fa-2xl color-green"></i>
                 </a>
+                @endif
             </div>
         </div>
         <div class="card-body p-0">
@@ -27,9 +28,11 @@
                 <table class="table table-striped table-valign-middle table-hover table-sm">
                     <thead>
                         <tr>
-                            <th>Nome</th>
-                            <th>E-mail</th>
-                            @if(auth()->user()->is_admin)<th>Unidade</th>@endif
+                            <th>Serviço</th>
+                            <th>Frequência</th>
+                            <th>Data</th>
+                            <th>Próxima Data</th>
+                            <th>Documento</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -39,74 +42,116 @@
         </div>
     </div>
 
-    <div class="modal fade" tabindex="-1" role="dialog" id="modalStoreUser">
+    <div class="modal fade" tabindex="-1" role="dialog" id="modalStoreservicos">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Cadastrar Usuário</h5>
+                <h5 class="modal-title">Cadastrar: Serviços</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
 
-                <form id="formStoreUser">
+                <form id="formStoreservicos">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="name">Nome</label>
-                                <input type="text" required name="name" id="name" class="form-control" placeholder="Informe o nome do usuário">
+                                <label for="id_parameter_servico">
+                                    Serviço
+                                    <i class="fa fa-plus-circle color-green" aria-hidden="true" style="cursor: pointer"
+                                    data-toggle="modal" data-target="#modalStoreParameterServico" title="Cadastrar novo item"></i>
+                                </label>
+                                <select type="text" required name="id_parameter_servico" id="id_parameter_servico" class="form-control"></select>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="email">Email</label>
-                                <input type="email" required name="email" id="email" class="form-control" placeholder="Informe o email">
+                                <label for="frequencia_meses">Frequencia</label>
+                                <select type="text" required name="frequencia_meses" id="frequencia_meses" class="form-control">
+                                    <option value="">-- Selecione --</option>
+                                    <option value="1">Mensal</option>
+                                    <option value="2">Bimestral</option>
+                                    <option value="3">Trimestral</option>
+                                    <option value="6">Semestral</option>
+                                    <option value="12">Anual</option>
+                                    <option value="60">5 anos</option>
+                                </select>
                             </div>
                         </div>
-                        @if(!auth()->user()->id_unit)
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="data">Data</label>
+                                <input type="date" required name="data" id="data" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="proxima_data">Próxima Data</label>
+                                <input type="date" required name="proxima_data" id="proxima_data" class="form-control">
+                            </div>
+                        </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label for="id_unit">Unidade</label>
-                                <select type="text" required name="id_unit" id="id_unit" class="form-control"></select>
+                                <label for="documento">Documento</label>
+                                <input type="file" name="documento" id="documento" class="form-control">
                             </div>
                         </div>
-                        @endif
                     </div>
                 </form>
 
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary" form="formStoreUser">Salvar</button>
+                <button type="submit" class="btn btn-primary" form="formStoreservicos">Salvar</button>
             </div>
             </div>
         </div>
     </div>
 
-    <div class="modal fade" tabindex="-1" role="dialog" id="modalEditUser">
+    <div class="modal fade" tabindex="-1" role="dialog" id="modalEditservicos">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Editar Usuário</h5>
+                <h5 class="modal-title">Editar: Serviços</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
 
-                <form id="formEditUser">
+                <form id="formEditservicos">
+                    <input type="hidden" required name="id_edit" id="id_edit">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="name_edit">Nome</label>
-                                <input type="hidden" required name="id_edit" id="id_edit" class="form-control" placeholder="Informe o nome do usuário">
-                                <input type="text" required name="name_edit" id="name_edit" class="form-control" placeholder="Informe o nome do usuário">
+                                <label for="id_parameter_servico_edit">Serviço</label>
+                                <select type="text" required name="id_parameter_servico_edit" id="id_parameter_servico_edit" class="form-control"></select>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="email_edit">Email</label>
-                                <input type="email" required name="email_edit" id="email_edit" class="form-control" placeholder="Informe o email">
+                                <label for="frequencia_meses_edit">Frequencia</label>
+                                <select type="text" required name="frequencia_meses_edit" id="frequencia_meses_edit" class="form-control">
+                                    <option value="">-- Selecione --</option>
+                                    <option value="1">Mensal</option>
+                                    <option value="2">Bimestral</option>
+                                    <option value="3">Trimestral</option>
+                                    <option value="6">Semestral</option>
+                                    <option value="12">Anual</option>
+                                    <option value="60">5 anos</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="data_edit">Data</label>
+                                <input type="date" required name="data_edit" id="data_edit" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="proxima_data_edit">Próxima Data</label>
+                                <input type="date" required name="proxima_data_edit" id="proxima_data_edit" class="form-control">
                             </div>
                         </div>
                     </div>
@@ -114,14 +159,14 @@
 
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary" form="formEditUser">Salvar</button>
+                <button type="submit" class="btn btn-primary" form="formEditservicos">Salvar</button>
             </div>
             </div>
         </div>
-    </div> --}}
+    </div>
 
 @stop
 
 @section('js')
-    <script src="/js/user/home.js"></script>
+    <script src="/js/servico/home.js"></script>
 @stop

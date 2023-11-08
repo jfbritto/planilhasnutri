@@ -234,6 +234,11 @@ Route::group(['middleware' => ['auth']], function () {
 
     // Serviços
     Route::get('/servicos', [ServicoController::class, 'index']);
+    Route::get('/servico/listar', [ServicoController::class, 'list']);
+    Route::post('/servico/cadastrar', [ServicoController::class, 'store']);
+    Route::put('/servico/editar', [ServicoController::class, 'update']);
+    Route::delete('/servico/deletar', [ServicoController::class, 'destroy']);
+    Route::get('/servico/download/{fileName}', [ServicoController::class, 'downloadArquivo']);
 
     // Usuários
     Route::get('/usuarios', [UserController::class, 'index']);

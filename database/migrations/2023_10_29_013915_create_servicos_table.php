@@ -15,6 +15,13 @@ class CreateServicosTable extends Migration
     {
         Schema::create('servicos', function (Blueprint $table) {
             $table->id();
+            $table->integer('id_parameter_servico');
+            $table->date('data');
+            $table->date('proxima_data');
+            $table->integer('frequencia_meses');
+            $table->string('documento')->nullable();
+            $table->integer('id_user');
+            $table->string('status', 1)->default('A');
             $table->timestamps();
         });
     }

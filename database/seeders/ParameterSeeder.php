@@ -140,18 +140,18 @@ class ParameterSeeder extends Seeder
                 'id_unit' => null,
                 'status' => 'A'
             ],
-            // evento
+            // Serviços
             [
-                'id' => 20,
-                'id_parameter_type' => 11,
-                'name' => 'Rock in Rio',
+                'id' => 100,
+                'id_parameter_type' => 7,
+                'name' => 'Alvará Sanitário',
                 'id_unit' => null,
                 'status' => 'A'
             ],
             [
-                'id' => 21,
-                'id_parameter_type' => 11,
-                'name' => 'Vital',
+                'id' => 101,
+                'id_parameter_type' => 7,
+                'name' => 'Dedetização',
                 'id_unit' => null,
                 'status' => 'A'
             ],
@@ -321,6 +321,21 @@ class ParameterSeeder extends Seeder
                 'id' => 54,
                 'id_parameter_type' => 8,
                 'name' => 'Pão de Queijo',
+                'id_unit' => null,
+                'status' => 'A'
+            ],
+            // evento
+            [
+                'id' => 20,
+                'id_parameter_type' => 11,
+                'name' => 'Rock in Rio',
+                'id_unit' => null,
+                'status' => 'A'
+            ],
+            [
+                'id' => 21,
+                'id_parameter_type' => 11,
+                'name' => 'Vital',
                 'id_unit' => null,
                 'status' => 'A'
             ],

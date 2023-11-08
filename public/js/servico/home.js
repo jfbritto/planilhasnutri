@@ -1,10 +1,10 @@
 $(document).ready(function () {
 
-    loadUsers();
-    loadUnits();
+    loadPrincipal();
+    loadGlobalParameters(7, 'id_parameter_servico');
 
-    // LISTAR USUÁRIOS
-    function loadUsers()
+    // LISTAGEM
+    function loadPrincipal()
     {
         Swal.queue([
             {
@@ -13,62 +13,67 @@ $(document).ready(function () {
                 allowEscapeKey: false,
                 onOpen: () => {
                     Swal.showLoading();
-                    $.get(window.location.origin + "/usuario/listar", {
+                    $.get(window.location.origin + "/servico/listar", {
 
                     })
-                        .then(function (data) {
-                            if (data.status == "success") {
+                    .then(function (data) {
+                        if (data.status == "success") {
 
-                                Swal.close();
-                                $("#list").html(``);
+                            Swal.close();
+                            $("#list").html(``);
 
-                                let isAdmin = $("#isAdmin").val() === "1"?'':'d-none';
+                            if(data.data.length > 0){
 
-                                if(data.data.length > 0){
-
-                                    data.data.forEach(item => {
-
-                                        $("#list").append(`
-                                            <tr>
-                                                <td class="align-middle">${item.name}</td>
-                                                <td class="align-middle">${item.email}</td>
-                                                <td class="align-middle ${isAdmin}">${item.unidade}</td>
-                                                <td class="align-middle" style="text-align: right">
-                                                    <a title="Editar" data-id="${item.id}" data-name="${item.name}" data-email="${item.email}" href="#" class="btn btn-warning edit-user"><i style="color: white" class="fas fa-edit"></i></a>
-                                                    <a title="Deletar" data-id="${item.id}" href="#" class="btn btn-danger delete-user"><i class="fas fa-trash-alt"></i></a>
-                                                </td>
-                                            </tr>
-                                        `);
-                                    });
-
-                                }else{
-
-                                    let colSpan = $("#isAdmin").val() === "1"?'4':'3';
+                                data.data.forEach(item => {
 
                                     $("#list").append(`
                                         <tr>
-                                            <td class="align-middle text-center" colspan="${colSpan}">Nenhum usuário cadastrado</td>
+                                            <td class="align-middle">${item.servico}</td>
+                                            <td class="align-middle">${frequencia(item.frequencia_meses)}</td>
+                                            <td class="align-middle">${dateFormat(item.data)}</td>
+                                            <td class="align-middle">${dateFormat(item.proxima_data)}</td>
+                                            <td class="align-middle text-center"><a href="servico/download/${item.documento}" title="Baixar arquivo" target="_blank"><i class="fa-solid fa-file fa-xl"></i></a></td>
+                                            <td class="align-middle" style="text-align: right; min-width: 120px">
+                                                <a title="Editar"
+                                                data-id="${item.id}"
+                                                data-usuario="${item.usuario}"
+                                                data-unidade="${item.unidade}"
+                                                data-id_parameter_servico="${item.id_parameter_servico}"
+                                                data-data="${item.data}"
+                                                data-proxima_data="${item.proxima_data}"
+                                                data-frequencia_meses="${item.frequencia_meses}"
+                                                data-documento="${item.documento}" href="#" class="btn btn-warning edit-servicos"><i style="color: white" class="fas fa-edit"></i></a>
+                                                <a title="Deletar" data-id="${item.id}" href="#" class="btn btn-danger delete-servicos"><i class="fas fa-trash-alt"></i></a>
+                                            </td>
                                         </tr>
                                     `);
-                                }
+                                });
 
-                            } else if (data.status == "error") {
-                                showError(data.message)
+                            }else{
+
+                                $("#list").append(`
+                                    <tr>
+                                        <td class="align-middle text-center" colspan="6">Nenhum registro encontrado</td>
+                                    </tr>
+                                `);
                             }
-                        })
-                        .catch(function (data) {
-                            if (data.responseJSON.status == "error") {
-                                showError(data.responseJSON.message)
-                            }
-                        });
+
+                        } else if (data.status == "error") {
+                            showError(data.message)
+                        }
+                    })
+                    .catch(function (data) {
+                        if (data.responseJSON.status == "error") {
+                            showError(data.responseJSON.message)
+                        }
+                    });
                 },
             },
         ]);
     }
 
-
-    // CADASTRAR USUÁRIO
-    $("#formStoreUser").submit(function (e) {
+    // CADASTRO
+    $("#formStoreservicos").submit(function (e) {
         e.preventDefault();
 
         Swal.queue([
@@ -79,30 +84,34 @@ $(document).ready(function () {
                 onOpen: () => {
                     Swal.showLoading();
 
-                    $.post(window.location.origin + "/usuario/cadastrar", {
-                        name: $("#name").val(),
-                        email: $("#email").val(),
-                        id_unit: $("#id_unit option:selected").val(),
-                    })
-                        .then(function (data) {
-                            if (data.status == "success") {
+                    var formData = new FormData($(this)[0]);
 
-                                $("#formStoreUser").each(function () {
+                    $.ajax({
+                        url: window.location.origin + "/servico/cadastrar",
+                        type: 'POST',
+                        data: formData,
+                        contentType: false,
+                        processData: false,
+                        success: function(data) {
+                            if (data.status == "success") {
+                                $("#formStoreservicos").each(function() {
                                     this.reset();
                                 });
 
-                                $("#modalStoreUser").modal("hide");
-
-                                showSuccess("Cadastro efetuado!", null, loadUsers)
+                                $("#modalStoreservicos").modal("hide");
+                                showSuccess("Cadastro efetuado!", null, loadPrincipal);
                             } else if (data.status == "error") {
-                                showError(data.message)
+                                showError(data.message);
                             }
-                        })
-                        .catch(function (data) {
-                            if (data.responseJSON.status == "error") {
-                                showError(data.responseJSON.message)
+                        },
+                        error: function(xhr, status, error) {
+                            if (xhr.responseJSON && xhr.responseJSON.status == "error") {
+                                showError(xhr.responseJSON.message);
+                            } else {
+                                showError("Erro desconhecido durante o upload do arquivo.");
                             }
-                        });
+                        }
+                    });
 
                 },
             },
@@ -111,21 +120,30 @@ $(document).ready(function () {
     });
 
 
-    // EDITAR USUÁRIO
-    $("#list").on("click", ".edit-user", function(){
+    // EDIÇÃO
+    $("#list").on("click", ".edit-servicos", function(){
 
         let id = $(this).data('id');
-        let name = $(this).data('name');
-        let email = $(this).data('email');
+        let usuario = $(this).data('usuario');
+        let unidade = $(this).data('unidade');
+        let id_parameter_servico = $(this).data('id_parameter_servico');
+        let data = $(this).data('data');
+        let proxima_data = $(this).data('proxima_data');
+        let frequencia_meses = $(this).data('frequencia_meses');
+
+        loadGlobalParameters(7, 'id_parameter_servico_edit', id_parameter_servico);
 
         $("#id_edit").val(id);
-        $("#name_edit").val(name);
-        $("#email_edit").val(email);
+        $("#usuario").val(usuario);
+        $("#unidade").val(unidade);
+        $("#data_edit").val(data);
+        $("#proxima_data_edit").val(proxima_data);
+        $("#frequencia_meses_edit").val(frequencia_meses);
 
-        $("#modalEditUser").modal("show");
+        $("#modalEditservicos").modal("show");
     });
 
-    $("#formEditUser").submit(function (e) {
+    $("#formEditservicos").submit(function (e) {
         e.preventDefault();
 
         Swal.queue([
@@ -136,24 +154,27 @@ $(document).ready(function () {
                 onOpen: () => {
                     Swal.showLoading();
                     $.ajax({
-                        url: window.location.origin + "/usuario/editar",
+                        url: window.location.origin + "/servico/editar",
                         type: 'PUT',
                         data:{
                             id: $("#id_edit").val(),
-                            name: $("#name_edit").val(),
-                            email: $("#email_edit").val()
+                            id_parameter_servico: $("#id_parameter_servico_edit option:selected").val(),
+                            data: $("#data_edit").val(),
+                            proxima_data: $("#proxima_data_edit").val(),
+                            frequencia_meses: $("#frequencia_meses_edit").val(),
+                            // documento: $("#documento").val(),
                         }
                     })
                         .then(function (data) {
                             if (data.status == "success") {
 
-                                $("#formEditUser").each(function () {
+                                $("#formEditservicos").each(function () {
                                     this.reset();
                                 });
 
-                                $("#modalEditUser").modal("hide");
+                                $("#modalEditservicos").modal("hide");
 
-                                showSuccess("Edição efetuada!", null, loadUsers)
+                                showSuccess("Edição efetuada!", null, loadPrincipal)
                             } else if (data.status == "error") {
                                 showError(data.message)
                             }
@@ -169,8 +190,8 @@ $(document).ready(function () {
     });
 
 
-    // "DELETAR" USUÁRIO
-    $("#list").on("click", ".delete-user", function(){
+    // "DELETAR"
+    $("#list").on("click", ".delete-servicos", function(){
 
         let id = $(this).data('id');
 
@@ -194,14 +215,14 @@ $(document).ready(function () {
                             onOpen: () => {
                                 Swal.showLoading();
                                 $.ajax({
-                                    url: window.location.origin + "/usuario/deletar",
+                                    url: window.location.origin + "/servico/deletar",
                                     type: 'DELETE',
                                     data: {id}
                                 })
                                     .then(function (data) {
                                         if (data.status == "success") {
 
-                                            showSuccess("Deletado com sucesso!", null, loadUsers)
+                                            showSuccess("Deletado com sucesso!", null, loadPrincipal)
                                         } else if (data.status == "error") {
                                             showError(data.message)
                                         }
@@ -220,39 +241,27 @@ $(document).ready(function () {
 
     });
 
-    // LISTAR UNIDADES
-    function loadUnits()
-    {
+    $("#formFiltroPrincipal").change(function (e) {
+        e.preventDefault();
+        loadPrincipal()
+    });
 
-        $.get(window.location.origin + "/unidade/listar", {
+    $("#data, #frequencia_meses").change(function (e) {
+        e.preventDefault();
 
-        })
-            .then(function (data) {
-                if (data.status == "success") {
+        let frequenciaMeses = $("#frequencia_meses option:selected").val();
+        let terceiroParametro = frequenciaMeses ? parseInt(frequenciaMeses) : 6;
 
-                    Swal.close();
-                    $("#id_unit").html(``);
+        preencherProximaData('data', 'proxima_data', terceiroParametro)
+    });
 
-                    if(data.data.length > 0){
-                        $("#id_unit").append(`<option>-- Selecione --</option>`);
-                        data.data.forEach(item => {
-                            $("#id_unit").append(`<option value="${item.id}">${item.name}</option>`);
-                        });
-                    } else {
-                        $("#id_unit").append(`<option>Nenhuma unidade encontrada</option>`);
-                    }
+    $("#data_edit, #frequencia_meses_edit").change(function (e) {
+        e.preventDefault();
 
-                } else if (data.status == "error") {
-                    showError(data.message)
-                }
-            })
-            .catch(function (data) {
-                if (data.responseJSON.status == "error") {
-                    showError(data.responseJSON.message)
-                }
-            });
+        let frequenciaMeses = $("#frequencia_meses_edit option:selected").val();
+        let terceiroParametro = frequenciaMeses ? parseInt(frequenciaMeses) : 6;
 
-    }
-
+        preencherProximaData('data_edit', 'proxima_data_edit', terceiroParametro)
+    });
 
 });

@@ -61,6 +61,15 @@ function periodo(val)
 
 }
 
+// retorna o nome da frequencia
+function frequencia(val)
+{
+    const frequencia = {'1':'Mensal','2':'Bimestral','3':'Trimestral','6':'Semestral','12':'Anual','60':'5 anos'};
+
+    return `${frequencia[val]}`
+
+}
+
 // mascara de telefone
 var SPMaskBehavior = function (val) {
     return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
