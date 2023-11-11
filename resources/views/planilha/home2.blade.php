@@ -7,7 +7,14 @@
 @section('title', 'Planilhas')
 
 @section('content_header')
-    <h1><i class="fa-solid fa-file-lines"></i> &nbsp;Planilhas</h1>
+    <div class="row">
+        <div class="col-md-6 mb-2">
+            <h1><i class="fa-solid fa-file-lines"></i> &nbsp;Planilhas</h1>
+        </div>
+        <div class="col-md-6">
+            <input type="text" id="searchInput" class="form-control" placeholder="Digite o nome da planilha" onkeyup="filterPlanilhas()">
+        </div>
+    </div>
 @stop
 
 @section('content')
@@ -16,7 +23,7 @@
     <div class="container-fluid px-lg-5">
         <!-- Page Features-->
         <div class="row gx-lg-5">
-            <div class="col-lg-6 col-sm-6 col-xxl-3 mb-5">
+            <div class="col-lg-6 col-sm-6 col-xxl-3 mb-5 planilha" data-titulo="Troca do Elemento Filtrante">
                 <a href="/planilha/troca-elemento-filtrante">
                 <div class="card bg-light border-0 h-100">
                     <div class="card-body text-center p-4 p-lg-3 pt-0 pt-lg-0">
@@ -26,7 +33,7 @@
                 </div>
                 </a>
             </div>
-            <div class="col-lg-6 col-sm-6 col-xxl-3 mb-5">
+            <div class="col-lg-6 col-sm-6 col-xxl-3 mb-5 planilha" data-titulo="Higienização dos Filtros e Aparelhos de Climatização">
                 <a href="/planilha/higienizacao-filtro-aparelho-climatizacao">
                 <div class="card bg-light border-0 h-100">
                     <div class="card-body text-center p-4 p-lg-3 pt-0 pt-lg-0">
@@ -36,7 +43,7 @@
                 </div>
                 </a>
             </div>
-            <div class="col-lg-6 col-sm-6 col-xxl-3 mb-5">
+            <div class="col-lg-6 col-sm-6 col-xxl-3 mb-5 planilha" data-titulo="Saturação de Óleos e Gorduras">
                 <a href="/planilha/saturacao-oleo-gordura">
                 <div class="card bg-light border-0 h-100">
                     <div class="card-body text-center p-4 p-lg-3 pt-0 pt-lg-0">
@@ -46,7 +53,7 @@
                 </div>
                 </a>
             </div>
-            <div class="col-lg-6 col-sm-6 col-xxl-3 mb-5">
+            <div class="col-lg-6 col-sm-6 col-xxl-3 mb-5 planilha" data-titulo="Limpeza de Caixa de Gordura">
                 <a href="/planilha/limpeza-caixa-gordura">
                 <div class="card bg-light border-0 h-100">
                     <div class="card-body text-center p-4 p-lg-3 pt-0 pt-lg-0">
@@ -56,7 +63,7 @@
                 </div>
                 </a>
             </div>
-            <div class="col-lg-6 col-sm-6 col-xxl-3 mb-5">
+            <div class="col-lg-6 col-sm-6 col-xxl-3 mb-5 planilha" data-titulo="Registro de Congelamento">
                 <a href="/planilha/registro-congelamento">
                 <div class="card bg-light border-0 h-100">
                     <div class="card-body text-center p-4 p-lg-3 pt-0 pt-lg-0">
@@ -66,7 +73,7 @@
                 </div>
                 </a>
             </div>
-            <div class="col-lg-6 col-sm-6 col-xxl-3 mb-5">
+            <div class="col-lg-6 col-sm-6 col-xxl-3 mb-5 planilha" data-titulo="Higienização de Hortifrutis">
                 <a href="/planilha/verificacao-procedimento-higienizacao-hortifruti">
                 <div class="card bg-light border-0 h-100">
                     <div class="card-body text-center p-4 p-lg-3 pt-0 pt-lg-0">
@@ -76,7 +83,7 @@
                 </div>
                 </a>
             </div>
-            <div class="col-lg-6 col-sm-6 col-xxl-3 mb-5">
+            <div class="col-lg-6 col-sm-6 col-xxl-3 mb-5 planilha" data-titulo="Manutenção e calibrações dos equipamentos">
                 <a href="/planilha/manutencao-calibracao-equipamento">
                 <div class="card bg-light border-0 h-100">
                     <div class="card-body text-center p-4 p-lg-3 pt-0 pt-lg-0">
@@ -86,7 +93,7 @@
                 </div>
                 </a>
             </div>
-            <div class="col-lg-6 col-sm-6 col-xxl-3 mb-5">
+            <div class="col-lg-6 col-sm-6 col-xxl-3 mb-5 planilha" data-titulo="Registro de Limpeza">
                 <a href="/planilha/registro-limpeza">
                 <div class="card bg-light border-0 h-100">
                     <div class="card-body text-center p-4 p-lg-3 pt-0 pt-lg-0">
@@ -96,7 +103,7 @@
                 </div>
                 </a>
             </div>
-            <div class="col-lg-6 col-sm-6 col-xxl-3 mb-5">
+            <div class="col-lg-6 col-sm-6 col-xxl-3 mb-5 planilha" data-titulo="Recebimento de Matéria Prima">
                 <a href="/planilha/recebimento-materia-prima">
                 <div class="card bg-light border-0 h-100">
                     <div class="card-body text-center p-4 p-lg-3 pt-0 pt-lg-0">
@@ -106,7 +113,7 @@
                 </div>
                 </a>
             </div>
-            <div class="col-lg-6 col-sm-6 col-xxl-3 mb-5">
+            <div class="col-lg-6 col-sm-6 col-xxl-3 mb-5 planilha" data-titulo="Resfriamento Rápido de Alimentos">
                 <a href="/planilha/resfriamento-rapido-alimento">
                 <div class="card bg-light border-0 h-100">
                     <div class="card-body text-center p-4 p-lg-3 pt-0 pt-lg-0">
@@ -116,7 +123,7 @@
                 </div>
                 </a>
             </div>
-            <div class="col-lg-6 col-sm-6 col-xxl-3 mb-5">
+            <div class="col-lg-6 col-sm-6 col-xxl-3 mb-5 planilha" data-titulo="Reaquecimento dos Alimentos">
                 <a href="/planilha/reaquecimento-alimento">
                 <div class="card bg-light border-0 h-100">
                     <div class="card-body text-center p-4 p-lg-3 pt-0 pt-lg-0">
@@ -126,7 +133,7 @@
                 </div>
                 </a>
             </div>
-            <div class="col-lg-6 col-sm-6 col-xxl-3 mb-5">
+            <div class="col-lg-6 col-sm-6 col-xxl-3 mb-5 planilha" data-titulo="Não Conformidades Detectadas na Auto Avaliação">
                 <a href="/planilha/registro-nao-conformidade-detectada-auto-avaliacao">
                 <div class="card bg-light border-0 h-100">
                     <div class="card-body text-center p-4 p-lg-3 pt-0 pt-lg-0">
@@ -136,7 +143,7 @@
                 </div>
                 </a>
             </div>
-            <div class="col-lg-6 col-sm-6 col-xxl-3 mb-5">
+            <div class="col-lg-6 col-sm-6 col-xxl-3 mb-5 planilha" data-titulo="Temperatura dos Alimentos no Banho-Maria">
                 <a href="/planilha/temperatura-alimento-banho-maria">
                 <div class="card bg-light border-0 h-100">
                     <div class="card-body text-center p-4 p-lg-3 pt-0 pt-lg-0">
@@ -146,7 +153,7 @@
                 </div>
                 </a>
             </div>
-            <div class="col-lg-6 col-sm-6 col-xxl-3 mb-5">
+            <div class="col-lg-6 col-sm-6 col-xxl-3 mb-5 planilha" data-titulo="Temperatura dos Alimentos na Distribuição">
                 <a href="/planilha/temperatura-alimento-distribuicao">
                 <div class="card bg-light border-0 h-100">
                     <div class="card-body text-center p-4 p-lg-3 pt-0 pt-lg-0">
@@ -156,7 +163,7 @@
                 </div>
                 </a>
             </div>
-            <div class="col-lg-6 col-sm-6 col-xxl-3 mb-5">
+            <div class="col-lg-6 col-sm-6 col-xxl-3 mb-5 planilha" data-titulo="Grupo de Amostras de Pratos">
                 <a href="/planilha/grupo-amostra-prato">
                 <div class="card bg-light border-0 h-100">
                     <div class="card-body text-center p-4 p-lg-3 pt-0 pt-lg-0">
@@ -166,7 +173,7 @@
                 </div>
                 </a>
             </div>
-            <div class="col-lg-6 col-sm-6 col-xxl-3 mb-5">
+            <div class="col-lg-6 col-sm-6 col-xxl-3 mb-5 planilha" data-titulo="Check-list de Avaliação do Manejo dos Resíduos">
                 <a href="/planilha/avaliacao-manejo-residuo">
                 <div class="card bg-light border-0 h-100">
                     <div class="card-body text-center p-4 p-lg-3 pt-0 pt-lg-0">
@@ -176,7 +183,7 @@
                 </div>
                 </a>
             </div>
-            <div class="col-lg-6 col-sm-6 col-xxl-3 mb-5">
+            <div class="col-lg-6 col-sm-6 col-xxl-3 mb-5 planilha" data-titulo="Ocorrência de Pragas">
                 <a href="/planilha/ocorrencia-praga">
                 <div class="card bg-light border-0 h-100">
                     <div class="card-body text-center p-4 p-lg-3 pt-0 pt-lg-0">
@@ -186,7 +193,7 @@
                 </div>
                 </a>
             </div>
-            <div class="col-lg-6 col-sm-6 col-xxl-3 mb-5">
+            <div class="col-lg-6 col-sm-6 col-xxl-3 mb-5 planilha" data-titulo="Temperatura de Equipamentos e Áreas Climatizadas">
                 <a href="/planilha/temperatura-equipamento-area-climatizada">
                 <div class="card bg-light border-0 h-100">
                     <div class="card-body text-center p-4 p-lg-3 pt-0 pt-lg-0">
