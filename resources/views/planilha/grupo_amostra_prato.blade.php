@@ -73,7 +73,7 @@
         </div>
     </div>
 
-    <div class="modal fade" tabindex="-1" role="dialog" id="modalStoregrupo_amostra_prato">
+    <div class="modal fade"  role="dialog" id="modalStoregrupo_amostra_prato">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
             <div class="modal-header">
@@ -121,7 +121,7 @@
         </div>
     </div>
 
-    <div class="modal fade" tabindex="-1" role="dialog" id="modalEditgrupo_amostra_prato">
+    <div class="modal fade"  role="dialog" id="modalEditgrupo_amostra_prato">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
             <div class="modal-header">

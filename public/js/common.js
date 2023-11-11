@@ -204,6 +204,8 @@ function loadGlobalParameters(
 
                     $(`#${element}`).append(`<option ${selected} value="${item.id}">${item.name}</option>`);
                 });
+
+                $(`#${element}`).select2();
             } else {
                 $(`#${element}`).append(`<option>Nenhum item encontrado</option>`);
             }
@@ -214,6 +216,12 @@ function loadGlobalParameters(
     })
     .catch();
 }
+
+$(document).on('select2:open', () => {
+
+    document.querySelector('.select2-container--open .select2-search__field').focus()
+
+});
 
 // LISTAR/CADASTRAR PARAMETRO
 $("#editarSenha").on("click", function(){

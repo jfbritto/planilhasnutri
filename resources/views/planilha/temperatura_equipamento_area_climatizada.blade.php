@@ -80,7 +80,7 @@
         </div>
     </div>
 
-    <div class="modal fade" tabindex="-1" role="dialog" id="modalStoretemperatura_equipamento_area_climatizada">
+    <div class="modal fade"  role="dialog" id="modalStoretemperatura_equipamento_area_climatizada">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
             <div class="modal-header">
@@ -142,7 +142,7 @@
         </div>
     </div>
 
-    <div class="modal fade" tabindex="-1" role="dialog" id="modalEdittemperatura_equipamento_area_climatizada">
+    <div class="modal fade"  role="dialog" id="modalEdittemperatura_equipamento_area_climatizada">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
             <div class="modal-header">

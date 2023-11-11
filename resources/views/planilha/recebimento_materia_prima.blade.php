@@ -87,7 +87,7 @@
         </div>
     </div>
 
-    <div class="modal fade" tabindex="-1" role="dialog" id="modalStorerecebimento_materia_prima">
+    <div class="modal fade"  role="dialog" id="modalStorerecebimento_materia_prima">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
             <div class="modal-header">
@@ -195,7 +195,7 @@
         </div>
     </div>
 
-    <div class="modal fade" tabindex="-1" role="dialog" id="modalEditrecebimento_materia_prima">
+    <div class="modal fade"  role="dialog" id="modalEditrecebimento_materia_prima">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
             <div class="modal-header">

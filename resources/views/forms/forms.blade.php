@@ -1,4 +1,4 @@
-<div class="modal fade" tabindex="-1" role="dialog" id="modalStoreParameterResponsavel" style="z-index: 9999;">
+<div class="modal fade"  role="dialog" id="modalStoreParameterResponsavel" style="z-index: 9999;">
     <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
         <div class="modal-header">
@@ -28,7 +28,7 @@
     </div>
 </div>
 
-<div class="modal fade" tabindex="-1" role="dialog" id="modalStoreParameterArea" style="z-index: 9999;">
+<div class="modal fade"  role="dialog" id="modalStoreParameterArea" style="z-index: 9999;">
     <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
         <div class="modal-header">
@@ -58,7 +58,7 @@
     </div>
 </div>
 
-<div class="modal fade" tabindex="-1" role="dialog" id="modalStoreParameterFiltro" style="z-index: 9999;">
+<div class="modal fade"  role="dialog" id="modalStoreParameterFiltro" style="z-index: 9999;">
     <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
         <div class="modal-header">
@@ -89,7 +89,7 @@
 </div>
 
 
-<div class="modal fade" tabindex="-1" role="dialog" id="modalStoreParameterFornecedor" style="z-index: 9999;">
+<div class="modal fade"  role="dialog" id="modalStoreParameterFornecedor" style="z-index: 9999;">
     <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
         <div class="modal-header">
@@ -119,7 +119,7 @@
     </div>
 </div>
 
-<div class="modal fade" tabindex="-1" role="dialog" id="modalStoreParameterProduto" style="z-index: 9999;">
+<div class="modal fade"  role="dialog" id="modalStoreParameterProduto" style="z-index: 9999;">
     <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
         <div class="modal-header">
@@ -149,7 +149,7 @@
     </div>
 </div>
 
-<div class="modal fade" tabindex="-1" role="dialog" id="modalStoreParameterEquipamento" style="z-index: 9999;">
+<div class="modal fade"  role="dialog" id="modalStoreParameterEquipamento" style="z-index: 9999;">
     <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
         <div class="modal-header">
@@ -179,7 +179,7 @@
     </div>
 </div>
 
-<div class="modal fade" tabindex="-1" role="dialog" id="modalStoreParameterCaixaGordura" style="z-index: 9999;">
+<div class="modal fade"  role="dialog" id="modalStoreParameterCaixaGordura" style="z-index: 9999;">
     <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
         <div class="modal-header">
@@ -209,7 +209,7 @@
     </div>
 </div>
 
-<div class="modal fade" tabindex="-1" role="dialog" id="modalStoreParameterAlergeno" style="z-index: 9999;">
+<div class="modal fade"  role="dialog" id="modalStoreParameterAlergeno" style="z-index: 9999;">
     <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
         <div class="modal-header">
@@ -239,7 +239,7 @@
     </div>
 </div>
 
-<div class="modal fade" tabindex="-1" role="dialog" id="modalStoreParameterAlimento" style="z-index: 9999;">
+<div class="modal fade"  role="dialog" id="modalStoreParameterAlimento" style="z-index: 9999;">
     <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
         <div class="modal-header">
@@ -269,7 +269,7 @@
     </div>
 </div>
 
-<div class="modal fade" tabindex="-1" role="dialog" id="modalStoreParameterEvento" style="z-index: 9999;">
+<div class="modal fade"  role="dialog" id="modalStoreParameterEvento" style="z-index: 9999;">
     <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
         <div class="modal-header">
@@ -299,7 +299,7 @@
     </div>
 </div>
 
-<div class="modal fade" tabindex="-1" role="dialog" id="modalStoreParameterPraga" style="z-index: 9999;">
+<div class="modal fade"  role="dialog" id="modalStoreParameterPraga" style="z-index: 9999;">
     <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
         <div class="modal-header">
@@ -330,7 +330,7 @@
 </div>
 
 
-<div class="modal fade" tabindex="-1" role="dialog" id="modalHistorico" style="z-index: 9999;">
+<div class="modal fade"  role="dialog" id="modalHistorico" style="z-index: 9999;">
     <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
         <div class="modal-header">

@@ -39,7 +39,7 @@
         </div>
     </div>
 
-    <div class="modal fade" tabindex="-1" role="dialog" id="modalStoreParameterType">
+    <div class="modal fade"  role="dialog" id="modalStoreParameterType">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
             <div class="modal-header">
@@ -69,7 +69,7 @@
         </div>
     </div>
 
-    <div class="modal fade" tabindex="-1" role="dialog" id="modalEditParameterType">
+    <div class="modal fade"  role="dialog" id="modalEditParameterType">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
             <div class="modal-header">
@@ -100,7 +100,7 @@
         </div>
     </div>
 
-    <div class="modal fade" tabindex="-1" role="dialog" id="modalCreateParameters">
+    <div class="modal fade"  role="dialog" id="modalCreateParameters">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -146,7 +146,7 @@
         </div>
     </div>
 
-    <div class="modal fade" tabindex="-1" role="dialog" id="modalStoreParameter">
+    <div class="modal fade"  role="dialog" id="modalStoreParameter">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
             <div class="modal-header">
@@ -177,7 +177,7 @@
         </div>
     </div>
 
-    <div class="modal fade" tabindex="-1" role="dialog" id="modalEditParameter">
+    <div class="modal fade"  role="dialog" id="modalEditParameter">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
             <div class="modal-header">

@@ -85,7 +85,7 @@
         </div>
     </div>
 
-    <div class="modal fade" tabindex="-1" role="dialog" id="modalStoreocorrencia_praga">
+    <div class="modal fade"  role="dialog" id="modalStoreocorrencia_praga">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
             <div class="modal-header">
@@ -141,7 +141,7 @@
         </div>
     </div>
 
-    <div class="modal fade" tabindex="-1" role="dialog" id="modalEditocorrencia_praga">
+    <div class="modal fade"  role="dialog" id="modalEditocorrencia_praga">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
             <div class="modal-header">

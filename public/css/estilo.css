@@ -11021,3 +11021,15 @@ textarea.form-control-lg {
 .redux-text {
     width: 200px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
+
+.select2-container {
+    z-index: 9000;
+}
+
+.select2-container .select2-selection--single {
+    height: 39px !important;
+}
+
+.select2.select2-container.select2-container--default {
+    width: 100% !important;
+}

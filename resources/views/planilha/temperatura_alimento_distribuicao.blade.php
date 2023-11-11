@@ -92,7 +92,7 @@
         </div>
     </div>
 
-    <div class="modal fade" tabindex="-1" role="dialog" id="modalStoretemperatura_alimento_distribuicao">
+    <div class="modal fade"  role="dialog" id="modalStoretemperatura_alimento_distribuicao">
         <div class="modal-dialog modal-xl" role="document">
             <div class="modal-content">
             <div class="modal-header">
@@ -166,7 +166,7 @@
         </div>
     </div>
 
-    <div class="modal fade" tabindex="-1" role="dialog" id="modalEdittemperatura_alimento_distribuicao">
+    <div class="modal fade"  role="dialog" id="modalEdittemperatura_alimento_distribuicao">
         <div class="modal-dialog modal-xl" role="document">
             <div class="modal-content">
             <div class="modal-header">
@@ -248,7 +248,7 @@
         </div>
     </div>
 
-    <div class="modal fade" tabindex="-1" role="dialog" id="modalConfigurarAlimentosPadrao">
+    <div class="modal fade"  role="dialog" id="modalConfigurarAlimentosPadrao">
         <div class="modal-dialog modal-xl" role="document">
             <div class="modal-content">
             <div class="modal-header">

@@ -81,7 +81,7 @@
         </div>
     </div>
 
-    <div class="modal fade" tabindex="-1" role="dialog" id="modalStoretemperatura_alimento_banho_maria">
+    <div class="modal fade"  role="dialog" id="modalStoretemperatura_alimento_banho_maria">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
             <div class="modal-header">
@@ -161,7 +161,7 @@
         </div>
     </div>
 
-    <div class="modal fade" tabindex="-1" role="dialog" id="modalEdittemperatura_alimento_banho_maria">
+    <div class="modal fade"  role="dialog" id="modalEdittemperatura_alimento_banho_maria">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
             <div class="modal-header">

@@ -82,7 +82,7 @@
         </div>
     </div>
 
-    <div class="modal fade" tabindex="-1" role="dialog" id="modalStoreregistro_limpeza">
+    <div class="modal fade"  role="dialog" id="modalStoreregistro_limpeza">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
             <div class="modal-header">
@@ -160,7 +160,7 @@
         </div>
     </div>
 
-    <div class="modal fade" tabindex="-1" role="dialog" id="modalEditregistro_limpeza">
+    <div class="modal fade"  role="dialog" id="modalEditregistro_limpeza">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
             <div class="modal-header">
