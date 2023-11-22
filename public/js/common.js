@@ -308,6 +308,19 @@ function preencherProximaData(campo1, campo2, meses_add = 6) {
     }
 }
 
+function colocarHoraAtual(campo) {
+    // Obtém a hora atual
+    var currentTime = new Date();
+    var hours = currentTime.getHours();
+    var minutes = currentTime.getMinutes();
+
+    // Formata a hora no formato HH:mm
+    var formattedTime = (hours < 10 ? '0' : '') + hours + ':' + (minutes < 10 ? '0' : '') + minutes;
+
+    // Define o valor do campo de input de tempo
+    $(`#${campo}`).val(formattedTime);
+}
+
 $("#abrirPDF").click(function(event) {
     event.preventDefault();
 

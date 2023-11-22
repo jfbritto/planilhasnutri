@@ -13,6 +13,8 @@ $(document).ready(function () {
     // LISTAGEM
     function loadPrincipal()
     {
+        colocarHoraAtual(`hora_primeira_afericao`)
+
         Swal.queue([
             {
                 title: "Carregando...",
@@ -41,7 +43,7 @@ $(document).ready(function () {
                                             <td class="align-middle">${dateFormat(item.data)}</td>
                                             <td class="align-middle">${item.area}/${item.equipamento}</td>
                                             <td class="align-middle">${item.hora_primeira_afericao}</td>
-                                            <td class="align-middle">${item.temperatura_primeira_afericao}</td>
+                                            <td class="align-middle">${item.temperatura_primeira_afericao}°C</td>
                                             <td class="align-middle">${item.leitura_fita}%</td>
                                             <td class="align-middle">${item.situacao_gordura}</td>
                                             <td class="align-middle" style="text-align: right; min-width: 120px">

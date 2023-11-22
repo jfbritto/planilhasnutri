@@ -135,7 +135,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="temperatura_primeira_afericao">Temperatura 1ª aferição (ºC)</label>
-                                <input type="text" required name="temperatura_primeira_afericao" id="temperatura_primeira_afericao" class="form-control percent" placeholder="Informe a temperatura">
+                                <input type="text" required name="temperatura_primeira_afericao" id="temperatura_primeira_afericao" class="form-control percent" placeholder="Somente números">
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -147,7 +147,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="temperatura_segunda_afericao">Temperatura 2ª aferição (ºC)</label>
-                                <input type="text" name="temperatura_segunda_afericao" id="temperatura_segunda_afericao" class="form-control percent" placeholder="Informe a temperatura">
+                                <input type="text" name="temperatura_segunda_afericao" id="temperatura_segunda_afericao" class="form-control percent" placeholder="Somente números">
                             </div>
                         </div>
                         <div class="col-md-4">
