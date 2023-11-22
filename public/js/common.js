@@ -4,8 +4,17 @@ $('.money').mask('#.##0,00', {reverse: true});
 $('.zip_code').mask('00000-000');
 // mascara de cpf
 $('.cpf').mask('000.000.000-00');
+
 // mascara de porcentagem
-$('.percent').mask('##0,00', {reverse: true});
+$('.percent').on('input', function(event) {
+    var inputValue = $(this).val();
+
+    // Remove caracteres não permitidos (exceto números, vírgula e ponto)
+    var sanitizedValue = inputValue.replace(/[^0-9,\.]/g, '');
+
+    // Atualiza o valor do campo com os caracteres permitidos
+    $(this).val(sanitizedValue);
+});
 
 atualizarDataAtual()
 function atualizarDataAtual() {
