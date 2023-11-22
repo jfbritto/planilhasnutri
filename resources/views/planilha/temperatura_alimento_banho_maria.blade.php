@@ -135,19 +135,19 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="segunda_hora">Hora 2º aferição</label>
-                                <input type="time" required name="segunda_hora" id="segunda_hora" class="form-control">
+                                <input type="time" name="segunda_hora" id="segunda_hora" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="segunda_temperatura">Temperatura 2º aferição</label>
-                                <input type="text" required name="segunda_temperatura" id="segunda_temperatura" class="form-control" placeholder="Informe a temperatura">
+                                <input type="text" name="segunda_temperatura" id="segunda_temperatura" class="form-control" placeholder="Informe a temperatura">
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="acao_corretiva">Ação Corretiva</label>
-                                <input type="text" required name="acao_corretiva" id="acao_corretiva" class="form-control" placeholder="Informe a ação">
+                                <input type="text" name="acao_corretiva" id="acao_corretiva" class="form-control" placeholder="Informe a ação">
                             </div>
                         </div>
                     </div>
@@ -212,19 +212,19 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="segunda_hora_edit">Hora 2º aferição</label>
-                                <input type="time" required name="segunda_hora_edit" id="segunda_hora_edit" class="form-control">
+                                <input type="time" name="segunda_hora_edit" id="segunda_hora_edit" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="segunda_temperatura_edit">Temperatura 2º aferição</label>
-                                <input type="text" required name="segunda_temperatura_edit" id="segunda_temperatura_edit" class="form-control" placeholder="Informe a temperatura">
+                                <input type="text" name="segunda_temperatura_edit" id="segunda_temperatura_edit" class="form-control" placeholder="Informe a temperatura">
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="acao_corretiva_edit">Ação Corretiva</label>
-                                <input type="text" required name="acao_corretiva_edit" id="acao_corretiva_edit" class="form-control" placeholder="Informe a ação">
+                                <input type="text" name="acao_corretiva_edit" id="acao_corretiva_edit" class="form-control" placeholder="Informe a ação">
                             </div>
                         </div>
                         <div class="col-md-6">
