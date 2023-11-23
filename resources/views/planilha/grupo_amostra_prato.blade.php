@@ -86,28 +86,28 @@
 
                 <form id="formStoregrupo_amostra_prato">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label for="data">Data</label>
                                 <input type="date" required name="data" id="data" class="form-control">
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label for="nome_grupo">Nome do Grupo</label>
                                 <input type="text" required name="nome_grupo" id="nome_grupo" class="form-control" placeholder="Informe o nome do grupo">
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label for="numero_pessoas">Número de Pessoas</label>
                                 <input type="number" required name="numero_pessoas" id="numero_pessoas" class="form-control" placeholder="Informe o nº de pessoas">
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="form-group">
                                 <label for="cardapio">Cardápio</label>
-                                <input type="text" required name="cardapio" id="cardapio" class="form-control" placeholder="Informe o cardápio">
+                                <textarea type="text" maxlength="250" required name="cardapio" id="cardapio" class="form-control" placeholder="Informe o cardápio"></textarea>
                             </div>
                         </div>
                     </div>
@@ -135,28 +135,28 @@
                 <form id="formEditgrupo_amostra_prato">
                     <input type="hidden" required name="id_edit" id="id_edit">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label for="data_edit">Data</label>
                                 <input type="date" required name="data_edit" id="data_edit" class="form-control">
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label for="nome_grupo_edit">Nome do Grupo</label>
                                 <input type="text" required name="nome_grupo_edit" id="nome_grupo_edit" class="form-control" placeholder="Informe o nome do grupo">
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label for="numero_pessoas_edit">Número de Pessoas</label>
                                 <input type="number" required name="numero_pessoas_edit" id="numero_pessoas_edit" class="form-control" placeholder="Informe o nº de pessoas">
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="form-group">
                                 <label for="cardapio_edit">Cardápio</label>
-                                <input type="text" required name="cardapio_edit" id="cardapio_edit" class="form-control" placeholder="Informe o cardápio">
+                                <textarea type="text" maxlength="250" required name="cardapio_edit" id="cardapio_edit" class="form-control" placeholder="Informe o cardápio"></textarea>
                             </div>
                         </div>
                         <div class="col-md-6">
