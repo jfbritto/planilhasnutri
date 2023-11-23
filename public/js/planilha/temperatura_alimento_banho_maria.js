@@ -9,6 +9,9 @@ $(document).ready(function () {
     // LISTAGEM
     function loadPrincipal()
     {
+
+        colocarHoraAtual(`primeira_hora`)
+
         Swal.queue([
             {
                 title: "Carregando...",
