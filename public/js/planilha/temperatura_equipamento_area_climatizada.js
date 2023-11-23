@@ -37,8 +37,7 @@ $(document).ready(function () {
                                             <td class="align-middle">${dateFormat(item.data)}</td>
                                             <td class="align-middle">${item.responsavel}</td>
                                             <td class="align-middle">${item.equipamento}</td>
-                                            <td class="align-middle">${item.temperatura_1}</td>
-                                            <td class="align-middle">${item.temperatura_2}</td>
+                                            <td class="align-middle">${item.temperatura_1 ?? ''}°C</td>
                                             <td class="align-middle" style="text-align: right; min-width: 120px">
                                                 <a title="Histórico" data-id="${item.id}" data-id_planilha="${item.id_planilha}" href="#" class="btn btn-info abrirHistorico"><i style="color: white" class="fas fa-clock"></i></a>
                                                 <a title="Editar"
@@ -62,7 +61,7 @@ $(document).ready(function () {
 
                                 $("#list").append(`
                                     <tr>
-                                        <td class="align-middle text-center" colspan="6">Nenhum registro encontrado</td>
+                                        <td class="align-middle text-center" colspan="5">Nenhum registro encontrado</td>
                                     </tr>
                                 `);
                             }

@@ -125,13 +125,13 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="concentracao_solucao_clorada">Concentração Solução Clorada</label>
-                                <input type="text" required name="concentracao_solucao_clorada" id="concentracao_solucao_clorada" class="form-control" placeholder="(ppm)">
+                                <input type="text" name="concentracao_solucao_clorada" id="concentracao_solucao_clorada" class="form-control percent" placeholder="(ppm)">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="acao_corretiva">Ação Corretiva</label>
-                                <input type="text" required name="acao_corretiva" id="acao_corretiva" class="form-control" placeholder="Informe uma ação">
+                                <input type="text" name="acao_corretiva" id="acao_corretiva" class="form-control" placeholder="Informe uma ação">
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -196,13 +196,13 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="concentracao_solucao_clorada_edit">Concentração Solução Clorada</label>
-                                <input type="text" required name="concentracao_solucao_clorada_edit" id="concentracao_solucao_clorada_edit" class="form-control" placeholder="(ppm)">
+                                <input type="text" name="concentracao_solucao_clorada_edit" id="concentracao_solucao_clorada_edit" class="form-control percent" placeholder="(ppm)">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="acao_corretiva_edit">Ação Corretiva</label>
-                                <input type="text" required name="acao_corretiva_edit" id="acao_corretiva_edit" class="form-control" placeholder="Informe uma ação">
+                                <input type="text" name="acao_corretiva_edit" id="acao_corretiva_edit" class="form-control" placeholder="Informe uma ação">
                             </div>
                         </div>
                         <div class="col-md-4">

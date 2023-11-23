@@ -70,7 +70,6 @@
                             <th>Responsável</th>
                             <th>Equipamento</th>
                             <th>Temperatura 10hrs</th>
-                            <th>Temperatura 16hrs</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -112,13 +111,13 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="temperatura_1">Temperatura 10:00</label>
-                                <input type="text" required name="temperatura_1" id="temperatura_1" class="form-control" placeholder="Informe a temperatura">
+                                <input type="text" required name="temperatura_1" id="temperatura_1" class="form-control percent" placeholder="Informe a temperatura">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="temperatura_2">Temperatura 16:00</label>
-                                <input type="text" required name="temperatura_2" id="temperatura_2" class="form-control" placeholder="Informe a temperatura">
+                                <input type="text" name="temperatura_2" id="temperatura_2" class="form-control percent" placeholder="Informe a temperatura">
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -171,13 +170,13 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="temperatura_1_edit">Temperatura 10:00</label>
-                                <input type="text" required name="temperatura_1_edit" id="temperatura_1_edit" class="form-control" placeholder="Informe a temperatura">
+                                <input type="text" required name="temperatura_1_edit" id="temperatura_1_edit" class="form-control percent" placeholder="Informe a temperatura">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="temperatura_2_edit">Temperatura 16:00</label>
-                                <input type="text" required name="temperatura_2_edit" id="temperatura_2_edit" class="form-control" placeholder="Informe a temperatura">
+                                <input type="text" name="temperatura_2_edit" id="temperatura_2_edit" class="form-control percent" placeholder="Informe a temperatura">
                             </div>
                         </div>
                         <div class="col-md-4">

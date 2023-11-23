@@ -10,6 +10,8 @@ $(document).ready(function () {
     // LISTAGEM
     function loadPrincipal()
     {
+        colocarHoraAtual(`hora_imersao_inicio`)
+
         Swal.queue([
             {
                 title: "Carregando...",
@@ -38,7 +40,7 @@ $(document).ready(function () {
                                             <td class="align-middle">${item.produto}</td>
                                             <td class="align-middle">${item.hora_imersao_inicio}</td>
                                             <td class="align-middle">${item.hora_imersao_fim}</td>
-                                            <td class="align-middle">${item.concentracao_solucao_clorada}</td>
+                                            <td class="align-middle">${item.concentracao_solucao_clorada ?? ''}</td>
                                             <td class="align-middle">${item.responsavel}</td>
                                             <td class="align-middle" style="text-align: right; min-width: 120px">
                                                 <a title="Histórico" data-id="${item.id}" data-id_planilha="${item.id_planilha}" href="#" class="btn btn-info abrirHistorico"><i style="color: white" class="fas fa-clock"></i></a>
