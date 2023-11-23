@@ -9,8 +9,8 @@ $('.cpf').mask('000.000.000-00');
 $('.percent').on('input', function(event) {
     var inputValue = $(this).val();
 
-    // Remove caracteres não permitidos (exceto números, vírgula e ponto)
-    var sanitizedValue = inputValue.replace(/[^0-9,\.]/g, '');
+    // Remove caracteres não permitidos (exceto números, vírgula, ponto e sinal de menos)
+    var sanitizedValue = inputValue.replace(/[^0-9,\.\-]/g, '');
 
     // Atualiza o valor do campo com os caracteres permitidos
     $(this).val(sanitizedValue);

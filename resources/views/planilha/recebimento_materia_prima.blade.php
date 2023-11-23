@@ -129,7 +129,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="ordem_de_compra">Ordem de Compra</label>
-                                <input type="text" required name="ordem_de_compra" id="ordem_de_compra" class="form-control" placeholder="Informe a ordem de compra">
+                                <input type="text" name="ordem_de_compra" id="ordem_de_compra" class="form-control" placeholder="Informe a ordem de compra">
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -153,25 +153,25 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="temperatura_alimento">Temperatura Alimento</label>
-                                <input type="text" required name="temperatura_alimento" id="temperatura_alimento" class="form-control" placeholder="Informe a temperatura">
+                                <input type="text" required name="temperatura_alimento" id="temperatura_alimento" class="form-control percent" placeholder="Informe a temperatura">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="temperatura_veiculo">Temperatura Veículo</label>
-                                <input type="text" required name="temperatura_veiculo" id="temperatura_veiculo" class="form-control" placeholder="Informe a temperatura">
+                                <input type="text" name="temperatura_veiculo" id="temperatura_veiculo" class="form-control percent" placeholder="Informe a temperatura">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="nao_conformidade">Não Conformidade</label>
-                                <input type="text" required name="nao_conformidade" id="nao_conformidade" class="form-control" placeholder="Informe a não conformidade">
+                                <input type="text" name="nao_conformidade" id="nao_conformidade" class="form-control" placeholder="Informe a não conformidade">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="acao_corretiva">Ação Corretiva</label>
-                                <input type="text" required name="acao_corretiva" id="acao_corretiva" class="form-control" placeholder="Informe a ação">
+                                <input type="text" name="acao_corretiva" id="acao_corretiva" class="form-control" placeholder="Informe a ação">
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -230,7 +230,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="ordem_de_compra">Ordem de Compra</label>
-                                <input type="text" required name="ordem_de_compra_edit" id="ordem_de_compra_edit" class="form-control" placeholder="Informe a ordem de compra">
+                                <input type="text" name="ordem_de_compra_edit" id="ordem_de_compra_edit" class="form-control" placeholder="Informe a ordem de compra">
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -254,25 +254,25 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="temperatura_alimento">Temperatura Alimento</label>
-                                <input type="text" required name="temperatura_alimento_edit" id="temperatura_alimento_edit" class="form-control" placeholder="Informe a temperatura">
+                                <input type="text" required name="temperatura_alimento_edit" id="temperatura_alimento_edit" class="form-control percent" placeholder="Informe a temperatura">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="temperatura_veiculo">Temperatura Veículo</label>
-                                <input type="text" required name="temperatura_veiculo_edit" id="temperatura_veiculo_edit" class="form-control" placeholder="Informe a temperatura">
+                                <input type="text" name="temperatura_veiculo_edit" id="temperatura_veiculo_edit" class="form-control percent" placeholder="Informe a temperatura">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="nao_conformidade">Não Conformidade</label>
-                                <input type="text" required name="nao_conformidade_edit" id="nao_conformidade_edit" class="form-control" placeholder="Informe a não conformidade">
+                                <input type="text" name="nao_conformidade_edit" id="nao_conformidade_edit" class="form-control" placeholder="Informe a não conformidade">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="acao_corretiva">Ação Corretiva</label>
-                                <input type="text" required name="acao_corretiva_edit" id="acao_corretiva_edit" class="form-control" placeholder="Informe a ação">
+                                <input type="text" name="acao_corretiva_edit" id="acao_corretiva_edit" class="form-control" placeholder="Informe a ação">
                             </div>
                         </div>
                         <div class="col-md-4">
