@@ -671,3 +671,20 @@ $(document).ready(function () {
 
     });
 });
+
+$('#dolly').on('input', '.segundaHora', function() {
+    // Obtém a nova hora do campo de entrada alterado
+    var novaHora = $(this).val();
+
+    // Atualiza a hora em todos os outros campos
+    $('.segundaHora').not(this).val(novaHora);
+});
+
+
+$('#dolly-edit').on('input', '.segundaHora_edit', function() {
+    // Obtém a nova hora do campo de entrada alterado
+    var novaHora = $(this).val();
+
+    // Atualiza a hora em todos os outros campos
+    $('.segundaHora_edit').not(this).val(novaHora);
+});
