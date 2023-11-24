@@ -27,6 +27,14 @@ class ParameterController extends Controller
             'id_parameter_type' => $request->id_parameter_type
         ];
 
+        $filter['id_parameter_type'] = $data['id_parameter_type'];
+        $filter['name'] = $data['name'];
+        $response = $this->parameterService->list($filter);
+
+        if (!empty($response['data'])) {
+            return response()->json(['status'=>'error', 'message'=>'Já existe um item cadastrado com esse nome!'], 400);
+        }
+
         $response = $this->parameterService->store($data);
 
         if($response['status'] == 'success')
@@ -70,9 +78,11 @@ class ParameterController extends Controller
         return response()->json(['status'=>'error', 'message'=>$response['data']], 400);
     }
 
-    public function list()
+    public function list(Request $request)
     {
-        $response = $this->parameterService->list();
+        $filter = $request->all();
+
+        $response = $this->parameterService->list($filter);
 
         if($response['status'] == 'success')
             return response()->json(['status'=>'success', 'data'=>$response['data']], 200);

@@ -81,7 +81,7 @@ class ParameterService
         return $response;
     }
 
-    public function list()
+    public function list($filter_array)
     {
         $response = [];
 
@@ -92,6 +92,14 @@ class ParameterService
                 $condition = " and (pm.id_unit = ".auth()->user()->id_unit." or pm.id_unit is null)";
             }
 
+            $filter = "";
+            if (!empty($filter_array['id_parameter_type'])) {
+                $filter .= " AND pm.id_parameter_type = {$filter_array['id_parameter_type']} ";
+            }
+            if (!empty($filter_array['name'])) {
+                $filter .= " AND pm.name like '{$filter_array['name']}'";
+            }
+
             $return = DB::select( DB::raw("SELECT
                                                 ifnull(un.name, 'Todas') as unit_name,
                                                 pm.*
@@ -99,7 +107,7 @@ class ParameterService
                                                 parameters pm
                                                 LEFT JOIN units un ON pm.id_unit = un.id
                                             WHERE
-                                                pm.status = 'A' {$condition}
+                                                pm.status = 'A' {$condition} {$filter}
                                             ORDER BY
                                                 pm.name"));
 
