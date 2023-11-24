@@ -165,13 +165,13 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="leitura_fita">Leitura da fita (%)</label>
-                                <input type="text" required name="leitura_fita" id="leitura_fita" class="form-control percent" placeholder="Informe a porcentagem">
+                                <input type="text" name="leitura_fita" id="leitura_fita" class="form-control percent" placeholder="Informe a porcentagem">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="situacao_gordura">Situação da gordura</label>
-                                <select required name="situacao_gordura" id="situacao_gordura" class="form-control">
+                                <select name="situacao_gordura" id="situacao_gordura" class="form-control">
                                     <option value="">-- Selecione --</option>
                                     <option value="Boa">Boa</option>
                                     <option value="Ruim">Ruim</option>
@@ -266,13 +266,13 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="leitura_fita_edit">Leitura da fita (%)</label>
-                                <input type="text" required name="leitura_fita_edit" id="leitura_fita_edit" class="form-control percent" placeholder="Informe a porcentagem">
+                                <input type="text" name="leitura_fita_edit" id="leitura_fita_edit" class="form-control percent" placeholder="Informe a porcentagem">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="situacao_gordura_edit">Situação da gordura</label>
-                                <select required name="situacao_gordura_edit" id="situacao_gordura_edit" class="form-control">
+                                <select name="situacao_gordura_edit" id="situacao_gordura_edit" class="form-control">
                                     <option value="">-- Selecione --</option>
                                     <option value="Boa">Boa</option>
                                     <option value="Ruim">Ruim</option>

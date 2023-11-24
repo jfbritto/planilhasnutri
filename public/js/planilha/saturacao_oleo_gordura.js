@@ -44,8 +44,8 @@ $(document).ready(function () {
                                             <td class="align-middle">${item.area}/${item.equipamento}</td>
                                             <td class="align-middle">${item.hora_primeira_afericao}</td>
                                             <td class="align-middle">${item.temperatura_primeira_afericao}°C</td>
-                                            <td class="align-middle">${item.leitura_fita}%</td>
-                                            <td class="align-middle">${item.situacao_gordura}</td>
+                                            <td class="align-middle">${item.leitura_fita ?? ''}%</td>
+                                            <td class="align-middle">${item.situacao_gordura ?? ''}</td>
                                             <td class="align-middle" style="text-align: right; min-width: 120px">
                                                 <a title="Histórico" data-id="${item.id}" data-id_planilha="${item.id_planilha}" href="#" class="btn btn-info abrirHistorico"><i style="color: white" class="fas fa-clock"></i></a>
                                                 <a title="Editar"
