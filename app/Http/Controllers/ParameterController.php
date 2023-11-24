@@ -22,7 +22,7 @@ class ParameterController extends Controller
     public function store(Request $request)
     {
         $data = [
-            'name' => trim($request->name),
+            'name' => self::capitalizarPrimeirasLetras(trim($request->name)),
             'id_unit' => auth()->user()->id_unit,
             'id_parameter_type' => $request->id_parameter_type
         ];
@@ -40,7 +40,7 @@ class ParameterController extends Controller
 
         $data = [
             'id' => trim($request->id),
-            'name' => trim($request->name)
+            'name' => self::capitalizarPrimeirasLetras(trim($request->name))
         ];
 
         $response = $this->parameterService->update($data);
@@ -49,6 +49,10 @@ class ParameterController extends Controller
             return response()->json(['status'=>'success'], 200);
 
         return response()->json(['status'=>'error', 'message'=>$response['data']], 400);
+    }
+
+    public function capitalizarPrimeirasLetras($texto) {
+        return mb_convert_case($texto, MB_CASE_TITLE, 'UTF-8');
     }
 
     public function destroy(Request $request)
