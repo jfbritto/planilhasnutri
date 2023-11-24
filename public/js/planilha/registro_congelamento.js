@@ -36,9 +36,7 @@ $(document).ready(function () {
                                         <tr>
                                             <td class="align-middle">${dateFormat(item.data_congelamento)}</td>
                                             <td class="align-middle">${item.produto}</td>
-                                            <td class="align-middle">${item.quantidade ?? ''}</td>
                                             <td class="align-middle">${dateFormat(item.data_recebimento)}</td>
-                                            <td class="align-middle">${dateFormat(item.data_fabricacao)}</td>
                                             <td class="align-middle">${item.alergeno}</td>
                                             <td class="align-middle" style="text-align: right; min-width: 120px">
                                                 <a title="Histórico" data-id="${item.id}" data-id_planilha="${item.id_planilha}" href="#" class="btn btn-info abrirHistorico"><i style="color: white" class="fas fa-clock"></i></a>
@@ -62,7 +60,7 @@ $(document).ready(function () {
 
                                 $("#list").append(`
                                     <tr>
-                                        <td class="align-middle text-center" colspan="7">Nenhum registro encontrado</td>
+                                        <td class="align-middle text-center" colspan="5">Nenhum registro encontrado</td>
                                     </tr>
                                 `);
                             }

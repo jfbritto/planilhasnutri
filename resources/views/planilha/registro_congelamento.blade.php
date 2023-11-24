@@ -68,9 +68,7 @@
                         <tr>
                             <th>Data Congelamento</th>
                             <th>Produto</th>
-                            <th>Quantidade</th>
                             <th>Data Recebimento</th>
-                            <th>Data Fabricação</th>
                             <th>Alérgeno</th>
                             <th></th>
                         </tr>
