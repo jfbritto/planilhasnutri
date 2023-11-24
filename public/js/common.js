@@ -182,7 +182,8 @@ function loadGlobalParameters(
     element,
     idSelected = null,
     filtro = false,
-    feminino = true
+    feminino = true,
+    idModal = null
 ) {
     $.get(window.location.origin + "/parametro/encontrar", {
         id_parameter_type:id
@@ -214,7 +215,9 @@ function loadGlobalParameters(
                     $(`#${element}`).append(`<option ${selected} value="${item.id}">${item.name}</option>`);
                 });
 
-                $(`#${element}`).select2();
+                $(`#${element}`).select2({
+                    dropdownParent: idModal ? $(`#${idModal}`) : null
+                });
             } else {
                 $(`#${element}`).append(`<option>Nenhum item encontrado</option>`);
             }

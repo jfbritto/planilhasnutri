@@ -1,8 +1,8 @@
 $(document).ready(function () {
 
     loadPrincipal();
-    loadGlobalParameters(1, 'id_parameter_area');
-    loadGlobalParameters(12, 'id_parameter_praga');
+    loadGlobalParameters(1, 'id_parameter_area', null, false, true, `modalStoreocorrencia_praga`);
+    loadGlobalParameters(12, 'id_parameter_praga', null, false, true, `modalStoreocorrencia_praga`);
 
     // Carregar filtros
     loadGlobalParameters(1, 'id_parameter_area_filter', null, true);
@@ -39,7 +39,7 @@ $(document).ready(function () {
                                             <td class="align-middle">${dateFormat(item.data)}</td>
                                             <td class="align-middle">${item.area}</td>
                                             <td class="align-middle">${item.praga}</td>
-                                            <td class="align-middle">${item.observacoes}</td>
+                                            <td class="align-middle">${item.observacoes ?? ''}</td>
                                             <td class="align-middle" style="text-align: right; min-width: 120px">
                                                 <a title="Histórico" data-id="${item.id}" data-id_planilha="${item.id_planilha}" href="#" class="btn btn-info abrirHistorico"><i style="color: white" class="fas fa-clock"></i></a>
                                                 <a title="Editar"
@@ -138,8 +138,8 @@ $(document).ready(function () {
         let id_parameter_praga = $(this).data('id_parameter_praga');
         let observacoes = $(this).data('observacoes');
 
-        loadGlobalParameters(1, 'id_parameter_area_edit', id_parameter_area);
-        loadGlobalParameters(12, 'id_parameter_praga_edit', id_parameter_praga);
+        loadGlobalParameters(1, 'id_parameter_area_edit', id_parameter_area, false, true, `modalEditocorrencia_praga`);
+        loadGlobalParameters(12, 'id_parameter_praga_edit', id_parameter_praga, false, true, `modalEditocorrencia_praga`);
 
         $("#id_edit").val(id);
         $("#usuario").val(usuario);

@@ -1,9 +1,9 @@
 $(document).ready(function () {
 
     loadPrincipal();
-    loadGlobalParameters(1, 'id_parameter_area');
-    loadGlobalParameters(2, 'id_parameter_filtro');
-    loadGlobalParameters(3, 'id_parameter_responsavel');
+    loadGlobalParameters(1, 'id_parameter_area', null, false, true, `modalStoretroca_elemento_filtrante`);
+    loadGlobalParameters(2, 'id_parameter_filtro', null, false, true, `modalStoretroca_elemento_filtrante`);
+    loadGlobalParameters(3, 'id_parameter_responsavel', null, false, true, `modalStoretroca_elemento_filtrante`);
 
     // Carregar filtros
     loadGlobalParameters(1, 'id_parameter_area_filter', null, true);
@@ -135,9 +135,9 @@ $(document).ready(function () {
         let data_troca = $(this).data('data_troca');
         let data_proxima_troca = $(this).data('data_proxima_troca');
 
-        loadGlobalParameters(1, 'id_parameter_area_edit', id_parameter_area);
-        loadGlobalParameters(2, 'id_parameter_filtro_edit', id_parameter_filtro);
-        loadGlobalParameters(3, 'id_parameter_responsavel_edit', id_parameter_responsavel);
+        loadGlobalParameters(1, 'id_parameter_area_edit', id_parameter_area, false, true, `modalEdittroca_elemento_filtrante`);
+        loadGlobalParameters(2, 'id_parameter_filtro_edit', id_parameter_filtro, false, true, `modalEdittroca_elemento_filtrante`);
+        loadGlobalParameters(3, 'id_parameter_responsavel_edit', id_parameter_responsavel, false, true, `modalEdittroca_elemento_filtrante`);
 
         $("#id_edit").val(id);
         $("#usuario").val(usuario);

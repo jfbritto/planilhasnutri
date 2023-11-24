@@ -1,10 +1,10 @@
 $(document).ready(function () {
 
     loadPrincipal();
-    loadGlobalParameters(1, 'id_parameter_area');
-    loadGlobalParameters(4, 'id_parameter_equipamento');
-    loadGlobalParameters(3, 'id_parameter_responsavel');
-    loadGlobalParameters(3, 'id_parameter_responsavel_acao');
+    loadGlobalParameters(1, 'id_parameter_area', null, false, true, `modalStoresaturacao_oleo_gordura`);
+    loadGlobalParameters(4, 'id_parameter_equipamento', null, false, true, `modalStoresaturacao_oleo_gordura`);
+    loadGlobalParameters(3, 'id_parameter_responsavel', null, false, true, `modalStoresaturacao_oleo_gordura`);
+    loadGlobalParameters(3, 'id_parameter_responsavel_acao', null, false, true, `modalStoresaturacao_oleo_gordura`);
 
     // Carregar filtros
     loadGlobalParameters(1, 'id_parameter_area_filter', null, true);
@@ -170,10 +170,10 @@ $(document).ready(function () {
 
         console.log(temperatura_primeira_afericao)
 
-        loadGlobalParameters(1, 'id_parameter_area_edit', id_parameter_area);
-        loadGlobalParameters(4, 'id_parameter_equipamento_edit', id_parameter_equipamento);
-        loadGlobalParameters(3, 'id_parameter_responsavel_edit', id_parameter_responsavel);
-        loadGlobalParameters(3, 'id_parameter_responsavel_acao_edit', id_parameter_responsavel_acao);
+        loadGlobalParameters(1, 'id_parameter_area_edit', id_parameter_area, false, true, `modalEditsaturacao_oleo_gordura`);
+        loadGlobalParameters(4, 'id_parameter_equipamento_edit', id_parameter_equipamento, false, true, `modalEditsaturacao_oleo_gordura`);
+        loadGlobalParameters(3, 'id_parameter_responsavel_edit', id_parameter_responsavel, false, true, `modalEditsaturacao_oleo_gordura`);
+        loadGlobalParameters(3, 'id_parameter_responsavel_acao_edit', id_parameter_responsavel_acao, false, true, `modalEditsaturacao_oleo_gordura`);
 
         $("#id_edit").val(id);
         $("#usuario").val(usuario);

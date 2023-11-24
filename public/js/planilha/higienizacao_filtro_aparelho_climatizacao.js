@@ -1,9 +1,9 @@
 $(document).ready(function () {
 
     loadPrincipal();
-    loadGlobalParameters(1, 'id_parameter_area');
-    loadGlobalParameters(4, 'id_parameter_equipamento');
-    loadGlobalParameters(3, 'id_parameter_responsavel');
+    loadGlobalParameters(1, 'id_parameter_area', null, false, true, `modalStorehigienizacao_filtro_aparelho_climatizacao`);
+    loadGlobalParameters(4, 'id_parameter_equipamento', null, false, true, `modalStorehigienizacao_filtro_aparelho_climatizacao`);
+    loadGlobalParameters(3, 'id_parameter_responsavel', null, false, true, `modalStorehigienizacao_filtro_aparelho_climatizacao`);
 
     // Carregar filtros
     loadGlobalParameters(1, 'id_parameter_area_filter', null, true);
@@ -135,9 +135,9 @@ $(document).ready(function () {
         let data_higienizacao = $(this).data('data_higienizacao');
         let data_proxima_higienizacao = $(this).data('data_proxima_higienizacao');
 
-        loadGlobalParameters(1, 'id_parameter_area_edit', id_parameter_area);
-        loadGlobalParameters(4, 'id_parameter_equipamento_edit', id_parameter_equipamento);
-        loadGlobalParameters(3, 'id_parameter_responsavel_edit', id_parameter_responsavel);
+        loadGlobalParameters(1, 'id_parameter_area_edit', id_parameter_area, false, true, `modalEdithigienizacao_filtro_aparelho_climatizacao`);
+        loadGlobalParameters(4, 'id_parameter_equipamento_edit', id_parameter_equipamento, false, true, `modalEdithigienizacao_filtro_aparelho_climatizacao`);
+        loadGlobalParameters(3, 'id_parameter_responsavel_edit', id_parameter_responsavel, false, true, `modalEdithigienizacao_filtro_aparelho_climatizacao`);
 
         $("#id_edit").val(id);
         $("#usuario").val(usuario);

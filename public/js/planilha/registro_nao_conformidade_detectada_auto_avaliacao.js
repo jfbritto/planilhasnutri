@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     loadPrincipal();
-    loadGlobalParameters(3, 'id_parameter_responsavel');
+    loadGlobalParameters(3, 'id_parameter_responsavel', null, false, true, `modalStoreregistro_nao_conformidade_detectada_auto_avaliacao`);
 
     // LISTAGEM
     function loadPrincipal()
@@ -135,7 +135,7 @@ $(document).ready(function () {
         let acoes_corretivas = $(this).data('acoes_corretivas');
         let id_parameter_responsavel = $(this).data('id_parameter_responsavel');
 
-        loadGlobalParameters(3, 'id_parameter_responsavel_edit', id_parameter_responsavel);
+        loadGlobalParameters(3, 'id_parameter_responsavel_edit', id_parameter_responsavel, false, true, `modalEditregistro_nao_conformidade_detectada_auto_avaliacao`);
 
         $("#id_edit").val(id);
         $("#usuario").val(usuario);

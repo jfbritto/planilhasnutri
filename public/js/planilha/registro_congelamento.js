@@ -1,8 +1,8 @@
 $(document).ready(function () {
 
     loadPrincipal();
-    loadGlobalParameters(8, 'id_parameter_produto');
-    loadGlobalParameters(5, 'id_parameter_alergeno');
+    loadGlobalParameters(8, 'id_parameter_produto', null, false, true, `modalStoreregistro_congelamento`);
+    loadGlobalParameters(5, 'id_parameter_alergeno', null, false, true, `modalStoreregistro_congelamento`);
 
     // Carregar filtros
     loadGlobalParameters(8, 'id_parameter_produto_filter', null, true, false);
@@ -141,8 +141,8 @@ $(document).ready(function () {
         let data_fabricacao = $(this).data('data_fabricacao');
         let id_parameter_alergeno = $(this).data('id_parameter_alergeno');
 
-        loadGlobalParameters(8, 'id_parameter_produto_edit', id_parameter_produto);
-        loadGlobalParameters(5, 'id_parameter_alergeno_edit', id_parameter_alergeno);
+        loadGlobalParameters(8, 'id_parameter_produto_edit', id_parameter_produto, false, true, `modalEditregistro_congelamento`);
+        loadGlobalParameters(5, 'id_parameter_alergeno_edit', id_parameter_alergeno, false, true, `modalEditregistro_congelamento`);
 
         $("#id_edit").val(id);
         $("#usuario").val(usuario);

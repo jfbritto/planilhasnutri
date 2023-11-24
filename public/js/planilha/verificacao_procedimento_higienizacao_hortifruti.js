@@ -1,8 +1,8 @@
 $(document).ready(function () {
 
     loadPrincipal();
-    loadGlobalParameters(8, 'id_parameter_produto');
-    loadGlobalParameters(3, 'id_parameter_responsavel');
+    loadGlobalParameters(8, 'id_parameter_produto', null, false, true, `modalStoreverificacao_procedimento_higienizacao_hortifruti`);
+    loadGlobalParameters(3, 'id_parameter_responsavel', null, false, true, `modalStoreverificacao_procedimento_higienizacao_hortifruti`);
 
     // Carregar filtros
     loadGlobalParameters(8, 'id_parameter_produto_filter', null, true, false);
@@ -146,8 +146,8 @@ $(document).ready(function () {
         let acao_corretiva = $(this).data('acao_corretiva');
         let id_parameter_responsavel = $(this).data('id_parameter_responsavel');
 
-        loadGlobalParameters(8, 'id_parameter_produto_edit', id_parameter_produto);
-        loadGlobalParameters(3, 'id_parameter_responsavel_edit', id_parameter_responsavel);
+        loadGlobalParameters(8, 'id_parameter_produto_edit', id_parameter_produto, false, true, `modalEditverificacao_procedimento_higienizacao_hortifruti`);
+        loadGlobalParameters(3, 'id_parameter_responsavel_edit', id_parameter_responsavel, false, true, `modalEditverificacao_procedimento_higienizacao_hortifruti`);
 
         $("#id_edit").val(id);
         $("#usuario").val(usuario);

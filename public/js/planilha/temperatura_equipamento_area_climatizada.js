@@ -1,8 +1,8 @@
 $(document).ready(function () {
 
     loadPrincipal();
-    loadGlobalParameters(4, 'id_parameter_equipamento');
-    loadGlobalParameters(3, 'id_parameter_responsavel');
+    loadGlobalParameters(4, 'id_parameter_equipamento', null, false, true, `modalStoretemperatura_equipamento_area_climatizada`);
+    loadGlobalParameters(3, 'id_parameter_responsavel', null, false, true, `modalStoretemperatura_equipamento_area_climatizada`);
 
     // Carregar filtros
     loadGlobalParameters(4, 'id_parameter_equipamento_filter', null, true, false);
@@ -139,8 +139,8 @@ $(document).ready(function () {
         let temperatura_1 = $(this).data('temperatura_1');
         let temperatura_2 = $(this).data('temperatura_2');
 
-        loadGlobalParameters(4, 'id_parameter_equipamento_edit', id_parameter_equipamento);
-        loadGlobalParameters(3, 'id_parameter_responsavel_edit', id_parameter_responsavel);
+        loadGlobalParameters(4, 'id_parameter_equipamento_edit', id_parameter_equipamento, false, true, `modalEdittemperatura_equipamento_area_climatizada`);
+        loadGlobalParameters(3, 'id_parameter_responsavel_edit', id_parameter_responsavel, false, true, `modalEdittemperatura_equipamento_area_climatizada`);
 
         $("#id_edit").val(id);
         $("#usuario").val(usuario);

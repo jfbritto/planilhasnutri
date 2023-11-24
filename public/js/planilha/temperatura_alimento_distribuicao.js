@@ -8,8 +8,8 @@ $(document).ready(function () {
     var contador = 1;
 
     loadPrincipal();
-    loadGlobalParameters(3, 'id_parameter_responsavel');
-    loadGlobalParameters(11, 'id_parameter_evento');
+    loadGlobalParameters(3, 'id_parameter_responsavel', null, false, true, `modalStoretemperatura_alimento_distribuicao`);
+    loadGlobalParameters(11, 'id_parameter_evento', null, false, true, `modalStoretemperatura_alimento_distribuicao`);
 
     // Carregar filtros
     loadGlobalParameters(11, 'id_parameter_evento_filter', null, true, false);
@@ -175,8 +175,8 @@ $(document).ready(function () {
         let id_parameter_responsavel = $(this).data('id_parameter_responsavel');
         let acao_corretiva = $(this).data('acao_corretiva');
 
-        loadGlobalParameters(3, 'id_parameter_responsavel_edit', id_parameter_responsavel);
-        loadGlobalParameters(11, 'id_parameter_evento_edit', id_parameter_evento);
+        loadGlobalParameters(3, 'id_parameter_responsavel_edit', id_parameter_responsavel, false, true, `modalEdittemperatura_alimento_distribuicao`);
+        loadGlobalParameters(11, 'id_parameter_evento_edit', id_parameter_evento, false, true, `modalEdittemperatura_alimento_distribuicao`);
 
         preencherItensCadastrados(id)
 

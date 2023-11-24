@@ -1,9 +1,9 @@
 $(document).ready(function () {
 
     loadPrincipal();
-    loadGlobalParameters(6, 'id_parameter_caixa_gordura');
-    loadGlobalParameters(1, 'id_parameter_area');
-    loadGlobalParameters(3, 'id_parameter_responsavel');
+    loadGlobalParameters(6, 'id_parameter_caixa_gordura', null, false, true, `modalStorelimpeza_caixa_gorduras`);
+    loadGlobalParameters(1, 'id_parameter_area', null, false, true, `modalStorelimpeza_caixa_gorduras`);
+    loadGlobalParameters(3, 'id_parameter_responsavel', null, false, true, `modalStorelimpeza_caixa_gorduras`);
 
     // Carregar filtros
     loadGlobalParameters(1, 'id_parameter_area_filter', null, true);
@@ -141,9 +141,9 @@ $(document).ready(function () {
         let data_limpeza = $(this).data('data_limpeza');
         let data_proxima_limpeza = $(this).data('data_proxima_limpeza');
 
-        loadGlobalParameters(6, 'id_parameter_caixa_gordura_edit', id_parameter_caixa_gordura);
-        loadGlobalParameters(1, 'id_parameter_area_edit', id_parameter_area);
-        loadGlobalParameters(3, 'id_parameter_responsavel_edit', id_parameter_responsavel);
+        loadGlobalParameters(6, 'id_parameter_caixa_gordura_edit', id_parameter_caixa_gordura, false, true, `modalEditlimpeza_caixa_gorduras`);
+        loadGlobalParameters(1, 'id_parameter_area_edit', id_parameter_area, false, true, `modalEditlimpeza_caixa_gorduras`);
+        loadGlobalParameters(3, 'id_parameter_responsavel_edit', id_parameter_responsavel, false, true, `modalEditlimpeza_caixa_gorduras`);
 
         $("#id_edit").val(id);
         $("#usuario").val(usuario);

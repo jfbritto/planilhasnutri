@@ -1,8 +1,8 @@
 $(document).ready(function () {
 
     loadPrincipal();
-    loadGlobalParameters(8, 'id_parameter_produto');
-    loadGlobalParameters(3, 'id_parameter_responsavel');
+    loadGlobalParameters(8, 'id_parameter_produto', null, false, true, `modalStorereaquecimento_alimento`);
+    loadGlobalParameters(3, 'id_parameter_responsavel', null, false, true, `modalStorereaquecimento_alimento`);
 
     // Carregar filtros
     loadGlobalParameters(8, 'id_parameter_produto_filter', null, true, false);
@@ -148,8 +148,8 @@ $(document).ready(function () {
         let conforme_naoconforme = $(this).data('conforme_naoconforme');
         let id_parameter_responsavel = $(this).data('id_parameter_responsavel');
 
-        loadGlobalParameters(8, 'id_parameter_produto_edit', id_parameter_produto);
-        loadGlobalParameters(3, 'id_parameter_responsavel_edit', id_parameter_responsavel);
+        loadGlobalParameters(8, 'id_parameter_produto_edit', id_parameter_produto, false, true, `modalEditreaquecimento_alimento`);
+        loadGlobalParameters(3, 'id_parameter_responsavel_edit', id_parameter_responsavel, false, true, `modalEditreaquecimento_alimento`);
 
         $("#id_edit").val(id);
         $("#usuario").val(usuario);

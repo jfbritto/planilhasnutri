@@ -1,8 +1,8 @@
 $(document).ready(function () {
 
     loadPrincipal();
-    loadGlobalParameters(1, 'id_parameter_area');
-    loadGlobalParameters(3, 'id_parameter_responsavel');
+    loadGlobalParameters(1, 'id_parameter_area', null, false, true, `modalStoreregistro_limpeza`);
+    loadGlobalParameters(3, 'id_parameter_responsavel', null, false, true, `modalStoreregistro_limpeza`);
 
     // Carregar filtros
     loadGlobalParameters(1, 'id_parameter_area_filter', null, true);
@@ -145,8 +145,8 @@ $(document).ready(function () {
         let conforme_naoconforme = $(this).data('conforme_naoconforme');
         let comentarios = $(this).data('comentarios');
 
-        loadGlobalParameters(1, 'id_parameter_area_edit', id_parameter_area);
-        loadGlobalParameters(3, 'id_parameter_responsavel_edit', id_parameter_responsavel);
+        loadGlobalParameters(1, 'id_parameter_area_edit', id_parameter_area, false, true, `modalEditregistro_limpeza`);
+        loadGlobalParameters(3, 'id_parameter_responsavel_edit', id_parameter_responsavel, false, true, `modalEditregistro_limpeza`);
 
         $("#id_edit").val(id);
         $("#usuario").val(usuario);

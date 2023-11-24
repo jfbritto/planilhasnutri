@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     loadPrincipal();
-    loadGlobalParameters(4, 'id_parameter_equipamento');
+    loadGlobalParameters(4, 'id_parameter_equipamento', null, false, true, `modalStoremanutencao_calibracao_equipamento`);
 
     // Carregar filtros
     loadGlobalParameters(4, 'id_parameter_equipamento_filter', null, true, false);
@@ -150,7 +150,7 @@ $(document).ready(function () {
         let problema_foi_solucionado = $(this).data('problema_foi_solucionado');
         let observacoes = $(this).data('observacoes');
 
-        loadGlobalParameters(4, 'id_parameter_equipamento_edit', id_parameter_equipamento);
+        loadGlobalParameters(4, 'id_parameter_equipamento_edit', id_parameter_equipamento, false, true, `modalEditmanutencao_calibracao_equipamento`);
 
         $("#id_edit").val(id);
         $("#usuario").val(usuario);
