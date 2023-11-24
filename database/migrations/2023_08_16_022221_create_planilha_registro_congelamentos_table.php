@@ -18,7 +18,7 @@ class CreatePlanilhaRegistroCongelamentosTable extends Migration
             $table->integer('id_planilha')->default(5);
             $table->date('data_congelamento');
             $table->integer('id_parameter_produto');
-            $table->string('quantidade');
+            $table->string('quantidade')->nullable();
             $table->date('data_recebimento')->nullable();
             $table->date('data_fabricacao')->nullable();
             $table->integer('id_parameter_alergeno')->nullable();

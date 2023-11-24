@@ -36,7 +36,7 @@ $(document).ready(function () {
                                         <tr>
                                             <td class="align-middle">${dateFormat(item.data_congelamento)}</td>
                                             <td class="align-middle">${item.produto}</td>
-                                            <td class="align-middle">${item.quantidade}</td>
+                                            <td class="align-middle">${item.quantidade ?? ''}</td>
                                             <td class="align-middle">${dateFormat(item.data_recebimento)}</td>
                                             <td class="align-middle">${dateFormat(item.data_fabricacao)}</td>
                                             <td class="align-middle">${item.alergeno}</td>
