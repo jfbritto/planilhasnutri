@@ -105,8 +105,13 @@ $(document).ready(function () {
                             $("#formStoreregistro_congelamento").each(function () {
                                 this.reset();
                             });
+                            $(".selecao-customizada").val(null).trigger("change");
 
-                            $("#modalStoreregistro_congelamento").modal("hide");
+                            atualizarDataAtual()
+
+                            if (!$("#checkCadastrarOutro").prop("checked")) {
+                                $("#modalStoreregistro_congelamento").modal("hide");
+                            }
 
                             showSuccess("Cadastro efetuado!", null, loadPrincipal)
                         } else if (data.status == "error") {

@@ -105,7 +105,7 @@
                                     <i class="fa fa-plus-circle color-green" aria-hidden="true" style="cursor: pointer"
                                     data-toggle="modal" data-target="#modalStoreParameterProduto" title="Cadastrar novo item"></i>
                                 </label>
-                                <select required name="id_parameter_produto" id="id_parameter_produto" class="form-control"></select>
+                                <select required name="id_parameter_produto" id="id_parameter_produto" class="form-control selecao-customizada"></select>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -133,7 +133,7 @@
                                     <i class="fa fa-plus-circle color-green" aria-hidden="true" style="cursor: pointer"
                                     data-toggle="modal" data-target="#modalStoreParameterAlergeno" title="Cadastrar novo item"></i>
                                 </label>
-                                <select name="id_parameter_alergeno" id="id_parameter_alergeno" class="form-control"></select>
+                                <select name="id_parameter_alergeno" id="id_parameter_alergeno" class="form-control selecao-customizada"></select>
                             </div>
                         </div>
                     </div>
@@ -141,6 +141,12 @@
 
             </div>
             <div class="modal-footer">
+                <!-- Checkbox no canto inferior esquerdo -->
+                <div class="form-check" style="position: absolute; left: 15px; bottom: 15px;">
+                    <input type="checkbox" class="form-check-input" id="checkCadastrarOutro">
+                    <label class="form-check-label" for="checkCadastrarOutro">Após salvar cadastrar outro</label>
+                </div>
+
                 <button type="submit" class="btn btn-primary" form="formStoreregistro_congelamento">Salvar</button>
             </div>
             </div>
