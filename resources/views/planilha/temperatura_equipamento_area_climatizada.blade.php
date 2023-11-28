@@ -28,7 +28,7 @@
                     <div class="col-md-2">
                         <div class="form-group">
                             <label for="data_ini_filter">De</label>
-                            <input type="date" value="{{now()->format('Y-m-01')}}" name="data_ini_filter" id="data_ini_filter" class="form-control">
+                            <input type="date" value="{{now()->format('Y-m-d')}}" name="data_ini_filter" id="data_ini_filter" class="form-control">
                         </div>
                     </div>
                     <div class="col-md-2">
