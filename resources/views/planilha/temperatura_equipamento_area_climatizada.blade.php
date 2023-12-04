@@ -105,7 +105,7 @@
                                     <i class="fa fa-plus-circle color-green" aria-hidden="true" style="cursor: pointer"
                                     data-toggle="modal" data-target="#modalStoreParameterEquipamento" title="Cadastrar novo item"></i>
                                 </label>
-                                <select required name="id_parameter_equipamento" id="id_parameter_equipamento" class="form-control"></select>
+                                <select required name="id_parameter_equipamento" id="id_parameter_equipamento" class="form-control selecao-customizada"></select>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -127,7 +127,7 @@
                                     <i class="fa fa-plus-circle color-green" aria-hidden="true" style="cursor: pointer"
                                     data-toggle="modal" data-target="#modalStoreParameterResponsavel" title="Cadastrar novo item"></i>
                                 </label>
-                                <select required name="id_parameter_responsavel" id="id_parameter_responsavel" class="form-control"></select>
+                                <select required name="id_parameter_responsavel" id="id_parameter_responsavel" class="form-control selecao-customizada"></select>
                             </div>
                         </div>
                     </div>
@@ -135,6 +135,12 @@
 
             </div>
             <div class="modal-footer">
+                <!-- Checkbox no canto inferior esquerdo -->
+                <div class="form-check" style="position: absolute; left: 15px; bottom: 15px;">
+                    <input type="checkbox" class="form-check-input" id="checkCadastrarOutro">
+                    <label class="form-check-label" for="checkCadastrarOutro">Após salvar cadastrar outro</label>
+                </div>
+
                 <button type="submit" class="btn btn-primary" form="formStoretemperatura_equipamento_area_climatizada">Salvar</button>
             </div>
             </div>

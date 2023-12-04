@@ -105,8 +105,13 @@ $(document).ready(function () {
                             $("#formStoretemperatura_equipamento_area_climatizada").each(function () {
                                 this.reset();
                             });
+                            $(".selecao-customizada").val(null).trigger("change");
 
-                            $("#modalStoretemperatura_equipamento_area_climatizada").modal("hide");
+                            atualizarDataAtual()
+
+                            if (!$("#checkCadastrarOutro").prop("checked")) {
+                                $("#modalStoretemperatura_equipamento_area_climatizada").modal("hide");
+                            }
 
                             showSuccess("Cadastro efetuado!", null, loadPrincipal)
                         } else if (data.status == "error") {
