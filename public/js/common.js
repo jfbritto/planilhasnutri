@@ -17,24 +17,26 @@ $('.percent').on('input', function(event) {
 });
 
 atualizarDataAtual()
-function atualizarDataAtual() {
-    let dataAtual = new Date().toISOString().slice(0, 10);
+function atualizarDataAtual(dataParametro) {
+    let dataParaAtualizar = dataParametro ? new Date(dataParametro) : new Date();
+    let dataFormatada = dataParaAtualizar.toISOString().slice(0, 10);
 
     let inputDate = document.getElementById("data");
     if (inputDate != null) {
-        inputDate.value = dataAtual;
+        inputDate.value = dataFormatada;
     }
 
     let dataCongelamento = document.getElementById("data_congelamento");
     if (dataCongelamento != null) {
-        dataCongelamento.value = dataAtual;
+        dataCongelamento.value = dataFormatada;
     }
 
     let dataCalibracao = document.getElementById("data_calibracao");
     if (dataCalibracao != null) {
-        dataCalibracao.value = dataAtual;
+        dataCalibracao.value = dataFormatada;
     }
 }
+
 
 
 // retorna o nome do dia da semana pelo seu numero referente enviado

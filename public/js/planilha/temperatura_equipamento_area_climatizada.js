@@ -84,6 +84,8 @@ $(document).ready(function () {
     $("#formStoretemperatura_equipamento_area_climatizada").submit(function (e) {
         e.preventDefault();
 
+        let dataCadastrada = null;
+
         Swal.queue([
             {
                 title: "Carregando...",
@@ -91,6 +93,8 @@ $(document).ready(function () {
                 allowEscapeKey: false,
                 onOpen: () => {
                     Swal.showLoading();
+
+                    dataCadastrada = $("#data").val();
 
                     $.post(window.location.origin + "/planilha/temperatura-equipamento-area-climatizada/cadastrar", {
                         data: $("#data").val(),
@@ -107,7 +111,7 @@ $(document).ready(function () {
                             });
                             $(".selecao-customizada").val(null).trigger("change");
 
-                            atualizarDataAtual()
+                            atualizarDataAtual(dataCadastrada)
 
                             if (!$("#checkCadastrarOutro").prop("checked")) {
                                 $("#modalStoretemperatura_equipamento_area_climatizada").modal("hide");

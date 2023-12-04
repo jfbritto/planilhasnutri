@@ -13,7 +13,7 @@
 @section('content')
     @include('forms.forms')
 
-    <div class="card collapsed-card">
+    <div class="card show">
         <div class="card-header" style="cursor: pointer" data-card-widget="collapse">
             <h5 class="card-title">Buscar</h5>
             <div class="card-tools">
@@ -22,7 +22,7 @@
                 </button>
             </div>
         </div>
-        <div class="card-body border-0" style="display: none;">
+        <div class="card-body border-0" style="display: block;">
             <form id="formFiltroPrincipal">
                 <div class="row">
                     <div class="col-md-2">
