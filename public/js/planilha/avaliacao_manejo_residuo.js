@@ -36,7 +36,6 @@ $(document).ready(function () {
                                             <td class="align-middle">${simNao(item.residuos_organicos_retirados)}</td>
                                             <td class="align-middle">${simNao(item.area_externa_higienizada)}</td>
                                             <td class="align-middle" style="text-align: right; min-width: 160px">
-                                                <a title="Histórico" data-id="${item.id}" data-id_planilha="${item.id_planilha}" href="#" class="btn btn-info abrirHistorico"><i style="color: white" class="fas fa-clock"></i></a>
                                                 <a title="Editar"
                                                 data-id="${item.id}"
                                                 data-usuario="${item.usuario}"

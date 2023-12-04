@@ -34,6 +34,8 @@ $(document).ready(function () {
 
                                 data.data.forEach(item => {
 
+                                    // <a title="Histórico" data-id="${item.id}" data-id_planilha="${item.id_planilha}" href="#" class="btn btn-info abrirHistorico"><i style="color: white" class="fas fa-clock"></i></a>
+
                                     $("#list").append(`
                                         <tr>
                                             <td class="align-middle">${dateFormat(item.data)}</td>
@@ -43,7 +45,6 @@ $(document).ready(function () {
                                             <td class="align-middle">${item.concentracao_solucao_clorada ?? ''}</td>
                                             <td class="align-middle">${item.responsavel}</td>
                                             <td class="align-middle" style="text-align: right; min-width: 120px">
-                                                <a title="Histórico" data-id="${item.id}" data-id_planilha="${item.id_planilha}" href="#" class="btn btn-info abrirHistorico"><i style="color: white" class="fas fa-clock"></i></a>
                                                 <a title="Editar"
                                                 data-id="${item.id}"
                                                 data-usuario="${item.usuario}"

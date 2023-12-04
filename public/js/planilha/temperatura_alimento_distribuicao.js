@@ -46,7 +46,6 @@ $(document).ready(function () {
                                             <td class="align-middle">${item.evento}</td>
                                             <td class="align-middle">${item.total_produtos}</td>
                                             <td class="align-middle" style="text-align: right; min-width: 120px">
-                                                <a title="Histórico" data-id="${item.id}" data-id_planilha="${item.id_planilha}" href="#" class="btn btn-info abrirHistorico"><i style="color: white" class="fas fa-clock"></i></a>
                                                 <a title="Imprimir" target="_blank" href="/planilha/temperatura-alimento-distribuicao/visualizar?id_planilha_filter=${item.id}" class="btn btn-primary"><i class="fa-regular fa-file-pdf"></i></a>
                                                 <a title="Editar"
                                                 data-id="${item.id}"

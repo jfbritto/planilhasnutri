@@ -35,7 +35,6 @@ $(document).ready(function () {
                                             <td class="align-middle">${item.tratamento_produto}</td>
                                             <td class="align-middle">${item.acoes_corretivas}</td>
                                             <td class="align-middle" style="text-align: right; min-width: 120px">
-                                                <a title="Histórico" data-id="${item.id}" data-id_planilha="${item.id_planilha}" href="#" class="btn btn-info abrirHistorico"><i style="color: white" class="fas fa-clock"></i></a>
                                                 <a title="Editar"
                                                 data-id="${item.id}"
                                                 data-usuario="${item.usuario}"
