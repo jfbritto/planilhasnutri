@@ -85,6 +85,7 @@ $(document).ready(function () {
         e.preventDefault();
 
         let dataCadastrada = null;
+        let responsavelCadastrado = null;
 
         Swal.queue([
             {
@@ -95,6 +96,7 @@ $(document).ready(function () {
                     Swal.showLoading();
 
                     dataCadastrada = $("#data").val();
+                    responsavelCadastrado = $("#id_parameter_responsavel option:selected").val();
 
                     $.post(window.location.origin + "/planilha/temperatura-equipamento-area-climatizada/cadastrar", {
                         data: $("#data").val(),
@@ -112,6 +114,7 @@ $(document).ready(function () {
                             $(".selecao-customizada").val(null).trigger("change");
 
                             atualizarDataAtual(dataCadastrada)
+                            loadGlobalParameters(3, 'id_parameter_responsavel', responsavelCadastrado, false, true, `modalStoretemperatura_equipamento_area_climatizada`);
 
                             if (!$("#checkCadastrarOutro").prop("checked")) {
                                 $("#modalStoretemperatura_equipamento_area_climatizada").modal("hide");
