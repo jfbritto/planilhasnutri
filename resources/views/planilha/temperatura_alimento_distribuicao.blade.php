@@ -50,12 +50,6 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label for="id_parameter_evento_filter">Evento</label>
-                            <select name="id_parameter_evento_filter" id="id_parameter_evento_filter" class="form-control"></select>
-                        </div>
-                    </div>
                 </div>
             </form>
         </div>
