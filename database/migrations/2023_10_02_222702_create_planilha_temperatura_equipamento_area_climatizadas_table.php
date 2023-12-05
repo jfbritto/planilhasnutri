@@ -19,6 +19,7 @@ class CreatePlanilhaTemperaturaEquipamentoAreaClimatizadasTable extends Migratio
             $table->date('data');
             $table->integer('id_parameter_responsavel');
             $table->integer('id_parameter_equipamento');
+            $table->integer('id_parameter_status_equipamento')->nullable();
             $table->string('temperatura_1')->nullable();
             $table->string('temperatura_2')->nullable();
             $table->integer('id_user');

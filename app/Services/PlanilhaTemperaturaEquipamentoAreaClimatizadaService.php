@@ -43,6 +43,7 @@ class PlanilhaTemperaturaEquipamentoAreaClimatizadaService
                             'data' => $data['data'],
                             'id_parameter_responsavel' => $data['id_parameter_responsavel'],
                             'id_parameter_equipamento' => $data['id_parameter_equipamento'],
+                            'id_parameter_status_equipamento' => $data['id_parameter_status_equipamento'],
                             'temperatura_1' => $data['temperatura_1'],
                             'temperatura_2' => $data['temperatura_2']
                         ]);

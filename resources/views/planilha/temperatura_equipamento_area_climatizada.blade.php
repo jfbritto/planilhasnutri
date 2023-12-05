@@ -92,13 +92,13 @@
 
                 <form id="formStoretemperatura_equipamento_area_climatizada">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label for="data">Data</label>
                                 <input type="date" required name="data" id="data" class="form-control">
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label for="id_parameter_equipamento">
                                     Equipamento
@@ -110,8 +110,19 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
+                                <label for="id_parameter_status_equipamento">Status Equipamento</label>
+                                <select name="id_parameter_status_equipamento" id="id_parameter_status_equipamento" class="form-control selecao-customizada">
+                                    <option value="">Funcionando normalmente</option>
+                                    <option value="1">Desligado</option>
+                                    <option value="2">Limpeza</option>
+                                    <option value="3">Manutenção</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
                                 <label for="temperatura_1">Temperatura 10:00</label>
-                                <input type="text" required name="temperatura_1" id="temperatura_1" class="form-control percent" placeholder="Informe a temperatura">
+                                <input type="text" name="temperatura_1" id="temperatura_1" class="form-control percent" placeholder="Informe a temperatura">
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -161,13 +172,13 @@
                 <form id="formEdittemperatura_equipamento_area_climatizada">
                     <input type="hidden" required name="id_edit" id="id_edit">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label for="data_edit">Data</label>
                                 <input type="date" required name="data_edit" id="data_edit" class="form-control">
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label for="id_parameter_equipamento_edit">Equipamento</label>
                                 <select required name="id_parameter_equipamento_edit" id="id_parameter_equipamento_edit" class="form-control"></select>
@@ -175,8 +186,19 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
+                                <label for="id_parameter_status_equipamento_edit">Status Equipamento</label>
+                                <select name="id_parameter_status_equipamento_edit" id="id_parameter_status_equipamento_edit" class="form-control selecao-customizada">
+                                    <option value="">Funcionando normalmente</option>
+                                    <option value="1">Desligado</option>
+                                    <option value="2">Limpeza</option>
+                                    <option value="3">Manutenção</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
                                 <label for="temperatura_1_edit">Temperatura 10:00</label>
-                                <input type="text" required name="temperatura_1_edit" id="temperatura_1_edit" class="form-control percent" placeholder="Informe a temperatura">
+                                <input type="text" name="temperatura_1_edit" id="temperatura_1_edit" class="form-control percent" placeholder="Informe a temperatura">
                             </div>
                         </div>
                         <div class="col-md-4">

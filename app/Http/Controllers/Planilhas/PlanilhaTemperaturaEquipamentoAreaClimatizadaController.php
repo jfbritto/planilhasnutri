@@ -34,6 +34,7 @@ class PlanilhaTemperaturaEquipamentoAreaClimatizadaController extends Controller
             'data' => $request->data,
             'id_parameter_responsavel' => $request->id_parameter_responsavel,
             'id_parameter_equipamento' => $request->id_parameter_equipamento,
+            'id_parameter_status_equipamento' => $request->id_parameter_status_equipamento,
             'temperatura_1' => $request->temperatura_1,
             'temperatura_2' => $request->temperatura_2
         ];
@@ -67,6 +68,7 @@ class PlanilhaTemperaturaEquipamentoAreaClimatizadaController extends Controller
             'data' => $request->data,
             'id_parameter_responsavel' => $request->id_parameter_responsavel,
             'id_parameter_equipamento' => $request->id_parameter_equipamento,
+            'id_parameter_status_equipamento' => $request->id_parameter_status_equipamento,
             'temperatura_1' => $request->temperatura_1,
             'temperatura_2' => $request->temperatura_2
         ];

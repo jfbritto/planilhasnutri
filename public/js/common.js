@@ -51,6 +51,25 @@ function weekDayDescription(val)
     }
 }
 
+// retorna o nome do status do equipamento
+function descricaoStatusEquipamento(val, color = false)
+{
+    const descricao = {1:'Desligado',2:'Limpeza',3:'Manutenção'};
+    const cores = {1:'danger',2:'info',3:'warning'};
+
+    if(val > 0 && val < 4){
+
+        if (color) {
+            return `table-${cores[val]}`
+        } else {
+            return `${descricao[val]}`
+        }
+
+    }else{
+        return `Status não identificado`
+    }
+}
+
 // retorna o nome do mes pelo seu numero referente enviado
 function monthDescription(val)
 {

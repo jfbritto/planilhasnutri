@@ -14,6 +14,7 @@ class PlanilhaTemperaturaEquipamentoAreaClimatizada extends Model
         'data',
         'id_parameter_responsavel',
         'id_parameter_equipamento',
+        'id_parameter_status_equipamento',
         'temperatura_1',
         'temperatura_2',
         'id_user',

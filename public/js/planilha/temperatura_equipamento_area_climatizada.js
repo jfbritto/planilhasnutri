@@ -33,11 +33,15 @@ $(document).ready(function () {
                                 data.data.forEach(item => {
 
                                     $("#list").append(`
-                                        <tr>
+                                        <tr class="${item.id_parameter_status_equipamento != null?descricaoStatusEquipamento(item.id_parameter_status_equipamento, true):''}">
                                             <td class="align-middle">${dateFormat(item.data)}</td>
                                             <td class="align-middle">${item.responsavel}</td>
                                             <td class="align-middle">${item.equipamento}</td>
-                                            <td class="align-middle">${item.temperatura_1 ?? ''}°C</td>
+                                            ${item.id_parameter_status_equipamento == null?`
+                                                <td class="align-middle">${item.temperatura_1 ?? ''}°C</td>
+                                            `:`
+                                                <td class="align-middle">${descricaoStatusEquipamento(item.id_parameter_status_equipamento)}</td>
+                                            `}
                                             <td class="align-middle" style="text-align: right; min-width: 120px">
                                                 <a title="Editar"
                                                 data-id="${item.id}"
@@ -46,6 +50,7 @@ $(document).ready(function () {
                                                 data-data="${item.data}"
                                                 data-id_parameter_responsavel="${item.id_parameter_responsavel}"
                                                 data-id_parameter_equipamento="${item.id_parameter_equipamento}"
+                                                data-id_parameter_status_equipamento="${item.id_parameter_status_equipamento}"
                                                 data-temperatura_1="${item.temperatura_1}"
                                                 data-temperatura_2="${item.temperatura_2}"
                                                 href="#" class="btn btn-warning edit-temperatura_equipamento_area_climatizada"><i style="color: white" class="fas fa-edit"></i></a>
@@ -101,6 +106,7 @@ $(document).ready(function () {
                         data: $("#data").val(),
                         id_parameter_responsavel: $("#id_parameter_responsavel option:selected").val(),
                         id_parameter_equipamento: $("#id_parameter_equipamento option:selected").val(),
+                        id_parameter_status_equipamento: $("#id_parameter_status_equipamento option:selected").val(),
                         temperatura_1: $("#temperatura_1").val(),
                         temperatura_2: $("#temperatura_2").val(),
                     })
@@ -147,6 +153,7 @@ $(document).ready(function () {
         let data = $(this).data('data');
         let id_parameter_responsavel = $(this).data('id_parameter_responsavel');
         let id_parameter_equipamento = $(this).data('id_parameter_equipamento');
+        let id_parameter_status_equipamento = $(this).data('id_parameter_status_equipamento');
         let temperatura_1 = $(this).data('temperatura_1');
         let temperatura_2 = $(this).data('temperatura_2');
 
@@ -157,6 +164,7 @@ $(document).ready(function () {
         $("#usuario").val(usuario);
         $("#unidade").val(unidade);
         $("#data_edit").val(data);
+        $("#id_parameter_status_equipamento_edit").val(id_parameter_status_equipamento);
         $("#temperatura_1_edit").val(temperatura_1);
         $("#temperatura_2_edit").val(temperatura_2);
 
@@ -181,6 +189,7 @@ $(document).ready(function () {
                             data: $("#data_edit").val(),
                             id_parameter_responsavel: $("#id_parameter_responsavel_edit option:selected").val(),
                             id_parameter_equipamento: $("#id_parameter_equipamento_edit option:selected").val(),
+                            id_parameter_status_equipamento: $("#id_parameter_status_equipamento_edit option:selected").val(),
                             temperatura_1: $("#temperatura_1_edit").val(),
                             temperatura_2: $("#temperatura_2_edit").val(),
                         }
