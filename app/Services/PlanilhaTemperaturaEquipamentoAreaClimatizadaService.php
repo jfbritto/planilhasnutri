@@ -121,7 +121,7 @@ class PlanilhaTemperaturaEquipamentoAreaClimatizadaService
                                             WHERE
                                                 main_tb.status = 'A' {$filter}
                                             ORDER BY
-                                                main_tb.id DESC"));
+                                                main_tb.data DESC, main_tb.id_parameter_equipamento"));
 
             $response = ['status' => 'success', 'data' => $return];
         }catch(Exception $e){

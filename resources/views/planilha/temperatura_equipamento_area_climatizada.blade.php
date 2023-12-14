@@ -7,7 +7,24 @@
 @section('title', 'Controle de Temperatura de Equipamentos e Áreas Climatizadas')
 
 @section('content_header')
+
     <h1><i class="fa-solid fa-temperature-low"></i> &nbsp;Controle de Temperatura de Equipamentos e Áreas Climatizadas</h1>
+    {{-- <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-8">
+                    <h2><i class="fa-solid fa-temperature-low"></i> &nbsp;Controle de Temperatura de Equipamentos e Áreas Climatizadas</h2>
+                </div>
+                <div class="col-sm-4">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a href="#">Planilhas</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section> --}}
+
 @stop
 
 @section('content')
@@ -51,6 +68,9 @@
     <div class="card">
         <div class="card-header border-0">
             <div class="card-tools">
+                <a href="#" class="btn btn-tool btn-sm" id="abrirConfig" title="Configurar Alimentos Padrão">
+                    <i class="fa-solid fa-gear fa-xl"></i>
+                </a>
                 <a href="#" class="btn btn-tool btn-sm" id="abrirPDF" title="Visualizar planilha">
                     <i class="fa-regular fa-file-pdf fa-2xl"></i>
                 </a>
@@ -67,9 +87,9 @@
                     <thead>
                         <tr>
                             <th>Data</th>
-                            <th>Responsável</th>
                             <th>Equipamento</th>
-                            <th>Temperatura 10hrs</th>
+                            <th>T 10hrs</th>
+                            <th>T 16hrs</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -232,6 +252,29 @@
             <div class="modal-footer">
                 <button type="submit" class="btn btn-primary" form="formEdittemperatura_equipamento_area_climatizada">Salvar</button>
             </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade"  role="dialog" id="modalConfigurarEquipamentosObrigatorios">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Configurar Equipamentos Obrigatórios</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div id="checkbox-list"></div>
+
+            </div>
+            @if(auth()->user()->id_unit)
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" form="formConfigurarEquipamentosObrigatorios">Salvar</button>
+            </div>
+            @endif
             </div>
         </div>
     </div>

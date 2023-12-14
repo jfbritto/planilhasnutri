@@ -35,12 +35,16 @@ $(document).ready(function () {
                                     $("#list").append(`
                                         <tr class="${item.id_parameter_status_equipamento != null?descricaoStatusEquipamento(item.id_parameter_status_equipamento, true):''}">
                                             <td class="align-middle">${dateFormat(item.data)}</td>
-                                            <td class="align-middle">${item.responsavel}</td>
                                             <td class="align-middle">${item.equipamento}</td>
                                             ${item.id_parameter_status_equipamento == null?`
                                                 <td class="align-middle">${item.temperatura_1 ?? ''}°C</td>
                                             `:`
                                                 <td class="align-middle">${descricaoStatusEquipamento(item.id_parameter_status_equipamento)}</td>
+                                            `}
+                                            ${item.id_parameter_status_equipamento == null?`
+                                                <td class="align-middle">${item.temperatura_2 ?? ''}°C</td>
+                                            `:`
+                                                <td class="align-middle">-</td>
                                             `}
                                             <td class="align-middle" style="text-align: right; min-width: 120px">
                                                 <a title="Editar"
@@ -274,5 +278,12 @@ $(document).ready(function () {
         e.preventDefault();
         loadPrincipal()
     });
+
+    // ao clicar no botão de editar os equipamentos obrigatorios
+    $("#abrirConfig").click(function(){
+        $("#checkbox-list").html("");
+
+        $("#modalConfigurarEquipamentosObrigatorios").modal('show');
+    })
 
 });
