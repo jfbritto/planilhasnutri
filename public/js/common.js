@@ -240,7 +240,7 @@ function loadGlobalParameters(
                     dropdownParent: idModal ? $(`#${idModal}`) : null
                 });
             } else {
-                $(`#${element}`).append(`<option>Nenhum item encontrado</option>`);
+                $(`#${element}`).append(`<option value="">Nenhum item encontrado</option>`);
             }
 
         } else if (data.status == "error") {

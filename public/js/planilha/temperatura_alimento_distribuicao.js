@@ -503,7 +503,7 @@ $(document).ready(function () {
                     options += `<option ${selected} value="${item.id}">${item.name}</option>`;
                 });
             } else {
-                options += `<option>Nenhum item encontrado</option>`;
+                options += `<option value="">Nenhum item encontrado</option>`;
             }
             return options;
         } catch (error) {
