@@ -112,7 +112,7 @@
                 </a>
             </div>
 
-            <h2>Planilhas extra</h2>
+            <h2>Planilhas extras</h2>
             <hr class="mb-5">
 
             <div class="col-lg-6 col-sm-6 col-xxl-3 mb-5 planilha" data-titulo="Troca do Elemento Filtrante">
