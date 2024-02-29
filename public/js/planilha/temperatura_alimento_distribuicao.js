@@ -696,3 +696,9 @@ $('#dolly').on('click', '.botaoAbrirModalStoreParameterProdutoDolly', function()
     let bloco = $(this).data('bloco');
     $("#bloco_auxiliar_produto").val(bloco)
 })
+
+$('#dolly-edit').on('click', '.botaoAbrirModalStoreParameterProdutoDolly', function() {
+    $("#modalStoreParameterProduto").modal("show");
+    let bloco = $(this).data('bloco');
+    $("#bloco_auxiliar_produto").val(bloco)
+})
