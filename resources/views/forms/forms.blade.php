@@ -136,6 +136,7 @@
                         <div class="form-group">
                             <label for="name_parameter_produto">Nome</label>
                             <input type="text" required name="name_parameter_produto" id="name_parameter_produto" class="form-control" placeholder="Nome do produto">
+                            <input type="hidden" id="bloco_auxiliar_produto">
                         </div>
                     </div>
                 </div>

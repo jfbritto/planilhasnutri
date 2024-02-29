@@ -417,11 +417,14 @@ $(document).ready(function () {
         }
 
         return `
-            <div class="alert alert-secondary alert-dismissible fade show" role="alert">
+            <div class="alert alert-secondary alert-dismissible fade show" role="alert" id="bloco_${contador}">
                 <div class="row">
                     <div class="col-md-4 col-xs-12 col-sm-12 col-12">
                         <div class="form-group">
                             <label for="id_parameter_produto_${contador}">Produto</label>
+
+                            <i class="fa fa-plus-circle color-green botaoAbrirModalStoreParameterProdutoDolly" style="cursor: pointer; ${disabled?"display: none":""}" data-bloco="${contador}" title="Cadastrar novo item"></i>
+
                             <select type="text" ${disabled?'disabled="true"':''} required name="id_parameter_produto_${contador}" id="id_parameter_produto_${contador}" class="form-control produto${complemento_edit}">${options}</select>
                         </div>
                     </div>
@@ -686,3 +689,10 @@ $('#dolly-edit').on('input', '.segundaHora_edit', function() {
     // Atualiza a hora em todos os outros campos
     $('.segundaHora_edit').not(this).val(novaHora);
 });
+
+
+$('#dolly').on('click', '.botaoAbrirModalStoreParameterProdutoDolly', function() {
+    $("#modalStoreParameterProduto").modal("show");
+    let bloco = $(this).data('bloco');
+    $("#bloco_auxiliar_produto").val(bloco)
+})

@@ -23,6 +23,98 @@
     <div class="container-fluid px-lg-5">
         <!-- Page Features-->
         <div class="row gx-lg-5">
+            <div class="col-lg-6 col-sm-6 col-xxl-3 mb-5 planilha" data-titulo="REG 001 - Recebimento de Matéria Prima">
+                <a href="/planilha/recebimento-materia-prima">
+                <div class="card bg-light border-0 h-100">
+                    <div class="card-body text-center p-4 p-lg-3 pt-0 pt-lg-0">
+                        <div class="feature bg-secondary bg-gradient text-white rounded-3 mb-4 mt-n4"><i class="fa-solid fa-people-carry-box"></i></div>
+                        <h5 class="mb-3">REG 001</h5>
+                        <h2 class="fs-4 fw-bold">Recebimento de Matéria Prima</h2>
+                    </div>
+                </div>
+                </a>
+            </div>
+            <div class="col-lg-6 col-sm-6 col-xxl-3 mb-5 planilha" data-titulo="REG 002 - Temperatura de Equipamentos e Áreas Climatizadas">
+                <a href="/planilha/temperatura-equipamento-area-climatizada">
+                <div class="card bg-light border-0 h-100">
+                    <div class="card-body text-center p-4 p-lg-3 pt-0 pt-lg-0">
+                        <div class="feature bg-info bg-gradient text-white rounded-3 mb-4 mt-n4"><i class="fa-solid fa-temperature-low"></i></div>
+                        <h5 class="mb-3">REG 002</h5>
+                        <h2 class="fs-4 fw-bold">Temperatura de Equipamentos e Áreas Climatizadas</h2>
+                    </div>
+                </div>
+                </a>
+            </div>
+            <div class="col-lg-6 col-sm-6 col-xxl-3 mb-5 planilha" data-titulo="REG 003 - Registro de Rastreabilidade Diária">
+                <a href="/planilha/temperatura-equipamento-area-climatizada">
+                <div class="card bg-light border-0 h-100">
+                    <div class="card-body text-center p-4 p-lg-3 pt-0 pt-lg-0">
+                        <div class="feature bg-secondary bg-gradient text-white rounded-3 mb-4 mt-n4"><i class="fa-solid fa-pencil"></i></div>
+                        <h5 class="mb-3">REG 003</h5>
+                        <h2 class="fs-4 fw-bold">Registro de Rastreabilidade Diária</h2>
+                    </div>
+                </div>
+                </a>
+            </div>
+            <div class="col-lg-6 col-sm-6 col-xxl-3 mb-5 planilha" data-titulo="REG 004 - Resfriamento Rápido de Alimentos">
+                <a href="/planilha/resfriamento-rapido-alimento">
+                <div class="card bg-light border-0 h-100">
+                    <div class="card-body text-center p-4 p-lg-3 pt-0 pt-lg-0">
+                        <div class="feature bg-info bg-gradient text-white rounded-3 mb-4 mt-n4"><i class="fa-solid fa-temperature-arrow-down"></i></div>
+                        <h5 class="mb-3">REG 004</h5>
+                        <h2 class="fs-4 fw-bold">Resfriamento Rápido de Alimentos</h2>
+                    </div>
+                </div>
+                </a>
+            </div>
+            <div class="col-lg-6 col-sm-6 col-xxl-3 mb-5 planilha" data-titulo="REG 005 - Reaquecimento dos Alimentos">
+                <a href="/planilha/reaquecimento-alimento">
+                <div class="card bg-light border-0 h-100">
+                    <div class="card-body text-center p-4 p-lg-3 pt-0 pt-lg-0">
+                        <div class="feature bg-danger bg-gradient text-white rounded-3 mb-4 mt-n4"><i class="fa-solid fa-temperature-arrow-up"></i></div>
+                        <h5 class="mb-3">REG 005</h5>
+                        <h2 class="fs-4 fw-bold">Reaquecimento dos Alimentos</h2>
+                    </div>
+                </div>
+                </a>
+            </div>
+            <div class="col-lg-6 col-sm-6 col-xxl-3 mb-5 planilha" data-titulo="REG 006 - Temperatura dos Alimentos na Distribuição">
+                <a href="/planilha/temperatura-alimento-distribuicao">
+                <div class="card bg-light border-0 h-100">
+                    <div class="card-body text-center p-4 p-lg-3 pt-0 pt-lg-0">
+                        <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"><i class="fa-solid fa-bell-concierge"></i></div>
+                        <h5 class="mb-3">REG 006</h5>
+                        <h2 class="fs-4 fw-bold">Temperatura dos Alimentos na Distribuição</h2>
+                    </div>
+                </div>
+                </a>
+            </div>
+            <div class="col-lg-6 col-sm-6 col-xxl-3 mb-5 planilha" data-titulo="REG 007 - Registro de Limpeza">
+                <a href="/planilha/registro-limpeza">
+                <div class="card bg-light border-0 h-100">
+                    <div class="card-body text-center p-4 p-lg-3 pt-0 pt-lg-0">
+                        <div class="feature bg-info bg-gradient text-white rounded-3 mb-4 mt-n4"><i class="fa-solid fa-hand-sparkles"></i></div>
+                        <h5 class="mb-3">REG 007</h5>
+                        <h2 class="fs-4 fw-bold">Registro de Limpeza</h2>
+                    </div>
+                </div>
+                </a>
+            </div>
+            <div class="col-lg-6 col-sm-6 col-xxl-3 mb-5 planilha" data-titulo="REG 008 - Saturação de Óleos e Gorduras">
+                <a href="/planilha/saturacao-oleo-gordura">
+                <div class="card bg-light border-0 h-100">
+                    <div class="card-body text-center p-4 p-lg-3 pt-0 pt-lg-0">
+                        <div class="feature bg-warning bg-gradient text-white rounded-3 mb-4 mt-n4"><i class="fa-solid fa-droplet"></i></div>
+                        <h5 class="mb-3">REG 008</h5>
+                        <h2 class="fs-4 fw-bold">Saturação de Óleos e Gorduras</h2>
+                    </div>
+                </div>
+                </a>
+            </div>
+
+            <h2>Planilhas extra</h2>
+            <hr class="mb-5">
+
             <div class="col-lg-6 col-sm-6 col-xxl-3 mb-5 planilha" data-titulo="Troca do Elemento Filtrante">
                 <a href="/planilha/troca-elemento-filtrante">
                 <div class="card bg-light border-0 h-100">
@@ -39,16 +131,6 @@
                     <div class="card-body text-center p-4 p-lg-3 pt-0 pt-lg-0">
                         <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"><i class="fa-solid fa-soap"></i></div>
                         <h2 class="fs-4 fw-bold">Higienização dos Filtros e Aparelhos de Climatização</h2>
-                    </div>
-                </div>
-                </a>
-            </div>
-            <div class="col-lg-6 col-sm-6 col-xxl-3 mb-5 planilha" data-titulo="Saturação de Óleos e Gorduras">
-                <a href="/planilha/saturacao-oleo-gordura">
-                <div class="card bg-light border-0 h-100">
-                    <div class="card-body text-center p-4 p-lg-3 pt-0 pt-lg-0">
-                        <div class="feature bg-warning bg-gradient text-white rounded-3 mb-4 mt-n4"><i class="fa-solid fa-droplet"></i></div>
-                        <h2 class="fs-4 fw-bold">Saturação de Óleos e Gorduras</h2>
                     </div>
                 </div>
                 </a>
@@ -103,37 +185,7 @@
                 </div>
                 </a>
             </div>
-            <div class="col-lg-6 col-sm-6 col-xxl-3 mb-5 planilha" data-titulo="Recebimento de Matéria Prima">
-                <a href="/planilha/recebimento-materia-prima">
-                <div class="card bg-light border-0 h-100">
-                    <div class="card-body text-center p-4 p-lg-3 pt-0 pt-lg-0">
-                        <div class="feature bg-secondary bg-gradient text-white rounded-3 mb-4 mt-n4"><i class="fa-solid fa-people-carry-box"></i></div>
-                        <h2 class="fs-4 fw-bold">Recebimento de Matéria Prima</h2>
-                    </div>
-                </div>
-                </a>
-            </div>
-            <div class="col-lg-6 col-sm-6 col-xxl-3 mb-5 planilha" data-titulo="Resfriamento Rápido de Alimentos">
-                <a href="/planilha/resfriamento-rapido-alimento">
-                <div class="card bg-light border-0 h-100">
-                    <div class="card-body text-center p-4 p-lg-3 pt-0 pt-lg-0">
-                        <div class="feature bg-info bg-gradient text-white rounded-3 mb-4 mt-n4"><i class="fa-solid fa-temperature-arrow-down"></i></div>
-                        <h2 class="fs-4 fw-bold">Resfriamento Rápido de Alimentos</h2>
-                    </div>
-                </div>
-                </a>
-            </div>
-            <div class="col-lg-6 col-sm-6 col-xxl-3 mb-5 planilha" data-titulo="Reaquecimento dos Alimentos">
-                <a href="/planilha/reaquecimento-alimento">
-                <div class="card bg-light border-0 h-100">
-                    <div class="card-body text-center p-4 p-lg-3 pt-0 pt-lg-0">
-                        <div class="feature bg-danger bg-gradient text-white rounded-3 mb-4 mt-n4"><i class="fa-solid fa-temperature-arrow-up"></i></div>
-                        <h2 class="fs-4 fw-bold">Reaquecimento dos Alimentos</h2>
-                    </div>
-                </div>
-                </a>
-            </div>
-            <div class="col-lg-6 col-sm-6 col-xxl-3 mb-5 planilha" data-titulo="Não Conformidades Detectadas na Auto Avaliação">
+            {{-- <div class="col-lg-6 col-sm-6 col-xxl-3 mb-5 planilha" data-titulo="Não Conformidades Detectadas na Auto Avaliação">
                 <a href="/planilha/registro-nao-conformidade-detectada-auto-avaliacao">
                 <div class="card bg-light border-0 h-100">
                     <div class="card-body text-center p-4 p-lg-3 pt-0 pt-lg-0">
@@ -142,7 +194,7 @@
                     </div>
                 </div>
                 </a>
-            </div>
+            </div> --}}
             <div class="col-lg-6 col-sm-6 col-xxl-3 mb-5 planilha" data-titulo="Temperatura dos Alimentos no Banho-Maria">
                 <a href="/planilha/temperatura-alimento-banho-maria">
                 <div class="card bg-light border-0 h-100">
@@ -163,7 +215,7 @@
                 </div>
                 </a>
             </div>
-            <div class="col-lg-6 col-sm-6 col-xxl-3 mb-5 planilha" data-titulo="Grupo de Amostras de Pratos">
+            {{-- <div class="col-lg-6 col-sm-6 col-xxl-3 mb-5 planilha" data-titulo="Grupo de Amostras de Pratos">
                 <a href="/planilha/grupo-amostra-prato">
                 <div class="card bg-light border-0 h-100">
                     <div class="card-body text-center p-4 p-lg-3 pt-0 pt-lg-0">
@@ -172,7 +224,7 @@
                     </div>
                 </div>
                 </a>
-            </div>
+            </div> --}}
             <div class="col-lg-6 col-sm-6 col-xxl-3 mb-5 planilha" data-titulo="Check-list de Avaliação do Manejo dos Resíduos">
                 <a href="/planilha/avaliacao-manejo-residuo">
                 <div class="card bg-light border-0 h-100">
@@ -189,16 +241,6 @@
                     <div class="card-body text-center p-4 p-lg-3 pt-0 pt-lg-0">
                         <div class="feature bg-secondary bg-gradient text-white rounded-3 mb-4 mt-n4"><i class="fa-solid fa-mosquito"></i></div>
                         <h2 class="fs-4 fw-bold">Ocorrência de Pragas</h2>
-                    </div>
-                </div>
-                </a>
-            </div>
-            <div class="col-lg-6 col-sm-6 col-xxl-3 mb-5 planilha" data-titulo="Temperatura de Equipamentos e Áreas Climatizadas">
-                <a href="/planilha/temperatura-equipamento-area-climatizada">
-                <div class="card bg-light border-0 h-100">
-                    <div class="card-body text-center p-4 p-lg-3 pt-0 pt-lg-0">
-                        <div class="feature bg-info bg-gradient text-white rounded-3 mb-4 mt-n4"><i class="fa-solid fa-temperature-low"></i></div>
-                        <h2 class="fs-4 fw-bold">Temperatura de Equipamentos e Áreas Climatizadas</h2>
                     </div>
                 </div>
                 </a>

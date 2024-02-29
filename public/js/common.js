@@ -204,7 +204,8 @@ function loadGlobalParameters(
     idSelected = null,
     filtro = false,
     feminino = true,
-    idModal = null
+    idModal = null,
+    elementoPai = ``
 ) {
     $.get(window.location.origin + "/parametro/encontrar", {
         id_parameter_type:id
@@ -213,17 +214,17 @@ function loadGlobalParameters(
         if (data.status == "success") {
 
             Swal.close();
-            $(`#${element}`).html(``);
+            $(`${elementoPai} #${element}`).html(``);
 
             if(data.data.length > 0){
                 if (filtro) {
                     if (feminino) {
-                        $(`#${element}`).append(`<option value="">Todas</option>`);
+                        $(`${elementoPai} #${element}`).append(`<option value="">Todas</option>`);
                     } else {
-                        $(`#${element}`).append(`<option value="">Todos</option>`);
+                        $(`${elementoPai} #${element}`).append(`<option value="">Todos</option>`);
                     }
                 } else {
-                    $(`#${element}`).append(`<option value="">-- Selecione --</option>`);
+                    $(`${elementoPai} #${element}`).append(`<option value="">-- Selecione --</option>`);
                 }
 
                 data.data.forEach(item => {
@@ -233,14 +234,14 @@ function loadGlobalParameters(
                         selected = `selected`;
                     }
 
-                    $(`#${element}`).append(`<option ${selected} value="${item.id}">${item.name}</option>`);
+                    $(`${elementoPai} #${element}`).append(`<option ${selected} value="${item.id}">${item.name}</option>`);
                 });
 
-                $(`#${element}`).select2({
+                $(`${elementoPai} #${element}`).select2({
                     dropdownParent: idModal ? $(`#${idModal}`) : null
                 });
             } else {
-                $(`#${element}`).append(`<option value="">Nenhum item encontrado</option>`);
+                $(`${elementoPai} #${element}`).append(`<option value="">Nenhum item encontrado</option>`);
             }
 
         } else if (data.status == "error") {
@@ -621,6 +622,8 @@ $("#formStoreParameterProduto").submit(function (e) {
                     .then(function (data) {
                         if (data.status == "success") {
 
+                            let bloco = $("#bloco_auxiliar_produto").val()
+
                             $("#formStoreParameterProduto").each(function () {
                                 this.reset();
                             });
@@ -632,7 +635,14 @@ $("#formStoreParameterProduto").submit(function (e) {
                                 selected = data.data.data.id;
                             }
 
-                            loadGlobalParameters(8, 'id_parameter_produto', selected);
+                            let elemento = `id_parameter_produto`;
+                            let elementoPai = ``
+                            if (bloco != ``) {
+                                elementoPai = `#bloco_${bloco}`;
+                                elemento = `id_parameter_produto_${bloco}`;
+                            }
+
+                            loadGlobalParameters(8, elemento, selected, false, true, `modalStoreParameterProduto`, elementoPai);
 
                             showSuccess("Cadastro efetuado!", null)
                         } else if (data.status == "error") {
