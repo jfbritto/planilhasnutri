@@ -71,8 +71,6 @@
                             <th>Data Calibração</th>
                             <th>Equipamento Com Problema?</th>
                             <th>Problema</th>
-                            <th>Providências tomadas</th>
-                            <th>Problema Solucionado?</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -140,13 +138,13 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="providencias_tomadas">Providencias Tomadas</label>
-                                <input type="text" required name="providencias_tomadas" id="providencias_tomadas" class="form-control" placeholder="Informe as providências tomadas">
+                                <input type="text" name="providencias_tomadas" id="providencias_tomadas" class="form-control" placeholder="Informe as providências tomadas">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="problema_foi_solucionado">Problema Foi Solucionado?</label>
-                                <select required name="problema_foi_solucionado" id="problema_foi_solucionado" class="form-control">
+                                <select name="problema_foi_solucionado" id="problema_foi_solucionado" class="form-control">
                                     <option value="">-- Selecione --</option>
                                     <option value="1">Sim</option>
                                     <option value="0">Não</option>
@@ -225,13 +223,13 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="providencias_tomadas_edit">Providencias Tomadas</label>
-                                <input type="text" required name="providencias_tomadas_edit" id="providencias_tomadas_edit" class="form-control" placeholder="Informe as providências tomadas">
+                                <input type="text" name="providencias_tomadas_edit" id="providencias_tomadas_edit" class="form-control" placeholder="Informe as providências tomadas">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="problema_foi_solucionado_edit">Problema Foi Solucionado?</label>
-                                <select required name="problema_foi_solucionado_edit" id="problema_foi_solucionado_edit" class="form-control">
+                                <select name="problema_foi_solucionado_edit" id="problema_foi_solucionado_edit" class="form-control">
                                     <option value="">-- Selecione --</option>
                                     <option value="1">Sim</option>
                                     <option value="0">Não</option>

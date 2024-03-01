@@ -37,9 +37,6 @@ $(document).ready(function () {
                                             <td class="align-middle">${dateFormat(item.data)}</td>
                                             <td class="align-middle">${item.area}</td>
                                             <td class="align-middle">${item.superficie_limpa}</td>
-                                            <td class="align-middle">${item.frequencia}</td>
-                                            <td class="align-middle">${item.conforme_naoconforme==1?'Sim':'Não'}</td>
-                                            <td class="align-middle">${item.comentarios}</td>
                                             <td class="align-middle">${item.responsavel}</td>
                                             <td class="align-middle" style="text-align: right; min-width: 120px">
                                                 <a title="Editar"
@@ -63,7 +60,7 @@ $(document).ready(function () {
 
                                 $("#list").append(`
                                     <tr>
-                                        <td class="align-middle text-center" colspan="8">Nenhum registro encontrado</td>
+                                        <td class="align-middle text-center" colspan="5">Nenhum registro encontrado</td>
                                     </tr>
                                 `);
                             }

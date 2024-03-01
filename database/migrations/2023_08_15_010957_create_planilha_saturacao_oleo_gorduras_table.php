@@ -24,7 +24,7 @@ class CreatePlanilhaSaturacaoOleoGordurasTable extends Migration
             $table->string('hora_segunda_afericao', 5)->nullable();
             $table->string('temperatura_segunda_afericao', 10)->nullable();
             $table->string('acao_corretiva', 300)->nullable();
-            $table->integer('id_parameter_responsavel_acao');
+            $table->integer('id_parameter_responsavel_acao')->nullable();
             $table->string('leitura_fita', 10)->nullable();
             $table->string('situacao_gordura', 10)->nullable();
             $table->integer('id_parameter_responsavel');

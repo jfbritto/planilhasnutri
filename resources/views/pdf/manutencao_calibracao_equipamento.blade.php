@@ -116,7 +116,7 @@
                         <td>{{ $item->equipamento_com_problema?'Sim':'Não' }}</td>
                         <td>{{ $item->qual_problema }}</td>
                         <td>{{ $item->providencias_tomadas }}</td>
-                        <td>{{ $item->problema_foi_solucionado?'Sim':'Não' }}</td>
+                        <td>@if($item->problema_foi_solucionado == 1) Sim @elseif($item->problema_foi_solucionado === 0) Não @endif</td>
                         <td>{{ $item->observacoes }}</td>
                     </tr>
                 @endforeach

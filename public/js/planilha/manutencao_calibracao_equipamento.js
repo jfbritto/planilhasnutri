@@ -38,8 +38,6 @@ $(document).ready(function () {
                                             <td class="align-middle">${dateFormat(item.data_calibracao)}</td>
                                             <td class="align-middle">${item.equipamento_com_problema==1?'Sim':'Não'}</td>
                                             <td class="align-middle">${item.qual_problema??'-'}</td>
-                                            <td class="align-middle">${item.providencias_tomadas}</td>
-                                            <td class="align-middle">${item.problema_foi_solucionado==1?'Sim':'Não'}</td>
                                             <td class="align-middle" style="text-align: right; min-width: 160px">
                                                 <a title="Editar"
                                                 data-id="${item.id}"
@@ -65,7 +63,7 @@ $(document).ready(function () {
 
                                 $("#list").append(`
                                     <tr>
-                                        <td class="align-middle text-center" colspan="8">Nenhum registro encontrado</td>
+                                        <td class="align-middle text-center" colspan="6">Nenhum registro encontrado</td>
                                     </tr>
                                 `);
                             }

@@ -123,13 +123,13 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="resfriamento_hora_inicio">Resfriamento Hora Inicio</label>
+                                <label for="resfriamento_hora_inicio">Resfriamento Hora Início</label>
                                 <input type="time" required name="resfriamento_hora_inicio" id="resfriamento_hora_inicio" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="resfriamento_temperatura_central_inicio">Resfriamento Temperatura Central Inicio</label>
+                                <label for="resfriamento_temperatura_central_inicio">Resfriamento Temperatura Central Início</label>
                                 <input type="text" required name="resfriamento_temperatura_central_inicio" id="resfriamento_temperatura_central_inicio" class="form-control" placeholder="Informe a temperatura">
                             </div>
                         </div>
@@ -216,13 +216,13 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="resfriamento_hora_inicio_edit">Resfriamento Hora Inicio</label>
+                                <label for="resfriamento_hora_inicio_edit">Resfriamento Hora Início</label>
                                 <input type="time" required name="resfriamento_hora_inicio_edit" id="resfriamento_hora_inicio_edit" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="resfriamento_temperatura_central_inicio_edit">Resfriamento Temperatura Central Inicio</label>
+                                <label for="resfriamento_temperatura_central_inicio_edit">Resfriamento Temperatura Central Início</label>
                                 <input type="text" required name="resfriamento_temperatura_central_inicio_edit" id="resfriamento_temperatura_central_inicio_edit" class="form-control" placeholder="Informe a temperatura">
                             </div>
                         </div>

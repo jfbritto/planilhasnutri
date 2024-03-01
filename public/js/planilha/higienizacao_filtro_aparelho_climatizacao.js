@@ -255,4 +255,9 @@ $(document).ready(function () {
         preencherProximaData('data_higienizacao', 'data_proxima_higienizacao')
     });
 
+    $("#data_higienizacao_edit").change(function (e) {
+        e.preventDefault();
+        preencherProximaData('data_higienizacao_edit', 'data_proxima_higienizacao_edit')
+    });
+
 });

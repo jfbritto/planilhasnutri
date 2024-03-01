@@ -159,7 +159,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="id_parameter_responsavel_acao">Responsável pela ação</label>
-                                <select required name="id_parameter_responsavel_acao" id="id_parameter_responsavel_acao" class="form-control"></select>
+                                <select name="id_parameter_responsavel_acao" id="id_parameter_responsavel_acao" class="form-control"></select>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -260,7 +260,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="id_parameter_responsavel_acao_edit">Responsável pela ação</label>
-                                <select required name="id_parameter_responsavel_acao_edit" id="id_parameter_responsavel_acao_edit" class="form-control"></select>
+                                <select name="id_parameter_responsavel_acao_edit" id="id_parameter_responsavel_acao_edit" class="form-control"></select>
                             </div>
                         </div>
                         <div class="col-md-4">

@@ -20,9 +20,9 @@ class CreatePlanilhaRegistroLimpezasTable extends Migration
             $table->integer('id_parameter_responsavel');
             $table->integer('id_parameter_area');
             $table->string('superficie_limpa');
-            $table->string('frequencia');
-            $table->integer('conforme_naoconforme');
-            $table->string('comentarios');
+            $table->string('frequencia')->nullable();
+            $table->integer('conforme_naoconforme')->nullable();
+            $table->string('comentarios')->nullable();
             $table->integer('id_user');
             $table->string('status', 1)->default('A');
             $table->timestamps();

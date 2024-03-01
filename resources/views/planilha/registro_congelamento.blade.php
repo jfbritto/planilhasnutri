@@ -111,7 +111,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="quantidade">Quantidade</label>
-                                <input type="text" name="quantidade" id="quantidade" class="form-control" placeholder="Informe a quantidade">
+                                <input type="text" name="quantidade" id="quantidade" class="form-control" placeholder="Ex: 1kg, 56g, 2L, 50ml...">
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -182,7 +182,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="quantidade_edit">Quantidade</label>
-                                <input type="text" name="quantidade_edit" id="quantidade_edit" class="form-control" placeholder="Informe a quantidade">
+                                <input type="text" name="quantidade_edit" id="quantidade_edit" class="form-control" placeholder="Ex: 1kg, 56g, 2L, 50ml...">
                             </div>
                         </div>
                         <div class="col-md-4">

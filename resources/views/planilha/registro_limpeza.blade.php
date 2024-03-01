@@ -69,9 +69,6 @@
                             <th>Data</th>
                             <th>Área</th>
                             <th>Superfície Limpa</th>
-                            <th>Frequência</th>
-                            <th>Conforme?</th>
-                            <th>Comentários</th>
                             <th>Responsável</th>
                             <th></th>
                         </tr>
@@ -130,13 +127,13 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="frequencia">Frequência</label>
-                                <input type="text" required name="frequencia" id="frequencia" class="form-control" placeholder="Informe a frequência">
+                                <input type="text" name="frequencia" id="frequencia" class="form-control" placeholder="Informe a frequência">
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="conforme_naoconforme">Conforme</label>
-                                <select type="date" required name="conforme_naoconforme" id="conforme_naoconforme" class="form-control">
+                                <select type="date" name="conforme_naoconforme" id="conforme_naoconforme" class="form-control">
                                     <option value="">-- Selecione --</option>
                                     <option value="1">Sim</option>
                                     <option value="0">Não</option>
@@ -146,7 +143,7 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="comentarios">Comentários</label>
-                                <input type="text" required name="comentarios" id="comentarios" class="form-control" placeholder="Comente sobre a limpeza">
+                                <input type="text" name="comentarios" id="comentarios" class="form-control" placeholder="Comente sobre a limpeza">
                             </div>
                         </div>
                     </div>
@@ -201,13 +198,13 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="frequencia_edit">Frequência</label>
-                                <input type="text" required name="frequencia_edit" id="frequencia_edit" class="form-control" placeholder="Informe a frequência">
+                                <input type="text" name="frequencia_edit" id="frequencia_edit" class="form-control" placeholder="Informe a frequência">
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="conforme_naoconforme_edit">Conforme</label>
-                                <select type="date" required name="conforme_naoconforme_edit" id="conforme_naoconforme_edit" class="form-control">
+                                <select type="date" name="conforme_naoconforme_edit" id="conforme_naoconforme_edit" class="form-control">
                                     <option value="">-- Selecione --</option>
                                     <option value="1">Sim</option>
                                     <option value="0">Não</option>
@@ -217,7 +214,7 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="comentarios_edit">Comentários</label>
-                                <input type="text" required name="comentarios_edit" id="comentarios_edit" class="form-control" placeholder="Comente sobre a limpeza">
+                                <input type="text" name="comentarios_edit" id="comentarios_edit" class="form-control" placeholder="Comente sobre a limpeza">
                             </div>
                         </div>
                         <div class="col-md-6">

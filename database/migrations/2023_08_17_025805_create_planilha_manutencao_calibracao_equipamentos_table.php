@@ -22,7 +22,7 @@ class CreatePlanilhaManutencaoCalibracaoEquipamentosTable extends Migration
             $table->integer('equipamento_com_problema');
             $table->string('qual_problema')->nullable();
             $table->string('providencias_tomadas')->nullable();
-            $table->integer('problema_foi_solucionado');
+            $table->integer('problema_foi_solucionado')->nullable();
             $table->string('observacoes')->nullable();
             $table->integer('id_user');
             $table->string('status', 1)->default('A');

@@ -114,7 +114,7 @@
                         <td>{{ $item->area }}</td>
                         <td>{{ $item->superficie_limpa }}</td>
                         <td>{{ $item->frequencia }}</td>
-                        <td>{{ $item->conforme_naoconforme?'Sim':'Não' }}</td>
+                        <td>@if($item->conforme_naoconforme == 1) Sim @elseif($item->conforme_naoconforme === 0) Não @endif</td>
                         <td>{{ $item->comentarios }}</td>
                         <td>{{ $item->responsavel }}</td>
                     </tr>
