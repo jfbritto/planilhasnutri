@@ -690,6 +690,23 @@ $('#dolly-edit').on('input', '.segundaHora_edit', function() {
     $('.segundaHora_edit').not(this).val(novaHora);
 });
 
+$('#dolly').on('input', '.primeiraHora', function() {
+    // Obtém a nova hora do campo de entrada alterado
+    var novaHora = $(this).val();
+
+    // Atualiza a hora em todos os outros campos
+    $('.primeiraHora').not(this).val(novaHora);
+});
+
+
+$('#dolly-edit').on('input', '.primeiraHora_edit', function() {
+    // Obtém a nova hora do campo de entrada alterado
+    var novaHora = $(this).val();
+
+    // Atualiza a hora em todos os outros campos
+    $('.primeiraHora_edit').not(this).val(novaHora);
+});
+
 
 $('#dolly').on('click', '.botaoAbrirModalStoreParameterProdutoDolly', function() {
     $("#modalStoreParameterProduto").modal("show");
