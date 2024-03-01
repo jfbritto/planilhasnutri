@@ -14,6 +14,7 @@ class PlanilhaSaturacaoOleoGordura extends Model
         'data',
         'id_parameter_area',
         'id_parameter_equipamento',
+        'id_parameter_status_equipamento',
         'hora_primeira_afericao',
         'temperatura_primeira_afericao',
         'hora_segunda_afericao',

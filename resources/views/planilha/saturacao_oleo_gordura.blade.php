@@ -77,7 +77,6 @@
                             <th>Hora 1ª aferição</th>
                             <th>Tª 1ª aferição</th>
                             <th>Leitura Fita</th>
-                            <th>Situação gordura</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -100,13 +99,13 @@
 
                 <form id="formStoresaturacao_oleo_gordura">
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="form-group">
                                 <label for="data">Data</label>
                                 <input type="date" required name="data" id="data" class="form-control" value="{{ now()->toDateString() }}">
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="form-group">
                                 <label for="id_parameter_area">
                                     Área
@@ -116,7 +115,7 @@
                                 <select required name="id_parameter_area" id="id_parameter_area" class="form-control"></select>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="form-group">
                                 <label for="id_parameter_equipamento">
                                     Equipamento
@@ -124,6 +123,17 @@
                                     data-toggle="modal" data-target="#modalStoreParameterEquipamento" title="Cadastrar novo item"></i>
                                 </label>
                                 <select required name="id_parameter_equipamento" id="id_parameter_equipamento" class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="id_parameter_status_equipamento">Status Equipamento</label>
+                                <select name="id_parameter_status_equipamento" id="id_parameter_status_equipamento" class="form-control selecao-customizada">
+                                    <option value="">Funcionando normalmente</option>
+                                    <option value="1">Desligado</option>
+                                    <option value="2">Limpeza</option>
+                                    <option value="3">Manutenção</option>
+                                </select>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -209,22 +219,33 @@
                 <form id="formEditsaturacao_oleo_gordura">
                     <input type="hidden" required name="id_edit" id="id_edit">
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="form-group">
                                 <label for="data_edit">Data</label>
                                 <input type="date" required name="data_edit" id="data_edit" class="form-control">
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="form-group">
                                 <label for="id_parameter_area_edit">Área</label>
                                 <select required name="id_parameter_area_edit" id="id_parameter_area_edit" class="form-control"></select>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="form-group">
                                 <label for="id_parameter_equipamento_edit">Equipamento</label>
                                 <select required name="id_parameter_equipamento_edit" id="id_parameter_equipamento_edit" class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="id_parameter_status_equipamento_edit">Status Equipamento</label>
+                                <select name="id_parameter_status_equipamento_edit" id="id_parameter_status_equipamento_edit" class="form-control selecao-customizada">
+                                    <option value="">Funcionando normalmente</option>
+                                    <option value="1">Desligado</option>
+                                    <option value="2">Limpeza</option>
+                                    <option value="3">Manutenção</option>
+                                </select>
                             </div>
                         </div>
                         <div class="col-md-4">

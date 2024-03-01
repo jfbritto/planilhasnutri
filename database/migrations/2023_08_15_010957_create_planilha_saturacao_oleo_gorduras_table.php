@@ -19,6 +19,7 @@ class CreatePlanilhaSaturacaoOleoGordurasTable extends Migration
             $table->date('data');
             $table->integer('id_parameter_area');
             $table->integer('id_parameter_equipamento');
+            $table->integer('id_parameter_status_equipamento')->nullable();
             $table->string('hora_primeira_afericao', 5);
             $table->string('temperatura_primeira_afericao', 10);
             $table->string('hora_segunda_afericao', 5)->nullable();

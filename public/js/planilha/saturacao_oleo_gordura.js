@@ -39,13 +39,18 @@ $(document).ready(function () {
                                 data.data.forEach(item => {
 
                                     $("#list").append(`
-                                        <tr>
+                                    <tr class="${item.id_parameter_status_equipamento != null?descricaoStatusEquipamento(item.id_parameter_status_equipamento, true):''}">
                                             <td class="align-middle">${dateFormat(item.data)}</td>
                                             <td class="align-middle">${item.area}/${item.equipamento}</td>
-                                            <td class="align-middle">${item.hora_primeira_afericao}</td>
-                                            <td class="align-middle">${item.temperatura_primeira_afericao}°C</td>
-                                            <td class="align-middle">${item.leitura_fita ?? ''}%</td>
-                                            <td class="align-middle">${item.situacao_gordura ?? ''}</td>
+                                            ${item.id_parameter_status_equipamento == null?`
+                                                <td class="align-middle">${item.hora_primeira_afericao ?? ''}°C</td>
+                                                <td class="align-middle">${item.temperatura_primeira_afericao}°C</td>
+                                                <td class="align-middle">${item.leitura_fita ?? ''}%</td>
+                                            `:`
+                                                <td class="align-middle">${descricaoStatusEquipamento(item.id_parameter_status_equipamento)}</td>
+                                                <td class="align-middle">-</td>
+                                                <td class="align-middle">-</td>
+                                            `}
                                             <td class="align-middle" style="text-align: right; min-width: 120px">
                                                 <a title="Editar"
                                                 data-id="${item.id}"
@@ -63,6 +68,7 @@ $(document).ready(function () {
                                                 data-leitura_fita="${item.leitura_fita}"
                                                 data-situacao_gordura="${item.situacao_gordura}"
                                                 data-id_parameter_responsavel="${item.id_parameter_responsavel}"
+                                                data-id_parameter_status_equipamento="${item.id_parameter_status_equipamento}"
                                                 href="#" class="btn btn-warning edit-saturacao_oleo_gordura"><i style="color: white" class="fas fa-edit"></i></a>
 
                                                 <a title="Deletar" data-id="${item.id}" href="#" class="btn btn-danger delete-saturacao_oleo_gordura"><i class="fas fa-trash-alt"></i></a>
@@ -119,6 +125,7 @@ $(document).ready(function () {
                         leitura_fita: $("#leitura_fita").val(),
                         situacao_gordura: $("#situacao_gordura option:selected").val(),
                         id_parameter_responsavel: $("#id_parameter_responsavel option:selected").val(),
+                        id_parameter_status_equipamento: $("#id_parameter_status_equipamento option:selected").val(),
                     })
                     .then(function (data) {
                         if (data.status == "success") {
@@ -166,6 +173,7 @@ $(document).ready(function () {
         let leitura_fita = $(this).data('leitura_fita');
         let situacao_gordura = $(this).data('situacao_gordura');
         let id_parameter_responsavel = $(this).data('id_parameter_responsavel');
+        let id_parameter_status_equipamento = $(this).data('id_parameter_status_equipamento');
 
         console.log(temperatura_primeira_afericao)
 
@@ -178,6 +186,7 @@ $(document).ready(function () {
         $("#usuario").val(usuario);
         $("#unidade").val(unidade);
         $("#data_edit").val(data);
+        $("#id_parameter_status_equipamento_edit").val(id_parameter_status_equipamento);
         $("#hora_primeira_afericao_edit").val(hora_primeira_afericao);
         $("#temperatura_primeira_afericao_edit").val(temperatura_primeira_afericao);
         $("#hora_segunda_afericao_edit").val(hora_segunda_afericao);
@@ -216,6 +225,7 @@ $(document).ready(function () {
                             leitura_fita: $("#leitura_fita_edit").val(),
                             situacao_gordura: $("#situacao_gordura_edit option:selected").val(),
                             id_parameter_responsavel: $("#id_parameter_responsavel_edit option:selected").val(),
+                            id_parameter_status_equipamento: $("#id_parameter_status_equipamento_edit option:selected").val(),
                         }
                     })
                         .then(function (data) {

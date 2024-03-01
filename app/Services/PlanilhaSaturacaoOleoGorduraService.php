@@ -43,6 +43,7 @@ class PlanilhaSaturacaoOleoGorduraService
                             'data' => $data['data'],
                             'id_parameter_area' => $data['id_parameter_area'],
                             'id_parameter_equipamento' => $data['id_parameter_equipamento'],
+                            'id_parameter_status_equipamento' => $data['id_parameter_status_equipamento'],
                             'hora_primeira_afericao' => $data['hora_primeira_afericao'],
                             'temperatura_primeira_afericao' => $data['temperatura_primeira_afericao'],
                             'hora_segunda_afericao' => $data['hora_segunda_afericao'],
