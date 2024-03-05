@@ -139,7 +139,7 @@ class ParameterService
                                             WHERE
                                                 pm.status = 'A' AND id_parameter_type = {$id} {$condition}
                                             ORDER BY
-                                                pm.name"));
+                                                pm.id"));
 
             $response = ['status' => 'success', 'data' => $return];
         }catch(Exception $e){
