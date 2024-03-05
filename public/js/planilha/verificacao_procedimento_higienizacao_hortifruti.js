@@ -115,6 +115,9 @@ $(document).ready(function () {
 
                             $("#modalStoreverificacao_procedimento_higienizacao_hortifruti").modal("hide");
 
+                            loadGlobalParameters(8, 'id_parameter_produto', null, false, true, `modalStoreverificacao_procedimento_higienizacao_hortifruti`);
+                            loadGlobalParameters(3, 'id_parameter_responsavel', null, false, true, `modalStoreverificacao_procedimento_higienizacao_hortifruti`);
+
                             showSuccess("Cadastro efetuado!", null, loadPrincipal)
                         } else if (data.status == "error") {
                             showError(data.message)

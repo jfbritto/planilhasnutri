@@ -103,6 +103,8 @@ $(document).ready(function () {
 
                             $("#modalStoreregistro_nao_conformidade_detectada_auto_avaliacao").modal("hide");
 
+                            loadGlobalParameters(3, 'id_parameter_responsavel', null, false, true, `modalStoreregistro_nao_conformidade_detectada_auto_avaliacao`);
+
                             showSuccess("Cadastro efetuado!", null, loadPrincipal)
                         } else if (data.status == "error") {
                             showError(data.message)

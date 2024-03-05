@@ -107,6 +107,9 @@ $(document).ready(function () {
 
                             $("#modalStoreocorrencia_praga").modal("hide");
 
+                            loadGlobalParameters(1, 'id_parameter_area', null, false, true, `modalStoreocorrencia_praga`);
+                            loadGlobalParameters(12, 'id_parameter_praga', null, false, true, `modalStoreocorrencia_praga`);
+
                             showSuccess("Cadastro efetuado!", null, loadPrincipal)
                         } else if (data.status == "error") {
                             showError(data.message)

@@ -178,6 +178,10 @@ $(document).ready(function () {
 
                                 $("#modalEdithigienizacao_filtro_aparelho_climatizacao").modal("hide");
 
+                                loadGlobalParameters(1, 'id_parameter_area', null, false, true, `modalStorehigienizacao_filtro_aparelho_climatizacao`);
+                                loadGlobalParameters(4, 'id_parameter_equipamento', null, false, true, `modalStorehigienizacao_filtro_aparelho_climatizacao`);
+                                loadGlobalParameters(3, 'id_parameter_responsavel', null, false, true, `modalStorehigienizacao_filtro_aparelho_climatizacao`);
+
                                 showSuccess("Edição efetuada!", null, loadPrincipal)
                             } else if (data.status == "error") {
                                 showError(data.message)

@@ -113,6 +113,9 @@ $(document).ready(function () {
 
                             $("#modalStorereaquecimento_alimento").modal("hide");
 
+                            loadGlobalParameters(8, 'id_parameter_produto', null, false, true, `modalStorereaquecimento_alimento`);
+                            loadGlobalParameters(3, 'id_parameter_responsavel', null, false, true, `modalStorereaquecimento_alimento`);
+
                             showSuccess("Cadastro efetuado!", null, loadPrincipal)
                         } else if (data.status == "error") {
                             showError(data.message)

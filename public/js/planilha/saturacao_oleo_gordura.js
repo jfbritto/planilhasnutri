@@ -136,6 +136,11 @@ $(document).ready(function () {
 
                             $("#modalStoresaturacao_oleo_gordura").modal("hide");
 
+                            loadGlobalParameters(1, 'id_parameter_area', null, false, true, `modalStoresaturacao_oleo_gordura`);
+                            loadGlobalParameters(4, 'id_parameter_equipamento', null, false, true, `modalStoresaturacao_oleo_gordura`);
+                            loadGlobalParameters(3, 'id_parameter_responsavel', null, false, true, `modalStoresaturacao_oleo_gordura`);
+                            loadGlobalParameters(3, 'id_parameter_responsavel_acao', null, false, true, `modalStoresaturacao_oleo_gordura`);
+
                             showSuccess("Cadastro efetuado!", null, loadPrincipal)
                         } else if (data.status == "error") {
                             showError(data.message)

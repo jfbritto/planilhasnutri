@@ -109,6 +109,9 @@ $(document).ready(function () {
 
                             $("#modalStoreregistro_limpeza").modal("hide");
 
+                            loadGlobalParameters(1, 'id_parameter_area', null, false, true, `modalStoreregistro_limpeza`);
+                            loadGlobalParameters(3, 'id_parameter_responsavel', null, false, true, `modalStoreregistro_limpeza`);
+
                             showSuccess("Cadastro efetuado!", null, loadPrincipal)
                         } else if (data.status == "error") {
                             showError(data.message)

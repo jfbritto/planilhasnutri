@@ -113,6 +113,8 @@ $(document).ready(function () {
 
                             $("#modalStoremanutencao_calibracao_equipamento").modal("hide");
 
+                            loadGlobalParameters(4, 'id_parameter_equipamento', null, false, true, `modalStoremanutencao_calibracao_equipamento`);
+
                             showSuccess("Cadastro efetuado!", null, loadPrincipal)
                         } else if (data.status == "error") {
                             showError(data.message)

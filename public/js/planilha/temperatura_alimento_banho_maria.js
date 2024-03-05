@@ -115,6 +115,8 @@ $(document).ready(function () {
 
                             $("#modalStoretemperatura_alimento_banho_maria").modal("hide");
 
+                            loadGlobalParameters(8, 'id_parameter_produto', null, false, true, `modalStoretemperatura_alimento_banho_maria`);
+
                             showSuccess("Cadastro efetuado!", null, loadPrincipal)
                         } else if (data.status == "error") {
                             showError(data.message)

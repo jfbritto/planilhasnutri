@@ -184,6 +184,10 @@ $(document).ready(function () {
 
                                 $("#modalEditlimpeza_caixa_gorduras").modal("hide");
 
+                                loadGlobalParameters(6, 'id_parameter_caixa_gordura', null, false, true, `modalStorelimpeza_caixa_gorduras`);
+                                loadGlobalParameters(1, 'id_parameter_area', null, false, true, `modalStorelimpeza_caixa_gorduras`);
+                                loadGlobalParameters(3, 'id_parameter_responsavel', null, false, true, `modalStorelimpeza_caixa_gorduras`);
+
                                 showSuccess("Edição efetuada!", null, loadPrincipal)
                             } else if (data.status == "error") {
                                 showError(data.message)

@@ -104,6 +104,10 @@ $(document).ready(function () {
 
                             $("#modalStoretroca_elemento_filtrante").modal("hide");
 
+                            loadGlobalParameters(1, 'id_parameter_area', null, false, true, `modalStoretroca_elemento_filtrante`);
+                            loadGlobalParameters(2, 'id_parameter_filtro', null, false, true, `modalStoretroca_elemento_filtrante`);
+                            loadGlobalParameters(3, 'id_parameter_responsavel', null, false, true, `modalStoretroca_elemento_filtrante`);
+
                             showSuccess("Cadastro efetuado!", null, loadPrincipal)
                         } else if (data.status == "error") {
                             showError(data.message)

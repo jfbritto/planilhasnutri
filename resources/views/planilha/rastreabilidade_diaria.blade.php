@@ -39,7 +39,7 @@
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
-                            <label for="id_parameter_produto_filter">Área</label>
+                            <label for="id_parameter_produto_filter">Produto</label>
                             <select name="id_parameter_produto_filter" id="id_parameter_produto_filter" class="form-control"></select>
                         </div>
                     </div>
