@@ -80,6 +80,12 @@ class ParameterTypeSeeder extends Seeder
                 'id_unit' => null,
                 'name' => 'Pragas',
                 'status' => 'A'
+            ],
+            [
+                'id' => 13,
+                'id_unit' => null,
+                'name' => 'Fabricantes',
+                'status' => 'A'
             ]
 
         ]);

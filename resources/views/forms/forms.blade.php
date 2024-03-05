@@ -304,7 +304,7 @@
     <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title">Novo Praga</h5>
+            <h5 class="modal-title">Nova Praga</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
@@ -329,6 +329,38 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade"  role="dialog" id="modalStoreParameterFabricante" style="z-index: 9999;">
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">Novo Fabricante</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+
+            <form id="formStoreParameterFabricante">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="name_parameter_fabricante">Nome</label>
+                            <input type="text" required name="name_parameter_fabricante" id="name_parameter_fabricante" class="form-control" placeholder="Nome do fabricante">
+                            <input type="hidden" id="bloco_auxiliar_fabricante">
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" form="formStoreParameterFabricante">Salvar</button>
+        </div>
+        </div>
+    </div>
+</div>
+
 
 
 <div class="modal fade"  role="dialog" id="modalHistorico" style="z-index: 9999;">

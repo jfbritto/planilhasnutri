@@ -130,6 +130,12 @@ class ParameterService
                 $condition = " and (pm.id_unit = ".auth()->user()->id_unit." or pm.id_unit is null)";
             }
 
+            // apenas para o golden tulip porto vitoria
+            $order = "pm.name";
+            if (auth()->user()->id_unit == 8) {
+                $order = "pm.id";
+            }
+
             $return = DB::select( DB::raw("SELECT
                                                 ifnull(un.name, 'Todas') as unit_name,
                                                 pm.*
@@ -139,7 +145,7 @@ class ParameterService
                                             WHERE
                                                 pm.status = 'A' AND id_parameter_type = {$id} {$condition}
                                             ORDER BY
-                                                pm.id"));
+                                                {$order}"));
 
             $response = ['status' => 'success', 'data' => $return];
         }catch(Exception $e){

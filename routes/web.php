@@ -25,6 +25,7 @@ use App\Http\Controllers\Planilhas\PlanilhaGrupoAmostraPratoController;
 use App\Http\Controllers\Planilhas\PlanilhaAvaliacaoManejoResiduoController;
 use App\Http\Controllers\Planilhas\PlanilhaOcorrenciaPragaController;
 use App\Http\Controllers\Planilhas\PlanilhaTemperaturaEquipamentoAreaClimatizadaController;
+use App\Http\Controllers\Planilhas\PlanilhaRastreabilidadeDiariaController;
 use App\Http\Controllers\ParameterController;
 use App\Http\Controllers\ParameterTypeController;
 use App\Http\Controllers\UserController;
@@ -216,6 +217,15 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('/planilha/temperatura-equipamento-area-climatizada/editar', [PlanilhaTemperaturaEquipamentoAreaClimatizadaController::class, 'update']);
     Route::delete('/planilha/temperatura-equipamento-area-climatizada/deletar', [PlanilhaTemperaturaEquipamentoAreaClimatizadaController::class, 'destroy']);
     Route::get('/planilha/temperatura-equipamento-area-climatizada/visualizar', [PlanilhaTemperaturaEquipamentoAreaClimatizadaController::class, 'gerarPDF']);
+
+    // Planilha rastreabilidade_diaria
+    Route::get('/planilha/rastreabilidade-diaria', [PlanilhaRastreabilidadeDiariaController::class, 'index']);
+    Route::get('/planilha/rastreabilidade-diaria/listar', [PlanilhaRastreabilidadeDiariaController::class, 'list']);
+    Route::get('/planilha/rastreabilidade-diaria/encontrar', [PlanilhaRastreabilidadeDiariaController::class, 'find']);
+    Route::post('/planilha/rastreabilidade-diaria/cadastrar', [PlanilhaRastreabilidadeDiariaController::class, 'store']);
+    Route::put('/planilha/rastreabilidade-diaria/editar', [PlanilhaRastreabilidadeDiariaController::class, 'update']);
+    Route::delete('/planilha/rastreabilidade-diaria/deletar', [PlanilhaRastreabilidadeDiariaController::class, 'destroy']);
+    Route::get('/planilha/rastreabilidade-diaria/visualizar', [PlanilhaRastreabilidadeDiariaController::class, 'gerarPDF']);
 
     // Parametros
     Route::get('/parametros', [ParameterController::class, 'index']);

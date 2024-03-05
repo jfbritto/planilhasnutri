@@ -46,7 +46,7 @@
                 </a>
             </div>
             <div class="col-lg-6 col-sm-6 col-xxl-3 mb-5 planilha" data-titulo="REG 003 - Registro de Rastreabilidade Diária">
-                <a href="/planilha/temperatura-equipamento-area-climatizada">
+                <a href="/planilha/rastreabilidade-diaria">
                 <div class="card bg-light border-0 h-100">
                     <div class="card-body text-center p-4 p-lg-3 pt-0 pt-lg-0">
                         <div class="feature bg-secondary bg-gradient text-white rounded-3 mb-4 mt-n4"><i class="fa-solid fa-pencil"></i></div>
