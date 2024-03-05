@@ -257,6 +257,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('/usuario/editar', [UserController::class, 'update']);
     Route::put('/usuario/editar-senha', [UserController::class, 'updatePassword']);
     Route::delete('/usuario/deletar', [UserController::class, 'destroy']);
+    Route::put('/usuario/change', [UserController::class, 'changeStatus']);
 
     // Histórico
     Route::get('/historico', [HistoricoController::class, 'index']);

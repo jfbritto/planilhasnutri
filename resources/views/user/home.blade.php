@@ -14,14 +14,17 @@
 
     <div class="card">
         <input type="hidden" id="isAdmin" value="{{auth()->user()->is_admin}}">
-        <div class="card-header border-0">
-            <h3 class="card-title"> </h3>
-            <div class="card-tools">
-                <a href="#" class="btn btn-tool btn-sm" data-toggle="modal" data-target="#modalStoreUser">
-                    <i class="fa-solid fa-square-plus fa-2xl color-green"></i>
-                </a>
+        <input type="hidden" id="isEstagiario" value="{{auth()->user()->is_estagiario}}">
+        @if(!auth()->user()->is_estagiario)
+            <div class="card-header border-0">
+                <h3 class="card-title"> </h3>
+                <div class="card-tools">
+                    <a href="#" class="btn btn-tool btn-sm" data-toggle="modal" data-target="#modalStoreUser">
+                        <i class="fa-solid fa-square-plus fa-2xl color-green"></i>
+                    </a>
+                </div>
             </div>
-        </div>
+        @endif
         <div class="card-body p-0">
             <div class="table-responsive">
                 <table class="table table-striped table-valign-middle table-hover table-sm">
@@ -30,7 +33,7 @@
                             <th>Nome</th>
                             <th>E-mail</th>
                             @if(auth()->user()->is_admin)<th>Unidade</th>@endif
-                            <th></th>
+                            @if(!auth()->user()->is_estagiario)<th></th>@endif
                         </tr>
                     </thead>
                     <tbody id="list"></tbody>

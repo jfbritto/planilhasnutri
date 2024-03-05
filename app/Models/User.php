@@ -24,6 +24,7 @@ class User extends Authenticatable
         'id_unit',
         'is_admin',
         'is_nutri',
+        'is_estagiario',
         'status',
     ];
 

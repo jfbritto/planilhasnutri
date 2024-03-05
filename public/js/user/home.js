@@ -23,19 +23,26 @@ $(document).ready(function () {
                                 $("#list").html(``);
 
                                 let isAdmin = $("#isAdmin").val() === "1"?'':'d-none';
+                                let isEstagiario = $("#isEstagiario").val() === "1"?'d-none':'';
 
                                 if(data.data.length > 0){
 
                                     data.data.forEach(item => {
+
+                                        let txtTittle = item.status == 'A' ? 'Inativar' : 'Ativar'
+                                        let valueChange = item.status == 'A' ? 'I' : 'A'
+                                        let colorBtn = item.status == 'A' ? 'success' : 'secondary'
+                                        let esconderBtn = item.status == 'A' ? '' : 'd-none'
 
                                         $("#list").append(`
                                             <tr>
                                                 <td class="align-middle">${item.name}</td>
                                                 <td class="align-middle">${item.email}</td>
                                                 <td class="align-middle ${isAdmin}">${item.unidade}</td>
-                                                <td class="align-middle" style="text-align: right">
-                                                    <a title="Editar" data-id="${item.id}" data-name="${item.name}" data-email="${item.email}" href="#" class="btn btn-warning edit-user"><i style="color: white" class="fas fa-edit"></i></a>
-                                                    <a title="Deletar" data-id="${item.id}" href="#" class="btn btn-danger delete-user"><i class="fas fa-trash-alt"></i></a>
+                                                <td class="align-middle ${isEstagiario}" style="text-align: right">
+                                                    <a title="${txtTittle}" data-id="${item.id}" data-status="${valueChange}" href="#" class="btn btn-${colorBtn} change-user"><i class="fas fa-power-off"></i></a>
+                                                    <a title="Editar" data-id="${item.id}" data-name="${item.name}" data-email="${item.email}" href="#" class="btn btn-warning edit-user ${esconderBtn}"><i style="color: white" class="fas fa-edit"></i></a>
+                                                    <a title="Deletar" data-id="${item.id}" href="#" class="btn btn-danger delete-user ${esconderBtn}"><i class="fas fa-trash-alt"></i></a>
                                                 </td>
                                             </tr>
                                         `);
@@ -202,6 +209,58 @@ $(document).ready(function () {
                                         if (data.status == "success") {
 
                                             showSuccess("Deletado com sucesso!", null, loadUsers)
+                                        } else if (data.status == "error") {
+                                            showError(data.message)
+                                        }
+                                    })
+                                    .catch(function (data) {
+                                        if (data.responseJSON.status == "error") {
+                                            showError(data.responseJSON.message)
+                                        }
+                                    });
+                            },
+                        },
+                    ]);
+
+                }
+            })
+
+    });
+
+    // INATIVAR USUÁRIO
+    $("#list").on("click", ".change-user", function(){
+
+        let id = $(this).data('id');
+        let status = $(this).data('status');
+
+        Swal.fire({
+            title: 'Atenção!',
+            text: "Deseja realmente mudar o status?",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'Sim',
+            cancelButtonColor: '#d33',
+            cancelButtonText: 'Não'
+            }).then((result) => {
+                if (result.value) {
+
+                    Swal.queue([
+                        {
+                            title: "Carregando...",
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                            onOpen: () => {
+                                Swal.showLoading();
+                                $.ajax({
+                                    url: window.location.origin + "/usuario/change",
+                                    type: 'PUT',
+                                    data: {id, status}
+                                })
+                                    .then(function (data) {
+                                        if (data.status == "success") {
+
+                                            showSuccess("Status alterado com sucesso!", null, loadUsers)
                                         } else if (data.status == "error") {
                                             showError(data.message)
                                         }

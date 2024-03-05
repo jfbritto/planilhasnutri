@@ -53,6 +53,16 @@ class LoginRequest extends FormRequest
             ]);
         }
 
+        $user = Auth::user();
+
+        if ($user->status !== 'A') {
+            Auth::logout();
+
+            throw ValidationException::withMessages([
+                'email' => 'Seu status de usuário não permite o acesso.',
+            ]);
+        }
+
         RateLimiter::clear($this->throttleKey());
     }
 

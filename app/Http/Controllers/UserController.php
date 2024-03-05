@@ -31,7 +31,8 @@ class UserController extends Controller
             'id_unit' => auth()->user()->id_unit ?: $request->id_unit,
             'name' => trim($request->name),
             'email' => $request->email,
-            'password' => Hash::make($request->email)
+            'password' => Hash::make($request->email),
+            'is_estagiario' => auth()->user()->id_unit ? true : false
         ];
 
         $response = $this->userService->store($data);
