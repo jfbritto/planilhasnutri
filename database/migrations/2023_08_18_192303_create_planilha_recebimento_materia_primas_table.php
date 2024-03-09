@@ -22,6 +22,7 @@ class CreatePlanilhaRecebimentoMateriaPrimasTable extends Migration
             $table->string('ordem_de_compra')->nullable();
             $table->string('nota_fiscal')->nullable();
             $table->string('sif_lote')->nullable();
+            $table->string('lote')->nullable();
             $table->date('data_validade')->nullable();
             $table->string('temperatura_alimento')->nullable();
             $table->string('temperatura_veiculo')->nullable();

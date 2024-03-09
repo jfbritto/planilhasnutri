@@ -135,25 +135,31 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="nota_fiscal">Nota Fiscal</label>
-                                <input type="text" required name="nota_fiscal" id="nota_fiscal" class="form-control" placeholder="Informe o nº da nota">
+                                <input type="text" name="nota_fiscal" id="nota_fiscal" class="form-control" placeholder="Informe o nº da nota">
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-2">
                             <div class="form-group">
-                                <label for="sif_lote">Sif/Lote</label>
-                                <input type="text" required name="sif_lote" id="sif_lote" class="form-control" placeholder="Informe o Sif/Lote">
+                                <label for="sif_lote">Sif</label>
+                                <input type="text" name="sif_lote" id="sif_lote" class="form-control" placeholder="Nº">
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label for="lote">Lote</label>
+                                <input type="text" name="lote" id="lote" class="form-control" placeholder="Nº">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="data_validade">Data Validade</label>
-                                <input type="date" required name="data_validade" id="data_validade" class="form-control">
+                                <input type="date" name="data_validade" id="data_validade" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="temperatura_alimento">Temperatura Alimento</label>
-                                <input type="text" required name="temperatura_alimento" id="temperatura_alimento" class="form-control percent" placeholder="Informe a temperatura">
+                                <input type="text" name="temperatura_alimento" id="temperatura_alimento" class="form-control percent" placeholder="Informe a temperatura">
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -211,85 +217,91 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="data">Data</label>
+                                <label for="data_edit">Data</label>
                                 <input type="date" required name="data_edit" id="data_edit" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="id_parameter_produto">Produto</label>
+                                <label for="id_parameter_produto_edit">Produto</label>
                                 <select type="text" required name="id_parameter_produto_edit" id="id_parameter_produto_edit" class="form-control"></select>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="id_parameter_fornecedor">Fornecedor</label>
+                                <label for="id_parameter_fornecedor_edit">Fornecedor</label>
                                 <select type="text" required name="id_parameter_fornecedor_edit" id="id_parameter_fornecedor_edit" class="form-control"></select>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="ordem_de_compra">Ordem de Compra</label>
+                                <label for="ordem_de_compra_edit">Ordem de Compra</label>
                                 <input type="text" name="ordem_de_compra_edit" id="ordem_de_compra_edit" class="form-control" placeholder="Informe a ordem de compra">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="nota_fiscal">Nota Fiscal</label>
-                                <input type="text" required name="nota_fiscal_edit" id="nota_fiscal_edit" class="form-control" placeholder="Informe o nº da nota">
+                                <label for="nota_fiscal_edit">Nota Fiscal</label>
+                                <input type="text" name="nota_fiscal_edit" id="nota_fiscal_edit" class="form-control" placeholder="Informe o nº da nota">
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label for="sif_lote_edit">Sif</label>
+                                <input type="text" name="sif_lote_edit" id="sif_lote_edit" class="form-control" placeholder="Nº">
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label for="lote_edit">Lote</label>
+                                <input type="text" name="lote_edit" id="lote_edit" class="form-control" placeholder="Nº">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="sif_lote">Sif/Lote</label>
-                                <input type="text" required name="sif_lote_edit" id="sif_lote_edit" class="form-control" placeholder="Informe o Sif/Lote">
+                                <label for="data_validade_edit">Data Validade</label>
+                                <input type="date" name="data_validade_edit" id="data_validade_edit" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="data_validade">Data Validade</label>
-                                <input type="date" required name="data_validade_edit" id="data_validade_edit" class="form-control">
+                                <label for="temperatura_alimento_edit">Temperatura Alimento</label>
+                                <input type="text" name="temperatura_alimento_edit" id="temperatura_alimento_edit" class="form-control percent" placeholder="Informe a temperatura">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="temperatura_alimento">Temperatura Alimento</label>
-                                <input type="text" required name="temperatura_alimento_edit" id="temperatura_alimento_edit" class="form-control percent" placeholder="Informe a temperatura">
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="temperatura_veiculo">Temperatura Veículo</label>
+                                <label for="temperatura_veiculo_edit">Temperatura Veículo</label>
                                 <input type="text" name="temperatura_veiculo_edit" id="temperatura_veiculo_edit" class="form-control percent" placeholder="Informe a temperatura">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="nao_conformidade">Não Conformidade</label>
+                                <label for="nao_conformidade_edit">Não Conformidade</label>
                                 <input type="text" name="nao_conformidade_edit" id="nao_conformidade_edit" class="form-control" placeholder="Informe a não conformidade">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="acao_corretiva">Ação Corretiva</label>
+                                <label for="acao_corretiva_edit">Ação Corretiva</label>
                                 <input type="text" name="acao_corretiva_edit" id="acao_corretiva_edit" class="form-control" placeholder="Informe a ação">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="id_parameter_responsavel">Responsável</label>
+                                <label for="id_parameter_responsavel_edit">Responsável</label>
                                 <select type="text" required name="id_parameter_responsavel_edit" id="id_parameter_responsavel_edit" class="form-control"></select>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="usuario">Usuário</label>
+                                <label for="usuario_edit">Usuário</label>
                                 <input type="text" name="usuario" id="usuario" class="form-control" readonly>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="unidade">Unidade</label>
+                                <label for="unidade_edit">Unidade</label>
                                 <input type="text" name="unidade" id="unidade" class="form-control" readonly>
                             </div>
                         </div>

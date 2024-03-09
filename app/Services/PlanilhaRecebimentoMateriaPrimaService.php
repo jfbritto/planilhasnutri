@@ -46,6 +46,7 @@ class PlanilhaRecebimentoMateriaPrimaService
                             'ordem_de_compra' => $data['ordem_de_compra'],
                             'nota_fiscal' => $data['nota_fiscal'],
                             'sif_lote' => $data['sif_lote'],
+                            'lote' => $data['lote'],
                             'data_validade' => $data['data_validade'],
                             'temperatura_alimento' => $data['temperatura_alimento'],
                             'temperatura_veiculo' => $data['temperatura_veiculo'],

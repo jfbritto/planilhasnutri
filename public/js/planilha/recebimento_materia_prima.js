@@ -40,7 +40,7 @@ $(document).ready(function () {
                                             <td class="align-middle">${dateFormat(item.data)}</td>
                                             <td class="align-middle">${item.produto}</td>
                                             <td class="align-middle">${item.fornecedor}</td>
-                                            <td class="align-middle">${item.nota_fiscal}</td>
+                                            <td class="align-middle">${item.nota_fiscal ?? ''}</td>
                                             <td class="align-middle">${dateFormat(item.data_validade)}</td>
                                             <td class="align-middle">${item.responsavel}</td>
                                             <td class="align-middle" style="text-align: right; min-width: 120px">
@@ -54,6 +54,7 @@ $(document).ready(function () {
                                                 data-ordem_de_compra="${item.ordem_de_compra}"
                                                 data-nota_fiscal="${item.nota_fiscal}"
                                                 data-sif_lote="${item.sif_lote}"
+                                                data-lote="${item.lote}"
                                                 data-data_validade="${item.data_validade}"
                                                 data-temperatura_alimento="${item.temperatura_alimento}"
                                                 data-temperatura_veiculo="${item.temperatura_veiculo}"
@@ -108,6 +109,7 @@ $(document).ready(function () {
                         ordem_de_compra: $("#ordem_de_compra").val(),
                         nota_fiscal: $("#nota_fiscal").val(),
                         sif_lote: $("#sif_lote").val(),
+                        lote: $("#lote").val(),
                         data_validade: $("#data_validade").val(),
                         temperatura_alimento: $("#temperatura_alimento").val(),
                         temperatura_veiculo: $("#temperatura_veiculo").val(),
@@ -158,6 +160,7 @@ $(document).ready(function () {
         let ordem_de_compra = $(this).data('ordem_de_compra');
         let nota_fiscal = $(this).data('nota_fiscal');
         let sif_lote = $(this).data('sif_lote');
+        let lote = $(this).data('lote');
         let data_validade = $(this).data('data_validade');
         let temperatura_alimento = $(this).data('temperatura_alimento');
         let temperatura_veiculo = $(this).data('temperatura_veiculo');
@@ -176,6 +179,7 @@ $(document).ready(function () {
         $("#ordem_de_compra_edit").val(ordem_de_compra);
         $("#nota_fiscal_edit").val(nota_fiscal);
         $("#sif_lote_edit").val(sif_lote);
+        $("#lote_edit").val(lote);
         $("#data_validade_edit").val(data_validade);
         $("#temperatura_alimento_edit").val(temperatura_alimento);
         $("#temperatura_veiculo_edit").val(temperatura_veiculo);
@@ -206,6 +210,7 @@ $(document).ready(function () {
                             ordem_de_compra: $("#ordem_de_compra_edit").val(),
                             nota_fiscal: $("#nota_fiscal_edit").val(),
                             sif_lote: $("#sif_lote_edit").val(),
+                            lote: $("#lote_edit").val(),
                             data_validade: $("#data_validade_edit").val(),
                             temperatura_alimento: $("#temperatura_alimento_edit").val(),
                             temperatura_veiculo: $("#temperatura_veiculo_edit").val(),

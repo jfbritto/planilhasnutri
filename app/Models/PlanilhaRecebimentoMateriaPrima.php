@@ -17,6 +17,7 @@ class PlanilhaRecebimentoMateriaPrima extends Model
         'ordem_de_compra',
         'nota_fiscal',
         'sif_lote',
+        'lote',
         'data_validade',
         'temperatura_alimento',
         'temperatura_veiculo',
