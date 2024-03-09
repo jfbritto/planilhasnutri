@@ -353,23 +353,28 @@ $(document).ready(function () {
         let equipamentoText = $("#id_parameter_equipamento option:selected").text();
         let data_cadastro = $("#data").val();
 
-        $.get(window.location.origin + "/planilha/temperatura-equipamento-area-climatizada/listar", {
-            data_ini_filter : data_cadastro,
-            data_fim_filter : data_cadastro,
-            id_parameter_equipamento_filter : equipamento,
-        })
-        .then(function (data) {
-            if (data.status == "success") {
-                if (data.data.length > 0){
-                    showWarning(`Já existe um registro do equipamento ${equipamentoText} em ${dateFormat(data_cadastro)}!`)
-                }
-            } else if (data.status == "error") {
-                showError(data.message)
-            }
-        })
-        .catch(function (data) {
 
-        });
+        if (equipamento != '') {
+            console.log(equipamento, equipamentoText, data_cadastro)
+            $.get(window.location.origin + "/planilha/temperatura-equipamento-area-climatizada/listar", {
+                data_ini_filter : data_cadastro,
+                data_fim_filter : data_cadastro,
+                id_parameter_equipamento_filter : equipamento,
+            })
+            .then(function (data) {
+                if (data.status == "success") {
+                    if (data.data.length > 0){
+                        showWarning(`Já existe um registro do equipamento ${equipamentoText} em ${dateFormat(data_cadastro)}!`)
+                    }
+                } else if (data.status == "error") {
+                    showError(data.message)
+                }
+            })
+            .catch(function (data) {
+
+            });
+        }
+
     })
 
 });
