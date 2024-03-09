@@ -65,6 +65,20 @@
         </div>
     </div>
 
+    <div class="card collapsed-card bg-danger" id="boxEquipamentosFaltantes" style="display: none">
+        <div class="card-header" style="cursor: pointer" data-card-widget="collapse">
+            <h5 class="card-title">Existem equipamentos obrigatórios ainda não preenchidos!</h5>
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool">
+                    <i class="fas fa-arrow-down"></i>
+                </button>
+            </div>
+        </div>
+        <div class="card-body border-0" style="display: none;">
+            <p id="listaEquipamentosFaltantes"></p>
+        </div>
+    </div>
+
     <div class="card">
         <div class="card-header border-0">
             <div class="card-tools">
@@ -295,24 +309,80 @@
     </div>
 
     <div class="modal fade"  role="dialog" id="modalConfigurarEquipamentosObrigatorios">
-        <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Configurar Equipamentos Obrigatórios</h5>
+                <h5 class="modal-title">Configurações de Equipamentos</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
 
-                <div id="checkbox-list"></div>
+                <form id="formConfigurarEquipamentosObrigatorios">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="id_parameter_equipamento_config">Equipamento</label>
+                                <select required name="id_parameter_equipamento_config" id="id_parameter_equipamento_config" class="form-control selecao-customizada"></select>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label for="maior_que">Cº maior que</label>
+                                <input required type="text" name="maior_que" id="maior_que" class="form-control percent" placeholder="Informe a temperatura">
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label for="menor_que">Cº menor que</label>
+                                <input required type="text" name="menor_que" id="menor_que" class="form-control percent" placeholder="Informe a temperatura">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-check" style="padding-top: 37px;">
+                                <input class="form-check-input" type="checkbox" value="1" id="obrigatorio">
+                                <label class="form-check-label" for="obrigatorio">
+                                    Obrigatório
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-2" style="padding-top: 37px;">
+                            @if(auth()->user()->id_unit)
+                                <button type="submit" class="btn btn-primary" form="formConfigurarEquipamentosObrigatorios">Salvar</button>
+                            @endif
+                        </div>
+
+                    </div>
+                </form>
+
+                <hr>
+
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-valign-middle table-hover table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Equipamento</th>
+                                    <th>Maior que</th>
+                                    <th>Menor que</th>
+                                    <th>Obrigatório</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="list2">
+                                <tr>
+                                    <td colspan="5" class="text-center">
+                                        <i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
 
             </div>
-            @if(auth()->user()->id_unit)
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-primary" form="formConfigurarEquipamentosObrigatorios">Salvar</button>
-            </div>
-            @endif
+
             </div>
         </div>
     </div>

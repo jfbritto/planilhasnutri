@@ -4,12 +4,16 @@ $(document).ready(function () {
     loadGlobalParameters(4, 'id_parameter_equipamento', null, false, true, `modalStoretemperatura_equipamento_area_climatizada`);
     loadGlobalParameters(3, 'id_parameter_responsavel', null, false, true, `modalStoretemperatura_equipamento_area_climatizada`);
 
+    loadGlobalParameters(4, 'id_parameter_equipamento_config', null, false, true, `modalConfigurarEquipamentosObrigatorios`);
+
     // Carregar filtros
     loadGlobalParameters(4, 'id_parameter_equipamento_filter', null, true, false);
 
     // LISTAGEM
     function loadPrincipal()
     {
+        loadEquipamentosFaltantes()
+
         Swal.queue([
             {
                 title: "Carregando...",
@@ -342,8 +346,8 @@ $(document).ready(function () {
 
     // ao clicar no botão de editar os equipamentos obrigatorios
     $("#abrirConfig").click(function(){
-        $("#checkbox-list").html("");
-
+        $(".selecao-customizada").val(null).trigger("change");
+        loadConfigs()
         $("#modalConfigurarEquipamentosObrigatorios").modal('show');
     })
 
@@ -355,7 +359,6 @@ $(document).ready(function () {
 
 
         if (equipamento != '') {
-            console.log(equipamento, equipamentoText, data_cadastro)
             $.get(window.location.origin + "/planilha/temperatura-equipamento-area-climatizada/listar", {
                 data_ini_filter : data_cadastro,
                 data_fim_filter : data_cadastro,
@@ -374,7 +377,230 @@ $(document).ready(function () {
 
             });
         }
-
     })
+
+
+    // CADASTRO
+    $("#formConfigurarEquipamentosObrigatorios").submit(function (e) {
+        e.preventDefault();
+
+        let dataCadastrada = null;
+        let responsavelCadastrado = null;
+
+        Swal.queue([
+            {
+                title: "Carregando...",
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                onOpen: () => {
+                    Swal.showLoading();
+
+                    dataCadastrada = $("#data").val();
+                    responsavelCadastrado = $("#id_parameter_responsavel option:selected").val();
+
+                    $.post(window.location.origin + "/planilha/temperatura-equipamento-area-climatizada-config/cadastrar", {
+                        id_parameter_equipamento: $("#id_parameter_equipamento_config option:selected").val(),
+                        maior_que: $("#maior_que").val(),
+                        menor_que: $("#menor_que").val(),
+                        obrigatorio: $("#obrigatorio").is(':checked')?1:0,
+                    })
+                    .then(function (data) {
+                        if (data.status == "success") {
+
+                            $("#formConfigurarEquipamentosObrigatorios").each(function () {
+                                this.reset();
+                            });
+                            $(".selecao-customizada").val(null).trigger("change");
+
+                            loadGlobalParameters(4, 'id_parameter_equipamento_config', null, false, true, `modalConfigurarEquipamentosObrigatorios`);
+                            loadConfigs()
+                            loadEquipamentosFaltantes()
+
+                            showSuccess("Cadastro efetuado!", null, loadPrincipal)
+                        } else if (data.status == "error") {
+                            showError(data.message)
+                        }
+                    })
+                    .catch(function (data) {
+                        if (data.responseJSON.status == "error") {
+                            showError(data.responseJSON.message)
+                        }
+                    });
+
+                },
+            },
+        ]);
+
+    });
+
+    // LISTAGEM EQUIPAMENTOS OBRIGATÓRIOS
+    function loadConfigs()
+    {
+        Swal.queue([
+            {
+                title: "Carregando...",
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                onOpen: () => {
+                    Swal.showLoading();
+                    $.get(window.location.origin + "/planilha/temperatura-equipamento-area-climatizada-config/listar", {
+
+                    })
+                    .then(function (data) {
+                        if (data.status == "success") {
+
+                            Swal.close();
+                            $("#list2").html(``);
+
+                            if(data.data.length > 0){
+
+                                data.data.forEach(item => {
+
+                                    $("#list2").append(`
+                                        <tr>
+                                            <td class="align-middle">${item.equipamento}</td>
+                                            <td class="align-middle">${item.maior_que}</td>
+                                            <td class="align-middle">${item.menor_que}</td>
+                                            <td class="align-middle">${item.obrigatorio==1?'Sim':'Não'}</td>
+                                            <td class="align-middle" style="text-align: right; min-width: 120px">
+                                                <a title="Deletar" data-id="${item.id}" href="#" class="btn btn-danger delete-config"><i class="fas fa-trash-alt"></i></a>
+                                            </td>
+                                        </tr>
+                                    `);
+                                });
+
+                            }else{
+
+                                $("#list2").append(`
+                                    <tr>
+                                        <td class="align-middle text-center" colspan="5">Nenhum registro encontrado</td>
+                                    </tr>
+                                `);
+                            }
+
+                        } else if (data.status == "error") {
+                            showError(data.message)
+                        }
+                    })
+                    .catch(function (data) {
+                        if (data.responseJSON.status == "error") {
+                            showError(data.responseJSON.message)
+                        }
+                    });
+                },
+            },
+        ]);
+    }
+
+    // "DELETAR" CONFIG
+    $("#list2").on("click", ".delete-config", function(){
+
+        let id = $(this).data('id');
+
+        Swal.fire({
+            title: 'Atenção!',
+            text: "Deseja realmente deletar?",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'Sim',
+            cancelButtonColor: '#d33',
+            cancelButtonText: 'Não'
+            }).then((result) => {
+                if (result.value) {
+
+                    Swal.queue([
+                        {
+                            title: "Carregando...",
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                            onOpen: () => {
+                                Swal.showLoading();
+                                $.ajax({
+                                    url: window.location.origin + "/planilha/temperatura-equipamento-area-climatizada-config/deletar",
+                                    type: 'DELETE',
+                                    data: {id}
+                                })
+                                    .then(function (data) {
+                                        if (data.status == "success") {
+
+                                            loadEquipamentosFaltantes()
+                                            showSuccess("Deletado com sucesso!", null, loadConfigs)
+                                        } else if (data.status == "error") {
+                                            showError(data.message)
+                                        }
+                                    })
+                                    .catch(function (data) {
+                                        if (data.responseJSON.status == "error") {
+                                            showError(data.responseJSON.message)
+                                        }
+                                    });
+                            },
+                        },
+                    ]);
+
+                }
+            })
+
+    });
+
+    $("#id_parameter_equipamento_config").change(function(){
+
+        let equipamento = $("#id_parameter_equipamento_config").val();
+        let equipamentoText = $("#id_parameter_equipamento_config option:selected").text();
+
+
+        if (equipamento != '') {
+            $.get(window.location.origin + "/planilha/temperatura-equipamento-area-climatizada-config/listar", {
+                id_parameter_equipamento_filter : equipamento,
+            })
+            .then(function (data) {
+                if (data.status == "success") {
+                    if (data.data.length > 0){
+                        showWarning(`Já existe um registro de config para o equipamento ${equipamentoText}!`)
+                    }
+                } else if (data.status == "error") {
+                    showError(data.message)
+                }
+            })
+            .catch(function (data) {
+
+            });
+        }
+    })
+
+    // LISTAGEM EQUIPAMENTOS OBRIGATÓRIOS QUE AINDA ESTÃO PENDENTES DE CADASTRO
+    function loadEquipamentosFaltantes()
+    {
+
+        $.get(window.location.origin + "/planilha/temperatura-equipamento-area-climatizada-config/obrigatorios-nao-preenchidos", {
+
+        })
+        .then(function (data) {
+
+            if (data.status == "success") {
+
+                console.log(data.data.data)
+
+                if(data.data.data){
+                    $("#listaEquipamentosFaltantes").html(data.data.data);
+                    $("#boxEquipamentosFaltantes").show();
+                }else{
+                    $("#boxEquipamentosFaltantes").hide();
+                }
+
+            } else if (data.status == "error") {
+                showError(data.message)
+            }
+        })
+        .catch(function (data) {
+            if (data.responseJSON.status == "error") {
+                showError(data.responseJSON.message)
+            }
+        });
+
+    }
+
+
 
 });

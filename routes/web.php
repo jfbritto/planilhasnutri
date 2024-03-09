@@ -25,6 +25,7 @@ use App\Http\Controllers\Planilhas\PlanilhaGrupoAmostraPratoController;
 use App\Http\Controllers\Planilhas\PlanilhaAvaliacaoManejoResiduoController;
 use App\Http\Controllers\Planilhas\PlanilhaOcorrenciaPragaController;
 use App\Http\Controllers\Planilhas\PlanilhaTemperaturaEquipamentoAreaClimatizadaController;
+use App\Http\Controllers\Planilhas\PlanilhaTemperaturaEquipamentoAreaClimatizadaConfigController;
 use App\Http\Controllers\Planilhas\PlanilhaRastreabilidadeDiariaController;
 use App\Http\Controllers\ParameterController;
 use App\Http\Controllers\ParameterTypeController;
@@ -217,6 +218,15 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('/planilha/temperatura-equipamento-area-climatizada/editar', [PlanilhaTemperaturaEquipamentoAreaClimatizadaController::class, 'update']);
     Route::delete('/planilha/temperatura-equipamento-area-climatizada/deletar', [PlanilhaTemperaturaEquipamentoAreaClimatizadaController::class, 'destroy']);
     Route::get('/planilha/temperatura-equipamento-area-climatizada/visualizar', [PlanilhaTemperaturaEquipamentoAreaClimatizadaController::class, 'gerarPDF']);
+
+    // Planilha temperatura_equipamento_area_climatizada_cinfig
+    // Route::get('/planilha/temperatura-equipamento-area-climatizada-config', [PlanilhaTemperaturaEquipamentoAreaClimatizadaConfigController::class, 'index']);
+    Route::get('/planilha/temperatura-equipamento-area-climatizada-config/listar', [PlanilhaTemperaturaEquipamentoAreaClimatizadaConfigController::class, 'list']);
+    Route::get('/planilha/temperatura-equipamento-area-climatizada-config/obrigatorios-nao-preenchidos', [PlanilhaTemperaturaEquipamentoAreaClimatizadaConfigController::class, 'obrigatoriosNaoPreenchidos']);
+    // Route::get('/planilha/temperatura-equipamento-area-climatizada-config/encontrar', [PlanilhaTemperaturaEquipamentoAreaClimatizadaConfigController::class, 'find']);
+    Route::post('/planilha/temperatura-equipamento-area-climatizada-config/cadastrar', [PlanilhaTemperaturaEquipamentoAreaClimatizadaConfigController::class, 'store']);
+    // Route::put('/planilha/temperatura-equipamento-area-climatizada-config/editar', [PlanilhaTemperaturaEquipamentoAreaClimatizadaConfigController::class, 'update']);
+    Route::delete('/planilha/temperatura-equipamento-area-climatizada-config/deletar', [PlanilhaTemperaturaEquipamentoAreaClimatizadaConfigController::class, 'destroy']);
 
     // Planilha rastreabilidade_diaria
     Route::get('/planilha/rastreabilidade-diaria', [PlanilhaRastreabilidadeDiariaController::class, 'index']);
