@@ -42,11 +42,17 @@ $(document).ready(function () {
                                                 <td class="align-middle">${descricaoStatusEquipamento(item.id_parameter_status_equipamento)}</td>
                                             `}
                                             ${item.id_parameter_status_equipamento == null?`
-                                                <td class="align-middle">${item.temperatura_2 ?? ''}°C</td>
+                                                <td class="align-middle">${item.temperatura_2 ?? ''}${item.temperatura_2 ? '°C':''}</td>
                                             `:`
                                                 <td class="align-middle">-</td>
                                             `}
                                             <td class="align-middle" style="text-align: right; min-width: 120px">
+
+                                                ${item.temperatura_2 == null?`
+                                                    <a title="Atualizar segunda aferição" data-id="${item.id}" data-id_parameter_equipamento="${item.id_parameter_equipamento}" href="#" class="btn btn-info edit-segunda_temperatura_equipamento"><i style="color: white" class="fa-solid fa-arrows-rotate"></i></a>
+                                                `:`
+                                                `}
+
                                                 <a title="Editar"
                                                 data-id="${item.id}"
                                                 data-usuario="${item.usuario}"
@@ -146,6 +152,61 @@ $(document).ready(function () {
 
     });
 
+
+    // EDIÇÃO SEGUNDA AFERIÇÃO
+    $("#list").on("click", ".edit-segunda_temperatura_equipamento", function(){
+
+        let id = $(this).data('id');
+        $("#id_edit_2").val(id);
+
+        let id_parameter_equipamento = $(this).data('id_parameter_equipamento');
+        loadGlobalParameters(4, 'id_parameter_equipamento_edit_2', id_parameter_equipamento, false, true, `modalEditsegunda_temperatura_equipamento`);
+
+        $("#modalEditsegunda_temperatura_equipamento").modal("show");
+    });
+
+    $("#formEditsegunda_temperatura_equipamento").submit(function (e) {
+        e.preventDefault();
+
+        Swal.queue([
+            {
+                title: "Carregando...",
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                onOpen: () => {
+                    Swal.showLoading();
+                    $.ajax({
+                        url: window.location.origin + "/planilha/temperatura-equipamento-area-climatizada/editar",
+                        type: 'PUT',
+                        data:{
+                            id: $("#id_edit_2").val(),
+                            temperatura_2: $("#temperatura_2_edit_2").val(),
+                            only_2: true
+                        }
+                    })
+                        .then(function (data) {
+                            if (data.status == "success") {
+
+                                $("#formEditsegunda_temperatura_equipamento").each(function () {
+                                    this.reset();
+                                });
+
+                                $("#modalEditsegunda_temperatura_equipamento").modal("hide");
+
+                                showSuccess("Edição efetuada!", null, loadPrincipal)
+                            } else if (data.status == "error") {
+                                showError(data.message)
+                            }
+                        })
+                        .catch(function (data) {
+                            if (data.responseJSON.status == "error") {
+                                showError(data.responseJSON.message)
+                            }
+                        });
+                },
+            },
+        ]);
+    });
 
     // EDIÇÃO
     $("#list").on("click", ".edit-temperatura_equipamento_area_climatizada", function(){

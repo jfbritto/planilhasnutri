@@ -37,16 +37,19 @@ class PlanilhaTemperaturaEquipamentoAreaClimatizadaService
 
             DB::beginTransaction();
 
-            $planilha = DB::table('planilha_temperatura_equipamento_area_climatizadas')
-                        ->where('id', $data['id'])
-                        ->update([
-                            'data' => $data['data'],
-                            'id_parameter_responsavel' => $data['id_parameter_responsavel'],
-                            'id_parameter_equipamento' => $data['id_parameter_equipamento'],
-                            'id_parameter_status_equipamento' => $data['id_parameter_status_equipamento'],
-                            'temperatura_1' => $data['temperatura_1'],
-                            'temperatura_2' => $data['temperatura_2']
-                        ]);
+            // $planilha = DB::table('planilha_temperatura_equipamento_area_climatizadas')
+            //             ->where('id', $data['id'])
+            //             ->update([
+            //                 'data' => $data['data'],
+            //                 'id_parameter_responsavel' => $data['id_parameter_responsavel'],
+            //                 'id_parameter_equipamento' => $data['id_parameter_equipamento'],
+            //                 'id_parameter_status_equipamento' => $data['id_parameter_status_equipamento'],
+            //                 'temperatura_1' => $data['temperatura_1'],
+            //                 'temperatura_2' => $data['temperatura_2']
+            //             ]);
+
+            $planilha = PlanilhaTemperaturaEquipamentoAreaClimatizada::find($data['id']);
+            $planilha->fill($data)->save();
 
             DB::commit();
 

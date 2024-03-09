@@ -256,6 +256,44 @@
         </div>
     </div>
 
+    <div class="modal fade"  role="dialog" id="modalEditsegunda_temperatura_equipamento">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Segunda aferição</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <form id="formEditsegunda_temperatura_equipamento">
+                    <input type="hidden" required name="id_edit_2" id="id_edit_2">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="id_parameter_equipamento_edit_2">Equipamento</label>
+                                <select disabled name="id_parameter_equipamento_edit_2" id="id_parameter_equipamento_edit_2" class="form-control"></select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="temperatura_2_edit_2">Temperatura às 16:00</label>
+                                <input type="text" name="temperatura_2_edit_2" id="temperatura_2_edit_2" class="form-control percent" placeholder="Informe a temperatura">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" form="formEditsegunda_temperatura_equipamento">Salvar</button>
+            </div>
+            </div>
+        </div>
+    </div>
+
     <div class="modal fade"  role="dialog" id="modalConfigurarEquipamentosObrigatorios">
         <div class="modal-dialog modal-xl" role="document">
             <div class="modal-content">
