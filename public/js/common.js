@@ -173,6 +173,11 @@ function showError(text = "Ocorreu um erro!")
     Swal.fire({ type: 'error', text: text, showConfirmButton: true })
 }
 
+function showWarning(text = "Atenção!")
+{
+    Swal.fire({ type: 'warning', text: text, showConfirmButton: true })
+}
+
 function showSuccess(title = null, text = null, functions = null, param = null)
 {
     if(functions){
