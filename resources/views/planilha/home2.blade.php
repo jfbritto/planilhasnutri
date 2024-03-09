@@ -195,16 +195,6 @@
                 </div>
                 </a>
             </div>
-            <div class="col-lg-6 col-sm-6 col-xxl-3 mb-5 planilha" data-titulo="Temperatura dos Alimentos na Distribuição">
-                <a href="/planilha/temperatura-alimento-distribuicao">
-                <div class="card bg-light border-0 h-100">
-                    <div class="card-body text-center p-4 p-lg-3 pt-0 pt-lg-0">
-                        <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"><i class="fa-solid fa-bell-concierge"></i></div>
-                        <h2 class="fs-4 fw-bold">Temperatura dos Alimentos na Distribuição</h2>
-                    </div>
-                </div>
-                </a>
-            </div>
             {{-- <div class="col-lg-6 col-sm-6 col-xxl-3 mb-5 planilha" data-titulo="Grupo de Amostras de Pratos">
                 <a href="/planilha/grupo-amostra-prato">
                 <div class="card bg-light border-0 h-100">
