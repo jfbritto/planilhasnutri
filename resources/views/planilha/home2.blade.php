@@ -175,16 +175,6 @@
                 </div>
                 </a>
             </div>
-            <div class="col-lg-6 col-sm-6 col-xxl-3 mb-5 planilha" data-titulo="Registro de Limpeza">
-                <a href="/planilha/registro-limpeza">
-                <div class="card bg-light border-0 h-100">
-                    <div class="card-body text-center p-4 p-lg-3 pt-0 pt-lg-0">
-                        <div class="feature bg-info bg-gradient text-white rounded-3 mb-4 mt-n4"><i class="fa-solid fa-hand-sparkles"></i></div>
-                        <h2 class="fs-4 fw-bold">Registro de Limpeza</h2>
-                    </div>
-                </div>
-                </a>
-            </div>
             {{-- <div class="col-lg-6 col-sm-6 col-xxl-3 mb-5 planilha" data-titulo="Não Conformidades Detectadas na Auto Avaliação">
                 <a href="/planilha/registro-nao-conformidade-detectada-auto-avaliacao">
                 <div class="card bg-light border-0 h-100">
