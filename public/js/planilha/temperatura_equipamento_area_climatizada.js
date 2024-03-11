@@ -554,6 +554,7 @@ $(document).ready(function () {
 
                                 $("#modalConfigurarEquipamentosObrigatoriosEdit").modal("hide");
                                 loadEquipamentosFaltantes()
+                                loadPrincipal()
                                 showSuccess("Edição efetuada!", null, loadConfigs)
                             } else if (data.status == "error") {
                                 showError(data.message)
