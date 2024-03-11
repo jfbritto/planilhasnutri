@@ -71,10 +71,22 @@ function descricaoStatusEquipamento(val, color = false)
 }
 
 // retorna a cor da classe de acordo com a temperatura
-function configTemperaturaEquipamento(maiorQue, menorQue, temperatura, texto = false)
+function configTemperaturaEquipamento(maiorQueTxt, menorQueTxt, temperaturaTxt, texto = false)
 {
     let classe = 'danger'
     let descricao = ''
+    let maiorQue = null;
+    let menorQue = null;
+    let temperatura = null;
+
+    if (maiorQueTxt != null)
+        maiorQue = parseFloat(maiorQueTxt.replace(',', '.'));
+
+    if (menorQueTxt != null)
+        menorQue = parseFloat(menorQueTxt.replace(',', '.'));
+
+    if (temperaturaTxt != null)
+        temperatura = parseFloat(temperaturaTxt.replace(',', '.'));
 
     if (maiorQue !== null && menorQue !== null) {
         descricao = `Deve estar entre ${maiorQue}ºC e ${menorQue}ºC`
