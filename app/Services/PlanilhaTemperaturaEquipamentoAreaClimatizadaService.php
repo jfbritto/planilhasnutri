@@ -121,7 +121,7 @@ class PlanilhaTemperaturaEquipamentoAreaClimatizadaService
                                                 planilha_temperatura_equipamento_area_climatizadas main_tb
                                                 JOIN parameters p_eq ON main_tb.id_parameter_equipamento = p_eq.id
                                                 JOIN parameters p_re ON main_tb.id_parameter_responsavel = p_re.id
-                                                LEFT JOIN planilha_temperatura_equipamento_area_climatizada_configs conf_eq ON main_tb.id_parameter_equipamento = conf_eq.id_parameter_equipamento
+                                                LEFT JOIN planilha_temperatura_equipamento_area_climatizada_configs conf_eq ON main_tb.id_parameter_equipamento = conf_eq.id_parameter_equipamento and conf_eq.status = 'A'
                                                 JOIN users us ON main_tb.id_user = us.id {$condition}
                                                 LEFT JOIN units un ON us.id_unit = un.id
                                             WHERE
