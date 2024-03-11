@@ -330,13 +330,13 @@
                         <div class="col-md-2">
                             <div class="form-group">
                                 <label for="maior_que">Cº maior que</label>
-                                <input required type="text" name="maior_que" id="maior_que" class="form-control percent" placeholder="Informe a temperatura">
+                                <input type="text" name="maior_que" id="maior_que" class="form-control percent" placeholder="Informe a temperatura">
                             </div>
                         </div>
                         <div class="col-md-2">
                             <div class="form-group">
                                 <label for="menor_que">Cº menor que</label>
-                                <input required type="text" name="menor_que" id="menor_que" class="form-control percent" placeholder="Informe a temperatura">
+                                <input type="text" name="menor_que" id="menor_que" class="form-control percent" placeholder="Informe a temperatura">
                             </div>
                         </div>
                         <div class="col-md-3">

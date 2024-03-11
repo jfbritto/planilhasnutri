@@ -459,8 +459,8 @@ $(document).ready(function () {
                                     $("#list2").append(`
                                         <tr>
                                             <td class="align-middle">${item.equipamento}</td>
-                                            <td class="align-middle">${item.maior_que}</td>
-                                            <td class="align-middle">${item.menor_que}</td>
+                                            <td class="align-middle">${item.maior_que ?? ''}</td>
+                                            <td class="align-middle">${item.menor_que ?? ''}</td>
                                             <td class="align-middle">${item.obrigatorio==1?'Sim':'Não'}</td>
                                             <td class="align-middle" style="text-align: right; min-width: 120px">
                                                 <a title="Deletar" data-id="${item.id}" href="#" class="btn btn-danger delete-config"><i class="fas fa-trash-alt"></i></a>
@@ -601,6 +601,34 @@ $(document).ready(function () {
 
     }
 
+
+
+    //VALIDANDO TEMPERATURA IDEAL
+    $("#temperatura_1, #temperatura_2, #id_parameter_equipamento").change(function(){
+
+        let temperatura = $(this).val();
+        let equipamento = $("#id_parameter_equipamento_config option:selected").val();
+
+        if (equipamento != '') {
+            $.get(window.location.origin + "/planilha/temperatura-equipamento-area-climatizada-config/listar", {
+                id_parameter_equipamento_filter : equipamento,
+            })
+            .then(function (data) {
+                if (data.status == "success") {
+                    if (data.data.length > 0){
+                        showWarning(`Já existe um registro de config para o equipamento ${equipamentoText}!`)
+                    }
+                } else if (data.status == "error") {
+                    showError(data.message)
+                }
+            })
+            .catch(function (data) {
+
+            });
+        }
+
+        console.log("booora")
+    })
 
 
 });

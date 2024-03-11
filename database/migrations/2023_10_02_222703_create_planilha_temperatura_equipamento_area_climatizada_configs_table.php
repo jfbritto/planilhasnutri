@@ -17,9 +17,9 @@ class CreatePlanilhaTemperaturaEquipamentoAreaClimatizadaConfigsTable extends Mi
             $table->id();
             $table->integer('id_unit');
             $table->integer('id_parameter_equipamento');
-            $table->string('maior_que');
-            $table->string('menor_que');
-            $table->integer('obrigatorio');
+            $table->string('maior_que')->nullable();
+            $table->string('menor_que')->nullable();
+            $table->integer('obrigatorio')->nullable();
             $table->integer('id_user');
             $table->string('status', 1)->default('A');
             $table->timestamps();
