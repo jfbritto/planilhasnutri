@@ -114,11 +114,14 @@ class PlanilhaTemperaturaEquipamentoAreaClimatizadaService
                                                 ifnull(un.name, 'Controle') as unidade,
                                                 p_eq.name as equipamento,
                                                 p_re.name as responsavel,
+                                                conf_eq.maior_que,
+                                                conf_eq.menor_que,
                                                 main_tb.*
                                             FROM
                                                 planilha_temperatura_equipamento_area_climatizadas main_tb
                                                 JOIN parameters p_eq ON main_tb.id_parameter_equipamento = p_eq.id
                                                 JOIN parameters p_re ON main_tb.id_parameter_responsavel = p_re.id
+                                                LEFT JOIN planilha_temperatura_equipamento_area_climatizada_configs conf_eq ON main_tb.id_parameter_equipamento = conf_eq.id_parameter_equipamento
                                                 JOIN users us ON main_tb.id_user = us.id {$condition}
                                                 LEFT JOIN units un ON us.id_unit = un.id
                                             WHERE

@@ -70,6 +70,39 @@ function descricaoStatusEquipamento(val, color = false)
     }
 }
 
+// retorna a cor da classe de acordo com a temperatura
+function configTemperaturaEquipamento(maiorQue, menorQue, temperatura, texto = false)
+{
+    let classe = 'danger'
+    let descricao = ''
+
+    if (maiorQue !== null && menorQue !== null) {
+        descricao = `Deve estar entre ${maiorQue}ºC e ${menorQue}ºC`
+
+        if (temperatura >= maiorQue && temperatura <= menorQue) {
+            classe = 'success'
+        }
+    } else if (maiorQue !== null && menorQue === null) {
+        descricao = `Deve ser maior que ${maiorQue}ºC`
+
+        if (temperatura >= maiorQue) {
+            classe = 'success'
+        }
+    } else if (maiorQue === null && menorQue !== null) {
+        descricao = `Deve ser menor que ${menorQue}ºC`
+
+        if (temperatura <= menorQue) {
+            classe = 'success'
+        }
+    }
+
+    if (texto) {
+        return descricao
+    }
+
+    return classe
+}
+
 // retorna o nome do mes pelo seu numero referente enviado
 function monthDescription(val)
 {

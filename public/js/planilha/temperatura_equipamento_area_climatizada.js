@@ -41,12 +41,14 @@ $(document).ready(function () {
                                             <td class="align-middle">${dateFormat(item.data)}</td>
                                             <td class="align-middle">${item.equipamento}</td>
                                             ${item.id_parameter_status_equipamento == null?`
-                                                <td class="align-middle">${item.temperatura_1 ?? ''}°C</td>
+                                                <td class="align-middle"><span style="cursor: pointer" data-toggle="popover" data-content="${configTemperaturaEquipamento(item.maior_que, item.menor_que, item.temperatura_1, true)}" data-trigger="hover"
+                                                class="badge badge-pill badge-${configTemperaturaEquipamento(item.maior_que, item.menor_que, item.temperatura_1)}">${item.temperatura_1 ?? ''}°C</span></td>
                                             `:`
                                                 <td class="align-middle">${descricaoStatusEquipamento(item.id_parameter_status_equipamento)}</td>
                                             `}
                                             ${item.id_parameter_status_equipamento == null?`
-                                                <td class="align-middle">${item.temperatura_2 ?? ''}${item.temperatura_2 ? '°C':''}</td>
+                                                <td class="align-middle"><span style="cursor: pointer" data-toggle="popover" data-content="${configTemperaturaEquipamento(item.maior_que, item.menor_que, item.temperatura_2, true)}" data-trigger="hover"
+                                                class="badge badge-pill badge-${configTemperaturaEquipamento(item.maior_que, item.menor_que, item.temperatura_2)}">${item.temperatura_2 ?? ''}${item.temperatura_2 ? '°C':''}</span></td>
                                             `:`
                                                 <td class="align-middle">-</td>
                                             `}
@@ -74,6 +76,8 @@ $(document).ready(function () {
                                         </tr>
                                     `);
                                 });
+
+                                $('[data-toggle="popover"]').popover();
 
                             }else{
 
@@ -579,9 +583,6 @@ $(document).ready(function () {
         .then(function (data) {
 
             if (data.status == "success") {
-
-                console.log(data.data.data)
-
                 if(data.data.data){
                     $("#listaEquipamentosFaltantes").html(data.data.data);
                     $("#boxEquipamentosFaltantes").show();
@@ -626,8 +627,6 @@ $(document).ready(function () {
 
             });
         }
-
-        console.log("booora")
     })
 
 
