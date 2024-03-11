@@ -467,6 +467,12 @@ $(document).ready(function () {
                                             <td class="align-middle">${item.menor_que ?? ''}</td>
                                             <td class="align-middle">${item.obrigatorio==1?'Sim':'Não'}</td>
                                             <td class="align-middle" style="text-align: right; min-width: 120px">
+                                                <a title="Deletar" data-id="${item.id}" href="#" class="btn btn-warning edit-config"
+                                                    data-id_parameter_equipamento="${item.id_parameter_equipamento}"
+                                                    data-menor_que="${item.menor_que}"
+                                                    data-maior_que="${item.maior_que}"
+                                                    data-obrigatorio="${item.obrigatorio}"
+                                                ><i style="color: white" class="fas fa-edit"></i></a>
                                                 <a title="Deletar" data-id="${item.id}" href="#" class="btn btn-danger delete-config"><i class="fas fa-trash-alt"></i></a>
                                             </td>
                                         </tr>
@@ -495,6 +501,73 @@ $(document).ready(function () {
             },
         ]);
     }
+
+    // EDIÇÃO SEGUNDA AFERIÇÃO
+    $("#list2").on("click", ".edit-config", function(){
+
+        let id = $(this).data('id');
+        let id_parameter_equipamento = $(this).data('id_parameter_equipamento');
+        let menor_que = $(this).data('menor_que');
+        let maior_que = $(this).data('maior_que');
+        let obrigatorio = $(this).data('obrigatorio');
+
+        $("#id_config_edit").val(id);
+        $("#menor_que_edit").val(menor_que);
+        $("#maior_que_edit").val(maior_que);
+
+        $('#obrigatorio_edit').prop('checked', false);
+        if (obrigatorio) {
+            $('#obrigatorio_edit').prop('checked', true);
+        }
+
+        loadGlobalParameters(4, 'id_parameter_equipamento_config_edit', id_parameter_equipamento, false, true, `modalConfigurarEquipamentosObrigatoriosEdit`);
+
+        $("#modalConfigurarEquipamentosObrigatoriosEdit").modal("show");
+    });
+
+    $("#formConfigurarEquipamentosObrigatoriosEdit").submit(function (e) {
+        e.preventDefault();
+
+        Swal.queue([
+            {
+                title: "Carregando...",
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                onOpen: () => {
+                    Swal.showLoading();
+                    $.ajax({
+                        url: window.location.origin + "/planilha/temperatura-equipamento-area-climatizada-config/editar",
+                        type: 'PUT',
+                        data:{
+                            id: $("#id_config_edit").val(),
+                            maior_que: $("#maior_que_edit").val(),
+                            menor_que: $("#menor_que_edit").val(),
+                            obrigatorio: $("#obrigatorio_edit").is(':checked')?1:0,
+                        }
+                    })
+                        .then(function (data) {
+                            if (data.status == "success") {
+
+                                $("#formConfigurarEquipamentosObrigatoriosEdit").each(function () {
+                                    this.reset();
+                                });
+
+                                $("#modalConfigurarEquipamentosObrigatoriosEdit").modal("hide");
+                                loadEquipamentosFaltantes()
+                                showSuccess("Edição efetuada!", null, loadConfigs)
+                            } else if (data.status == "error") {
+                                showError(data.message)
+                            }
+                        })
+                        .catch(function (data) {
+                            if (data.responseJSON.status == "error") {
+                                showError(data.responseJSON.message)
+                            }
+                        });
+                },
+            },
+        ]);
+    });
 
     // "DELETAR" CONFIG
     $("#list2").on("click", ".delete-config", function(){

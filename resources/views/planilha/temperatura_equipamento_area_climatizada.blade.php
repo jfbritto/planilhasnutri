@@ -387,6 +387,58 @@
         </div>
     </div>
 
+    <div class="modal fade"  role="dialog" id="modalConfigurarEquipamentosObrigatoriosEdit">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Editar configurações de Equipamentos</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <form id="formConfigurarEquipamentosObrigatoriosEdit">
+                    <input type="hidden" required name="id_config_edit" id="id_config_edit">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="id_parameter_equipamento_config_edit">Equipamento</label>
+                                <select disabled name="id_parameter_equipamento_config_edit" id="id_parameter_equipamento_config_edit" class="form-control selecao-customizada"></select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="maior_que_edit">Cº maior que</label>
+                                <input type="text" name="maior_que_edit" id="maior_que_edit" class="form-control percent" placeholder="Informe a temperatura">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="menor_que_edit">Cº menor que</label>
+                                <input type="text" name="menor_que_edit" id="menor_que_edit" class="form-control percent" placeholder="Informe a temperatura">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-check" style="padding-top: 37px;">
+                                <input class="form-check-input" type="checkbox" value="1" id="obrigatorio_edit">
+                                <label class="form-check-label" for="obrigatorio_edit">
+                                    Obrigatório
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" form="formConfigurarEquipamentosObrigatoriosEdit">Salvar</button>
+            </div>
+
+            </div>
+        </div>
+    </div>
+
 @stop
 
 @section('js')

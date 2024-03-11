@@ -225,7 +225,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/planilha/temperatura-equipamento-area-climatizada-config/obrigatorios-nao-preenchidos', [PlanilhaTemperaturaEquipamentoAreaClimatizadaConfigController::class, 'obrigatoriosNaoPreenchidos']);
     // Route::get('/planilha/temperatura-equipamento-area-climatizada-config/encontrar', [PlanilhaTemperaturaEquipamentoAreaClimatizadaConfigController::class, 'find']);
     Route::post('/planilha/temperatura-equipamento-area-climatizada-config/cadastrar', [PlanilhaTemperaturaEquipamentoAreaClimatizadaConfigController::class, 'store']);
-    // Route::put('/planilha/temperatura-equipamento-area-climatizada-config/editar', [PlanilhaTemperaturaEquipamentoAreaClimatizadaConfigController::class, 'update']);
+    Route::put('/planilha/temperatura-equipamento-area-climatizada-config/editar', [PlanilhaTemperaturaEquipamentoAreaClimatizadaConfigController::class, 'update']);
     Route::delete('/planilha/temperatura-equipamento-area-climatizada-config/deletar', [PlanilhaTemperaturaEquipamentoAreaClimatizadaConfigController::class, 'destroy']);
 
     // Planilha rastreabilidade_diaria
