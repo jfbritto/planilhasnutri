@@ -127,10 +127,19 @@ class ServicoController extends Controller
             'status' => 'D'
         ];
 
+        $servico = $this->servicoService->find($request->id);
+
         $response = $this->servicoService->destroy($data);
 
-        if($response['status'] == 'success')
+        if($response['status'] == 'success') {
+            if ($servico['status'] == 'success'
+                && !empty($servico['data'][0]->documento)
+            ) {
+                self::deletarArquivo($servico['data'][0]->documento);
+            }
+
             return response()->json(['status'=>'success'], 200);
+        }
 
         return response()->json(['status'=>'error', 'message'=>$response['data']], 400);
     }

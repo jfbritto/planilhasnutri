@@ -76,52 +76,167 @@ $(document).ready(function () {
         ]);
     }
 
-    // CADASTRO
-    $("#formStoreservicos").submit(function (e) {
-        e.preventDefault();
+    async function reduzirTamanhoFoto(file, maxWidth, maxHeight, qualidade) {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = function (event) {
+                const img = new Image();
+                img.src = event.target.result;
+                img.onload = function () {
+                    const canvas = document.createElement('canvas');
+                    let width = img.width;
+                    let height = img.height;
 
-        Swal.queue([
-            {
-                title: "Carregando...",
-                allowOutsideClick: false,
-                allowEscapeKey: false,
-                onOpen: () => {
-                    Swal.showLoading();
-
-                    var formData = new FormData($(this)[0]);
-
-                    $.ajax({
-                        url: window.location.origin + "/servico/cadastrar",
-                        type: 'POST',
-                        data: formData,
-                        contentType: false,
-                        processData: false,
-                        success: function(data) {
-                            if (data.status == "success") {
-                                $("#formStoreservicos").each(function() {
-                                    this.reset();
-                                });
-
-                                $("#modalStoreservicos").modal("hide");
-                                showSuccess("Cadastro efetuado!", null, loadPrincipal);
-                            } else if (data.status == "error") {
-                                showError(data.message);
-                            }
-                        },
-                        error: function(xhr, status, error) {
-                            if (xhr.responseJSON && xhr.responseJSON.status == "error") {
-                                showError(xhr.responseJSON.message);
-                            } else {
-                                showError("Erro desconhecido durante o upload do arquivo.");
-                            }
+                    if (width > height) {
+                        if (width > maxWidth) {
+                            height *= maxWidth / width;
+                            width = maxWidth;
                         }
-                    });
+                    } else {
+                        if (height > maxHeight) {
+                            width *= maxHeight / height;
+                            height = maxHeight;
+                        }
+                    }
 
+                    canvas.width = width;
+                    canvas.height = height;
+
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0, width, height);
+
+                    canvas.toBlob((blob) => {
+                        resolve(blob);
+                    }, file.type, qualidade);
+                };
+                img.onerror = function (error) {
+                    reject(error);
+                };
+            };
+            reader.onerror = function (error) {
+                reject(error);
+            };
+        });
+    }
+
+    async function salvarArquivoNoServidor(blob, id_parameter_servico, frequencia_meses, data, proxima_data) {
+        const formData = new FormData();
+        formData.append('documento', blob); // 'nome_arquivo.jpg' é apenas um exemplo de nome de arquivo
+        formData.append('id_parameter_servico', id_parameter_servico);
+        formData.append('frequencia_meses', frequencia_meses);
+        formData.append('data', data);
+        formData.append('proxima_data', proxima_data);
+
+        try {
+
+            // Verifica se o arquivo é uma imagem antes de redimensioná-lo
+            if (blob.type.startsWith('image/')) {
+                const maxWidth = 1000;
+                const maxHeight = 800;
+                const qualidade = 0.8;
+                const imagemReduzida = await reduzirTamanhoFoto(blob, maxWidth, maxHeight, qualidade);
+                formData.set('file', imagemReduzida);
+            }
+
+            Swal.queue([
+                {
+                    title: "Carregando...",
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                    onOpen: () => {
+                        Swal.showLoading();
+
+                    },
                 },
-            },
-        ]);
+            ]);
 
+            const response = await fetch(window.location.origin + "/servico/cadastrar", {
+                method: 'POST',
+                body: formData
+            });
+            if (!response.ok) {
+                showError('Erro ao enviar arquivo para o servidor');
+            }
+
+            $("#formStoreservicos").each(function() {
+                this.reset();
+            });
+            $(".selecao-customizada").val(null).trigger("change");
+            $("#modalStoreservicos").modal("hide");
+            showSuccess("Cadastro efetuado!", null, loadPrincipal);
+        } catch (error) {
+            console.error('Erro ao salvar arquivo no servidor:', error);
+        }
+    }
+
+    // CADASTRO
+    const form = document.getElementById('formStoreservicos');
+    form.addEventListener('submit', async function (event) {
+        event.preventDefault();
+
+        const documento = document.getElementById('documento');
+        const id_parameter_servico = $("#id_parameter_servico option:selected").val()
+        const frequencia_meses = $("#frequencia_meses option:selected").val()
+        const data = document.getElementById('data').value;
+        const proxima_data = document.getElementById('proxima_data').value;
+
+        const file = documento.files[0];
+
+        try {
+            await salvarArquivoNoServidor(file, id_parameter_servico, frequencia_meses, data, proxima_data);
+        } catch (error) {
+            console.error('Erro ao processar o envio do formulário:', error);
+        }
     });
+
+
+    // CADASTRO
+    // $("#formStoreservicos").submit(function (e) {
+    //     e.preventDefault();
+
+    //     Swal.queue([
+    //         {
+    //             title: "Carregando...",
+    //             allowOutsideClick: false,
+    //             allowEscapeKey: false,
+    //             onOpen: () => {
+    //                 Swal.showLoading();
+
+    //                 var formData = new FormData($(this)[0]);
+
+    //                 $.ajax({
+    //                     url: window.location.origin + "/servico/cadastrar",
+    //                     type: 'POST',
+    //                     data: formData,
+    //                     contentType: false,
+    //                     processData: false,
+    //                     success: function(data) {
+    //                         if (data.status == "success") {
+    //                             $("#formStoreservicos").each(function() {
+    //                                 this.reset();
+    //                             });
+
+    //                             $("#modalStoreservicos").modal("hide");
+    //                             showSuccess("Cadastro efetuado!", null, loadPrincipal);
+    //                         } else if (data.status == "error") {
+    //                             showError(data.message);
+    //                         }
+    //                     },
+    //                     error: function(xhr, status, error) {
+    //                         if (xhr.responseJSON && xhr.responseJSON.status == "error") {
+    //                             showError(xhr.responseJSON.message);
+    //                         } else {
+    //                             showError("Erro desconhecido durante o upload do arquivo.");
+    //                         }
+    //                     }
+    //                 });
+
+    //             },
+    //         },
+    //     ]);
+
+    // });
 
 
     // EDIÇÃO

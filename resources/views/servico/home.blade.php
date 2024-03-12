@@ -62,7 +62,7 @@
                                     <i class="fa fa-plus-circle color-green" aria-hidden="true" style="cursor: pointer"
                                     data-toggle="modal" data-target="#modalStoreParameterServico" title="Cadastrar novo item"></i>
                                 </label>
-                                <select type="text" required name="id_parameter_servico" id="id_parameter_servico" class="form-control"></select>
+                                <select type="text" required name="id_parameter_servico" id="id_parameter_servico" class="form-control selecao-customizada"></select>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -94,7 +94,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="documento">Documento</label>
-                                <input type="file" name="documento" id="documento" class="form-control">
+                                <input required type="file" name="documento" id="documento" class="form-control">
                             </div>
                         </div>
                     </div>
