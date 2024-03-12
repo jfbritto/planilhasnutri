@@ -24,8 +24,11 @@ class ServicoController extends Controller
     {
 
         $documento = $request->file('documento');
-        $fileName = $this->uploadDocumento($documento);
 
+        $fileName = '';
+        if (!empty($documento)) {
+            $fileName = $this->uploadDocumento($documento);
+        }
 
         $data = [
             'id_user' => auth()->user()->id,

@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     loadPrincipal();
-    loadGlobalParameters(7, 'id_parameter_servico');
+    loadGlobalParameters(7, 'id_parameter_servico', null, false, true, `modalStoreservicos`);
 
     // LISTAGEM
     function loadPrincipal()
@@ -32,7 +32,11 @@ $(document).ready(function () {
                                             <td class="align-middle">${frequencia(item.frequencia_meses)}</td>
                                             <td class="align-middle">${dateFormat(item.data)}</td>
                                             <td class="align-middle">${dateFormat(item.proxima_data)}</td>
-                                            <td class="align-middle text-center"><a href="servico/download/${item.documento}" title="Baixar arquivo" target="_blank"><i class="fa-solid fa-file fa-xl"></i></a></td>
+                                            <td class="align-middle">
+                                            ${item.documento != '' ? `
+                                                <a href="servico/download/${item.documento}" title="Baixar arquivo" target="_blank"><i class="fa-solid fa-file-${detectarExtensaoArquivo(item.documento)} fa-xl"></i></a>
+                                            `:``}
+                                            </td>
                                             <td class="align-middle" style="text-align: right; min-width: 120px">
                                                 <a title="Editar"
                                                 data-id="${item.id}"

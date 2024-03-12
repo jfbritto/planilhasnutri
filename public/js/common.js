@@ -70,6 +70,23 @@ function descricaoStatusEquipamento(val, color = false)
     }
 }
 
+function detectarExtensaoArquivo(nomeArquivo) {
+    // Dividir o nome do arquivo usando o ponto como separador
+    var partes = nomeArquivo.split('.');
+    // Obter a última parte (a extensão)
+    var extensao = partes[partes.length - 1];
+
+    if (extensao == 'pdf') {
+        return 'pdf'
+    } else if (extensao == 'xls') {
+        return 'excel'
+    } else if (extensao == 'png' || extensao == 'jpg' || extensao == 'jpeg') {
+        return 'image'
+    }
+
+    return 'file';
+}
+
 // retorna a cor da classe de acordo com a temperatura
 function configTemperaturaEquipamento(maiorQueTxt, menorQueTxt, temperaturaTxt, texto = false)
 {
@@ -1036,6 +1053,55 @@ $("#formStoreParameterFabricante").submit(function (e) {
                             }
 
                             loadGlobalParameters(13, 'id_parameter_fabricante', selected);
+
+                            showSuccess("Cadastro efetuado!", null)
+                        } else if (data.status == "error") {
+                            showError(data.message)
+                        }
+                    })
+                    .catch(function (data) {
+                        if (data.responseJSON.status == "error") {
+                            showError(data.responseJSON.message)
+                        }
+                    });
+
+            },
+        },
+    ]);
+
+});
+
+// CADASTRAR SERVICO
+$("#formStoreParameterServico").submit(function (e) {
+    e.preventDefault();
+
+    Swal.queue([
+        {
+            title: "Carregando...",
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            onOpen: () => {
+                Swal.showLoading();
+
+                $.post(window.location.origin + "/parametro/cadastrar", {
+                    name: $("#name_parameter_servico").val(),
+                    id_parameter_type: 7,
+                })
+                    .then(function (data) {
+                        if (data.status == "success") {
+
+                            $("#formStoreParameterServico").each(function () {
+                                this.reset();
+                            });
+
+                            $("#modalStoreParameterServico").modal("hide");
+
+                            let selected = null;
+                            if (data.data.data.id != undefined) {
+                                selected = data.data.data.id;
+                            }
+
+                            loadGlobalParameters(13, 'id_parameter_servico', selected);
 
                             showSuccess("Cadastro efetuado!", null)
                         } else if (data.status == "error") {

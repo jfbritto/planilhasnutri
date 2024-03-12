@@ -361,6 +361,36 @@
     </div>
 </div>
 
+<div class="modal fade"  role="dialog" id="modalStoreParameterServico" style="z-index: 9999;">
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">Novo Serviço</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+
+            <form id="formStoreParameterServico">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="name_parameter_servico">Nome</label>
+                            <input type="text" required name="name_parameter_servico" id="name_parameter_servico" class="form-control" placeholder="Nome do fabricante">
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" form="formStoreParameterServico">Salvar</button>
+        </div>
+        </div>
+    </div>
+</div>
+
 
 
 <div class="modal fade"  role="dialog" id="modalHistorico" style="z-index: 9999;">
