@@ -39,6 +39,11 @@ $(document).ready(function () {
                                             <td class="align-middle">${item.lote}</td>
                                             <td class="align-middle">${dateFormat(item.validade)}</td>
                                             <td class="align-middle">${item.fabricante}</td>
+                                            <td class="align-middle">
+                                            ${item.image != '' ? `
+                                                <a href="rastreabilidade-diaria/download/${item.image}" title="Baixar arquivo" target="_blank"><i class="fa-solid fa-file-${detectarExtensaoArquivo(item.image)} fa-xl"></i></a>
+                                            `:``}
+                                            </td>
                                             <td class="align-middle" style="text-align: right; min-width: 120px">
                                                 <a title="Editar"
                                                 data-id="${item.id}"
@@ -61,7 +66,7 @@ $(document).ready(function () {
 
                                 $("#list").append(`
                                     <tr>
-                                        <td class="align-middle text-center" colspan="6">Nenhum registro encontrado</td>
+                                        <td class="align-middle text-center" colspan="7">Nenhum registro encontrado</td>
                                     </tr>
                                 `);
                             }
@@ -80,54 +85,131 @@ $(document).ready(function () {
         ]);
     }
 
-    // CADASTRO
-    $("#formStorerastreabilidade_diaria").submit(function (e) {
-        e.preventDefault();
+    async function reduzirTamanhoFoto(file, maxWidth, maxHeight, qualidade) {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = function (event) {
+                const img = new Image();
+                img.src = event.target.result;
+                img.onload = function () {
+                    const canvas = document.createElement('canvas');
+                    let width = img.width;
+                    let height = img.height;
 
-        Swal.queue([
-            {
-                title: "Carregando...",
-                allowOutsideClick: false,
-                allowEscapeKey: false,
-                onOpen: () => {
-                    Swal.showLoading();
-
-                    $.post(window.location.origin + "/planilha/rastreabilidade-diaria/cadastrar", {
-                        data: $("#data").val(),
-                        id_parameter_produto: $("#id_parameter_produto option:selected").val(),
-                        lote: $("#lote").val(),
-                        validade: $("#validade").val(),
-                        id_parameter_fabricante: $("#id_parameter_fabricante option:selected").val(),
-                    })
-                    .then(function (data) {
-                        if (data.status == "success") {
-
-                            $("#formStorerastreabilidade_diaria").each(function () {
-                                this.reset();
-                            });
-
-                            $("#modalStorerastreabilidade_diaria").modal("hide");
-
-                            loadGlobalParameters(8, 'id_parameter_produto', null, false, true, `modalStorerastreabilidade_diaria`);
-                            loadGlobalParameters(13, 'id_parameter_fabricante', null, false, true, `modalStorerastreabilidade_diaria`);
-
-                            showSuccess("Cadastro efetuado!", null, loadPrincipal)
-                        } else if (data.status == "error") {
-                            showError(data.message)
+                    if (width > height) {
+                        if (width > maxWidth) {
+                            height *= maxWidth / width;
+                            width = maxWidth;
                         }
-                    })
-                    .catch(function (data) {
-                        if (data.responseJSON.status == "error") {
-                            showError(data.responseJSON.message)
+                    } else {
+                        if (height > maxHeight) {
+                            width *= maxHeight / height;
+                            height = maxHeight;
                         }
-                    });
+                    }
 
+                    canvas.width = width;
+                    canvas.height = height;
+
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0, width, height);
+
+                    canvas.toBlob((blob) => {
+                        resolve(blob);
+                    }, file.type, qualidade);
+                };
+                img.onerror = function (error) {
+                    reject(error);
+                };
+            };
+            reader.onerror = function (error) {
+                reject(error);
+            };
+        });
+    }
+
+    async function salvarArquivoNoServidor(blob, lote, id_parameter_produto, data, validade, id_parameter_fabricante, tipo) {
+        const formData = new FormData();
+
+        if (tipo == 1) {
+            formData.append('image', blob, 'nome_arquivo.jpg');
+        } else {
+            formData.append('image', blob);
+        }
+
+        formData.append('lote', lote);
+        formData.append('id_parameter_produto', id_parameter_produto);
+        formData.append('data', data);
+        formData.append('validade', validade);
+        formData.append('id_parameter_fabricante', id_parameter_fabricante);
+
+        try {
+
+            Swal.queue([
+                {
+                    title: "Carregando...",
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                    onOpen: () => {
+                        Swal.showLoading();
+
+                    },
                 },
-            },
-        ]);
+            ]);
 
+            const response = await fetch(window.location.origin + "/planilha/rastreabilidade-diaria/cadastrar", {
+                method: 'POST',
+                body: formData
+            });
+            if (!response.ok) {
+                showError('Erro ao enviar arquivo para o servidor');
+            }
+
+            $("#formStorerastreabilidade_diaria").each(function() {
+                this.reset();
+            });
+
+            $(".selecao-customizada").val(null).trigger("change");
+            $("#modalStorerastreabilidade_diaria").modal("hide");
+
+            loadGlobalParameters(8, 'id_parameter_produto', null, false, true, `modalStorerastreabilidade_diaria`);
+            loadGlobalParameters(13, 'id_parameter_fabricante', null, false, true, `modalStorerastreabilidade_diaria`);
+
+            showSuccess("Cadastro efetuado!", null, loadPrincipal);
+        } catch (error) {
+            console.error('Erro ao salvar arquivo no servidor:', error);
+        }
+    }
+
+    // CADASTRO
+    const form = document.getElementById('formStorerastreabilidade_diaria');
+    form.addEventListener('submit', async function (event) {
+        event.preventDefault();
+
+        const image = document.getElementById('image');
+        const lote = document.getElementById('lote').value;
+        const id_parameter_produto = $("#id_parameter_produto option:selected").val()
+        const data = document.getElementById('data').value;
+        const validade = document.getElementById('validade').value;
+        const id_parameter_fabricante = $("#id_parameter_fabricante option:selected").val()
+
+        const file = image.files[0];
+        const maxWidth = 1000;
+        const maxHeight = 800;
+        const qualidade = 0.7; // Qualidade de 0 a 1
+
+        try {
+            if (file.type.startsWith('image/')) {
+                const novaFoto = await reduzirTamanhoFoto(file, maxWidth, maxHeight, qualidade);
+                await salvarArquivoNoServidor(novaFoto, lote, id_parameter_produto, data, validade, id_parameter_fabricante, 1);
+            } else {
+                await salvarArquivoNoServidor(file, lote, id_parameter_produto, data, validade, id_parameter_fabricante, 2);
+            }
+        } catch (error) {
+            console.error('Erro ao processar o envio do formulário:', error);
+        }
     });
-
 
     // EDIÇÃO
     $("#list").on("click", ".edit-rastreabilidade_diaria", function(){

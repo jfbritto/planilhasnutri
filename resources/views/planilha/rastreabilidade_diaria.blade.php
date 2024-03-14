@@ -71,6 +71,7 @@
                             <th>Lote</th>
                             <th>Validade</th>
                             <th>Fabricante</th>
+                            <th>Rótulo</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -106,7 +107,7 @@
                                     <i class="fa fa-plus-circle color-green" aria-hidden="true" style="cursor: pointer"
                                     data-toggle="modal" data-target="#modalStoreParameterProduto" title="Cadastrar novo item"></i>
                                 </label>
-                                <select required name="id_parameter_produto" id="id_parameter_produto" class="form-control"></select>
+                                <select required name="id_parameter_produto" id="id_parameter_produto" class="form-control selecao-customizada"></select>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -128,15 +129,15 @@
                                     <i class="fa fa-plus-circle color-green" aria-hidden="true" style="cursor: pointer"
                                     data-toggle="modal" data-target="#modalStoreParameterFabricante" title="Cadastrar novo item"></i>
                                 </label>
-                                <select required name="id_parameter_fabricante" id="id_parameter_fabricante" class="form-control"></select>
+                                <select required name="id_parameter_fabricante" id="id_parameter_fabricante" class="form-control selecao-customizada"></select>
                             </div>
                         </div>
-                        {{-- <div class="col-md-12">
+                        <div class="col-md-12">
                             <div class="form-group">
                                 <label for="image">Imagem</label>
                                 <input type="file" name="image" id="image" class="form-control">
                             </div>
-                        </div> --}}
+                        </div>
                     </div>
                 </form>
 
@@ -173,7 +174,7 @@
                                 <label for="id_parameter_produto_edit">
                                     Produto
                                 </label>
-                                <select required name="id_parameter_produto_edit" id="id_parameter_produto_edit" class="form-control"></select>
+                                <select required name="id_parameter_produto_edit" id="id_parameter_produto_edit" class="form-control selecao-customizada"></select>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -193,7 +194,7 @@
                                 <label for="id_parameter_fabricante_edit">
                                     Fabricante
                                 </label>
-                                <select required name="id_parameter_fabricante_edit" id="id_parameter_fabricante_edit" class="form-control"></select>
+                                <select required name="id_parameter_fabricante_edit" id="id_parameter_fabricante_edit" class="form-control selecao-customizada"></select>
                             </div>
                         </div>
                         <div class="col-md-6">

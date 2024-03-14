@@ -236,6 +236,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('/planilha/rastreabilidade-diaria/editar', [PlanilhaRastreabilidadeDiariaController::class, 'update']);
     Route::delete('/planilha/rastreabilidade-diaria/deletar', [PlanilhaRastreabilidadeDiariaController::class, 'destroy']);
     Route::get('/planilha/rastreabilidade-diaria/visualizar', [PlanilhaRastreabilidadeDiariaController::class, 'gerarPDF']);
+    Route::get('/planilha/rastreabilidade-diaria/download/{fileName}', [PlanilhaRastreabilidadeDiariaController::class, 'downloadArquivo']);
 
     // Parametros
     Route::get('/parametros', [ParameterController::class, 'index']);
