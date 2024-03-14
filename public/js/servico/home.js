@@ -120,9 +120,15 @@ $(document).ready(function () {
         });
     }
 
-    async function salvarArquivoNoServidor(blob, id_parameter_servico, frequencia_meses, data, proxima_data) {
+    async function salvarArquivoNoServidor(blob, id_parameter_servico, frequencia_meses, data, proxima_data, tipo) {
         const formData = new FormData();
-        formData.append('documento', blob); // 'nome_arquivo.jpg' é apenas um exemplo de nome de arquivo
+
+        if (tipo == 1) {
+            formData.append('documento', blob, 'nome_arquivo.jpg');
+        } else {
+            formData.append('documento', blob);
+        }
+
         formData.append('id_parameter_servico', id_parameter_servico);
         formData.append('frequencia_meses', frequencia_meses);
         formData.append('data', data);
@@ -131,13 +137,16 @@ $(document).ready(function () {
         try {
 
             // Verifica se o arquivo é uma imagem antes de redimensioná-lo
-            if (blob.type.startsWith('image/')) {
-                const maxWidth = 1000;
-                const maxHeight = 800;
-                const qualidade = 0.8;
-                const imagemReduzida = await reduzirTamanhoFoto(blob, maxWidth, maxHeight, qualidade);
-                formData.set('file', imagemReduzida);
-            }
+            // if (blob.type.startsWith('image/')) {
+            //     console.log("entrou aqui")
+            //     const maxWidth = 700;
+            //     const maxHeight = 500;
+            //     const qualidade = 0.8;
+            //     const imagemReduzida = await reduzirTamanhoFoto(blob, maxWidth, maxHeight, qualidade);
+            //     formData.set('file', imagemReduzida);
+            // } else {
+            //     console.log("passou direto")
+            // }
 
             Swal.queue([
                 {
@@ -162,6 +171,7 @@ $(document).ready(function () {
             $("#formStoreservicos").each(function() {
                 this.reset();
             });
+            atualizarDataAtual(data)
             $(".selecao-customizada").val(null).trigger("change");
             $("#modalStoreservicos").modal("hide");
             showSuccess("Cadastro efetuado!", null, loadPrincipal);
@@ -182,9 +192,17 @@ $(document).ready(function () {
         const proxima_data = document.getElementById('proxima_data').value;
 
         const file = documento.files[0];
+        const maxWidth = 1000;
+        const maxHeight = 800;
+        const qualidade = 0.7; // Qualidade de 0 a 1
 
         try {
-            await salvarArquivoNoServidor(file, id_parameter_servico, frequencia_meses, data, proxima_data);
+            if (file.type.startsWith('image/')) {
+                const novaFoto = await reduzirTamanhoFoto(file, maxWidth, maxHeight, qualidade);
+                await salvarArquivoNoServidor(novaFoto, id_parameter_servico, frequencia_meses, data, proxima_data, 1);
+            } else {
+                await salvarArquivoNoServidor(file, id_parameter_servico, frequencia_meses, data, proxima_data, 2);
+            }
         } catch (error) {
             console.error('Erro ao processar o envio do formulário:', error);
         }

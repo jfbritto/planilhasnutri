@@ -51,6 +51,8 @@ class ServicoController extends Controller
     {
         $nomeOriginal = pathinfo($documento->getClientOriginalName(), PATHINFO_FILENAME); // Obtém o nome do arquivo sem a extensão
         $extensao = $documento->getClientOriginalExtension(); // Obtém a extensão do arquivo
+        $idUnidade = auth()->user()->id_unit;
+        $anoAtual = date('Y');
 
         // Remove caracteres especiais do nome do arquivo
         $nomeFormatado = preg_replace('/[^A-Za-z0-9]/', '', $nomeOriginal);
@@ -58,30 +60,33 @@ class ServicoController extends Controller
         // Concatena o nome formatado com a extensão do arquivo
         $fileName = md5(time().$nomeFormatado). '.' . $extensao;
 
-        // Verifica se a pasta 'documentos' existe. Se não, cria a pasta.
-        if (!Storage::exists('documentos')) {
-            Storage::makeDirectory('documentos');
+        // Verifica se a pasta 'servicos' existe. Se não, cria a pasta.
+        if (!Storage::exists("arquivos/servicos/{$idUnidade}/{$anoAtual}")) {
+            Storage::makeDirectory("arquivos/servicos/{$idUnidade}/{$anoAtual}");
         }
 
-        $documento->storeAs('documentos', $fileName);
+        $documento->storeAs("arquivos/servicos/{$idUnidade}/{$anoAtual}", $fileName);
         return $fileName;
     }
 
     public function downloadArquivo($fileName)
     {
-        $caminhoArquivo = storage_path('app/documentos/' . $fileName);
+        $idUnidade = auth()->user()->id_unit;
+        $anoAtual = date('Y');
+
+        $caminhoArquivo = storage_path("app/arquivos/servicos/{$idUnidade}/{$anoAtual}/" . $fileName);
 
         // Verifica se o arquivo existe
-        if (!Storage::exists('documentos/' . $fileName)) {
+        if (!Storage::exists("arquivos/servicos/{$idUnidade}/{$anoAtual}/" . $fileName)) {
             abort(404); // Se o arquivo não existir, retorna um erro 404
         }
 
         // Obtém o tipo de conteúdo (MIME type) do arquivo
-        $mimeType = Storage::mimeType('documentos/' . $fileName);
+        $mimeType = Storage::mimeType("arquivos/servicos/{$idUnidade}/{$anoAtual}/" . $fileName);
 
         // Define os cabeçalhos da resposta
         $headers = [
-            'Content-Type' => $mimeType,
+            "Content-Type" => $mimeType,
         ];
 
         // Retorna uma resposta de download
@@ -90,10 +95,13 @@ class ServicoController extends Controller
 
     public function deletarArquivo($fileName)
     {
+        $idUnidade = auth()->user()->id_unit;
+        $anoAtual = date('Y');
+
         // Verifica se o arquivo existe
-        if (Storage::exists('documentos/' . $fileName)) {
+        if (Storage::exists("arquivos/servicos/{$idUnidade}/{$anoAtual}/" . $fileName)) {
             // Deleta o arquivo
-            Storage::delete('documentos/' . $fileName);
+            Storage::delete("arquivos/servicos/{$idUnidade}/{$anoAtual}/" . $fileName);
             return "Arquivo $fileName deletado com sucesso!";
         } else {
             return "Arquivo $fileName não encontrado!";
