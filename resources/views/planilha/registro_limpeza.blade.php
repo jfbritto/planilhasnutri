@@ -118,19 +118,19 @@
                                 <select type="text" required name="id_parameter_area" id="id_parameter_area" class="form-control"></select>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <div class="form-group">
-                                <label for="superficie_limpa">Superfície Limpa</label>
-                                <input type="text" required name="superficie_limpa" id="superficie_limpa" class="form-control" placeholder="Informe a superfície">
+                                <label for="superficie_limpa">Superfície a ser Limpa</label>
+                                <input type="text" required name="superficie_limpa" id="superficie_limpa" class="form-control" placeholder="Superfície a ser limpa">
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label for="frequencia">Frequência</label>
                                 <input type="text" name="frequencia" id="frequencia" class="form-control" placeholder="Informe a frequência">
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label for="conforme_naoconforme">Conforme</label>
                                 <select type="date" name="conforme_naoconforme" id="conforme_naoconforme" class="form-control">
@@ -140,10 +140,10 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-12">
                             <div class="form-group">
                                 <label for="comentarios">Comentários</label>
-                                <input type="text" name="comentarios" id="comentarios" class="form-control" placeholder="Comente sobre a limpeza">
+                                <textarea name="comentarios" id="comentarios" class="form-control" placeholder="Comente sobre a limpeza"></textarea>
                             </div>
                         </div>
                     </div>
@@ -191,8 +191,8 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="superficie_limpa_edit">Superfície Limpa</label>
-                                <input type="text" required name="superficie_limpa_edit" id="superficie_limpa_edit" class="form-control" placeholder="Informe a superfície">
+                                <label for="superficie_limpa_edit">Superfície a ser Limpa</label>
+                                <input type="text" required name="superficie_limpa_edit" id="superficie_limpa_edit" class="form-control" placeholder="Superfície a ser limpa">
                             </div>
                         </div>
                         <div class="col-md-3">
