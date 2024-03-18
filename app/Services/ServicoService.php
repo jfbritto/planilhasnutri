@@ -37,19 +37,12 @@ class ServicoService
 
             DB::beginTransaction();
 
-            $planilha = DB::table('servicos')
-                        ->where('id', $data['id'])
-                        ->update([
-                            'id_parameter_servico' => $data['id_parameter_servico'],
-                            'data' => $data['data'],
-                            'proxima_data' => $data['proxima_data'],
-                            'frequencia_meses' => $data['frequencia_meses'],
-                            'documento' => $data['documento']
-                        ]);
+            $servico = Servico::find($data['id']);
+            $servico->fill($data)->save();
 
             DB::commit();
 
-            $response = ['status' => 'success', 'data' => $planilha];
+            $response = ['status' => 'success', 'data' => $servico];
 
         }catch(Exception $e){
             DB::rollBack();

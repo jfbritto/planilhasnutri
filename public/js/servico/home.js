@@ -46,6 +46,7 @@ $(document).ready(function () {
                                                 data-data="${item.data}"
                                                 data-proxima_data="${item.proxima_data}"
                                                 data-frequencia_meses="${item.frequencia_meses}"
+                                                data-observacoes="${item.observacoes}"
                                                 data-documento="${item.documento}" href="#" class="btn btn-warning edit-servicos"><i style="color: white" class="fas fa-edit"></i></a>
                                                 <a title="Deletar" data-id="${item.id}" href="#" class="btn btn-danger delete-servicos"><i class="fas fa-trash-alt"></i></a>
                                             </td>
@@ -120,7 +121,7 @@ $(document).ready(function () {
         });
     }
 
-    async function salvarArquivoNoServidor(blob, id_parameter_servico, frequencia_meses, data, proxima_data, tipo) {
+    async function salvarArquivoNoServidor(blob, id_parameter_servico, frequencia_meses, data, proxima_data, observacoes, tipo) {
         const formData = new FormData();
 
         if (tipo == 1) {
@@ -133,20 +134,9 @@ $(document).ready(function () {
         formData.append('frequencia_meses', frequencia_meses);
         formData.append('data', data);
         formData.append('proxima_data', proxima_data);
+        formData.append('observacoes', observacoes);
 
         try {
-
-            // Verifica se o arquivo é uma imagem antes de redimensioná-lo
-            // if (blob.type.startsWith('image/')) {
-            //     console.log("entrou aqui")
-            //     const maxWidth = 700;
-            //     const maxHeight = 500;
-            //     const qualidade = 0.8;
-            //     const imagemReduzida = await reduzirTamanhoFoto(blob, maxWidth, maxHeight, qualidade);
-            //     formData.set('file', imagemReduzida);
-            // } else {
-            //     console.log("passou direto")
-            // }
 
             Swal.queue([
                 {
@@ -190,6 +180,7 @@ $(document).ready(function () {
         const frequencia_meses = $("#frequencia_meses option:selected").val()
         const data = document.getElementById('data').value;
         const proxima_data = document.getElementById('proxima_data').value;
+        const observacoes = document.getElementById('observacoes').value;
 
         const file = documento.files[0];
         const maxWidth = 1000;
@@ -199,63 +190,14 @@ $(document).ready(function () {
         try {
             if (file.type.startsWith('image/')) {
                 const novaFoto = await reduzirTamanhoFoto(file, maxWidth, maxHeight, qualidade);
-                await salvarArquivoNoServidor(novaFoto, id_parameter_servico, frequencia_meses, data, proxima_data, 1);
+                await salvarArquivoNoServidor(novaFoto, id_parameter_servico, frequencia_meses, data, proxima_data, observacoes, 1);
             } else {
-                await salvarArquivoNoServidor(file, id_parameter_servico, frequencia_meses, data, proxima_data, 2);
+                await salvarArquivoNoServidor(file, id_parameter_servico, frequencia_meses, data, proxima_data, observacoes, 2);
             }
         } catch (error) {
             console.error('Erro ao processar o envio do formulário:', error);
         }
     });
-
-
-    // CADASTRO
-    // $("#formStoreservicos").submit(function (e) {
-    //     e.preventDefault();
-
-    //     Swal.queue([
-    //         {
-    //             title: "Carregando...",
-    //             allowOutsideClick: false,
-    //             allowEscapeKey: false,
-    //             onOpen: () => {
-    //                 Swal.showLoading();
-
-    //                 var formData = new FormData($(this)[0]);
-
-    //                 $.ajax({
-    //                     url: window.location.origin + "/servico/cadastrar",
-    //                     type: 'POST',
-    //                     data: formData,
-    //                     contentType: false,
-    //                     processData: false,
-    //                     success: function(data) {
-    //                         if (data.status == "success") {
-    //                             $("#formStoreservicos").each(function() {
-    //                                 this.reset();
-    //                             });
-
-    //                             $("#modalStoreservicos").modal("hide");
-    //                             showSuccess("Cadastro efetuado!", null, loadPrincipal);
-    //                         } else if (data.status == "error") {
-    //                             showError(data.message);
-    //                         }
-    //                     },
-    //                     error: function(xhr, status, error) {
-    //                         if (xhr.responseJSON && xhr.responseJSON.status == "error") {
-    //                             showError(xhr.responseJSON.message);
-    //                         } else {
-    //                             showError("Erro desconhecido durante o upload do arquivo.");
-    //                         }
-    //                     }
-    //                 });
-
-    //             },
-    //         },
-    //     ]);
-
-    // });
-
 
     // EDIÇÃO
     $("#list").on("click", ".edit-servicos", function(){
@@ -267,8 +209,9 @@ $(document).ready(function () {
         let data = $(this).data('data');
         let proxima_data = $(this).data('proxima_data');
         let frequencia_meses = $(this).data('frequencia_meses');
+        let observacoes = $(this).data('observacoes');
 
-        loadGlobalParameters(7, 'id_parameter_servico_edit', id_parameter_servico);
+        loadGlobalParameters(7, 'id_parameter_servico_edit', id_parameter_servico, false, true, `modalEditservicos`);
 
         $("#id_edit").val(id);
         $("#usuario").val(usuario);
@@ -276,6 +219,7 @@ $(document).ready(function () {
         $("#data_edit").val(data);
         $("#proxima_data_edit").val(proxima_data);
         $("#frequencia_meses_edit").val(frequencia_meses);
+        $("#observacoes_edit").val(observacoes);
 
         $("#modalEditservicos").modal("show");
     });
@@ -299,6 +243,7 @@ $(document).ready(function () {
                             data: $("#data_edit").val(),
                             proxima_data: $("#proxima_data_edit").val(),
                             frequencia_meses: $("#frequencia_meses_edit").val(),
+                            observacoes: $("#observacoes_edit").val(),
                             // documento: $("#documento").val(),
                         }
                     })

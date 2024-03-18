@@ -97,6 +97,12 @@
                                 <input required type="file" name="documento" id="documento" class="form-control">
                             </div>
                         </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="observacoes">Observações</label>
+                                <textarea name="observacoes" id="observacoes" class="form-control"></textarea>
+                            </div>
+                        </div>
                     </div>
                 </form>
 
@@ -152,6 +158,12 @@
                             <div class="form-group">
                                 <label for="proxima_data_edit">Próxima Data</label>
                                 <input type="date" required name="proxima_data_edit" id="proxima_data_edit" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="observacoes_edit">Observações</label>
+                                <textarea name="observacoes_edit" id="observacoes_edit" class="form-control"></textarea>
                             </div>
                         </div>
                     </div>

@@ -20,6 +20,7 @@ class CreateServicosTable extends Migration
             $table->date('proxima_data');
             $table->integer('frequencia_meses');
             $table->string('documento')->nullable();
+            $table->string('observacoes')->nullable();
             $table->integer('id_user');
             $table->string('status', 1)->default('A');
             $table->timestamps();

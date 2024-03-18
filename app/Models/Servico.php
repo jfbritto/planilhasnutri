@@ -16,6 +16,7 @@ class Servico extends Model
         'proxima_data',
         'frequencia_meses',
         'documento',
+        'observacoes',
         'id_user',
         'status',
     ];

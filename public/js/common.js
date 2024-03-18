@@ -71,6 +71,11 @@ function descricaoStatusEquipamento(val, color = false)
 }
 
 function detectarExtensaoArquivo(nomeArquivo) {
+
+    if (nomeArquivo == null || nomeArquivo == '') {
+        return 'file';
+    }
+
     // Dividir o nome do arquivo usando o ponto como separador
     var partes = nomeArquivo.split('.');
     // Obter a última parte (a extensão)

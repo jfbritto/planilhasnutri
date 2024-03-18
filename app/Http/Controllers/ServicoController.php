@@ -37,6 +37,7 @@ class ServicoController extends Controller
             'proxima_data' => $request->proxima_data,
             'frequencia_meses' => $request->frequencia_meses,
             'documento' => $fileName,
+            'observacoes' => $request->observacoes
         ];
 
         $response = $this->servicoService->store($data);
@@ -111,16 +112,8 @@ class ServicoController extends Controller
 
     public function update(Request $request)
     {
-        $data = [
-            'id' => $request->id,
-            'id_parameter_servico' => $request->id_parameter_servico,
-            'data' => $request->data,
-            'proxima_data' => $request->proxima_data,
-            'frequencia_meses' => $request->frequencia_meses,
-            'documento' => $request->documento,
-        ];
-
-        $response = $this->servicoService->update($data);
+        $formData = $request->all();
+        $response = $this->servicoService->update($formData);
 
         if($response['status'] == 'success')
             return response()->json(['status'=>'success'], 200);
