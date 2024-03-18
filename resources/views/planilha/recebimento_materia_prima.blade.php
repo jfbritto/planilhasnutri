@@ -126,25 +126,25 @@
                                 <select type="text" required name="id_parameter_fornecedor" id="id_parameter_fornecedor" class="form-control"></select>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        {{-- <div class="col-md-4">
                             <div class="form-group">
                                 <label for="ordem_de_compra">Ordem de Compra</label>
                                 <input type="text" name="ordem_de_compra" id="ordem_de_compra" class="form-control" placeholder="Informe a ordem de compra">
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="nota_fiscal">Nota Fiscal</label>
                                 <input type="text" name="nota_fiscal" id="nota_fiscal" class="form-control" placeholder="Informe o nº da nota">
                             </div>
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label for="sif_lote">Sif</label>
                                 <input type="text" name="sif_lote" id="sif_lote" class="form-control" placeholder="Nº">
                             </div>
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label for="lote">Lote</label>
                                 <input type="text" name="lote" id="lote" class="form-control" placeholder="Nº">
@@ -233,25 +233,25 @@
                                 <select type="text" required name="id_parameter_fornecedor_edit" id="id_parameter_fornecedor_edit" class="form-control"></select>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        {{-- <div class="col-md-4">
                             <div class="form-group">
                                 <label for="ordem_de_compra_edit">Ordem de Compra</label>
                                 <input type="text" name="ordem_de_compra_edit" id="ordem_de_compra_edit" class="form-control" placeholder="Informe a ordem de compra">
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="nota_fiscal_edit">Nota Fiscal</label>
                                 <input type="text" name="nota_fiscal_edit" id="nota_fiscal_edit" class="form-control" placeholder="Informe o nº da nota">
                             </div>
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label for="sif_lote_edit">Sif</label>
                                 <input type="text" name="sif_lote_edit" id="sif_lote_edit" class="form-control" placeholder="Nº">
                             </div>
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label for="lote_edit">Lote</label>
                                 <input type="text" name="lote_edit" id="lote_edit" class="form-control" placeholder="Nº">
