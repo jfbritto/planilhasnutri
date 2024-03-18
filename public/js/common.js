@@ -1101,7 +1101,7 @@ $("#formStoreParameterServico").submit(function (e) {
                                 selected = data.data.data.id;
                             }
 
-                            loadGlobalParameters(13, 'id_parameter_servico', selected);
+                            loadGlobalParameters(7, 'id_parameter_servico', selected);
 
                             showSuccess("Cadastro efetuado!", null)
                         } else if (data.status == "error") {
