@@ -377,7 +377,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label for="name_parameter_servico">Nome</label>
-                            <input type="text" required name="name_parameter_servico" id="name_parameter_servico" class="form-control" placeholder="Nome do fabricante">
+                            <input type="text" required name="name_parameter_servico" id="name_parameter_servico" class="form-control" placeholder="Nome do serviço">
                         </div>
                     </div>
                 </div>
