@@ -113,13 +113,13 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="lote">Lote</label>
-                                <input type="text" required name="lote" id="lote" class="form-control" placeholder="Informe o lote">
+                                <input type="text" name="lote" id="lote" class="form-control" placeholder="Informe o lote">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="validade">Validade</label>
-                                <input type="date" required name="validade" id="validade" class="form-control">
+                                <input type="date" name="validade" id="validade" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -143,6 +143,12 @@
 
             </div>
             <div class="modal-footer">
+                <!-- Checkbox no canto inferior esquerdo -->
+                <div class="form-check" style="position: absolute; left: 15px; bottom: 15px;">
+                    <input type="checkbox" class="form-check-input" id="checkCadastrarOutro">
+                    <label class="form-check-label" for="checkCadastrarOutro">Após salvar cadastrar outro</label>
+                </div>
+
                 <button type="submit" class="btn btn-primary" form="formStorerastreabilidade_diaria">Salvar</button>
             </div>
             </div>
@@ -180,13 +186,13 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="lote_edit">Lote</label>
-                                <input type="text" required name="lote_edit" id="lote_edit" class="form-control" placeholder="Informe o lote">
+                                <input type="text" name="lote_edit" id="lote_edit" class="form-control" placeholder="Informe o lote">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="validade_edit">Validade</label>
-                                <input type="date" required name="validade_edit" id="validade_edit" class="form-control">
+                                <input type="date" name="validade_edit" id="validade_edit" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-4">

@@ -19,7 +19,7 @@ class CreatePlanilhaRastreabilidadeDiariasTable extends Migration
             $table->integer('id_parameter_produto');
             $table->date('data');
             $table->string('lote')->nullable();
-            $table->date('validade');
+            $table->date('validade')->nullable();
             $table->integer('id_parameter_fabricante');
             $table->string('image')->nullable();
             $table->integer('id_user');

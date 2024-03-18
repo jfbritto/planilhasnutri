@@ -36,8 +36,8 @@ $(document).ready(function () {
                                         <tr>
                                             <td class="align-middle">${dateFormat(item.data)}</td>
                                             <td class="align-middle">${item.produto}</td>
-                                            <td class="align-middle">${item.lote}</td>
-                                            <td class="align-middle">${dateFormat(item.validade)}</td>
+                                            <td class="align-middle">${item.lote??''}</td>
+                                            <td class="align-middle">${item.validade?dateFormat(item.validade):''}</td>
                                             <td class="align-middle">${item.fabricante}</td>
                                             <td class="align-middle">
                                             ${item.image != '' ? `
@@ -129,12 +129,14 @@ $(document).ready(function () {
         });
     }
 
-    async function salvarArquivoNoServidor(blob, lote, id_parameter_produto, data, validade, id_parameter_fabricante, tipo) {
+    async function salvarArquivoNoServidor(blob, lote = '', id_parameter_produto, data, validade = '', id_parameter_fabricante, tipo) {
         const formData = new FormData();
+
+        console.log(lote, id_parameter_produto, data, validade, id_parameter_fabricante);
 
         if (tipo == 1) {
             formData.append('image', blob, 'nome_arquivo.jpg');
-        } else {
+        } else if (tipo == 2){
             formData.append('image', blob);
         }
 
@@ -171,7 +173,12 @@ $(document).ready(function () {
             });
 
             $(".selecao-customizada").val(null).trigger("change");
-            $("#modalStorerastreabilidade_diaria").modal("hide");
+
+            atualizarDataAtual()
+
+            if (!$("#checkCadastrarOutro").prop("checked")) {
+                $("#modalStorerastreabilidade_diaria").modal("hide");
+            }
 
             loadGlobalParameters(8, 'id_parameter_produto', null, false, true, `modalStorerastreabilidade_diaria`);
             loadGlobalParameters(13, 'id_parameter_fabricante', null, false, true, `modalStorerastreabilidade_diaria`);
@@ -199,16 +206,21 @@ $(document).ready(function () {
         const maxHeight = 800;
         const qualidade = 0.7; // Qualidade de 0 a 1
 
-        try {
-            if (file.type.startsWith('image/')) {
-                const novaFoto = await reduzirTamanhoFoto(file, maxWidth, maxHeight, qualidade);
-                await salvarArquivoNoServidor(novaFoto, lote, id_parameter_produto, data, validade, id_parameter_fabricante, 1);
-            } else {
-                await salvarArquivoNoServidor(file, lote, id_parameter_produto, data, validade, id_parameter_fabricante, 2);
+        if (file == undefined) {
+            await salvarArquivoNoServidor('', lote, id_parameter_produto, data, validade, id_parameter_fabricante, 3);
+        } else {
+            try {
+                if (file.type.startsWith('image/')) {
+                    const novaFoto = await reduzirTamanhoFoto(file, maxWidth, maxHeight, qualidade);
+                    await salvarArquivoNoServidor(novaFoto, lote, id_parameter_produto, data, validade, id_parameter_fabricante, 1);
+                } else {
+                    await salvarArquivoNoServidor(file, lote, id_parameter_produto, data, validade, id_parameter_fabricante, 2);
+                }
+            } catch (error) {
+                showError('Erro ao processar o envio do formulário');
             }
-        } catch (error) {
-            console.error('Erro ao processar o envio do formulário:', error);
         }
+
     });
 
     // EDIÇÃO

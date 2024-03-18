@@ -24,8 +24,8 @@ class PlanilhaRastreabilidadeDiariaController extends Controller
 
     public function store(Request $request)
     {
-        $image = $request->file('image');
         $fileName = '';
+        $image = $request->file('image');
         if (!empty($image)) {
             $fileName = $this->uploadDocumento($image);
         }
