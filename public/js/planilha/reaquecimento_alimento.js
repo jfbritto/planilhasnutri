@@ -274,4 +274,55 @@ $(document).ready(function () {
         loadPrincipal()
     });
 
+    $(".tempos").change(function(){
+
+        let time1 = null;
+        let time2 = null;
+        let tipo = $(this).data('tipo');
+
+        // Obtém os valores dos campos de entrada
+        if (tipo == 'store') {
+            time1 = $("#hora_temperatura_antes").val();
+            time2 = $("#hora_temperatura_depois").val();
+        } else {
+            time1 = $("#hora_temperatura_antes_edit").val();
+            time2 = $("#hora_temperatura_depois_edit").val();
+        }
+
+        if (time1 && time2) {
+
+            if (time1 >= time2) {
+                showWarning("Hora inicial deve ser menor que hora final.");
+                return;
+            }
+
+            // Converte os valores para objetos Date
+            let time1Obj = new Date('1970-01-01T' + time1);
+            let time2Obj = new Date('1970-01-01T' + time2);
+
+            // Calcula a diferença em milissegundos
+            let diff = time2Obj.getTime() - time1Obj.getTime();
+
+            // Converte a diferença para horas e minutos
+            let diffHours = Math.floor(diff / 3600000);
+            let diffMinutes = Math.floor((diff % 3600000) / 60000);
+
+            // Formata a diferença como uma string "HH:mm"
+            let diffString = pad(diffHours, 2) + ':' + pad(diffMinutes, 2);
+
+            if (tipo == 'store') {
+                $("#tempo_aquecimento").val(diffString);
+            } else {
+                $("#tempo_aquecimento_edit").val(diffString);
+            }
+        }
+    })
+
+    // Função auxiliar para adicionar zeros à esquerda, se necessário
+    function pad(num, size) {
+        var s = num + "";
+        while (s.length < size) s = "0" + s;
+        return s;
+    }
+
 });

@@ -111,7 +111,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="hora_temperatura_antes">Hora aferição antes do aquecimento</label>
-                                <input type="time" required name="hora_temperatura_antes" id="hora_temperatura_antes" class="form-control">
+                                <input type="time" required name="hora_temperatura_antes" id="hora_temperatura_antes" class="form-control tempos" data-tipo="store">
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -123,7 +123,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="hora_temperatura_depois">Hora aferição após o aquecimento</label>
-                                <input type="time" required name="hora_temperatura_depois" id="hora_temperatura_depois" class="form-control">
+                                <input type="time" required name="hora_temperatura_depois" id="hora_temperatura_depois" class="form-control tempos" data-tipo="store">
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -198,7 +198,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="hora_temperatura_antes_edit">Hora aferição antes do aquecimento</label>
-                                <input type="time" required name="hora_temperatura_antes_edit" id="hora_temperatura_antes_edit" class="form-control">
+                                <input type="time" required name="hora_temperatura_antes_edit" id="hora_temperatura_antes_edit" class="form-control tempos" data-tipo="edit">
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -210,7 +210,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="hora_temperatura_depois_edit">Hora aferição após o aquecimento</label>
-                                <input type="time" required name="hora_temperatura_depois_edit" id="hora_temperatura_depois_edit" class="form-control">
+                                <input type="time" required name="hora_temperatura_depois_edit" id="hora_temperatura_depois_edit" class="form-control tempos" data-tipo="edit">
                             </div>
                         </div>
                         <div class="col-md-6">
