@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Services\UserService;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -50,6 +51,22 @@ class UserController extends Controller
             'name' => trim($request->name),
             'email' => trim($request->email)
         ];
+
+        if (!empty($request->password)) {
+            if ($request->password === $request->password_confirm) {
+                $validator = Validator::make($request->all(), [
+                    'password' => 'required|min:8',
+                ]);
+
+                if ($validator->fails()) {
+                    return response()->json(['status'=>'error', 'message'=>'A senha deve conter 8 ou mais caracteres'], 400);
+                }
+
+                $data['password'] = Hash::make(trim($request->password));
+            } else {
+                return response()->json(['status'=>'error', 'message'=>'As senhas são divergentes'], 400);
+            }
+        }
 
         $response = $this->userService->update($data);
 
@@ -106,9 +123,10 @@ class UserController extends Controller
         return response()->json(['status'=>'error', 'message'=>$response['data']], 400);
     }
 
-    public function list()
+    public function list(Request $request)
     {
-        $response = $this->userService->list();
+        $filter = $request->all();
+        $response = $this->userService->list($filter);
 
         if($response['status'] == 'success')
             return response()->json(['status'=>'success', 'data'=>$response['data']], 200);

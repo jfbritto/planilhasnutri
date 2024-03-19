@@ -37,10 +37,8 @@ class UserService
 
             DB::beginTransaction();
 
-            $result = DB::table('users')
-                        ->where('id', $data['id'])
-                        ->update(['name' => $data['name'],
-                                  'email' => $data['email']]);
+            $result = User::find($data['id']);
+            $result->fill($data)->save();
 
             DB::commit();
 
@@ -126,7 +124,7 @@ class UserService
         return $response;
     }
 
-    public function list()
+    public function list($filter_array)
     {
         $response = [];
 
@@ -137,7 +135,24 @@ class UserService
                 $condition = " and id_unit = ".auth()->user()->id_unit;
             }
 
-            $return = DB::select( DB::raw(" select ifnull(un.name, 'Controle') as unidade, usr.* from users usr left join units un on un.id=usr.id_unit where usr.status IN ('A','I') {$condition} order by usr.id_unit, usr.name, usr.status"));
+            $filter = "";
+            if (!empty($filter_array['status_filter'])) {
+                $filter .= "usr.status = '{$filter_array['status_filter']}'";
+            } else {
+                $filter .= "usr.status IN ('A','I')";
+            }
+
+            $return = DB::select( DB::raw("
+                SELECT
+                    ifnull(un.name, 'Controle') as unidade,
+                    usr.*
+                FROM
+                    users usr
+                    left join units un on un.id=usr.id_unit
+                WHERE
+                    {$filter} {$condition}
+                ORDER BY
+                    usr.id_unit, usr.name, usr.status"));
 
             $response = ['status' => 'success', 'data' => $return];
         }catch(Exception $e){

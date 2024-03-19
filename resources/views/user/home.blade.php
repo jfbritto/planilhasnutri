@@ -12,6 +12,32 @@
 
 @section('content')
 
+    <div class="card collapsed-card">
+        <div class="card-header" style="cursor: pointer" data-card-widget="collapse">
+            <h5 class="card-title">Buscar</h5>
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool">
+                    <i class="fas fa-arrow-down"></i>
+                </button>
+            </div>
+        </div>
+        <div class="card-body border-0" style="display: none;">
+            <form id="formFiltroPrincipal">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="status_filter">Status</label>
+                            <select name="status_filter" id="status_filter" class="form-control">
+                                <option value="A">Ativos</option>
+                                <option value="I">Inativos</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <div class="card">
         <input type="hidden" id="isAdmin" value="{{auth()->user()->is_admin}}">
         <input type="hidden" id="isEstagiario" value="{{auth()->user()->is_estagiario}}">
@@ -110,6 +136,18 @@
                             <div class="form-group">
                                 <label for="email_edit">Email</label>
                                 <input type="email" required name="email_edit" id="email_edit" class="form-control" placeholder="Informe o email">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="password_edit">Nova Senha</label>
+                                <input type="password" minlength="8" name="password_edit" id="password_edit" class="form-control" placeholder="Informe o email">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="password_confirm_edit">Confirme a Nova Senha</label>
+                                <input type="password" minlength="8" name="password_confirm_edit" id="password_confirm_edit" class="form-control" placeholder="Informe o email">
                             </div>
                         </div>
                     </div>

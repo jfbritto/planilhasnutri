@@ -1,10 +1,10 @@
 $(document).ready(function () {
 
-    loadUsers();
+    loadPrincipal();
     loadUnits();
 
     // LISTAR USUÁRIOS
-    function loadUsers()
+    function loadPrincipal()
     {
         Swal.queue([
             {
@@ -14,7 +14,7 @@ $(document).ready(function () {
                 onOpen: () => {
                     Swal.showLoading();
                     $.get(window.location.origin + "/usuario/listar", {
-
+                        status_filter : $("#status_filter option:selected").val(),
                     })
                         .then(function (data) {
                             if (data.status == "success") {
@@ -24,6 +24,9 @@ $(document).ready(function () {
 
                                 let isAdmin = $("#isAdmin").val() === "1"?'':'d-none';
                                 let isEstagiario = $("#isEstagiario").val() === "1"?'d-none':'';
+
+                                let isAdminFlag = $("#isAdmin").val() === "1"?1:0;
+                                let isEstagiarioFlag = $("#isEstagiario").val() === "1"?1:0;
 
                                 if(data.data.length > 0){
 
@@ -40,9 +43,15 @@ $(document).ready(function () {
                                                 <td class="align-middle">${item.email}</td>
                                                 <td class="align-middle ${isAdmin}">${item.unidade}</td>
                                                 <td class="align-middle ${isEstagiario}" style="text-align: right">
-                                                    <a title="${txtTittle}" data-id="${item.id}" data-status="${valueChange}" href="#" class="btn btn-${colorBtn} change-user"><i class="fas fa-power-off"></i></a>
+                                                    ${item.is_estagiario || isAdminFlag?`
+                                                        <a title="${txtTittle}" data-id="${item.id}" data-status="${valueChange}" href="#" class="btn btn-${colorBtn} change-user"><i class="fas fa-power-off"></i></a>
+                                                    `:``}
+
                                                     <a title="Editar" data-id="${item.id}" data-name="${item.name}" data-email="${item.email}" href="#" class="btn btn-warning edit-user ${esconderBtn}"><i style="color: white" class="fas fa-edit"></i></a>
-                                                    <a title="Deletar" data-id="${item.id}" href="#" class="btn btn-danger delete-user ${esconderBtn}"><i class="fas fa-trash-alt"></i></a>
+
+                                                    ${item.is_estagiario || isAdminFlag?`
+                                                        <a title="Deletar" data-id="${item.id}" href="#" class="btn btn-danger delete-user ${esconderBtn}"><i class="fas fa-trash-alt"></i></a>
+                                                    `:``}
                                                 </td>
                                             </tr>
                                         `);
@@ -100,7 +109,7 @@ $(document).ready(function () {
 
                                 $("#modalStoreUser").modal("hide");
 
-                                showSuccess("Cadastro efetuado!", null, loadUsers)
+                                showSuccess("Cadastro efetuado!", null, loadPrincipal)
                             } else if (data.status == "error") {
                                 showError(data.message)
                             }
@@ -148,7 +157,9 @@ $(document).ready(function () {
                         data:{
                             id: $("#id_edit").val(),
                             name: $("#name_edit").val(),
-                            email: $("#email_edit").val()
+                            email: $("#email_edit").val(),
+                            password: $("#password_edit").val(),
+                            password_confirm: $("#password_confirm_edit").val(),
                         }
                     })
                         .then(function (data) {
@@ -160,7 +171,7 @@ $(document).ready(function () {
 
                                 $("#modalEditUser").modal("hide");
 
-                                showSuccess("Edição efetuada!", null, loadUsers)
+                                showSuccess("Edição efetuada!", null, loadPrincipal)
                             } else if (data.status == "error") {
                                 showError(data.message)
                             }
@@ -208,7 +219,7 @@ $(document).ready(function () {
                                     .then(function (data) {
                                         if (data.status == "success") {
 
-                                            showSuccess("Deletado com sucesso!", null, loadUsers)
+                                            showSuccess("Deletado com sucesso!", null, loadPrincipal)
                                         } else if (data.status == "error") {
                                             showError(data.message)
                                         }
@@ -260,7 +271,7 @@ $(document).ready(function () {
                                     .then(function (data) {
                                         if (data.status == "success") {
 
-                                            showSuccess("Status alterado com sucesso!", null, loadUsers)
+                                            showSuccess("Status alterado com sucesso!", null, loadPrincipal)
                                         } else if (data.status == "error") {
                                             showError(data.message)
                                         }
@@ -313,5 +324,8 @@ $(document).ready(function () {
 
     }
 
-
+    $("#formFiltroPrincipal").change(function (e) {
+        e.preventDefault();
+        loadPrincipal()
+    });
 });

@@ -266,7 +266,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/usuario/listar', [UserController::class, 'list']);
     Route::post('/usuario/cadastrar', [UserController::class, 'store']);
     Route::put('/usuario/editar', [UserController::class, 'update']);
-    Route::put('/usuario/editar-senha', [UserController::class, 'updatePassword']);
+    // Route::put('/usuario/editar-senha', [UserController::class, 'updatePassword']);
     Route::delete('/usuario/deletar', [UserController::class, 'destroy']);
     Route::put('/usuario/change', [UserController::class, 'changeStatus']);
 
