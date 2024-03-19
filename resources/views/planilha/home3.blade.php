@@ -120,7 +120,7 @@
                 <span class="info-box-icon bg-success text-white"><i class="fa-solid fa-filter-circle-xmark"></i></span>
                 <div class="info-box-content">
                     <span class="info-box-text">Troca do Elemento Filtrante</span>
-                    <span class="info-box-text">REG 008</span>
+                    <span class="info-box-text"></span>
                     <span class="info-box-number"><a href="/planilha/troca-elemento-filtrante" class="" style="color: black">Preencher planilha <i class="fas fa-arrow-circle-right"></i></a></span>
                 </div>
             </div>
@@ -130,7 +130,7 @@
                 <span class="info-box-icon bg-primary text-white"><i class="fa-solid fa-soap"></i></span>
                 <div class="info-box-content">
                     <span class="info-box-text">Higienização dos Filtros e Aparelhos de Climatização</span>
-                    <span class="info-box-text">REG 008</span>
+                    <span class="info-box-text"></span>
                     <span class="info-box-number"><a href="/planilha/higienizacao-filtro-aparelho-climatizacao" class="" style="color: black">Preencher planilha <i class="fas fa-arrow-circle-right"></i></a></span>
                 </div>
             </div>
@@ -140,7 +140,7 @@
                 <span class="info-box-icon bg-secondary text-white"><i class="fa-solid fa-box-archive"></i></span>
                 <div class="info-box-content">
                     <span class="info-box-text">Limpeza de Caixa de Gordura</span>
-                    <span class="info-box-text">REG 008</span>
+                    <span class="info-box-text"></span>
                     <span class="info-box-number"><a href="/planilha/limpeza-caixa-gordura" class="" style="color: black">Preencher planilha <i class="fas fa-arrow-circle-right"></i></a></span>
                 </div>
             </div>
@@ -150,7 +150,7 @@
                 <span class="info-box-icon bg-info text-white"><i class="fa-solid fa-snowflake"></i></span>
                 <div class="info-box-content">
                     <span class="info-box-text">Registro de Congelamento</span>
-                    <span class="info-box-text">REG 008</span>
+                    <span class="info-box-text"></span>
                     <span class="info-box-number"><a href="/planilha/registro-congelamento" class="" style="color: black">Preencher planilha <i class="fas fa-arrow-circle-right"></i></a></span>
                 </div>
             </div>
@@ -160,7 +160,7 @@
                 <span class="info-box-icon bg-secondary text-white"><i class="fa-solid fa-faucet-drip"></i></span>
                 <div class="info-box-content">
                     <span class="info-box-text">Higienização de Hortifrutis</span>
-                    <span class="info-box-text">REG 008</span>
+                    <span class="info-box-text"></span>
                     <span class="info-box-number"><a href="/planilha/verificacao-procedimento-higienizacao-hortifruti" class="" style="color: black">Preencher planilha <i class="fas fa-arrow-circle-right"></i></a></span>
                 </div>
             </div>
@@ -170,7 +170,7 @@
                 <span class="info-box-icon bg-secondary text-white"><i class="fa-solid fa-screwdriver-wrench"></i></span>
                 <div class="info-box-content">
                     <span class="info-box-text">Manutenção e calibrações dos equipamentos</span>
-                    <span class="info-box-text">REG 008</span>
+                    <span class="info-box-text"></span>
                     <span class="info-box-number"><a href="/planilha/manutencao-calibracao-equipamento" class="" style="color: black">Preencher planilha <i class="fas fa-arrow-circle-right"></i></a></span>
                 </div>
             </div>
@@ -180,7 +180,7 @@
                 <span class="info-box-icon bg-danger text-white"><i class="fa-solid fa-mug-hot"></i></span>
                 <div class="info-box-content">
                     <span class="info-box-text">Temperatura dos Alimentos no Banho-Maria</span>
-                    <span class="info-box-text">REG 008</span>
+                    <span class="info-box-text"></span>
                     <span class="info-box-number"><a href="/planilha/temperatura-alimento-banho-maria" class="" style="color: black">Preencher planilha <i class="fas fa-arrow-circle-right"></i></a></span>
                 </div>
             </div>
@@ -190,7 +190,7 @@
                 <span class="info-box-icon bg-success text-white"><i class="fa-solid fa-list-check"></i></span>
                 <div class="info-box-content">
                     <span class="info-box-text">Check-list de Avaliação do Manejo dos Resíduos</span>
-                    <span class="info-box-text">REG 008</span>
+                    <span class="info-box-text"></span>
                     <span class="info-box-number"><a href="/planilha/avaliacao-manejo-residuo" class="" style="color: black">Preencher planilha <i class="fas fa-arrow-circle-right"></i></a></span>
                 </div>
             </div>
@@ -200,7 +200,7 @@
                 <span class="info-box-icon bg-secondary text-white"><i class="fa-solid fa-mosquito"></i></span>
                 <div class="info-box-content">
                     <span class="info-box-text">Ocorrência de Pragas</span>
-                    <span class="info-box-text">REG 008</span>
+                    <span class="info-box-text"></span>
                     <span class="info-box-number"><a href="/planilha/ocorrencia-praga" class="" style="color: black">Preencher planilha <i class="fas fa-arrow-circle-right"></i></a></span>
                 </div>
             </div>
