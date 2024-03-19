@@ -67,7 +67,7 @@
 
     <div class="card collapsed-card border-danger" id="boxEquipamentosFaltantes" style="display: none">
         <div class="card-header" style="cursor: pointer" data-card-widget="collapse">
-            <h5 class="card-title">Equipamentos com temperaturas obrigatórias não preenchidas!</h5>
+            <h5 class="card-title">Equipamentos com temperaturas obrigatórias ainda não preenchidas!</h5>
             <div class="card-tools">
                 <button type="button" class="btn btn-tool">
                     <i class="fas fa-arrow-down"></i>
