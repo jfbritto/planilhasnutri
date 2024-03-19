@@ -279,49 +279,97 @@ function loadGlobalParameters(
     idModal = null,
     elementoPai = ``
 ) {
+
+    let item = localStorage.getItem(`id_parameter_type_${id}`);
+
+    // Verifica se o item existe (não é null)
+    if (item !== null) {
+        let objetoRecuperado = JSON.parse(item);
+        let agora = new Date().getTime();
+
+        // Verifica se o item expirou
+        if (agora < objetoRecuperado.expiracao) {
+            loadGlobalParametersAction(objetoRecuperado.valor, element, idSelected, filtro, feminino, idModal, elementoPai)
+            return
+        } else {
+            // Remove o item do localStorage se expirou
+            localStorage.removeItem(`id_parameter_type_${id}`);
+        }
+    }
+
     $.get(window.location.origin + "/parametro/encontrar", {
         id_parameter_type:id
     })
     .then(function (data) {
         if (data.status == "success") {
 
-            Swal.close();
-            $(`${elementoPai} #${element}`).html(``);
+            // Calcula a data de expiração (30 minutos a partir do momento atual)
+            let expiracao = new Date().getTime() + 30 * 60000; // 30 minutos em milissegundos
 
-            if(data.data.length > 0){
-                if (filtro) {
-                    if (feminino) {
-                        $(`${elementoPai} #${element}`).append(`<option value="">Todas</option>`);
-                    } else {
-                        $(`${elementoPai} #${element}`).append(`<option value="">Todos</option>`);
-                    }
-                } else {
-                    $(`${elementoPai} #${element}`).append(`<option value="">-- Selecione --</option>`);
-                }
+            // Cria um objeto com o valor e a data de expiração
+            let item = {
+                valor: data.data,
+                expiracao: expiracao
+            };
 
-                data.data.forEach(item => {
+            // Salvar a string JSON no localStorage
+            localStorage.setItem(`id_parameter_type_${id}`, JSON.stringify(item));
 
-                    let selected = ``;
-                    if (idSelected && idSelected == item.id) {
-                        selected = `selected`;
-                    }
-
-                    $(`${elementoPai} #${element}`).append(`<option ${selected} value="${item.id}">${item.name}</option>`);
-                });
-
-                $(`${elementoPai} #${element}`).select2({
-                    dropdownParent: idModal ? $(`#${idModal}`) : null
-                });
-            } else {
-                $(`${elementoPai} #${element}`).append(`<option value="">Nenhum item encontrado</option>`);
-            }
+            loadGlobalParametersAction(data.data, element, idSelected, filtro, feminino, idModal, elementoPai)
 
         } else if (data.status == "error") {
             showError(data.message)
         }
     })
     .catch();
+
+
 }
+
+
+function loadGlobalParametersAction(
+    dados,
+    element,
+    idSelected,
+    filtro,
+    feminino,
+    idModal,
+    elementoPai
+) {
+    Swal.close();
+    $(`${elementoPai} #${element}`).html(``);
+
+    if(dados.length > 0){
+        if (filtro) {
+            if (feminino) {
+                $(`${elementoPai} #${element}`).append(`<option value="">Todas</option>`);
+            } else {
+                $(`${elementoPai} #${element}`).append(`<option value="">Todos</option>`);
+            }
+        } else {
+            $(`${elementoPai} #${element}`).append(`<option value="">-- Selecione --</option>`);
+        }
+
+        dados.forEach(item => {
+
+            let selected = ``;
+            if (idSelected && idSelected == item.id) {
+                selected = `selected`;
+            }
+
+            $(`${elementoPai} #${element}`).append(`<option ${selected} value="${item.id}">${item.name}</option>`);
+        });
+
+        $(`${elementoPai} #${element}`).select2({
+            dropdownParent: idModal ? $(`#${idModal}`) : null
+        });
+    } else {
+        $(`${elementoPai} #${element}`).append(`<option value="">Nenhum item encontrado</option>`);
+    }
+}
+
+
+
 
 $(document).on('select2:open', () => {
 
@@ -477,6 +525,10 @@ $("#list").on("click", ".abrirHistorico", function(){
 
 });
 
+function deletarStorageParameter(id) {
+    localStorage.removeItem(`id_parameter_type_${id}`);
+}
+
 // -------------------------------------------------------- FORMS --------------------------------------------------------
 
 // CADASTRAR RESPONSAVEL
@@ -490,6 +542,8 @@ $("#formStoreParameterResponsavel").submit(function (e) {
             allowEscapeKey: false,
             onOpen: () => {
                 Swal.showLoading();
+
+                deletarStorageParameter(3)
 
                 $.post(window.location.origin + "/parametro/cadastrar", {
                     name: $("#name_parameter_responsavel").val(),
@@ -540,6 +594,8 @@ $("#formStoreParameterArea").submit(function (e) {
             onOpen: () => {
                 Swal.showLoading();
 
+                deletarStorageParameter(1)
+
                 $.post(window.location.origin + "/parametro/cadastrar", {
                     name: $("#name_parameter_area").val(),
                     id_parameter_type: 1,
@@ -588,6 +644,8 @@ $("#formStoreParameterFiltro").submit(function (e) {
             allowEscapeKey: false,
             onOpen: () => {
                 Swal.showLoading();
+
+                deletarStorageParameter(2)
 
                 $.post(window.location.origin + "/parametro/cadastrar", {
                     name: $("#name_parameter_filtro").val(),
@@ -638,6 +696,8 @@ $("#formStoreParameterFornecedor").submit(function (e) {
             onOpen: () => {
                 Swal.showLoading();
 
+                deletarStorageParameter(10)
+
                 $.post(window.location.origin + "/parametro/cadastrar", {
                     name: $("#name_parameter_fornecedor").val(),
                     id_parameter_type: 10,
@@ -686,6 +746,8 @@ $("#formStoreParameterProduto").submit(function (e) {
             allowEscapeKey: false,
             onOpen: () => {
                 Swal.showLoading();
+
+                deletarStorageParameter(8)
 
                 $.post(window.location.origin + "/parametro/cadastrar", {
                     name: $("#name_parameter_produto").val(),
@@ -745,6 +807,8 @@ $("#formStoreParameterEquipamento").submit(function (e) {
             onOpen: () => {
                 Swal.showLoading();
 
+                deletarStorageParameter(4)
+
                 $.post(window.location.origin + "/parametro/cadastrar", {
                     name: $("#name_parameter_equipamento").val(),
                     id_parameter_type: 4,
@@ -793,6 +857,8 @@ $("#formStoreParameterCaixaGordura").submit(function (e) {
             allowEscapeKey: false,
             onOpen: () => {
                 Swal.showLoading();
+
+                deletarStorageParameter(6)
 
                 $.post(window.location.origin + "/parametro/cadastrar", {
                     name: $("#name_parameter_caixa_gordura").val(),
@@ -843,6 +909,8 @@ $("#formStoreParameterAlergeno").submit(function (e) {
             onOpen: () => {
                 Swal.showLoading();
 
+                deletarStorageParameter(5)
+
                 $.post(window.location.origin + "/parametro/cadastrar", {
                     name: $("#name_parameter_alergeno").val(),
                     id_parameter_type: 5,
@@ -891,6 +959,8 @@ $("#formStoreParameterAlimento").submit(function (e) {
             allowEscapeKey: false,
             onOpen: () => {
                 Swal.showLoading();
+
+                deletarStorageParameter(9)
 
                 $.post(window.location.origin + "/parametro/cadastrar", {
                     name: $("#name_parameter_alimento").val(),
@@ -941,6 +1011,8 @@ $("#formStoreParameterEvento").submit(function (e) {
             onOpen: () => {
                 Swal.showLoading();
 
+                deletarStorageParameter(11)
+
                 $.post(window.location.origin + "/parametro/cadastrar", {
                     name: $("#name_parameter_evento").val(),
                     id_parameter_type: 11,
@@ -989,6 +1061,8 @@ $("#formStoreParameterPraga").submit(function (e) {
             allowEscapeKey: false,
             onOpen: () => {
                 Swal.showLoading();
+
+                deletarStorageParameter(12)
 
                 $.post(window.location.origin + "/parametro/cadastrar", {
                     name: $("#name_parameter_praga").val(),
@@ -1039,6 +1113,8 @@ $("#formStoreParameterFabricante").submit(function (e) {
             onOpen: () => {
                 Swal.showLoading();
 
+                deletarStorageParameter(13)
+
                 $.post(window.location.origin + "/parametro/cadastrar", {
                     name: $("#name_parameter_fabricante").val(),
                     id_parameter_type: 13,
@@ -1087,6 +1163,8 @@ $("#formStoreParameterServico").submit(function (e) {
             allowEscapeKey: false,
             onOpen: () => {
                 Swal.showLoading();
+
+                deletarStorageParameter(7)
 
                 $.post(window.location.origin + "/parametro/cadastrar", {
                     name: $("#name_parameter_servico").val(),

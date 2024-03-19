@@ -191,6 +191,7 @@
                 <form id="formEditParameter">
                     <div class="row">
                         <input type="hidden" required name="id_parameter_edit" id="id_parameter_edit">
+                        <input type="hidden" required name="id_parameter_type_edit" id="id_parameter_type_edit">
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="name_parameter_edit">Nome</label>

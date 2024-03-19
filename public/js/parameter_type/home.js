@@ -191,7 +191,6 @@ $(document).ready(function () {
                                     data: {id}
                                 })
                                 .then(function (data) {
-                                    console.log(data)
                                     if (data.status == "success") {
                                         showSuccess("Deletado com sucesso!", null, loadParameterTypes)
                                     } else if (data.status == "error") {
@@ -217,7 +216,6 @@ $(document).ready(function () {
         let id = $(this).data('id');
         let name = $(this).data('name');
 
-        console.log(id, name)
         $("#list2").html(`
             <tr>
                 <td colspan="3" class="text-center">
@@ -257,8 +255,8 @@ $(document).ready(function () {
                                 <td class="align-middle">${item.name}</td>
                                 <td class="align-middle">${item.unit_name}</td>
                                 <td class="align-middle" style="text-align: right">
-                                    <a title="Editar" data-id="${item.id}" data-name="${item.name}" href="#" class="btn btn-warning edit-ParameterItem"><i style="color: white" class="fas fa-edit"></i></a>
-                                    <a title="Deletar" data-id="${item.id}" href="#" class="btn btn-danger delete-Parameter"><i class="fas fa-trash-alt"></i></a>
+                                    <a title="Editar" data-id="${item.id}" data-id_parameter_type="${item.id_parameter_type}" data-name="${item.name}" href="#" class="btn btn-warning edit-ParameterItem"><i style="color: white" class="fas fa-edit"></i></a>
+                                    <a title="Deletar" data-id="${item.id}" data-id_parameter_type="${item.id_parameter_type}" href="#" class="btn btn-danger delete-Parameter"><i class="fas fa-trash-alt"></i></a>
                                 </td>
                             </tr>
                         `);
@@ -296,6 +294,8 @@ $(document).ready(function () {
                 onOpen: () => {
                     Swal.showLoading();
 
+                    deletarStorageParameter($("#id_parameter_type").val())
+
                     $.post(window.location.origin + "/parametro/cadastrar", {
                         name: $("#name_parameter").val(),
                         id_parameter_type: $("#id_parameter_type").val(),
@@ -331,10 +331,12 @@ $(document).ready(function () {
     $("#list2").on("click", ".edit-ParameterItem", function(){
 
         let id = $(this).data('id');
+        let id_parameter_type = $(this).data('id_parameter_type');
         let name = $(this).data('name');
 
         $("#id_parameter_edit").val(id);
         $("#name_parameter_edit").val(name);
+        $("#id_parameter_type_edit").val(id_parameter_type);
 
         $("#title-edit-item").html(name);
 
@@ -351,6 +353,9 @@ $(document).ready(function () {
                 allowEscapeKey: false,
                 onOpen: () => {
                     Swal.showLoading();
+
+                    deletarStorageParameter($("#id_parameter_type_edit").val())
+
                     $.ajax({
                         url: window.location.origin + "/parametro/editar",
                         type: 'PUT',
@@ -387,7 +392,8 @@ $(document).ready(function () {
     // "DELETAR" PARAMETRO
     $("#list2").on("click", ".delete-Parameter", function(){
 
-        var id = $(this).data('id');
+        let id = $(this).data('id');
+        let id_parameter_type = $(this).data('id_parameter_type');
 
         Swal.fire({
             title: 'Atenção!',
@@ -408,6 +414,9 @@ $(document).ready(function () {
                             allowEscapeKey: false,
                             onOpen: () => {
                                 Swal.showLoading();
+
+                                deletarStorageParameter(id_parameter_type)
+
                                 $.ajax({
                                     url: window.location.origin + "/parametro/deletar",
                                     type: 'DELETE',
@@ -415,7 +424,6 @@ $(document).ready(function () {
                                 })
                                     .then(function (data) {
                                         if (data.status == "success") {
-
                                             showSuccess("Deletado com sucesso!", null, loadParameters, $("#id_parameter_type").val())
                                         } else if (data.status == "error") {
                                             showError(data.message)
