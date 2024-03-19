@@ -111,13 +111,13 @@ class PlanilhaTemperaturaEquipamentoAreaClimatizadaConfigController extends Cont
 
         $equipamentos = [];
         foreach ($idsFaltantes as $idFaltante) {
-            $equipamentos[] = $nomesEquipamentos[$idFaltante];
+            $equipamentos[] = '<span class="badge badge-pill badge-danger">'.$nomesEquipamentos[$idFaltante].'</span>';
         }
 
         $data['status'] = 'success';
 
         if (!empty($equipamentos)) {
-            $data['data'] = implode(", ", $equipamentos);
+            $data['data'] = implode(" ", $equipamentos);
         }
 
         return response()->json(['status'=>'success', 'data'=>$data], 200);
