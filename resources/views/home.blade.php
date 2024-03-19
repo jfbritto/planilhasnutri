@@ -7,7 +7,8 @@
 @section('title', 'PlanilhasNUTRI')
 
 @section('content_header')
-    <h1 class="m-0 text-dark">Home</h1>
+    <h1 class="d-none d-md-block"><i class="fas fa-house"></i> &nbsp;Home</h1>
+    <h3 class="d-block d-sm-block d-md-none"><i class="fas fa-house"></i> &nbsp;Home</h3>
 @stop
 
 @section('content')
@@ -15,7 +16,7 @@
 @if(!auth()->user()->id_unit)
 
 <div class="row" id="listaPendencias">
-    <div class="col-md-3 col-sm-6 col-12">
+    <div class="col-6">
         <div class="info-box">
             <span class="info-box-icon bg-success"><i class="far fa-copy"></i></span>
             <div class="info-box-content">
@@ -25,7 +26,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-3 col-sm-6 col-12">
+    <div class="col-6">
         <div class="info-box">
             <span class="info-box-icon bg-success"><i class="far fa-copy"></i></span>
             <div class="info-box-content">
@@ -40,7 +41,7 @@
 @else
 
 <div class="row" id="listaPendencias">
-    <div class="col-md-3 col-sm-6 col-12">
+    <div class="col-6">
         <div class="info-box">
             <span class="info-box-icon bg-danger"><i class="far fa-copy"></i></span>
             <div class="info-box-content">
@@ -50,7 +51,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-3 col-sm-6 col-12">
+    <div class="col-6">
         <div class="info-box">
             <span class="info-box-icon bg-danger"><i class="far fa-copy"></i></span>
             <div class="info-box-content">
@@ -63,7 +64,7 @@
 </div>
 
 <div class="row">
-    <div class="col-md-3 col-sm-6 col-12">
+    <div class="col-6">
         <div class="info-box">
             <span class="info-box-icon bg-warning"><i class="far fa-copy"></i></span>
             <div class="info-box-content">
@@ -76,7 +77,7 @@
 </div>
 
 <div class="row">
-    <div class="col-md-3 col-sm-6 col-12">
+    <div class="col-6">
         <div class="info-box">
             <span class="info-box-icon bg-info"><i class="far fa-copy"></i></span>
             <div class="info-box-content">
@@ -86,7 +87,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-3 col-sm-6 col-12">
+    <div class="col-6">
         <div class="info-box">
             <span class="info-box-icon bg-info"><i class="far fa-copy"></i></span>
             <div class="info-box-content">
@@ -96,7 +97,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-3 col-sm-6 col-12">
+    <div class="col-6">
         <div class="info-box">
             <span class="info-box-icon bg-info"><i class="far fa-copy"></i></span>
             <div class="info-box-content">

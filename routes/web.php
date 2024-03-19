@@ -49,6 +49,7 @@ Route::group(['middleware' => ['auth']], function () {
     // Planilhas
     Route::get('/planilhas', [PlanilhasController::class, 'index']);
     Route::get('/planilhas-2', [PlanilhasController::class, 'index2']);
+    Route::get('/planilhas-3', [PlanilhasController::class, 'index3']);
 
     // Planilha troca-elemento-filtrante
     Route::get('/planilha/troca-elemento-filtrante', [PlanilhaTrocaElementoFiltranteController::class, 'index']);

@@ -35,4 +35,14 @@ class PlanilhasController extends Controller
     {
         return view('planilha.home');
     }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function index3()
+    {
+        return view('planilha.home3');
+    }
 }

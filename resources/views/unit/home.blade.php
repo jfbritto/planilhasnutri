@@ -7,7 +7,8 @@
 @section('title', 'Unidades')
 
 @section('content_header')
-    <h1><i class="fas fa-building"></i> &nbsp;Unidades</h1>
+    <h1 class="d-none d-md-block"><i class="fas fa-building"></i> &nbsp;Unidades</h1>
+    <h3 class="d-block d-sm-block d-md-none"><i class="fas fa-building"></i> &nbsp;Unidades</h3>
 @stop
 
 @section('content')
