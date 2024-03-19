@@ -375,17 +375,25 @@ $(document).ready(function () {
 
     // ao clicar no botão de adicionar mais um item no modal de edição
     $("#maisUmItemEdit").click(function(){
-        adicionarCamposNaTela(false, null, true)
+        adicionarCamposNaTela(false, null, true, true)
     })
 
     // Função para adicionar campos dinâmicos de produto
-    async function adicionarCamposNaTela(disabled = false, objProduto = null, modalCadastroEdicao = false) {
+    async function adicionarCamposNaTela(disabled = false, objProduto = null, modalCadastroEdicao = false, h1_default_habilitado = false) {
         let html = ``;
         const options = await preencherSelectProduto(objProduto);
 
         let cadastroEdit = modalCadastroEdicao?"_edit":"";
 
-        html = montaHTML(options, disabled, false, null, cadastroEdit);
+        let h1_default = ""
+        if (h1_default_habilitado) {
+            let primeiraHora_edit = document.querySelectorAll(".primeiraHora_edit");
+            if (primeiraHora_edit.length > 0) {
+                h1_default = primeiraHora_edit[0].value;
+            }
+        }
+
+        html = montaHTML(options, disabled, false, null, cadastroEdit, h1_default);
 
         if (modalCadastroEdicao) {
             $("#dolly-edit").append(html)
@@ -394,7 +402,7 @@ $(document).ready(function () {
         }
     }
 
-    function montaHTML(options, disabled = false, edicao = false, item = null, complemento_edit = "") {
+    function montaHTML(options, disabled = false, edicao = false, item = null, complemento_edit = "", h1_default = "") {
 
         contador++
 
@@ -419,6 +427,10 @@ $(document).ready(function () {
 
             // Formata a hora no formato HH:MM
             h1 = horas + ':' + minutos;
+
+            if (h1_default != "") {
+                h1 = h1_default
+            }
         }
 
         return `
