@@ -32,7 +32,7 @@
 
     <div class="card show">
         <div class="card-header" style="cursor: pointer" data-card-widget="collapse">
-            <h5 class="card-title">Buscar</h5>
+            <h5 class="card-title"><i class="fa-solid fa-magnifying-glass"></i>&nbsp;&nbsp;Buscar</h5>
             <div class="card-tools">
                 <button type="button" class="btn btn-tool">
                     <i class="fas fa-arrow-down"></i>

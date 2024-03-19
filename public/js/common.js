@@ -7,6 +7,10 @@ $(document).ready(function () {
     });
 });
 
+$(".collapsed-card").click(function(){
+    console.log("muda o icone");
+})
+
 // mascara de dinheiro
 $('.money').mask('#.##0,00', {reverse: true});
 // mascara de cep
