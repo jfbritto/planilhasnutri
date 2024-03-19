@@ -2,6 +2,20 @@ $(document).ready(function () {
 
     // load();
 
+    // Carrega todos os parametros e salva no storage
+    loadGlobalParameters(1, 'none');
+    loadGlobalParameters(2, 'none');
+    loadGlobalParameters(3, 'none');
+    loadGlobalParameters(4, 'none');
+    loadGlobalParameters(5, 'none');
+    loadGlobalParameters(6, 'none');
+    loadGlobalParameters(7, 'none');
+    loadGlobalParameters(8, 'none');
+    loadGlobalParameters(10, 'none');
+    loadGlobalParameters(11, 'none');
+    loadGlobalParameters(12, 'none');
+    loadGlobalParameters(13, 'none');
+
     function load()
     {
         Swal.queue([
