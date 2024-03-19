@@ -81,6 +81,17 @@
 
     <div class="card">
         <div class="card-header border-0">
+
+            <i class="fa-regular fa-circle-question" style="cursor: pointer" data-toggle="popover_question"
+                title="Descrição da planilha" data-content="
+                    <ol class='list-group'>
+                        <li class='list-group-item'>Item 1</li>
+                        <li class='list-group-item'>Item 2</li>
+                        <li class='list-group-item'>Item 3</li>
+                    </ol>
+                ">
+            </i>
+
             <div class="card-tools">
                 <a href="#" class="btn btn-tool btn-sm" id="abrirConfig" title="Configurar Alimentos Padrão">
                     <i class="fa-solid fa-gear fa-xl"></i>

@@ -1,3 +1,12 @@
+$(document).ready(function () {
+    $('[data-toggle="popover_question"]').popover({
+        html: true, // Permite o uso de HTML no conteúdo do popover
+        trigger: 'hover', // Ativa o popover quando o mouse passa sobre o ícone
+        sanitize: false, // Desativa a sanitização do conteúdo (usar com cuidado!)
+        boundary: 'viewport' // Mantém o popover dentro da janela visível
+    });
+});
+
 // mascara de dinheiro
 $('.money').mask('#.##0,00', {reverse: true});
 // mascara de cep
