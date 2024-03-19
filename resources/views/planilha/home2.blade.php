@@ -8,11 +8,17 @@
 
 @section('content_header')
     <div class="row">
-        <div class="col-md-6 mb-2">
-            <h1><i class="fa-solid fa-file-lines"></i> &nbsp;Planilhas</h1>
+        <div class="col-sm-6">
+            <h1 class="d-none d-md-block"><i class="fa-solid fa-file-lines"></i> &nbsp;Planilhas</h1>
+            <h3 class="d-block d-sm-block d-md-none"><i class="fa-solid fa-file-lines"></i> &nbsp;Planilhas</h3>
         </div>
-        <div class="col-md-6">
-            <input type="text" id="searchInput" class="form-control" placeholder="Digite o nome da planilha" onkeyup="filterPlanilhas()">
+        <div class="col-sm-6">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text"><i class="fa-solid fa-magnifying-glass"></i></div>
+                </div>
+                <input type="text" id="searchInput" class="form-control" placeholder="Digite o nome da planilha" onkeyup="filterPlanilhas()">
+            </div>
         </div>
     </div>
 @stop

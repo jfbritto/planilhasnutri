@@ -7,7 +7,17 @@
 @section('title', 'Controle de Verificação do Procedimento de Higienização de Hortifrutis')
 
 @section('content_header')
-    <h1><i class="fa-solid fa-faucet-drip"></i> &nbsp;Controle de Verificação do Procedimento de Higienização de Hortifrutis</h1>
+    <div class="row">
+        <div class="col-sm-9">
+            <h1 class="d-none d-md-block"><i class="fa-solid fa-faucet-drip"></i> &nbsp;Controle de Verificação do Procedimento de Higienização de Hortifrutis</h1>
+            <h4 class="d-block d-sm-block d-md-none"><i class="fa-solid fa-faucet-drip"></i> &nbsp;Controle de Verificação do Procedimento de Higienização de Hortifrutis</h4>
+        </div>
+        <div class="col-sm-3">
+            <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="/planilhas">Planilhas</a></li>
+            </ol>
+        </div>
+    </div>
 @stop
 
 @section('content')

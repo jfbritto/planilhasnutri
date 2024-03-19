@@ -7,24 +7,17 @@
 @section('title', 'Controle de Temperatura de Equipamentos e Áreas Climatizadas')
 
 @section('content_header')
-
-    <h1><i class="fa-solid fa-temperature-low"></i> &nbsp;Controle de Temperatura de Equipamentos e Áreas Climatizadas</h1>
-    {{-- <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-8">
-                    <h2><i class="fa-solid fa-temperature-low"></i> &nbsp;Controle de Temperatura de Equipamentos e Áreas Climatizadas</h2>
-                </div>
-                <div class="col-sm-4">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item"><a href="#">Planilhas</a></li>
-                    </ol>
-                </div>
-            </div>
+    <div class="row">
+        <div class="col-sm-9">
+            <h1 class="d-none d-md-block"><i class="fa-solid fa-temperature-low"></i> &nbsp;Controle de Temperatura de Equipamentos e Áreas Climatizadas</h1>
+            <h4 class="d-block d-sm-block d-md-none"><i class="fa-solid fa-temperature-low"></i> &nbsp;Controle de Temperatura de Equipamentos e Áreas Climatizadas</h4>
         </div>
-    </section> --}}
-
+        <div class="col-sm-3">
+            <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="/planilhas">Planilhas</a></li>
+            </ol>
+        </div>
+    </div>
 @stop
 
 @section('content')

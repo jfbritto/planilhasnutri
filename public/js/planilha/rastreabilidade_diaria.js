@@ -36,9 +36,6 @@ $(document).ready(function () {
                                         <tr>
                                             <td class="align-middle">${dateFormat(item.data)}</td>
                                             <td class="align-middle">${item.produto}</td>
-                                            <td class="align-middle">${item.lote??''}</td>
-                                            <td class="align-middle">${item.validade?dateFormat(item.validade):''}</td>
-                                            <td class="align-middle">${item.fabricante}</td>
                                             <td class="align-middle">
                                             ${item.image != '' ? `
                                                 <a href="rastreabilidade-diaria/download/${item.image}" title="Baixar arquivo" target="_blank"><i class="fa-solid fa-file-${detectarExtensaoArquivo(item.image)} fa-xl"></i></a>
@@ -66,7 +63,7 @@ $(document).ready(function () {
 
                                 $("#list").append(`
                                     <tr>
-                                        <td class="align-middle text-center" colspan="7">Nenhum registro encontrado</td>
+                                        <td class="align-middle text-center" colspan="4">Nenhum registro encontrado</td>
                                     </tr>
                                 `);
                             }
