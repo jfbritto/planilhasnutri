@@ -7,8 +7,8 @@
 @section('title', 'Planilhas')
 
 @section('content_header')
-    <div class="row">
-        <div class="col-sm-6">
+    <div class="row mb-1">
+        <div class="col-sm-6 mb-2">
             <h1 class="d-none d-md-block"><i class="fa-solid fa-file-lines"></i> &nbsp;Planilhas</h1>
             <h3 class="d-block d-sm-block d-md-none"><i class="fa-solid fa-file-lines"></i> &nbsp;Planilhas</h3>
         </div>
