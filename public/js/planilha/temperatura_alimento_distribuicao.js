@@ -325,11 +325,10 @@ $(document).ready(function () {
     // ao trocar o select de período faça:
     $("#periodo").change(function () {
 
-        $("#dolly").html("")
-
         if (this.value) {
             const produtos = preencherTelaComItensAutomaticamente(this.value);
         } else {
+            $("#dolly").html("")
             adicionarCamposNaTela()
         }
 
@@ -338,17 +337,23 @@ $(document).ready(function () {
     async function preencherTelaComItensAutomaticamente(periodo) {
 
         const objProdutosSelecionados = await buscarProdutosSelecionadosConfig(periodo);
-
         const produtos = await buscarProdutos();
 
-        $.each(produtos, function(index, produto) {
-            $.each(objProdutosSelecionados, function(index, produto_pre_selecionado) {
-                // Verifica se os IDs são iguais antes de chamar a função
-                if (produto_pre_selecionado.id === produto.id) {
-                    adicionarCamposNaTela(true, produto_pre_selecionado);
-                }
+        if (objProdutosSelecionados.length > 0) {
+            $("#dolly").html("")
+            $.each(produtos, function(index, produto) {
+                $.each(objProdutosSelecionados, function(index, produto_pre_selecionado) {
+                    // Verifica se os IDs são iguais antes de chamar a função
+                    if (produto_pre_selecionado.id === produto.id) {
+                        adicionarCamposNaTela(true, produto_pre_selecionado);
+                    }
+                });
             });
-        });
+        } else if(objProdutosSelecionados.length == 0) {
+            $("#dolly").html("")
+            adicionarCamposNaTela()
+        }
+
     }
 
     // ao abrir o modal
