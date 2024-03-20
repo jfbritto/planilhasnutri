@@ -41,22 +41,23 @@ $(document).ready(function () {
 
                                     $("#list").append(`
                                         <tr>
-                                            <td class="align-middle">${dateFormat(item.data)}</td>
-                                            <td class="align-middle">${periodo(item.periodo)}</td>
-                                            <td class="align-middle">${item.evento}</td>
-                                            <td class="align-middle">${item.total_produtos}</td>
+                                            <td class="align-middle limite-texto">${dateFormat(item.data)}</td>
+                                            <td class="align-middle limite-texto">${periodo(item.periodo)}</td>
+                                            <td class="align-middle elemento-esconder-celular">${item.total_produtos}</td>
                                             <td class="align-middle" style="text-align: right; min-width: 120px">
-                                                <a title="Imprimir" target="_blank" href="/planilha/temperatura-alimento-distribuicao/visualizar?id_planilha_filter=${item.id}" class="btn btn-primary"><i class="fa-regular fa-file-pdf"></i></a>
-                                                <a title="Editar"
-                                                data-id="${item.id}"
-                                                data-usuario="${item.usuario}"
-                                                data-unidade="${item.unidade}"
-                                                data-data="${item.data}"
-                                                data-periodo="${item.periodo}"
-                                                data-id_parameter_evento="${item.id_parameter_evento}"
-                                                data-id_parameter_responsavel="${item.id_parameter_responsavel}"
-                                                data-acao_corretiva="${item.acao_corretiva}" href="#" class="btn btn-warning edit-temperatura_alimento_distribuicao"><i style="color: white" class="fas fa-edit"></i></a>
-                                                <a title="Deletar" data-id="${item.id}" href="#" class="btn btn-danger delete-temperatura_alimento_distribuicao"><i class="fas fa-trash-alt"></i></a>
+                                                <div class="btn-group" role="group" aria-label="...">
+                                                    <a title="Imprimir" target="_blank" href="/planilha/temperatura-alimento-distribuicao/visualizar?id_planilha_filter=${item.id}" class="btn btn-primary"><i class="fa-regular fa-file-pdf"></i></a>
+                                                    <a title="Editar"
+                                                    data-id="${item.id}"
+                                                    data-usuario="${item.usuario}"
+                                                    data-unidade="${item.unidade}"
+                                                    data-data="${item.data}"
+                                                    data-periodo="${item.periodo}"
+                                                    data-id_parameter_evento="${item.id_parameter_evento}"
+                                                    data-id_parameter_responsavel="${item.id_parameter_responsavel}"
+                                                    data-acao_corretiva="${item.acao_corretiva}" href="#" class="btn btn-warning edit-temperatura_alimento_distribuicao"><i style="color: white" class="fas fa-edit"></i></a>
+                                                    <a title="Deletar" data-id="${item.id}" href="#" class="btn btn-danger delete-temperatura_alimento_distribuicao"><i class="fas fa-trash-alt"></i></a>
+                                                </div>
                                             </td>
                                         </tr>
                                     `);
@@ -66,7 +67,7 @@ $(document).ready(function () {
 
                                 $("#list").append(`
                                     <tr>
-                                        <td class="align-middle text-center" colspan="5">Nenhum registro encontrado</td>
+                                        <td class="align-middle text-center" colspan="4">Nenhum registro encontrado</td>
                                     </tr>
                                 `);
                             }

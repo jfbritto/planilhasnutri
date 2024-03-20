@@ -96,8 +96,7 @@
                         <tr>
                             <th>Data</th>
                             <th>Período</th>
-                            <th>Evento</th>
-                            <th>Itens</th>
+                            <th class="elemento-esconder-celular">Itens</th>
                             <th></th>
                         </tr>
                     </thead>

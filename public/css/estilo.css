@@ -11038,3 +11038,29 @@ textarea.form-control-lg {
 .login-page {
     height: 70vh
 }
+
+.limite-texto {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 110px; /* Tamanho máximo desejado */
+}
+
+.limite-texto-titulo {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100vw; /* Largura máxima igual à largura da tela */
+}
+
+/* 768 */
+
+/* Quando a largura da tela for 768px ou menor */
+@media screen and (max-width: 768px) {
+    .elemento-esconder-celular {
+        display: none; /* Esconde o elemento */
+    }
+    .espaco-esquerda-celular {
+        padding-left: 1.5rem !important;
+    }
+}
