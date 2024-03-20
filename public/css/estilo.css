@@ -11034,3 +11034,7 @@ textarea.form-control-lg {
 .select2.select2-container.select2-container--default {
     width: 100% !important;
 }
+
+.login-page {
+    height: 70vh
+}
