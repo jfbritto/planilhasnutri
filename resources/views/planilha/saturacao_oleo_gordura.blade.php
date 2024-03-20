@@ -95,9 +95,9 @@
                         <tr>
                             <th>Data</th>
                             <th>Área/Equipamento</th>
-                            <th>Hora 1ª aferição</th>
-                            <th>Tª 1ª aferição</th>
-                            <th>Leitura Fita</th>
+                            <th class="elemento-esconder-celular">Hora 1ª aferição</th>
+                            <th class="elemento-esconder-celular">Tª 1ª aferição</th>
+                            <th class="elemento-esconder-celular">Leitura Fita</th>
                             <th></th>
                         </tr>
                     </thead>

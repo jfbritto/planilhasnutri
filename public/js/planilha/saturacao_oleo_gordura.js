@@ -43,35 +43,37 @@ $(document).ready(function () {
                                             <td class="align-middle">${dateFormat(item.data)}</td>
                                             <td class="align-middle">${item.area}/${item.equipamento}</td>
                                             ${item.id_parameter_status_equipamento == null?`
-                                                <td class="align-middle">${item.hora_primeira_afericao ?? ''}</td>
-                                                <td class="align-middle">${item.temperatura_primeira_afericao}°C</td>
-                                                <td class="align-middle">${item.leitura_fita ?? ''}%</td>
+                                                <td class="align-middle elemento-esconder-celular">${item.hora_primeira_afericao ?? ''}</td>
+                                                <td class="align-middle elemento-esconder-celular">${item.temperatura_primeira_afericao}°C</td>
+                                                <td class="align-middle elemento-esconder-celular">${item.leitura_fita ?? ''}%</td>
                                             `:`
-                                                <td class="align-middle">${descricaoStatusEquipamento(item.id_parameter_status_equipamento)}</td>
-                                                <td class="align-middle">-</td>
-                                                <td class="align-middle">-</td>
+                                                <td class="align-middle elemento-esconder-celular">${descricaoStatusEquipamento(item.id_parameter_status_equipamento)}</td>
+                                                <td class="align-middle elemento-esconder-celular">-</td>
+                                                <td class="align-middle elemento-esconder-celular">-</td>
                                             `}
                                             <td class="align-middle" style="text-align: right; min-width: 120px">
-                                                <a title="Editar"
-                                                data-id="${item.id}"
-                                                data-usuario="${item.usuario}"
-                                                data-unidade="${item.unidade}"
-                                                data-data="${item.data}"
-                                                data-id_parameter_area="${item.id_parameter_area}"
-                                                data-id_parameter_equipamento="${item.id_parameter_equipamento}"
-                                                data-hora_primeira_afericao="${item.hora_primeira_afericao}"
-                                                data-temperatura_primeira_afericao="${item.temperatura_primeira_afericao}"
-                                                data-hora_segunda_afericao="${item.hora_segunda_afericao}"
-                                                data-temperatura_segunda_afericao="${item.temperatura_segunda_afericao}"
-                                                data-acao_corretiva="${item.acao_corretiva}"
-                                                data-id_parameter_responsavel_acao="${item.id_parameter_responsavel_acao}"
-                                                data-leitura_fita="${item.leitura_fita}"
-                                                data-situacao_gordura="${item.situacao_gordura}"
-                                                data-id_parameter_responsavel="${item.id_parameter_responsavel}"
-                                                data-id_parameter_status_equipamento="${item.id_parameter_status_equipamento}"
-                                                href="#" class="btn btn-warning edit-saturacao_oleo_gordura"><i style="color: white" class="fas fa-edit"></i></a>
+                                                <div class="btn-group" role="group" aria-label="...">
+                                                    <a title="Editar"
+                                                    data-id="${item.id}"
+                                                    data-usuario="${item.usuario}"
+                                                    data-unidade="${item.unidade}"
+                                                    data-data="${item.data}"
+                                                    data-id_parameter_area="${item.id_parameter_area}"
+                                                    data-id_parameter_equipamento="${item.id_parameter_equipamento}"
+                                                    data-hora_primeira_afericao="${item.hora_primeira_afericao}"
+                                                    data-temperatura_primeira_afericao="${item.temperatura_primeira_afericao}"
+                                                    data-hora_segunda_afericao="${item.hora_segunda_afericao}"
+                                                    data-temperatura_segunda_afericao="${item.temperatura_segunda_afericao}"
+                                                    data-acao_corretiva="${item.acao_corretiva}"
+                                                    data-id_parameter_responsavel_acao="${item.id_parameter_responsavel_acao}"
+                                                    data-leitura_fita="${item.leitura_fita}"
+                                                    data-situacao_gordura="${item.situacao_gordura}"
+                                                    data-id_parameter_responsavel="${item.id_parameter_responsavel}"
+                                                    data-id_parameter_status_equipamento="${item.id_parameter_status_equipamento}"
+                                                    href="#" class="btn btn-warning edit-saturacao_oleo_gordura"><i style="color: white" class="fas fa-edit"></i></a>
 
-                                                <a title="Deletar" data-id="${item.id}" href="#" class="btn btn-danger delete-saturacao_oleo_gordura"><i class="fas fa-trash-alt"></i></a>
+                                                    <a title="Deletar" data-id="${item.id}" href="#" class="btn btn-danger delete-saturacao_oleo_gordura"><i class="fas fa-trash-alt"></i></a>
+                                                </div>
                                             </td>
                                         </tr>
                                     `);
