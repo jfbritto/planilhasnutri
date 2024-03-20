@@ -89,8 +89,6 @@
                         <tr>
                             <th>Data</th>
                             <th>Produto</th>
-                            <th>Responsável</th>
-                            <th>Conforme?</th>
                             <th></th>
                         </tr>
                     </thead>

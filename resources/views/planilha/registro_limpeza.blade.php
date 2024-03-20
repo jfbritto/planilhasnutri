@@ -89,8 +89,7 @@
                         <tr>
                             <th>Data</th>
                             <th>Área</th>
-                            <th>Superfície Limpa</th>
-                            <th>Responsável</th>
+                            <th class="elemento-esconder-celular">Superfície Limpa</th>
                             <th></th>
                         </tr>
                     </thead>

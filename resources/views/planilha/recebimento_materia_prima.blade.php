@@ -95,10 +95,7 @@
                         <tr>
                             <th>Data</th>
                             <th>Produto</th>
-                            <th>Fornecedor</th>
-                            <th>Nota Fiscal</th>
-                            <th>Data Validade</th>
-                            <th>Responsável</th>
+                            <th class="elemento-esconder-celular">Fornecedor</th>
                             <th></th>
                         </tr>
                     </thead>

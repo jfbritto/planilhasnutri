@@ -42,18 +42,20 @@ $(document).ready(function () {
                                             `:``}
                                             </td>
                                             <td class="align-middle" style="text-align: right; min-width: 120px">
-                                                <a title="Editar"
-                                                data-id="${item.id}"
-                                                data-usuario="${item.usuario}"
-                                                data-unidade="${item.unidade}"
-                                                data-id_parameter_produto="${item.id_parameter_produto}"
-                                                data-data="${item.data}"
-                                                data-lote="${item.lote}"
-                                                data-validade="${item.validade}"
-                                                data-id_parameter_fabricante="${item.id_parameter_fabricante}"
-                                                href="#" class="btn btn-warning edit-rastreabilidade_diaria"><i style="color: white" class="fas fa-edit"></i></a>
+                                                <div class="btn-group" role="group" aria-label="...">
+                                                    <a title="Editar"
+                                                    data-id="${item.id}"
+                                                    data-usuario="${item.usuario}"
+                                                    data-unidade="${item.unidade}"
+                                                    data-id_parameter_produto="${item.id_parameter_produto}"
+                                                    data-data="${item.data}"
+                                                    data-lote="${item.lote}"
+                                                    data-validade="${item.validade}"
+                                                    data-id_parameter_fabricante="${item.id_parameter_fabricante}"
+                                                    href="#" class="btn btn-warning edit-rastreabilidade_diaria"><i style="color: white" class="fas fa-edit"></i></a>
 
-                                                <a title="Deletar" data-id="${item.id}" href="#" class="btn btn-danger delete-rastreabilidade_diaria"><i class="fas fa-trash-alt"></i></a>
+                                                    <a title="Deletar" data-id="${item.id}" href="#" class="btn btn-danger delete-rastreabilidade_diaria"><i class="fas fa-trash-alt"></i></a>
+                                                </div>
                                             </td>
                                         </tr>
                                     `);

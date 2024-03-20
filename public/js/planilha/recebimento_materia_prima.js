@@ -39,29 +39,28 @@ $(document).ready(function () {
                                         <tr>
                                             <td class="align-middle">${dateFormat(item.data)}</td>
                                             <td class="align-middle">${item.produto}</td>
-                                            <td class="align-middle">${item.fornecedor}</td>
-                                            <td class="align-middle">${item.nota_fiscal ?? ''}</td>
-                                            <td class="align-middle">${dateFormat(item.data_validade)}</td>
-                                            <td class="align-middle">${item.responsavel}</td>
+                                            <td class="align-middle elemento-esconder-celular">${item.fornecedor}</td>
                                             <td class="align-middle" style="text-align: right; min-width: 120px">
-                                                <a title="Editar"
-                                                data-id="${item.id}"
-                                                data-usuario="${item.usuario}"
-                                                data-unidade="${item.unidade}"
-                                                data-data="${item.data}"
-                                                data-id_parameter_produto="${item.id_parameter_produto}"
-                                                data-id_parameter_fornecedor="${item.id_parameter_fornecedor}"
-                                                data-ordem_de_compra="${item.ordem_de_compra}"
-                                                data-nota_fiscal="${item.nota_fiscal}"
-                                                data-sif_lote="${item.sif_lote}"
-                                                data-lote="${item.lote}"
-                                                data-data_validade="${item.data_validade}"
-                                                data-temperatura_alimento="${item.temperatura_alimento}"
-                                                data-temperatura_veiculo="${item.temperatura_veiculo}"
-                                                data-nao_conformidade="${item.nao_conformidade}"
-                                                data-acao_corretiva="${item.acao_corretiva}"
-                                                data-id_parameter_responsavel="${item.id_parameter_responsavel}" href="#" class="btn btn-warning edit-recebimento_materia_prima"><i style="color: white" class="fas fa-edit"></i></a>
-                                                <a title="Deletar" data-id="${item.id}" href="#" class="btn btn-danger delete-recebimento_materia_prima"><i class="fas fa-trash-alt"></i></a>
+                                                <div class="btn-group" role="group" aria-label="...">
+                                                    <a title="Editar"
+                                                    data-id="${item.id}"
+                                                    data-usuario="${item.usuario}"
+                                                    data-unidade="${item.unidade}"
+                                                    data-data="${item.data}"
+                                                    data-id_parameter_produto="${item.id_parameter_produto}"
+                                                    data-id_parameter_fornecedor="${item.id_parameter_fornecedor}"
+                                                    data-ordem_de_compra="${item.ordem_de_compra}"
+                                                    data-nota_fiscal="${item.nota_fiscal}"
+                                                    data-sif_lote="${item.sif_lote}"
+                                                    data-lote="${item.lote}"
+                                                    data-data_validade="${item.data_validade}"
+                                                    data-temperatura_alimento="${item.temperatura_alimento}"
+                                                    data-temperatura_veiculo="${item.temperatura_veiculo}"
+                                                    data-nao_conformidade="${item.nao_conformidade}"
+                                                    data-acao_corretiva="${item.acao_corretiva}"
+                                                    data-id_parameter_responsavel="${item.id_parameter_responsavel}" href="#" class="btn btn-warning edit-recebimento_materia_prima"><i style="color: white" class="fas fa-edit"></i></a>
+                                                    <a title="Deletar" data-id="${item.id}" href="#" class="btn btn-danger delete-recebimento_materia_prima"><i class="fas fa-trash-alt"></i></a>
+                                                </div>
                                             </td>
                                         </tr>
                                     `);

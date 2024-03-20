@@ -11043,7 +11043,7 @@ textarea.form-control-lg {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 110px; /* Tamanho máximo desejado */
+    max-width: 100px; /* Tamanho máximo desejado */
 }
 
 .limite-texto-titulo {
@@ -11060,7 +11060,31 @@ textarea.form-control-lg {
     .elemento-esconder-celular {
         display: none; /* Esconde o elemento */
     }
+
     .espaco-esquerda-celular {
         padding-left: 1.5rem !important;
     }
+
+    .card-body.p-0 .table tbody>tr>td:first-of-type, .card-body.p-0 .table tbody>tr>th:first-of-type, .card-body.p-0 .table tfoot>tr>td:first-of-type, .card-body.p-0 .table tfoot>tr>th:first-of-type, .card-body.p-0 .table thead>tr>td:first-of-type, .card-body.p-0 .table thead>tr>th:first-of-type {
+        padding-left: 1.0rem !important;
+    }
+
+    .table.table-valign-middle tbody>tr>td, .table.table-valign-middle tbody>tr>th, .table.table-valign-middle thead>tr>td, .table.table-valign-middle thead>tr>th {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100px; /* Tamanho máximo desejado */
+    }
+
+    .table.table-valign-middle tbody>tr>td, .table.table-valign-middle tbody>tr>th, .table.table-valign-middle thead>tr>td, .table.table-valign-middle thead>tr>th {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100px; /* Tamanho máximo desejado */
+    }
+
+    .overflow-visible-btn {
+        overflow: visible !important;
+    };
+
 }

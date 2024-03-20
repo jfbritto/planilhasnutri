@@ -36,23 +36,23 @@ $(document).ready(function () {
                                         <tr>
                                             <td class="align-middle">${dateFormat(item.data)}</td>
                                             <td class="align-middle">${item.produto}</td>
-                                            <td class="align-middle">${item.responsavel}</td>
-                                            <td class="align-middle">${item.conforme_naoconforme==1?'Sim':'Não'}</td>
                                             <td class="align-middle" style="text-align: right; min-width: 120px">
-                                                <a title="Editar"
-                                                data-id="${item.id}"
-                                                data-usuario="${item.usuario}"
-                                                data-unidade="${item.unidade}"
-                                                data-data="${item.data}"
-                                                data-id_parameter_produto="${item.id_parameter_produto}"
-                                                data-hora_temperatura_antes="${item.hora_temperatura_antes}"
-                                                data-temperatura_antes="${item.temperatura_antes}"
-                                                data-hora_temperatura_depois="${item.hora_temperatura_depois}"
-                                                data-temperatura_depois="${item.temperatura_depois}"
-                                                data-tempo_aquecimento="${item.tempo_aquecimento}"
-                                                data-conforme_naoconforme="${item.conforme_naoconforme}"
-                                                data-id_parameter_responsavel="${item.id_parameter_responsavel}" href="#" class="btn btn-warning edit-reaquecimento_alimento"><i style="color: white" class="fas fa-edit"></i></a>
-                                                <a title="Deletar" data-id="${item.id}" href="#" class="btn btn-danger delete-reaquecimento_alimento"><i class="fas fa-trash-alt"></i></a>
+                                                <div class="btn-group" role="group" aria-label="...">
+                                                    <a title="Editar"
+                                                    data-id="${item.id}"
+                                                    data-usuario="${item.usuario}"
+                                                    data-unidade="${item.unidade}"
+                                                    data-data="${item.data}"
+                                                    data-id_parameter_produto="${item.id_parameter_produto}"
+                                                    data-hora_temperatura_antes="${item.hora_temperatura_antes}"
+                                                    data-temperatura_antes="${item.temperatura_antes}"
+                                                    data-hora_temperatura_depois="${item.hora_temperatura_depois}"
+                                                    data-temperatura_depois="${item.temperatura_depois}"
+                                                    data-tempo_aquecimento="${item.tempo_aquecimento}"
+                                                    data-conforme_naoconforme="${item.conforme_naoconforme}"
+                                                    data-id_parameter_responsavel="${item.id_parameter_responsavel}" href="#" class="btn btn-warning edit-reaquecimento_alimento"><i style="color: white" class="fas fa-edit"></i></a>
+                                                    <a title="Deletar" data-id="${item.id}" href="#" class="btn btn-danger delete-reaquecimento_alimento"><i class="fas fa-trash-alt"></i></a>
+                                                </div>
                                             </td>
                                         </tr>
                                     `);
@@ -62,7 +62,7 @@ $(document).ready(function () {
 
                                 $("#list").append(`
                                     <tr>
-                                        <td class="align-middle text-center" colspan="5">Nenhum registro encontrado</td>
+                                        <td class="align-middle text-center" colspan="3">Nenhum registro encontrado</td>
                                     </tr>
                                 `);
                             }

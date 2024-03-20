@@ -44,7 +44,7 @@ $(document).ready(function () {
                                             <td class="align-middle limite-texto">${dateFormat(item.data)}</td>
                                             <td class="align-middle limite-texto">${periodo(item.periodo)}</td>
                                             <td class="align-middle elemento-esconder-celular">${item.total_produtos}</td>
-                                            <td class="align-middle" style="text-align: right; min-width: 120px">
+                                            <td class="align-middle overflow-visible-btn" style="text-align: right; min-width: 120px">
                                                 <div class="btn-group" role="group" aria-label="...">
                                                     <a title="Imprimir" target="_blank" href="/planilha/temperatura-alimento-distribuicao/visualizar?id_planilha_filter=${item.id}" class="btn btn-primary"><i class="fa-regular fa-file-pdf"></i></a>
                                                     <a title="Editar"

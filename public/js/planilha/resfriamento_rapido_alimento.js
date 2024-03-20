@@ -36,24 +36,24 @@ $(document).ready(function () {
                                         <tr>
                                             <td class="align-middle">${dateFormat(item.data)}</td>
                                             <td class="align-middle">${item.produto}</td>
-                                            <td class="align-middle">${item.responsavel}</td>
-                                            <td class="align-middle">${item.conforme_naoconforme==1?'Sim':'Não'}</td>
                                             <td class="align-middle" style="text-align: right; min-width: 120px">
-                                                <a title="Editar"
-                                                data-id="${item.id}"
-                                                data-usuario="${item.usuario}"
-                                                data-unidade="${item.unidade}"
-                                                data-data="${item.data}"
-                                                data-id_parameter_produto="${item.id_parameter_produto}"
-                                                data-cozimento_hora_final="${item.cozimento_hora_final}"
-                                                data-cozimento_temperatura_interna="${item.cozimento_temperatura_interna}"
-                                                data-resfriamento_hora_inicio="${item.resfriamento_hora_inicio}"
-                                                data-resfriamento_temperatura_central_inicio="${item.resfriamento_temperatura_central_inicio}"
-                                                data-resfriamento_hora_fim="${item.resfriamento_hora_fim}"
-                                                data-resfriamento_temperatura_central_fim="${item.resfriamento_temperatura_central_fim}"
-                                                data-conforme_naoconforme="${item.conforme_naoconforme}"
-                                                data-id_parameter_responsavel="${item.id_parameter_responsavel}" href="#" class="btn btn-warning edit-resfriamento_rapido_alimento"><i style="color: white" class="fas fa-edit"></i></a>
-                                                <a title="Deletar" data-id="${item.id}" href="#" class="btn btn-danger delete-resfriamento_rapido_alimento"><i class="fas fa-trash-alt"></i></a>
+                                                <div class="btn-group" role="group" aria-label="...">
+                                                    <a title="Editar"
+                                                    data-id="${item.id}"
+                                                    data-usuario="${item.usuario}"
+                                                    data-unidade="${item.unidade}"
+                                                    data-data="${item.data}"
+                                                    data-id_parameter_produto="${item.id_parameter_produto}"
+                                                    data-cozimento_hora_final="${item.cozimento_hora_final}"
+                                                    data-cozimento_temperatura_interna="${item.cozimento_temperatura_interna}"
+                                                    data-resfriamento_hora_inicio="${item.resfriamento_hora_inicio}"
+                                                    data-resfriamento_temperatura_central_inicio="${item.resfriamento_temperatura_central_inicio}"
+                                                    data-resfriamento_hora_fim="${item.resfriamento_hora_fim}"
+                                                    data-resfriamento_temperatura_central_fim="${item.resfriamento_temperatura_central_fim}"
+                                                    data-conforme_naoconforme="${item.conforme_naoconforme}"
+                                                    data-id_parameter_responsavel="${item.id_parameter_responsavel}" href="#" class="btn btn-warning edit-resfriamento_rapido_alimento"><i style="color: white" class="fas fa-edit"></i></a>
+                                                    <a title="Deletar" data-id="${item.id}" href="#" class="btn btn-danger delete-resfriamento_rapido_alimento"><i class="fas fa-trash-alt"></i></a>
+                                                </div>
                                             </td>
                                         </tr>
                                     `);
@@ -63,7 +63,7 @@ $(document).ready(function () {
 
                                 $("#list").append(`
                                     <tr>
-                                        <td class="align-middle text-center" colspan="5">Nenhum registro encontrado</td>
+                                        <td class="align-middle text-center" colspan="3">Nenhum registro encontrado</td>
                                     </tr>
                                 `);
                             }

@@ -23,7 +23,7 @@
 @section('content')
     @include('forms.forms')
 
-    <div class="card show">
+    <div class="card collapsed-card">
         <div class="card-header" style="cursor: pointer" data-card-widget="collapse">
             <h5 class="card-title"><i class="fa-solid fa-magnifying-glass"></i>&nbsp;&nbsp;Buscar</h5>
             <div class="card-tools">
@@ -32,13 +32,14 @@
                 </button>
             </div>
         </div>
-        <div class="card-body border-0" style="display: block;">
+        <div class="card-body border-0" style="display: none;">
             <form id="formFiltroPrincipal">
                 <div class="row">
                     <div class="col-md-2">
                         <div class="form-group">
                             <label for="data_ini_filter">De</label>
-                            <input type="date" value="{{now()->format('Y-m-d')}}" name="data_ini_filter" id="data_ini_filter" class="form-control">
+                            {{-- <input type="date" value="{{now()->format('Y-m-d')}}" name="data_ini_filter" id="data_ini_filter" class="form-control"> --}}
+                            <input type="date" value="{{now()->format('Y-m-01')}}" name="data_ini_filter" id="data_ini_filter" class="form-control">
                         </div>
                     </div>
                     <div class="col-md-2">

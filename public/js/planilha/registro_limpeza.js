@@ -36,21 +36,22 @@ $(document).ready(function () {
                                         <tr>
                                             <td class="align-middle">${dateFormat(item.data)}</td>
                                             <td class="align-middle">${item.area}</td>
-                                            <td class="align-middle">${item.superficie_limpa}</td>
-                                            <td class="align-middle">${item.responsavel}</td>
+                                            <td class="align-middle elemento-esconder-celular">${item.superficie_limpa}</td>
                                             <td class="align-middle" style="text-align: right; min-width: 120px">
-                                                <a title="Editar"
-                                                data-id="${item.id}"
-                                                data-usuario="${item.usuario}"
-                                                data-unidade="${item.unidade}"
-                                                data-data="${item.data}"
-                                                data-id_parameter_responsavel="${item.id_parameter_responsavel}"
-                                                data-id_parameter_area="${item.id_parameter_area}"
-                                                data-superficie_limpa="${item.superficie_limpa}"
-                                                data-frequencia="${item.frequencia}"
-                                                data-conforme_naoconforme="${item.conforme_naoconforme}"
-                                                data-comentarios="${item.comentarios}" href="#" class="btn btn-warning edit-registro_limpeza"><i style="color: white" class="fas fa-edit"></i></a>
-                                                <a title="Deletar" data-id="${item.id}" href="#" class="btn btn-danger delete-registro_limpeza"><i class="fas fa-trash-alt"></i></a>
+                                                <div class="btn-group" role="group" aria-label="...">
+                                                    <a title="Editar"
+                                                    data-id="${item.id}"
+                                                    data-usuario="${item.usuario}"
+                                                    data-unidade="${item.unidade}"
+                                                    data-data="${item.data}"
+                                                    data-id_parameter_responsavel="${item.id_parameter_responsavel}"
+                                                    data-id_parameter_area="${item.id_parameter_area}"
+                                                    data-superficie_limpa="${item.superficie_limpa}"
+                                                    data-frequencia="${item.frequencia}"
+                                                    data-conforme_naoconforme="${item.conforme_naoconforme}"
+                                                    data-comentarios="${item.comentarios}" href="#" class="btn btn-warning edit-registro_limpeza"><i style="color: white" class="fas fa-edit"></i></a>
+                                                    <a title="Deletar" data-id="${item.id}" href="#" class="btn btn-danger delete-registro_limpeza"><i class="fas fa-trash-alt"></i></a>
+                                                </div>
                                             </td>
                                         </tr>
                                     `);
@@ -60,7 +61,7 @@ $(document).ready(function () {
 
                                 $("#list").append(`
                                     <tr>
-                                        <td class="align-middle text-center" colspan="5">Nenhum registro encontrado</td>
+                                        <td class="align-middle text-center" colspan="4">Nenhum registro encontrado</td>
                                     </tr>
                                 `);
                             }

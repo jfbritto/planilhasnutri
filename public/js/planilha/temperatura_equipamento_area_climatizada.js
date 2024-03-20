@@ -38,7 +38,7 @@ $(document).ready(function () {
 
                                     $("#list").append(`
                                         <tr class="${item.id_parameter_status_equipamento != null?descricaoStatusEquipamento(item.id_parameter_status_equipamento, true):''}">
-                                            <td class="align-middle">${dateFormat(item.data)}</td>
+                                            <td class="align-middle limite-texto">${dateFormat(item.data)}</td>
                                             <td class="align-middle">${item.equipamento}</td>
                                             ${item.id_parameter_status_equipamento == null?`
                                                 <td class="align-middle"><span style="cursor: pointer" data-toggle="popover" data-content="${configTemperaturaEquipamento(item.maior_que, item.menor_que, item.temperatura_1, true)}" data-trigger="hover"
@@ -52,26 +52,27 @@ $(document).ready(function () {
                                             `:`
                                                 <td class="align-middle">-</td>
                                             `}
-                                            <td class="align-middle" style="text-align: right; min-width: 120px">
+                                            <td class="align-middle overflow-visible-btn" style="text-align: right; min-width: 120px">
+                                                <div class="btn-group" role="group" aria-label="...">
+                                                    ${item.temperatura_2 == null?`
+                                                        <a title="Atualizar segunda aferição" data-id="${item.id}" data-id_parameter_equipamento="${item.id_parameter_equipamento}" href="#" class="btn btn-info edit-segunda_temperatura_equipamento"><i style="color: white" class="fa-solid fa-arrows-rotate"></i></a>
+                                                    `:`
+                                                    `}
 
-                                                ${item.temperatura_2 == null?`
-                                                    <a title="Atualizar segunda aferição" data-id="${item.id}" data-id_parameter_equipamento="${item.id_parameter_equipamento}" href="#" class="btn btn-info edit-segunda_temperatura_equipamento"><i style="color: white" class="fa-solid fa-arrows-rotate"></i></a>
-                                                `:`
-                                                `}
+                                                    <a title="Editar"
+                                                    data-id="${item.id}"
+                                                    data-usuario="${item.usuario}"
+                                                    data-unidade="${item.unidade}"
+                                                    data-data="${item.data}"
+                                                    data-id_parameter_responsavel="${item.id_parameter_responsavel}"
+                                                    data-id_parameter_equipamento="${item.id_parameter_equipamento}"
+                                                    data-id_parameter_status_equipamento="${item.id_parameter_status_equipamento}"
+                                                    data-temperatura_1="${item.temperatura_1}"
+                                                    data-temperatura_2="${item.temperatura_2}"
+                                                    href="#" class="btn btn-warning edit-temperatura_equipamento_area_climatizada"><i style="color: white" class="fas fa-edit"></i></a>
 
-                                                <a title="Editar"
-                                                data-id="${item.id}"
-                                                data-usuario="${item.usuario}"
-                                                data-unidade="${item.unidade}"
-                                                data-data="${item.data}"
-                                                data-id_parameter_responsavel="${item.id_parameter_responsavel}"
-                                                data-id_parameter_equipamento="${item.id_parameter_equipamento}"
-                                                data-id_parameter_status_equipamento="${item.id_parameter_status_equipamento}"
-                                                data-temperatura_1="${item.temperatura_1}"
-                                                data-temperatura_2="${item.temperatura_2}"
-                                                href="#" class="btn btn-warning edit-temperatura_equipamento_area_climatizada"><i style="color: white" class="fas fa-edit"></i></a>
-
-                                                <a title="Deletar" data-id="${item.id}" href="#" class="btn btn-danger delete-temperatura_equipamento_area_climatizada"><i class="fas fa-trash-alt"></i></a>
+                                                    <a title="Deletar" data-id="${item.id}" href="#" class="btn btn-danger delete-temperatura_equipamento_area_climatizada"><i class="fas fa-trash-alt"></i></a>
+                                                </div>
                                             </td>
                                         </tr>
                                     `);
