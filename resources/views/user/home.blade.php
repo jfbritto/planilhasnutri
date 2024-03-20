@@ -58,7 +58,7 @@
                     <thead>
                         <tr>
                             <th>Nome</th>
-                            <th>E-mail</th>
+                            <th class="elemento-esconder-celular">E-mail</th>
                             @if(auth()->user()->is_admin)<th>Unidade</th>@endif
                             @if(!auth()->user()->is_estagiario)<th></th>@endif
                         </tr>

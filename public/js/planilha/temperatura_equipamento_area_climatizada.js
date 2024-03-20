@@ -38,7 +38,7 @@ $(document).ready(function () {
 
                                     $("#list").append(`
                                         <tr class="${item.id_parameter_status_equipamento != null?descricaoStatusEquipamento(item.id_parameter_status_equipamento, true):''}">
-                                            <td class="align-middle limite-texto">${dateFormat(item.data)}</td>
+                                            <td class="align-middle">${dateFormat(item.data)}</td>
                                             <td class="align-middle">${item.equipamento}</td>
                                             ${item.id_parameter_status_equipamento == null?`
                                                 <td class="align-middle"><span style="cursor: pointer" data-toggle="popover" data-content="${configTemperaturaEquipamento(item.maior_que, item.menor_que, item.temperatura_1, true)}" data-trigger="hover"

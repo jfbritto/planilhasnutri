@@ -30,9 +30,9 @@
                     <thead>
                         <tr>
                             <th>Serviço</th>
-                            <th>Frequência</th>
-                            <th>Data</th>
-                            <th>Próxima Data</th>
+                            <th class="elemento-esconder-celular">Frequência</th>
+                            <th class="elemento-esconder-celular">Data</th>
+                            <th class="elemento-esconder-celular">Próxima Data</th>
                             <th>Documento</th>
                             <th></th>
                         </tr>

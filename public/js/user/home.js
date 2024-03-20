@@ -40,18 +40,20 @@ $(document).ready(function () {
                                         $("#list").append(`
                                             <tr>
                                                 <td class="align-middle">${item.name}</td>
-                                                <td class="align-middle">${item.email}</td>
+                                                <td class="align-middle elemento-esconder-celular">${item.email}</td>
                                                 <td class="align-middle ${isAdmin}">${item.unidade}</td>
-                                                <td class="align-middle ${isEstagiario}" style="text-align: right">
-                                                    ${item.is_estagiario || isAdminFlag?`
-                                                        <a title="${txtTittle}" data-id="${item.id}" data-status="${valueChange}" href="#" class="btn btn-${colorBtn} change-user"><i class="fas fa-power-off"></i></a>
-                                                    `:``}
+                                                <td class="align-middle overflow-visible-btn ${isEstagiario}" style="text-align: right">
+                                                    <div class="btn-group" role="group" aria-label="...">
+                                                        ${item.is_estagiario || isAdminFlag?`
+                                                            <a title="${txtTittle}" data-id="${item.id}" data-status="${valueChange}" href="#" class="btn btn-${colorBtn} change-user"><i class="fas fa-power-off"></i></a>
+                                                        `:``}
 
-                                                    <a title="Editar" data-id="${item.id}" data-name="${item.name}" data-email="${item.email}" href="#" class="btn btn-warning edit-user ${esconderBtn}"><i style="color: white" class="fas fa-edit"></i></a>
+                                                        <a title="Editar" data-id="${item.id}" data-name="${item.name}" data-email="${item.email}" href="#" class="btn btn-warning edit-user ${esconderBtn}"><i style="color: white" class="fas fa-edit"></i></a>
 
-                                                    ${item.is_estagiario || isAdminFlag?`
-                                                        <a title="Deletar" data-id="${item.id}" href="#" class="btn btn-danger delete-user ${esconderBtn}"><i class="fas fa-trash-alt"></i></a>
-                                                    `:``}
+                                                        ${item.is_estagiario || isAdminFlag?`
+                                                            <a title="Deletar" data-id="${item.id}" href="#" class="btn btn-danger delete-user ${esconderBtn}"><i class="fas fa-trash-alt"></i></a>
+                                                        `:``}
+                                                    </div>
                                                 </td>
                                             </tr>
                                         `);

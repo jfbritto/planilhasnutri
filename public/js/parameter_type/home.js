@@ -22,6 +22,7 @@ $(document).ready(function () {
                                 $("#list").html(``);
 
                                 let isAdmin = $("#isAdmin").val() === "1"?'':'d-none';
+                                let isAdminClass = $("#isAdmin").val() === "1"?'class="btn-group" role="group" aria-label="..."':'';
 
                                 if(data.data.length > 0){
 
@@ -31,9 +32,11 @@ $(document).ready(function () {
                                             <tr>
                                                 <td class="align-middle">${item.name}</td>
                                                 <td class="align-middle" style="text-align: right">
-                                                    <a title="Listar Itens" data-id="${item.id}" data-name="${item.name}" href="#" class="btn btn-info create-Parameter"><i style="color: white" class="fas fa-list"></i></a>
-                                                    <a title="Editar" data-id="${item.id}" data-name="${item.name}" href="#" class="btn btn-warning edit-ParameterType ${isAdmin}"><i style="color: white" class="fas fa-edit"></i></a>
-                                                    <a title="Deletar" data-id="${item.id}" href="#" class="btn btn-danger delete-ParameterType ${isAdmin}"><i class="fas fa-trash-alt"></i></a>
+                                                    <div ${isAdminClass}>
+                                                        <a title="Listar Itens" data-id="${item.id}" data-name="${item.name}" href="#" class="btn btn-info create-Parameter"><i style="color: white" class="fas fa-list"></i></a>
+                                                        <a title="Editar" data-id="${item.id}" data-name="${item.name}" href="#" class="btn btn-warning edit-ParameterType ${isAdmin}"><i style="color: white" class="fas fa-edit"></i></a>
+                                                        <a title="Deletar" data-id="${item.id}" href="#" class="btn btn-danger delete-ParameterType ${isAdmin}"><i class="fas fa-trash-alt"></i></a>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         `);
@@ -255,8 +258,10 @@ $(document).ready(function () {
                                 <td class="align-middle">${item.name}</td>
                                 <td class="align-middle">${item.unit_name}</td>
                                 <td class="align-middle" style="text-align: right">
-                                    <a title="Editar" data-id="${item.id}" data-id_parameter_type="${item.id_parameter_type}" data-name="${item.name}" href="#" class="btn btn-warning edit-ParameterItem"><i style="color: white" class="fas fa-edit"></i></a>
-                                    <a title="Deletar" data-id="${item.id}" data-id_parameter_type="${item.id_parameter_type}" href="#" class="btn btn-danger delete-Parameter"><i class="fas fa-trash-alt"></i></a>
+                                    <div class="btn-group" role="group" aria-label="...">
+                                        <a title="Editar" data-id="${item.id}" data-id_parameter_type="${item.id_parameter_type}" data-name="${item.name}" href="#" class="btn btn-warning edit-ParameterItem"><i style="color: white" class="fas fa-edit"></i></a>
+                                        <a title="Deletar" data-id="${item.id}" data-id_parameter_type="${item.id_parameter_type}" href="#" class="btn btn-danger delete-Parameter"><i class="fas fa-trash-alt"></i></a>
+                                    </div>
                                 </td>
                             </tr>
                         `);

@@ -29,26 +29,28 @@ $(document).ready(function () {
                                     $("#list").append(`
                                         <tr>
                                             <td class="align-middle">${item.servico}</td>
-                                            <td class="align-middle">${frequencia(item.frequencia_meses)}</td>
-                                            <td class="align-middle">${dateFormat(item.data)}</td>
-                                            <td class="align-middle">${dateFormat(item.proxima_data)}</td>
+                                            <td class="align-middle elemento-esconder-celular">${frequencia(item.frequencia_meses)}</td>
+                                            <td class="align-middle elemento-esconder-celular">${dateFormat(item.data)}</td>
+                                            <td class="align-middle elemento-esconder-celular">${dateFormat(item.proxima_data)}</td>
                                             <td class="align-middle">
                                             ${item.documento != '' ? `
                                                 <a href="servico/download/${item.documento}" title="Baixar arquivo" target="_blank"><i class="fa-solid fa-file-${detectarExtensaoArquivo(item.documento)} fa-xl"></i></a>
                                             `:``}
                                             </td>
                                             <td class="align-middle" style="text-align: right; min-width: 120px">
-                                                <a title="Editar"
-                                                data-id="${item.id}"
-                                                data-usuario="${item.usuario}"
-                                                data-unidade="${item.unidade}"
-                                                data-id_parameter_servico="${item.id_parameter_servico}"
-                                                data-data="${item.data}"
-                                                data-proxima_data="${item.proxima_data}"
-                                                data-frequencia_meses="${item.frequencia_meses}"
-                                                data-observacoes="${item.observacoes}"
-                                                data-documento="${item.documento}" href="#" class="btn btn-warning edit-servicos"><i style="color: white" class="fas fa-edit"></i></a>
-                                                <a title="Deletar" data-id="${item.id}" href="#" class="btn btn-danger delete-servicos"><i class="fas fa-trash-alt"></i></a>
+                                                <div class="btn-group" role="group" aria-label="...">
+                                                    <a title="Editar"
+                                                    data-id="${item.id}"
+                                                    data-usuario="${item.usuario}"
+                                                    data-unidade="${item.unidade}"
+                                                    data-id_parameter_servico="${item.id_parameter_servico}"
+                                                    data-data="${item.data}"
+                                                    data-proxima_data="${item.proxima_data}"
+                                                    data-frequencia_meses="${item.frequencia_meses}"
+                                                    data-observacoes="${item.observacoes}"
+                                                    data-documento="${item.documento}" href="#" class="btn btn-warning edit-servicos"><i style="color: white" class="fas fa-edit"></i></a>
+                                                    <a title="Deletar" data-id="${item.id}" href="#" class="btn btn-danger delete-servicos"><i class="fas fa-trash-alt"></i></a>
+                                                </div>
                                             </td>
                                         </tr>
                                     `);

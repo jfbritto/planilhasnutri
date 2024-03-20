@@ -30,8 +30,10 @@ $(document).ready(function () {
                                                 <td width="150px" class="align-middle"><img style="padding: 5px" width="120" src="/img/logos/${item.sigla}.png"></td>
                                                 <td class="align-middle">${item.name}</td>
                                                 <td class="align-middle" style="text-align: right">
-                                                    <a title="Editar" data-id="${item.id}" data-name="${item.name}" data-city="${item.city}" data-sigla="${item.sigla}" data-reference="${item.reference}" data-description="${item.description}" href="#" class="btn btn-warning edit-unit"><i style="color: white" class="fas fa-edit"></i></a>
-                                                    <a title="Deletar" data-id="${item.id}" href="#" class="btn btn-danger delete-unit"><i class="fas fa-trash-alt"></i></a>
+                                                    <div class="btn-group" role="group" aria-label="...">
+                                                        <a title="Editar" data-id="${item.id}" data-name="${item.name}" data-city="${item.city}" data-sigla="${item.sigla}" data-reference="${item.reference}" data-description="${item.description}" href="#" class="btn btn-warning edit-unit"><i style="color: white" class="fas fa-edit"></i></a>
+                                                        <a title="Deletar" data-id="${item.id}" href="#" class="btn btn-danger delete-unit"><i class="fas fa-trash-alt"></i></a>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         `);
