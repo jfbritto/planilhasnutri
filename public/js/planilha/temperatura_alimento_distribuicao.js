@@ -397,8 +397,18 @@ $(document).ready(function () {
 
         if (modalCadastroEdicao) {
             $("#dolly-edit").append(html)
+
+            $(`#dolly-edit #id_parameter_produto_${contador}`).select2({
+                dropdownParent: $(`#modalEdittemperatura_alimento_distribuicao`)
+            });
+
         } else {
             $("#dolly").append(html)
+
+            $(`#dolly #id_parameter_produto_${contador}`).select2({
+                dropdownParent: $(`#modalStoretemperatura_alimento_distribuicao`)
+            });
+
         }
     }
 
