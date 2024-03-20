@@ -107,18 +107,22 @@ $(document).ready(function () {
                     // Armazena os dados em um array de objetos
                     let itens_planilha = [];
                     for (let i = 0; i < produtos.length; i++) {
-                        let id_parameter_produto = produtos[i].value;
-                        let hora_1 = primeirasHoras[i].value;
-                        let temperatura_1 = primeirasTemperaturas[i].value;
-                        let hora_2 = segundasHoras[i].value;
-                        let temperatura_2 = segundasTemperaturas[i].value;
-                        itens_planilha.push({
-                            id_parameter_produto: id_parameter_produto,
-                            hora_1: hora_1,
-                            temperatura_1: temperatura_1,
-                            hora_2: hora_2,
-                            temperatura_2: temperatura_2
-                        });
+
+                        if (produtos[i].value != undefined) {
+                            let id_parameter_produto = produtos[i].value;
+                            let hora_1 = primeirasHoras[i].value;
+                            let temperatura_1 = primeirasTemperaturas[i].value;
+                            let hora_2 = segundasHoras[i].value;
+                            let temperatura_2 = segundasTemperaturas[i].value;
+                            itens_planilha.push({
+                                id_parameter_produto: id_parameter_produto,
+                                hora_1: hora_1,
+                                temperatura_1: temperatura_1,
+                                hora_2: hora_2,
+                                temperatura_2: temperatura_2
+                            });
+                        }
+
                     }
 
                     if (itens_planilha.length === 0) {
@@ -209,18 +213,20 @@ $(document).ready(function () {
                     // Armazena os dados em um array de objetos
                     let itens_planilha = [];
                     for (let i = 0; i < produtos.length; i++) {
-                        let id_parameter_produto = produtos[i].value;
-                        let hora_1 = primeirasHoras[i].value;
-                        let temperatura_1 = primeirasTemperaturas[i].value;
-                        let hora_2 = segundasHoras[i].value;
-                        let temperatura_2 = segundasTemperaturas[i].value;
-                        itens_planilha.push({
-                            id_parameter_produto: id_parameter_produto,
-                            hora_1: hora_1,
-                            temperatura_1: temperatura_1,
-                            hora_2: hora_2,
-                            temperatura_2: temperatura_2
-                        });
+                        if (produtos[i].value != undefined) {
+                            let id_parameter_produto = produtos[i].value;
+                            let hora_1 = primeirasHoras[i].value;
+                            let temperatura_1 = primeirasTemperaturas[i].value;
+                            let hora_2 = segundasHoras[i].value;
+                            let temperatura_2 = segundasTemperaturas[i].value;
+                            itens_planilha.push({
+                                id_parameter_produto: id_parameter_produto,
+                                hora_1: hora_1,
+                                temperatura_1: temperatura_1,
+                                hora_2: hora_2,
+                                temperatura_2: temperatura_2
+                            });
+                        }
                     }
 
                     if (itens_planilha.length === 0) {
@@ -398,16 +404,36 @@ $(document).ready(function () {
         if (modalCadastroEdicao) {
             $("#dolly-edit").append(html)
 
-            $(`#dolly-edit #id_parameter_produto_${contador}`).select2({
-                dropdownParent: $(`#modalEdittemperatura_alimento_distribuicao`)
-            });
+            let element_tomselect = $(`#dolly-edit #id_parameter_produto_${contador}`)
+            if (element_tomselect.hasClass('tomselected')) {
+                element_tomselect[0].tomselect.sync();
+            } else {
+                if (element_tomselect[0]) {
+                    new TomSelect(`#dolly-edit #id_parameter_produto_${contador}`,{
+                        sortField: {
+                            field: "text",
+                            direction: "asc"
+                        }
+                    });
+                }
+            }
 
         } else {
             $("#dolly").append(html)
 
-            $(`#dolly #id_parameter_produto_${contador}`).select2({
-                dropdownParent: $(`#modalStoretemperatura_alimento_distribuicao`)
-            });
+            let element_tomselect = $(`#dolly #id_parameter_produto_${contador}`)
+            if (element_tomselect.hasClass('tomselected')) {
+                element_tomselect[0].tomselect.sync();
+            } else {
+                if (element_tomselect[0]) {
+                    new TomSelect(`#dolly #id_parameter_produto_${contador}`,{
+                        sortField: {
+                            field: "text",
+                            direction: "asc"
+                        }
+                    });
+                }
+            }
 
         }
     }

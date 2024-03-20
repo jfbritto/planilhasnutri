@@ -180,8 +180,6 @@ $(document).ready(function () {
         let id_parameter_responsavel = $(this).data('id_parameter_responsavel');
         let id_parameter_status_equipamento = $(this).data('id_parameter_status_equipamento');
 
-        console.log(temperatura_primeira_afericao)
-
         loadGlobalParameters(1, 'id_parameter_area_edit', id_parameter_area, false, true, `modalEditsaturacao_oleo_gordura`);
         loadGlobalParameters(4, 'id_parameter_equipamento_edit', id_parameter_equipamento, false, true, `modalEditsaturacao_oleo_gordura`);
         loadGlobalParameters(3, 'id_parameter_responsavel_edit', id_parameter_responsavel, false, true, `modalEditsaturacao_oleo_gordura`);

@@ -373,9 +373,25 @@ function loadGlobalParametersAction(
             $(`${elementoPai} #${element}`).append(`<option ${selected} value="${item.id}">${item.name}</option>`);
         });
 
-        $(`${elementoPai} #${element}`).select2({
-            dropdownParent: idModal ? $(`#${idModal}`) : null
-        });
+        // $(`${elementoPai} #${element}`).select2({
+        //     dropdownParent: idModal ? $(`#${idModal}`) : null
+        // });
+
+
+        let element_tomselect = $(`${elementoPai} #${element}`)
+        if (element_tomselect.hasClass('tomselected')) {
+            element_tomselect[0].tomselect.sync();
+        } else {
+            if (element_tomselect[0]) {
+                new TomSelect(`${elementoPai} #${element}`,{
+                    sortField: {
+                        field: "text",
+                        direction: "asc"
+                    }
+                });
+            }
+        }
+
     } else {
         $(`${elementoPai} #${element}`).append(`<option value="">Nenhum item encontrado</option>`);
     }
