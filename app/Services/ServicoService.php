@@ -76,7 +76,7 @@ class ServicoService
         return $response;
     }
 
-    public function list()
+    public function list($filter_array)
     {
         $response = [];
 
@@ -88,6 +88,12 @@ class ServicoService
             }
 
             $filter = "";
+            if (!empty($filter_array['status_filter'])) {
+                $filter .= " main_tb.status = '{$filter_array['status_filter']}'";
+            } else {
+                $filter .= " main_tb.status IN ('A','C')";
+            }
+
             if (!empty($filter_array['data_ini_filter'])) {
                 $filter .= " and main_tb.data >= '{$filter_array['data_ini_filter']}'";
             }
@@ -109,7 +115,7 @@ class ServicoService
                                                 JOIN users us ON main_tb.id_user = us.id {$condition}
                                                 LEFT JOIN units un ON us.id_unit = un.id
                                             WHERE
-                                                main_tb.status = 'A' {$filter}
+                                                {$filter}
                                             ORDER BY
                                                 main_tb.id DESC"));
 

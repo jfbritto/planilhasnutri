@@ -260,6 +260,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/servico/cadastrar', [ServicoController::class, 'store']);
     Route::put('/servico/editar', [ServicoController::class, 'update']);
     Route::delete('/servico/deletar', [ServicoController::class, 'destroy']);
+    Route::put('/servico/concluir', [ServicoController::class, 'conclude']);
     Route::get('/servico/download/{fileName}', [ServicoController::class, 'downloadArquivo']);
 
     // Usuários

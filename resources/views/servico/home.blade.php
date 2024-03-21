@@ -14,6 +14,32 @@
 @section('content')
     @include('forms.forms')
 
+    <div class="card collapsed-card">
+        <div class="card-header" style="cursor: pointer" data-card-widget="collapse">
+            <h5 class="card-title"><i class="fa-solid fa-magnifying-glass"></i>&nbsp;&nbsp;Buscar</h5>
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool">
+                    <i class="fas fa-arrow-down"></i>
+                </button>
+            </div>
+        </div>
+        <div class="card-body border-0" style="display: none;">
+            <form id="formFiltroPrincipal">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="status_filter">Status</label>
+                            <select name="status_filter" id="status_filter" class="form-control">
+                                <option value="A">Ativos</option>
+                                <option value="C">Concluídos</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <div class="card">
         <div class="card-header border-0">
             <div class="card-tools">

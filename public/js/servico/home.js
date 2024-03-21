@@ -14,7 +14,7 @@ $(document).ready(function () {
                 onOpen: () => {
                     Swal.showLoading();
                     $.get(window.location.origin + "/servico/listar", {
-
+                        status_filter : $("#status_filter option:selected").val(),
                     })
                     .then(function (data) {
                         if (data.status == "success") {
@@ -39,6 +39,9 @@ $(document).ready(function () {
                                             </td>
                                             <td class="align-middle" style="text-align: right; min-width: 120px">
                                                 <div class="btn-group" role="group" aria-label="...">
+                                                    ${item.status == 'C' ?'':`
+                                                        <a title="Concluir" data-id="${item.id}" href="#" class="btn btn-success concluir-servicos"><i class="fas fa-check"></i></a>
+                                                    `}
                                                     <a title="Editar"
                                                     data-id="${item.id}"
                                                     data-usuario="${item.usuario}"
@@ -307,6 +310,57 @@ $(document).ready(function () {
                                         if (data.status == "success") {
 
                                             showSuccess("Deletado com sucesso!", null, loadPrincipal)
+                                        } else if (data.status == "error") {
+                                            showError(data.message)
+                                        }
+                                    })
+                                    .catch(function (data) {
+                                        if (data.responseJSON.status == "error") {
+                                            showError(data.responseJSON.message)
+                                        }
+                                    });
+                            },
+                        },
+                    ]);
+
+                }
+            })
+
+    });
+
+    // "CONCLUIR"
+    $("#list").on("click", ".concluir-servicos", function(){
+
+        let id = $(this).data('id');
+
+        Swal.fire({
+            title: 'Atenção!',
+            text: "Deseja marcar o serviço como concluído?",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'Sim',
+            cancelButtonColor: '#d33',
+            cancelButtonText: 'Não'
+            }).then((result) => {
+                if (result.value) {
+
+                    Swal.queue([
+                        {
+                            title: "Carregando...",
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                            onOpen: () => {
+                                Swal.showLoading();
+                                $.ajax({
+                                    url: window.location.origin + "/servico/concluir",
+                                    type: 'PUT',
+                                    data: {id}
+                                })
+                                    .then(function (data) {
+                                        if (data.status == "success") {
+
+                                            showSuccess("Concluído com sucesso!", null, loadPrincipal)
                                         } else if (data.status == "error") {
                                             showError(data.message)
                                         }

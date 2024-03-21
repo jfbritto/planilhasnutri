@@ -145,9 +145,25 @@ class ServicoController extends Controller
         return response()->json(['status'=>'error', 'message'=>$response['data']], 400);
     }
 
-    public function list()
+    public function conclude(Request $request)
     {
-        $response = $this->servicoService->list();
+        $data = [
+            'id' => trim($request->id),
+            'status' => 'C'
+        ];
+
+        $response = $this->servicoService->update($data);
+
+        if($response['status'] == 'success')
+            return response()->json(['status'=>'success', 'data'=>$response['data']], 200);
+
+        return response()->json(['status'=>'error', 'message'=>$response['data']], 400);
+    }
+
+    public function list(Request $request)
+    {
+        $filter = $request->all();
+        $response = $this->servicoService->list($filter);
 
         if($response['status'] == 'success')
             return response()->json(['status'=>'success', 'data'=>$response['data']], 200);
