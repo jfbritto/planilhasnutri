@@ -32,18 +32,20 @@ Acessar o container
 docker-compose exec php bash
 ```
 
-
 Instalar as dependências do projeto
 ```sh
 composer update
 ```
-
 
 Gerar a key do projeto Laravel
 ```sh
 php artisan key:generate
 ```
 
+Gerar link simbólico
+```sh
+php artisan storage:link
+```
 
 Acessar o projeto
-[http://localhost:8989](http://localhost:8989)
+[http://localhost:8888](http://localhost:8888)
