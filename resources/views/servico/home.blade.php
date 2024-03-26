@@ -121,7 +121,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="documento">Documento</label>
-                                <input required type="file" name="documento" id="documento" class="form-control">
+                                <input type="file" name="documento" id="documento" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-12">

@@ -5,16 +5,19 @@ namespace App\Http\Controllers\Planilhas;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Services\PlanilhaRastreabilidadeDiariaService;
+use App\Services\DocumentService;
 use PDF;
 use Illuminate\Support\Facades\Storage;
 
 class PlanilhaRastreabilidadeDiariaController extends Controller
 {
     private $planilhaRastreabilidadeDiariaService;
+    private $documentService;
     private $idPlanilha = 19;
 
-    public function __construct(PlanilhaRastreabilidadeDiariaService $planilhaRastreabilidadeDiariaService) {
+    public function __construct(PlanilhaRastreabilidadeDiariaService $planilhaRastreabilidadeDiariaService, DocumentService $documentService) {
         $this->planilhaRastreabilidadeDiariaService = $planilhaRastreabilidadeDiariaService;
+        $this->documentService = $documentService;
     }
 
     public function index()
@@ -24,11 +27,6 @@ class PlanilhaRastreabilidadeDiariaController extends Controller
 
     public function store(Request $request)
     {
-        $fileName = '';
-        $image = $request->file('image');
-        if (!empty($image)) {
-            $fileName = $this->uploadDocumento($image);
-        }
 
         $data = [
             'id_user' => auth()->user()->id,
@@ -36,11 +34,21 @@ class PlanilhaRastreabilidadeDiariaController extends Controller
             'data' => $request->data,
             'lote' => $request->lote,
             'validade' => $request->validade,
-            'id_parameter_fabricante' => $request->id_parameter_fabricante,
-            'image' => $fileName
+            'id_parameter_fabricante' => $request->id_parameter_fabricante
         ];
 
         $response = $this->planilhaRastreabilidadeDiariaService->store($data);
+
+        if ($response['status'] == 'success') {
+            $documento = $request->file('image');
+            if (!empty($documento)) {
+                $this->documentService->uploadDocumento(
+                    $documento,
+                    19,
+                    $response["data"]->id
+                );
+            }
+        }
 
         if($response['status'] == 'success')
             return response()->json(['status'=>'success'], 201);
@@ -80,10 +88,14 @@ class PlanilhaRastreabilidadeDiariaController extends Controller
         $response = $this->planilhaRastreabilidadeDiariaService->destroy($data);
 
         if ($response['status'] == 'success') {
-            if ($planilha['status'] == 'success'
-                && !empty($planilha['data'][0]->image)
-            ) {
-                self::deletarArquivo($planilha['data'][0]->image);
+            if ($planilha['status'] == 'success') {
+
+                $documentos = $this->documentService->find(19, auth()->user()->id_unit, $planilha['data'][0]->id);
+
+                foreach ($documentos['data'] as $key => $documento) {
+                    $this->documentService->destroy($documento->id);
+                }
+
             }
 
             return response()->json(['status'=>'success'], 200);
@@ -131,66 +143,5 @@ class PlanilhaRastreabilidadeDiariaController extends Controller
         $pdf->setPaper('A4', 'landscape'); // Configuração de orientação paisagem
 
         return $pdf->stream('rastreabilidade_diaria.pdf');
-    }
-
-    public function uploadDocumento($documento)
-    {
-        $nomeOriginal = pathinfo($documento->getClientOriginalName(), PATHINFO_FILENAME); // Obtém o nome do arquivo sem a extensão
-        $extensao = $documento->getClientOriginalExtension(); // Obtém a extensão do arquivo
-        $idUnidade = auth()->user()->id_unit;
-        $anoAtual = date('Y');
-
-        // Remove caracteres especiais do nome do arquivo
-        $nomeFormatado = preg_replace('/[^A-Za-z0-9]/', '', $nomeOriginal);
-
-        // Concatena o nome formatado com a extensão do arquivo
-        $fileName = md5(time().$nomeFormatado). '.' . $extensao;
-
-        // Verifica se a pasta 'servicos' existe. Se não, cria a pasta.
-        if (!Storage::exists("arquivos/planilhas/rastreabilidade/{$idUnidade}/{$anoAtual}")) {
-            Storage::makeDirectory("arquivos/planilhas/rastreabilidade/{$idUnidade}/{$anoAtual}");
-        }
-
-        $documento->storeAs("arquivos/planilhas/rastreabilidade/{$idUnidade}/{$anoAtual}", $fileName);
-        return $fileName;
-    }
-
-    public function downloadArquivo($fileName)
-    {
-        $idUnidade = auth()->user()->id_unit;
-        $anoAtual = date('Y');
-
-        $caminhoArquivo = storage_path("app/arquivos/planilhas/rastreabilidade/{$idUnidade}/{$anoAtual}/" . $fileName);
-
-        // Verifica se o arquivo existe
-        if (!Storage::exists("arquivos/planilhas/rastreabilidade/{$idUnidade}/{$anoAtual}/" . $fileName)) {
-            abort(404); // Se o arquivo não existir, retorna um erro 404
-        }
-
-        // Obtém o tipo de conteúdo (MIME type) do arquivo
-        $mimeType = Storage::mimeType("arquivos/planilhas/rastreabilidade/{$idUnidade}/{$anoAtual}/" . $fileName);
-
-        // Define os cabeçalhos da resposta
-        $headers = [
-            "Content-Type" => $mimeType,
-        ];
-
-        // Retorna uma resposta de download
-        return response()->download($caminhoArquivo, $fileName, $headers);
-    }
-
-    public function deletarArquivo($fileName)
-    {
-        $idUnidade = auth()->user()->id_unit;
-        $anoAtual = date('Y');
-
-        // Verifica se o arquivo existe
-        if (Storage::exists("arquivos/planilhas/rastreabilidade/{$idUnidade}/{$anoAtual}/" . $fileName)) {
-            // Deleta o arquivo
-            Storage::delete("arquivos/planilhas/rastreabilidade/{$idUnidade}/{$anoAtual}/" . $fileName);
-            return "Arquivo $fileName deletado com sucesso!";
-        } else {
-            return "Arquivo $fileName não encontrado!";
-        }
     }
 }

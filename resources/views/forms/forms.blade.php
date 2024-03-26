@@ -410,3 +410,54 @@
         </div>
     </div>
 </div>
+
+
+<div class="modal fade"  role="dialog" id="modalExibirDocumentos">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">Documentos</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="row" id="lista_docs"></div>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-success" id="adicionar-documentos">Cadastrar novo documento</button>
+        </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade"  role="dialog" id="modalCadastrarDocumento">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">Cadastrar documento</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+
+            <form id="formStoreDoc">
+                <input type="hidden" name="id_plan" id="id_plan">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="documento_avulso">Documento</label>
+                            <input type="file" name="documento_avulso" id="documento_avulso" class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" form="formStoreDoc">Salvar</button>
+        </div>
+        </div>
+    </div>
+</div>

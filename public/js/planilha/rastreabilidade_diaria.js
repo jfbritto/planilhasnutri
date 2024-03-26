@@ -36,10 +36,12 @@ $(document).ready(function () {
                                         <tr>
                                             <td class="align-middle">${dateFormat(item.data)}</td>
                                             <td class="align-middle">${item.produto}</td>
-                                            <td class="align-middle">
-                                            ${item.image != '' ? `
-                                                <a href="rastreabilidade-diaria/download/${item.image}" title="Baixar arquivo" target="_blank"><i class="fa-solid fa-file-${detectarExtensaoArquivo(item.image)} fa-xl"></i></a>
-                                            `:``}
+                                            <td class="align-middle text-center">
+                                            ${item.files!=''&&item.files!=null?`
+                                                <a href="#" title="Exibir documentos" class="exibir-documentos" data-id="${item.id}"><i class="fa-solid fa-file fa-xl"></i></a>
+                                            `:`
+                                                <a href="#" title="Adicionar documentos" class="adicionar-documentos" data-id="${item.id}"><i class="fa-solid fa-plus fa-xl"></i></a>
+                                            `}
                                             </td>
                                             <td class="align-middle" style="text-align: right; min-width: 120px">
                                                 <div class="btn-group" role="group" aria-label="...">
@@ -83,6 +85,40 @@ $(document).ready(function () {
             },
         ]);
     }
+
+    // CADASTRO
+    const form = document.getElementById('formStorerastreabilidade_diaria');
+    form.addEventListener('submit', async function (event) {
+        event.preventDefault();
+
+        const image = document.getElementById('image');
+        const lote = document.getElementById('lote').value;
+        const id_parameter_produto = $("#id_parameter_produto option:selected").val()
+        const data = document.getElementById('data').value;
+        const validade = document.getElementById('validade').value;
+        const id_parameter_fabricante = $("#id_parameter_fabricante option:selected").val()
+
+        const file = image.files[0];
+        const maxWidth = 1000;
+        const maxHeight = 800;
+        const qualidade = 0.7; // Qualidade de 0 a 1
+
+        if (file == undefined) {
+            await salvarArquivoNoServidor(file, lote, id_parameter_produto, data, validade, id_parameter_fabricante, 3);
+        } else {
+            try {
+                if (file.type.startsWith('image/')) {
+                    const novaFoto = await reduzirTamanhoFoto(file, maxWidth, maxHeight, qualidade);
+                    await salvarArquivoNoServidor(novaFoto, lote, id_parameter_produto, data, validade, id_parameter_fabricante, 1);
+                } else {
+                    await salvarArquivoNoServidor(file, lote, id_parameter_produto, data, validade, id_parameter_fabricante, 2);
+                }
+            } catch (error) {
+                showError('Erro ao processar o envio do formulário');
+            }
+        }
+
+    });
 
     async function reduzirTamanhoFoto(file, maxWidth, maxHeight, qualidade) {
         return new Promise((resolve, reject) => {
@@ -188,37 +224,211 @@ $(document).ready(function () {
         }
     }
 
+    // MODAL DOCUMENTOS
+    $("#list").on("click", ".exibir-documentos", function(){
+
+        let id = $(this).data('id');
+
+        $("#id_plan").val(id)
+
+        $("#lista_docs").html(``);
+
+        $.get(window.location.origin + "/documentos/listar", {
+            id:id, planilha_base:19
+        })
+        .then(function (data) {
+            if (data.status == "success") {
+
+                Swal.close();
+                let extensao = ''
+
+                if (data.data.length > 0) {
+
+                    data.data.forEach(item => {
+                        extensao = ''
+                        extensao = detectarExtensaoArquivo(item.file)
+
+                        $("#lista_docs").append(`
+                            <div class="col-sm-4">
+                                <div class="alert alert-secondary alert-dismissible fade show" role="alert">
+                                    <a href="documento/download/${item.file}" title="Baixar arquivo" target="_blank">
+                                        ${extensao == 'image'?`
+                                            <img style="width:100vh" src="/storage/documentos/${item.id_unit}/${item.file}" alt="Foto" class="img-thumbnail img-responsive">
+                                        `:`
+                                            <i class="fa fa-file-${extensao} fa-5x" aria-hidden="true"></i>
+                                        `}
+                                    </a>
+                                    <button type="button" class="close deletar-documento" data-toggle="tooltip" data-placement="top" title="Deletar" data-id="${item.id}">
+                                        <span aria-hidden="true">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+                        `);
+                    });
+
+                } else {
+
+                    $("#lista_docs").append(`
+                        Nenhum arquivo cadastrado
+                    `);
+                }
+
+            } else if (data.status == "error") {
+                showError(data.message)
+            }
+        })
+        .catch(function (data) {
+            if (data.responseJSON.status == "error") {
+                showError(data.responseJSON.message)
+            }
+        });
+
+        $("#modalExibirDocumentos").modal("show");
+    });
+
+    $("#list").on("click", ".adicionar-documentos", function(){
+
+        let id = $(this).data('id');
+        $("#id_plan").val(id)
+
+        $("#modalCadastrarDocumento").modal("show");
+
+    })
+
+    $("#adicionar-documentos").on("click", function(){
+
+        $("#modalCadastrarDocumento").modal("show");
+
+    })
+
     // CADASTRO
-    const form = document.getElementById('formStorerastreabilidade_diaria');
-    form.addEventListener('submit', async function (event) {
+    const formDoc = document.getElementById('formStoreDoc');
+    formDoc.addEventListener('submit', async function (event) {
         event.preventDefault();
 
-        const image = document.getElementById('image');
-        const lote = document.getElementById('lote').value;
-        const id_parameter_produto = $("#id_parameter_produto option:selected").val()
-        const data = document.getElementById('data').value;
-        const validade = document.getElementById('validade').value;
-        const id_parameter_fabricante = $("#id_parameter_fabricante option:selected").val()
+        const documento = document.getElementById('documento_avulso');
+        const id_plan = document.getElementById('id_plan').value;
 
-        const file = image.files[0];
+        const file = documento.files[0];
         const maxWidth = 1000;
         const maxHeight = 800;
         const qualidade = 0.7; // Qualidade de 0 a 1
 
         if (file == undefined) {
-            await salvarArquivoNoServidor('', lote, id_parameter_produto, data, validade, id_parameter_fabricante, 3);
+            await salvarArquivoUnicoNoServidor(file, id_plan, 3);
         } else {
             try {
                 if (file.type.startsWith('image/')) {
                     const novaFoto = await reduzirTamanhoFoto(file, maxWidth, maxHeight, qualidade);
-                    await salvarArquivoNoServidor(novaFoto, lote, id_parameter_produto, data, validade, id_parameter_fabricante, 1);
+                    await salvarArquivoUnicoNoServidor(novaFoto, id_plan, 1);
                 } else {
-                    await salvarArquivoNoServidor(file, lote, id_parameter_produto, data, validade, id_parameter_fabricante, 2);
+                    await salvarArquivoUnicoNoServidor(file, id_plan, 2);
                 }
             } catch (error) {
-                showError('Erro ao processar o envio do formulário');
+                console.error('Erro ao processar o envio do formulário:', error);
             }
         }
+    });
+
+    async function salvarArquivoUnicoNoServidor(blob, id_plan, tipo) {
+        const formData = new FormData();
+
+        if (tipo == 1) {
+            formData.append('documento', blob, 'nome_arquivo.jpg');
+        } else if (tipo == 2){
+            formData.append('documento', blob);
+        }
+
+        formData.append('id_planilha', id_plan);
+        formData.append('planilha_base', 19);
+
+        try {
+
+            Swal.queue([
+                {
+                    title: "Carregando...",
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                    onOpen: () => {
+                        Swal.showLoading();
+
+                    },
+                },
+            ]);
+
+            const response = await fetch(window.location.origin + "/documento/cadastrar-avulso", {
+                method: 'POST',
+                body: formData
+            });
+            if (!response.ok) {
+                showError('Erro ao enviar arquivo para o servidor');
+            }
+
+            $("#formStoreDoc").each(function() {
+                this.reset();
+            });
+            $("#modalCadastrarDocumento").modal("hide");
+            $("#modalExibirDocumentos").modal("hide");
+            showSuccess("Cadastro efetuado!", null, loadPrincipal);
+        } catch (error) {
+            console.error('Erro ao salvar arquivo no servidor:', error);
+        }
+    }
+
+
+    // "DELETAR DOCUMENTO"
+    $("#lista_docs").on("click", ".deletar-documento", function(){
+
+        let id_especifico = $(this).data('id');
+        let planilha_base = 19
+
+        Swal.fire({
+            title: 'Atenção!',
+            text: "Deseja realmente deletar o documento?",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'Sim',
+            cancelButtonColor: '#d33',
+            cancelButtonText: 'Não'
+            }).then((result) => {
+                if (result.value) {
+
+                    Swal.queue([
+                        {
+                            title: "Carregando...",
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                            onOpen: () => {
+                                Swal.showLoading();
+                                $.ajax({
+                                    url: window.location.origin + "/documento/deletar",
+                                    type: 'DELETE',
+                                    data: {id_especifico,planilha_base}
+                                })
+                                    .then(function (data) {
+                                        if (data.status == "success") {
+
+                                            $("#modalExibirDocumentos").modal("hide");
+
+                                            showSuccess("Deletado com sucesso!", null, loadPrincipal)
+                                        } else if (data.status == "error") {
+                                            showError(data.message)
+                                        }
+                                    })
+                                    .catch(function (data) {
+                                        if (data.responseJSON.status == "error") {
+                                            showError(data.responseJSON.message)
+                                        }
+                                    });
+                            },
+                        },
+                    ]);
+
+                }
+            })
 
     });
 

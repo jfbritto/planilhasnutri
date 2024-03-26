@@ -37,15 +37,7 @@ class PlanilhaRastreabilidadeDiariaService
 
             DB::beginTransaction();
 
-            $planilha = DB::table('planilha_rastreabilidade_diarias')
-                        ->where('id', $data['id'])
-                        ->update([
-                            'id_parameter_produto' => $data['id_parameter_produto'],
-                            'data' => $data['data'],
-                            'lote' => $data['lote'],
-                            'validade' => $data['validade'],
-                            'id_parameter_fabricante' => $data['id_parameter_fabricante'],
-                        ]);
+            $planilha = PlanilhaRastreabilidadeDiaria::find($data['id']);
 
             DB::commit();
 
@@ -89,10 +81,7 @@ class PlanilhaRastreabilidadeDiariaService
 
         try{
 
-            $condition = "";
-            if (auth()->user()->id_unit) {
-                $condition = " and us.id_unit = ".auth()->user()->id_unit;
-            }
+            $condition = auth()->user()->id_unit ? "AND us.id_unit = " . auth()->user()->id_unit : "";
 
             $filter = "";
             if (!empty($filter_array['data_ini_filter'])) {
@@ -111,6 +100,7 @@ class PlanilhaRastreabilidadeDiariaService
                                                 ifnull(un.name, 'Controle') as unidade,
                                                 p_pr.name as produto,
                                                 p_fa.name as fabricante,
+                                                GROUP_CONCAT(doc.file SEPARATOR ', ') AS files,
                                                 main_tb.*
                                             FROM
                                                 planilha_rastreabilidade_diarias main_tb
@@ -118,8 +108,11 @@ class PlanilhaRastreabilidadeDiariaService
                                                 JOIN parameters p_fa ON main_tb.id_parameter_fabricante = p_fa.id
                                                 JOIN users us ON main_tb.id_user = us.id {$condition}
                                                 LEFT JOIN units un ON us.id_unit = un.id
+                                                LEFT JOIN documents doc ON main_tb.id = doc.id_planilha AND doc.planilha_base = 19
                                             WHERE
                                                 main_tb.status = 'A' {$filter}
+                                            GROUP BY
+                                                main_tb.id
                                             ORDER BY
                                                 main_tb.id DESC"));
 
@@ -136,7 +129,16 @@ class PlanilhaRastreabilidadeDiariaService
         $response = [];
 
         try{
-            $return = DB::select( DB::raw("SELECT * FROM planilha_rastreabilidade_diarias main_tb WHERE main_tb.status = 'A' AND id = {$id}"));
+            $return = DB::select( DB::raw("SELECT
+                                                main_tb.*,
+                                                GROUP_CONCAT(doc.file SEPARATOR ', ') AS files
+                                            FROM
+                                                planilha_rastreabilidade_diarias main_tb
+                                                LEFT JOIN documents doc ON main_tb.id = doc.id_planilha AND doc.planilha_base = 19
+                                            WHERE
+                                                main_tb.status = 'A' AND main_tb.id = {$id}
+                                            GROUP BY
+                                                main_tb.id"));
 
             $response = ['status' => 'success', 'data' => $return];
         }catch(Exception $e){

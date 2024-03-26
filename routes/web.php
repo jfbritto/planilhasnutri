@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
-
+use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PlanilhasController;
 use App\Http\Controllers\Planilhas\PlanilhaTrocaElementoFiltranteController;
@@ -237,7 +237,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('/planilha/rastreabilidade-diaria/editar', [PlanilhaRastreabilidadeDiariaController::class, 'update']);
     Route::delete('/planilha/rastreabilidade-diaria/deletar', [PlanilhaRastreabilidadeDiariaController::class, 'destroy']);
     Route::get('/planilha/rastreabilidade-diaria/visualizar', [PlanilhaRastreabilidadeDiariaController::class, 'gerarPDF']);
-    Route::get('/planilha/rastreabilidade-diaria/download/{fileName}', [PlanilhaRastreabilidadeDiariaController::class, 'downloadArquivo']);
 
     // Parametros
     Route::get('/parametros', [ParameterController::class, 'index']);
@@ -254,6 +253,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('/tipo-parametro/editar', [ParameterTypeController::class, 'update']);
     Route::delete('/tipo-parametro/deletar', [ParameterTypeController::class, 'destroy']);
 
+    // Documentos
+    Route::get('/documentos/listar', [DocumentController::class, 'list']);
+    Route::get('/documento/download/{fileName}', [DocumentController::class, 'downloadArquivo']);
+    Route::delete('/documento/deletar', [DocumentController::class, 'destroy']);
+    Route::post('/documento/cadastrar-avulso', [DocumentController::class, 'store']);
+
     // Serviços
     Route::get('/servicos', [ServicoController::class, 'index']);
     Route::get('/servico/listar', [ServicoController::class, 'list']);
@@ -261,7 +266,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('/servico/editar', [ServicoController::class, 'update']);
     Route::delete('/servico/deletar', [ServicoController::class, 'destroy']);
     Route::put('/servico/concluir', [ServicoController::class, 'conclude']);
-    Route::get('/servico/download/{fileName}', [ServicoController::class, 'downloadArquivo']);
 
     // Usuários
     Route::get('/usuarios', [UserController::class, 'index']);
