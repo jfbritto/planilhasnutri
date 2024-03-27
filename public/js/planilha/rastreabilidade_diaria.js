@@ -251,7 +251,7 @@ $(document).ready(function () {
                         $("#lista_docs").append(`
                             <div class="col-sm-4">
                                 <div class="alert alert-secondary alert-dismissible fade show" role="alert">
-                                    <a href="documento/download/${item.file}" title="Baixar arquivo" target="_blank">
+                                    <a href="/documento/download/${item.file}" title="Baixar arquivo" target="_blank">
                                         ${extensao == 'image'?`
                                             <img style="width:100vh" src="/storage/documentos/${item.id_unit}/${item.file}" alt="Foto" class="img-thumbnail img-responsive">
                                         `:`
