@@ -470,11 +470,13 @@ $(document).ready(function () {
             }
         }
 
+        let screenWidth = window.innerWidth;
+
         return `
-            <div class="alert alert-secondary alert-dismissible fade show" role="alert" id="bloco_${contador}">
+            <div class="alert alert-secondary alert-dismissible fade show" role="alert" id="bloco_${contador}" style="padding-right: 1rem;">
                 <div class="row">
                     <div class="col-md-4 col-xs-12 col-sm-12 col-12">
-                        <div class="form-group">
+                        <div class="form-group" style="margin-bottom: 0.4rem;">
                             <label for="id_parameter_produto_${contador}">Produto</label>
 
                             <i class="fa fa-plus-circle color-green botaoAbrirModalStoreParameterProdutoDolly" style="cursor: pointer; ${disabled?"display: none":""}" data-bloco="${contador}" title="Cadastrar novo item"></i>
@@ -483,27 +485,39 @@ $(document).ready(function () {
                         </div>
                     </div>
                     <div class="col-md-2 col-xs-6 col-sm-6 col-6">
-                        <div class="form-group">
-                            <label for="hora_1_${contador}">1º H</label>
+                        <div class="form-group ${screenWidth>=768?'':'input-group'} distribuicao-form" style="margin-bottom: 0.4rem;">
+                            <label for="temperatura_1_${contador}" class="d-none d-md-block">1ºHª</label>
+                            <div class="input-group-prepend d-block d-sm-block d-md-none">
+                                <div class="input-group-text">1ªH</div>
+                            </div>
                             <input type="time" required name="hora_1_${contador}" id="hora_1_${contador}" class="form-control primeiraHora${complemento_edit}" value="${h1}">
                         </div>
                     </div>
                     <div class="col-md-2 col-xs-6 col-sm-6 col-6">
-                        <div class="form-group">
-                            <label for="temperatura_1_${contador}">1º Tª</label>
-                            <input type="text" required name="temperatura_1_${contador}" id="temperatura_1_${contador}" class="form-control primeiraTemperatura${complemento_edit}" placeholder="Informe a temperatura" value="${t1}">
+                        <div class="form-group ${screenWidth>=768?'':'input-group'} distribuicao-form" style="margin-bottom: 0.4rem;">
+                            <label for="temperatura_1_${contador}" class="d-none d-md-block">1ªT</label>
+                            <div class="input-group-prepend d-block d-sm-block d-md-none">
+                                <div class="input-group-text">1ªT</div>
+                            </div>
+                            <input type="text" required name="temperatura_1_${contador}" id="temperatura_1_${contador}" class="form-control primeiraTemperatura${complemento_edit}" placeholder="Temperatura" value="${t1}">
                         </div>
                     </div>
                     <div class="col-md-2 col-xs-6 col-sm-6 col-6">
-                        <div class="form-group">
-                            <label for="hora_2_${contador}">2º H</label>
+                        <div class="form-group ${screenWidth>=768?'':'input-group'} distribuicao-form" style="margin-bottom: 0.4rem;">
+                            <label for="temperatura_1_${contador}" class="d-none d-md-block">2ªH</label>
+                            <div class="input-group-prepend d-block d-sm-block d-md-none">
+                                <div class="input-group-text">2ªH</div>
+                            </div>
                             <input type="time" name="hora_2_${contador}" id="hora_2_${contador}" class="form-control segundaHora${complemento_edit}" value="${h2}">
                         </div>
                     </div>
                     <div class="col-md-2 col-xs-6 col-sm-6 col-6">
-                        <div class="form-group">
-                            <label for="temperatura_2_${contador}">2º Tª</label>
-                            <input type="text" name="temperatura_2_${contador}" id="temperatura_2_${contador}" class="form-control segundaTemperatura${complemento_edit}" placeholder="Informe a temperatura" value="${t2}">
+                        <div class="form-group ${screenWidth>=768?'':'input-group'} distribuicao-form" style="margin-bottom: 0.4rem;">
+                            <label for="temperatura_1_${contador}" class="d-none d-md-block">2ªT</label>
+                            <div class="input-group-prepend d-block d-sm-block d-md-none">
+                                <div class="input-group-text">2ªT</div>
+                            </div>
+                            <input type="text" name="temperatura_2_${contador}" id="temperatura_2_${contador}" class="form-control segundaTemperatura${complemento_edit}" placeholder="Temperatura" value="${t2}">
                         </div>
                     </div>
                 </div>

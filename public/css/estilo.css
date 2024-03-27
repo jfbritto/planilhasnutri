@@ -11085,6 +11085,22 @@ textarea.form-control-lg {
 
     .overflow-visible-btn {
         overflow: visible !important;
-    };
+    }
 
+    .distribuicao-form {
+        margin-top: 2rem;
+    }
+
+    .distribuicao-form {
+        margin-top: 0rem;
+    }
 }
+
+/* Quando a largura da tela for 769px ou maior */
+/* @media screen and (min-width: 769px) {
+
+    .distribuicao-form {
+        margin-top: 2rem !important;
+    }
+
+} */
