@@ -77,12 +77,22 @@
         <div class="card-header border-0">
 
             <i class="fa-regular fa-circle-question" style="cursor: pointer" data-toggle="popover_question"
-                title="Descrição da planilha" data-content="
-                    <ol class='list-group'>
-                        <li class='list-group-item'>Item 1</li>
-                        <li class='list-group-item'>Item 2</li>
-                        <li class='list-group-item'>Item 3</li>
-                    </ol>
+                title="Descrição" data-content="
+                    <p>
+                        Nomear os equipamentos conforme realidade da unidade.
+                    </p>
+                    <p>
+                        Os equipamentos devem estar regulados para a temperatura correspondente aos produtos armazenados.
+                    </p>
+                    <p>
+                        Faixa de temepratura:<br>
+                            <strong>Congelados:</strong> abaixo de -18°C<br>
+                            <strong>Resfriados:</strong> até 4°C ou conforme especificações do fabricante
+                    </p>
+                    <p>
+                        As refêrencias da Tabela são mediante padrão de qualidade Louvre Hotels Grup®
+                        O Louvre preconiza a lei da restritividade. Cada cidade deverá seguir a legislação local, se esta, for mais restritiva.
+                    </p>
                 ">
             </i>
 
@@ -155,6 +165,7 @@
                                     <option value="1">Desligado</option>
                                     <option value="2">Limpeza</option>
                                     <option value="3">Manutenção</option>
+                                    <option value="4">Degelo</option>
                                 </select>
                             </div>
                         </div>
@@ -231,6 +242,7 @@
                                     <option value="1">Desligado</option>
                                     <option value="2">Limpeza</option>
                                     <option value="3">Manutenção</option>
+                                    <option value="4">Degelo</option>
                                 </select>
                             </div>
                         </div>

@@ -67,10 +67,10 @@ function weekDayDescription(val)
 // retorna o nome do status do equipamento
 function descricaoStatusEquipamento(val, color = false)
 {
-    const descricao = {1:'Desligado',2:'Limpeza',3:'Manutenção'};
-    const cores = {1:'danger',2:'info',3:'warning'};
+    const descricao = {1:'Desligado',2:'Limpeza',3:'Manutenção',4:'Degelo'};
+    const cores = {1:'danger',2:'info',3:'warning',4:'info'};
 
-    if(val > 0 && val < 4){
+    if(val > 0 && val <= 4){
 
         if (color) {
             return `table-${cores[val]}`
@@ -109,6 +109,11 @@ function detectarExtensaoArquivo(nomeArquivo) {
 function configTemperaturaEquipamento(maiorQueTxt, menorQueTxt, temperaturaTxt, texto = false)
 {
     let classe = 'danger'
+
+    if (maiorQueTxt == null && menorQueTxt == null) {
+        classe = 'secondary'
+    }
+
     let descricao = ''
     let maiorQue = null;
     let menorQue = null;

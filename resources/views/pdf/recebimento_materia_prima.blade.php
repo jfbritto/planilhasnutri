@@ -2,6 +2,7 @@
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" href="/img/building.png" type="image/png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{$titulo}}</title>
     <style>
@@ -24,10 +25,6 @@
             background-color: transparent;
             border-collapse: collapse;
             font-size: 12px;
-        }
-
-        .table-bordered {
-            border: 1px solid #dee2e6;
         }
 
         .table-bordered th,
@@ -70,46 +67,62 @@
         }
 
         .container-fluid {
-            margin-top: -20px
+            margin-top: -20px;
+            margin-left: -10px;
+            margin-right: -10px;
         }
 
-        .header {
-            text-align: center;
-            padding-bottom: 5px;
-            color: #666668;
+        .header h2 {
+            margin: 5px; /* Remove margens do título para evitar espaços extras */
+            font-weight: bold
         }
 
-        .header img {
-            float: left; /* Faz a imagem flutuar à esquerda */
-        }
-
-        .header h1 {
-            margin: 0; /* Remove margens do título para evitar espaços extras */
+        hr {
+            height: 1px; /* Defina a altura desejada */
+            background-color: #ccc; /* Defina a cor da linha */
+            border: none; /* Remova a borda para torná-la uma linha sólida */
         }
     </style>
 </head>
 <body>
     <div class="container-fluid">
-        <div class="header">
-            <img src="img/louvre.jpeg" alt="" width="150px">
-            <h1>{{$titulo}}</h1>
-        </div>
+        <table class="table table-bordered" style="margin-bottom: 7px; color: #666668;">
+            <tr>
+                <td style="vertical-align: middle; text-align: center;">
+                    <img src="img/louvre.jpeg" alt="" width="150px"><hr><span style="font-weight: bold; margin-top: 0.5rem">{{auth()->user()->unit->name}}</span>
+                </td>
+                <td style="vertical-align: middle; font-weight: bold; text-align: center;">
+                    Ano: {{date('Y')}}
+                    <hr style="">
+                    Mês: {{date('m')}}
+                </td>
+                <td style="vertical-align: middle; text-align: center; font-weight: bold; font-size: 1.5rem">
+                    {{$titulo}}
+                </td>
+                <td style="vertical-align: middle; text-align: center; font-weight: bold">
+                    REG 001
+                    <hr style="">
+                    Criado em nov/2018<br>
+                    Revisado em:  02/2024
+                </td>
+            </tr>
+        </table>
 
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
-                    <th>Data</th>
-                    <th>Produto</th>
-                    <th>Fornecedor</th>
-                    <th>Ordem de Compra</th>
-                    <th>Nota Fiscal</th>
-                    <th>SIF/Lote</th>
-                    <th>Data Validade</th>
-                    <th>Alimento (ºC)</th>
-                    <th>Veículo (ºC)</th>
-                    <th>Não Conformidade</th>
-                    <th>Ação Corretiva</th>
-                    <th>Responsável</th>
+                    <th style="vertical-align: middle">Data</th>
+                    <th style="vertical-align: middle">Produto</th>
+                    <th style="vertical-align: middle">Fornecedor</th>
+                    <th style="vertical-align: middle">N. Fiscal</th>
+                    <th style="vertical-align: middle">SIF</th>
+                    <th style="vertical-align: middle">Lote</th>
+                    <th style="vertical-align: middle">Validade</th>
+                    <th style="vertical-align: middle">Alimento (ºC)</th>
+                    <th style="vertical-align: middle">Veículo (ºC)</th>
+                    <th style="vertical-align: middle">Não Conformidade</th>
+                    <th style="vertical-align: middle">Ação Corretiva</th>
+                    <th style="vertical-align: middle">Responsável</th>
                 </tr>
             </thead>
             <tbody>
@@ -118,9 +131,9 @@
                         <td style="vertical-align: middle">{{ \Carbon\Carbon::parse($item->data)->format('d/m/Y') }}</td>
                         <td style="vertical-align: middle">{{ $item->produto }}</td>
                         <td style="vertical-align: middle">{{ $item->fornecedor }}</td>
-                        <td style="vertical-align: middle">{{ $item->ordem_de_compra }}</td>
                         <td style="vertical-align: middle">{{ $item->nota_fiscal }}</td>
                         <td style="vertical-align: middle">{{ $item->sif_lote }}</td>
+                        <td style="vertical-align: middle">{{ $item->lote }}</td>
                         <td style="vertical-align: middle">{{ \Carbon\Carbon::parse($item->data_validade)->format('d/m/Y') }}</td>
                         <td style="vertical-align: middle">{{ $item->temperatura_alimento }}</td>
                         <td style="vertical-align: middle">{{ $item->temperatura_veiculo }}</td>

@@ -26,10 +26,6 @@
             font-size: 12px;
         }
 
-        .table-bordered {
-            border: 1px solid #dee2e6;
-        }
-
         .table-bordered th,
         .table-bordered td {
             border: 1px solid #dee2e6;
@@ -70,29 +66,47 @@
         }
 
         .container-fluid {
-            margin-top: -20px
+            margin-top: -20px;
+            margin-left: -10px;
+            margin-right: -10px;
         }
 
-        .header {
-            text-align: center;
-            color: #666668;
+        .header h2 {
+            margin: 5px; /* Remove margens do título para evitar espaços extras */
+            font-weight: bold
         }
 
-        .header img {
-            float: left; /* Faz a imagem flutuar à esquerda */
-        }
-
-        .header h1 {
-            margin: 0; /* Remove margens do título para evitar espaços extras */
+        hr {
+            height: 1px; /* Defina a altura desejada */
+            background-color: #ccc; /* Defina a cor da linha */
+            border: none; /* Remova a borda para torná-la uma linha sólida */
         }
     </style>
 </head>
 <body>
     <div class="container-fluid">
-        <div class="header">
-            <img src="img/louvre.jpeg" alt="" width="150px">
-            <h2>{{$titulo}}</h2>
-        </div>
+        <table class="table table-bordered" style="margin-bottom: 7px; color: #666668;">
+            <tr>
+                <td style="vertical-align: middle; text-align: center;">
+                    <img src="img/louvre.jpeg" alt="" width="150px"><hr><span style="font-weight: bold; margin-top: 0.5rem">{{auth()->user()->unit->name}}</span>
+                </td>
+                <td style="vertical-align: middle; font-weight: bold; text-align: center;">
+                    Ano: {{date('Y')}}
+                    <hr style="">
+                    Mês: {{date('m')}}
+                </td>
+                <td style="vertical-align: middle; text-align: center; font-weight: bold; font-size: 1.2rem">
+                    {{$titulo}}
+                </td>
+                <td style="vertical-align: middle; text-align: center; font-weight: bold">
+                    REG 002A<br>
+                    REG 002B
+                    <hr style="">
+                    Criado em nov/2018<br>
+                    Revisado em:  02/2024
+                </td>
+            </tr>
+        </table>
 
         <table class="table table-bordered table-striped">
             <thead>

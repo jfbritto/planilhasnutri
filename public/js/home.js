@@ -79,24 +79,24 @@ $(document).ready(function () {
 
 
 // public/js/chart.js
-var ctx = document.getElementById('myChart').getContext('2d');
-var myChart = new Chart(ctx, {
-    type: 'line', // tipo do gráfico (bar, line, pie, etc.)
-    data: {
-        labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio'],
-        datasets: [{
-            label: 'Planilhas Mensais',
-            data: [12, 19, 3, 5, 2], // dados do gráfico
-            backgroundColor: 'rgba(75, 192, 192, 0.2)', // cor de fundo das barras
-            borderColor: 'rgba(75, 192, 192, 1)', // cor da borda das barras
-            borderWidth: 1 // largura da borda das barras
-        }]
-    },
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true // define o início do eixo Y como zero
-            }
-        }
-    }
-});
+// var ctx = document.getElementById('myChart').getContext('2d');
+// var myChart = new Chart(ctx, {
+//     type: 'line', // tipo do gráfico (bar, line, pie, etc.)
+//     data: {
+//         labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio'],
+//         datasets: [{
+//             label: 'Planilhas Mensais',
+//             data: [12, 19, 3, 5, 2], // dados do gráfico
+//             backgroundColor: 'rgba(75, 192, 192, 0.2)', // cor de fundo das barras
+//             borderColor: 'rgba(75, 192, 192, 1)', // cor da borda das barras
+//             borderWidth: 1 // largura da borda das barras
+//         }]
+//     },
+//     options: {
+//         scales: {
+//             y: {
+//                 beginAtZero: true // define o início do eixo Y como zero
+//             }
+//         }
+//     }
+// });

@@ -68,12 +68,9 @@
         <div class="card-header border-0">
 
             <i class="fa-regular fa-circle-question" style="cursor: pointer" data-toggle="popover_question"
-                title="Descrição da planilha" data-content="
-                    <ol class='list-group'>
-                        <li class='list-group-item'>Item 1</li>
-                        <li class='list-group-item'>Item 2</li>
-                        <li class='list-group-item'>Item 3</li>
-                    </ol>
+                title="Descrição" data-content="
+                    <p>A temperatura de veículo deve ser compatível com a temperaturta esperada no recebimento do alimento, conforme tabela ao lado (CVS5)</p>
+                    <p>Atentar-se as embalagens dos forcedores e respeitar as indicações de conservação</p>
                 ">
             </i>
 
@@ -188,13 +185,42 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="nao_conformidade">Não Conformidade</label>
+                                <label for="nao_conformidade">
+                                    Não Conformidade&nbsp;
+
+                                    <i class="fa-regular fa-circle-question" style="cursor: pointer" data-toggle="popover_question"
+                                        title="Legendas não conformidades" data-content="
+                                            <ol class='list-group'>
+                                                <li class='list-group-item'>Características sensoriais impróprias para consumo</li>
+                                                <li class='list-group-item'>Embalagem danificada</li>
+                                                <li class='list-group-item'>Produto sem registro</li>
+                                                <li class='list-group-item'>Transporte inadequado</li>
+                                                <li class='list-group-item'>Dados incompletos no rótulo</li>
+                                                <li class='list-group-item'>Temperatura inadequada do alimento e/ou veículo</li>
+                                                <li class='list-group-item'>Uniforme inadequado</li>
+                                                <li class='list-group-item'>Outro</li>
+                                            </ol>
+                                        ">
+                                    </i>
+                                </label>
                                 <input type="text" name="nao_conformidade" id="nao_conformidade" class="form-control" placeholder="Informe a não conformidade">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="acao_corretiva">Ação Corretiva</label>
+                                <label for="acao_corretiva">
+                                    Ação Corretiva&nbsp;
+
+                                    <i class="fa-regular fa-circle-question" style="cursor: pointer" data-toggle="popover_question"
+                                        title="Legendas ação corretiva" data-content="
+                                            <ol class='list-group'>
+                                                <li class='list-group-item'>Devoulção do produto</li>
+                                                <li class='list-group-item'>Notificação ao fornecedor</li>
+                                                <li class='list-group-item'>Outro</li>
+                                            </ol>
+                                        ">
+                                    </i>
+                                </label>
                                 <input type="text" name="acao_corretiva" id="acao_corretiva" class="form-control" placeholder="Informe a ação">
                             </div>
                         </div>
@@ -295,13 +321,42 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="nao_conformidade_edit">Não Conformidade</label>
+                                <label for="nao_conformidade_edit">
+                                    Não Conformidade&nbsp;
+
+                                    <i class="fa-regular fa-circle-question" style="cursor: pointer" data-toggle="popover_question"
+                                        title="Legendas não conformidades" data-content="
+                                            <ol class='list-group'>
+                                                <li class='list-group-item'>Características sensoriais impróprias para consumo</li>
+                                                <li class='list-group-item'>Embalagem danificada</li>
+                                                <li class='list-group-item'>Produto sem registro</li>
+                                                <li class='list-group-item'>Transporte inadequado</li>
+                                                <li class='list-group-item'>Dados incompletos no rótulo</li>
+                                                <li class='list-group-item'>Temperatura inadequada do alimento e/ou veículo</li>
+                                                <li class='list-group-item'>Uniforme inadequado</li>
+                                                <li class='list-group-item'>Outro</li>
+                                            </ol>
+                                        ">
+                                    </i>
+                                </label>
                                 <input type="text" name="nao_conformidade_edit" id="nao_conformidade_edit" class="form-control" placeholder="Informe a não conformidade">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="acao_corretiva_edit">Ação Corretiva</label>
+                                <label for="acao_corretiva_edit">
+                                    Ação Corretiva&nbsp;
+
+                                    <i class="fa-regular fa-circle-question" style="cursor: pointer" data-toggle="popover_question"
+                                        title="Legendas ação corretiva" data-content="
+                                            <ol class='list-group'>
+                                                <li class='list-group-item'>Devoulção do produto</li>
+                                                <li class='list-group-item'>Notificação ao fornecedor</li>
+                                                <li class='list-group-item'>Outro</li>
+                                            </ol>
+                                        ">
+                                    </i>
+                                </label>
                                 <input type="text" name="acao_corretiva_edit" id="acao_corretiva_edit" class="form-control" placeholder="Informe a ação">
                             </div>
                         </div>

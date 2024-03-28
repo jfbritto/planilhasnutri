@@ -135,7 +135,7 @@ $(document).ready(function () {
                             $("#formStoretemperatura_equipamento_area_climatizada").each(function () {
                                 this.reset();
                             });
-                            $(".selecao-customizada").val(null).trigger("change");
+                            $(".selecao-customizada")[0].tomselect.clear();
 
                             atualizarDataAtual(dataCadastrada)
                             loadGlobalParameters(3, 'id_parameter_responsavel', responsavelCadastrado, false, true, `modalStoretemperatura_equipamento_area_climatizada`);
@@ -359,7 +359,7 @@ $(document).ready(function () {
     $("#id_parameter_equipamento, #data").change(function(){
 
         let equipamento = $("#id_parameter_equipamento").val();
-        let equipamentoText = $("#id_parameter_equipamento option:selected").text();
+        let equipamentoText = $("#id_parameter_equipamento option:selected").text() ?? '';
         let data_cadastro = $("#data").val();
 
 

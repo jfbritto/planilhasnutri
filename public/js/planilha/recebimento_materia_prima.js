@@ -125,6 +125,8 @@ $(document).ready(function () {
 
                             $("#modalStorerecebimento_materia_prima").modal("hide");
 
+                            atualizarDataAtual()
+
                             loadGlobalParameters(8, 'id_parameter_produto', null, false, true, `modalStorerecebimento_materia_prima`);
                             loadGlobalParameters(3, 'id_parameter_responsavel', null, false, true, `modalStorerecebimento_materia_prima`);
                             loadGlobalParameters(10, 'id_parameter_fornecedor', null, false, true, `modalStorerecebimento_materia_prima`);
